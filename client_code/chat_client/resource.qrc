@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resource/image/myChat.png</file>
+        <file>resource/image/headPortrait.png</file>
+        <file>resource/image/chatSessionTab.png</file>
+        <file>resource/image/friendApplyTab.png</file>
+        <file>resource/image/friendTab.png</file>
+    </qresource>
+</RCC>
