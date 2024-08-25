@@ -10,9 +10,13 @@
 	"INPUTS" : 
 	[
 		"E:/Code/chat_room/client_code/chat_client/resource/image/headPortrait.png",
-		"E:/Code/chat_room/client_code/chat_client/resource/image/friendTab.png",
-		"E:/Code/chat_room/client_code/chat_client/resource/image/friendApplyTab.png",
-		"E:/Code/chat_room/client_code/chat_client/resource/image/chatSessionTab.png",
+		"E:/Code/chat_room/client_code/chat_client/resource/image/chatSessionTabActive.png",
+		"E:/Code/chat_room/client_code/chat_client/resource/image/friendTabNotActive.png",
+		"E:/Code/chat_room/client_code/chat_client/resource/image/chatSessionTabNotActive.png",
+		"E:/Code/chat_room/client_code/chat_client/resource/image/friendTabActive.png",
+		"E:/Code/chat_room/client_code/chat_client/resource/image/friendApplyTabNotActive.png",
+		"E:/Code/chat_room/client_code/chat_client/resource/image/addFriend.png",
+		"E:/Code/chat_room/client_code/chat_client/resource/image/friendApplyTabActive.png",
 		"E:/Code/chat_room/client_code/chat_client/resource/image/myChat.png"
 	],
 	"LOCK_FILE" : "E:/Code/chat_room/client_code/chat_client/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Debug/CMakeFiles/chat_client_autogen.dir/AutoRcc_resource_EWIEGA46WW_Lock.lock",

@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QPushButton>
+#include <QLineEdit>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -29,25 +30,52 @@ private:
     void initLeftWindow();
     void initMiddleWindow();
     void initRightWindow();
+    void initSignalSlot();
+
+
+    void switchTabToChatSession();
+    void switchTabToFriend();
+    void switchTabToFriendApply();
+
+
+    void loadChatSessionTab();
+    void loadFriendTab();
+    void loadFriendApplyTab();
 
 
 private:
     // 搞成单例
-    static MainWidget* instance;
+    static MainWidget* _instance;
 
     Ui::MainWidget *ui;
-    // 窗口中的各个组件
-    QWidget* windowLeft;
-    QWidget* windowMiddle;
-    QWidget* windowRight;
+
+    // 窗口中的各个子窗口
+    QWidget* _windowLeft;
+    QWidget* _windowMiddle;
+    QWidget* _windowRight;
+
     // 用户头像按钮
-    QPushButton* userHeadPortraitBtn;
+    QPushButton* _userHeadPortraitBtn;
     // 会话标签页按钮
-    QPushButton* chatSessionTabBtn;
+    QPushButton* _chatSessionTabBtn;
     // 好友标签页按钮
-    QPushButton* friendTabBtn;
+    QPushButton* _friendTabBtn;
     // 好友申请标签页按钮
-    QPushButton* friendApplyTabBtn;
+    QPushButton* _friendApplyTabBtn;
+
+    // 搜索框
+    QLineEdit* _searchBar;
+    // 添加好友按钮
+    QPushButton* _addFriendBtn;
+
+
+    // 选中标签页
+    enum ActiveTab{
+        CHATSESSION_TAB,
+        FRIEND_TAB,
+        FRIENDAPPLY_TAB
+    };
+    ActiveTab _activeTab = CHATSESSION_TAB;
 
 };
 #endif // MAINWIDGET_H

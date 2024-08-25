@@ -2,8 +2,12 @@
     <qresource prefix="/">
         <file>resource/image/myChat.png</file>
         <file>resource/image/headPortrait.png</file>
-        <file>resource/image/chatSessionTab.png</file>
-        <file>resource/image/friendApplyTab.png</file>
-        <file>resource/image/friendTab.png</file>
+        <file>resource/image/chatSessionTabActive.png</file>
+        <file>resource/image/chatSessionTabNotActive.png</file>
+        <file>resource/image/friendTabActive.png</file>
+        <file>resource/image/friendTabNotActive.png</file>
+        <file>resource/image/friendApplyTabActive.png</file>
+        <file>resource/image/friendApplyTabNotActive.png</file>
+        <file>resource/image/addFriend.png</file>
     </qresource>
 </RCC>

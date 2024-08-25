@@ -321,9 +321,21 @@
 	"HEADERS" : 
 	[
 		[
+			"E:/Code/chat_room/client_code/chat_client/debug.h",
+			"MU",
+			"EWIEGA46WW/moc_debug.cpp",
+			null
+		],
+		[
 			"E:/Code/chat_room/client_code/chat_client/mainwidget.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwidget.cpp",
+			null
+		],
+		[
+			"E:/Code/chat_room/client_code/chat_client/middlewindowarea.h",
+			"MU",
+			"EWIEGA46WW/moc_middlewindowarea.cpp",
 			null
 		],
 		[
@@ -390,6 +402,11 @@
 		[ "E:/Code/chat_room/client_code/chat_client/main.cpp", "MU", null ],
 		[
 			"E:/Code/chat_room/client_code/chat_client/mainwidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"E:/Code/chat_room/client_code/chat_client/middlewindowarea.cpp",
 			"MU",
 			null
 		]
