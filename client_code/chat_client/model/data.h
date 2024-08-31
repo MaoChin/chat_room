@@ -21,7 +21,7 @@ namespace model{
 /// 使用static和inline修饰，避免链接时出现 函数重定义
 static inline QString makeFormatTime(int64_t timestamp){
     QDateTime dateTime = QDateTime::fromSecsSinceEpoch(timestamp);
-    return dateTime.toString("MM-dd HH-mm-ss");
+    return dateTime.toString("MM-dd HH:mm:ss");
 }
 static inline int64_t getTimestamp(){
     return QDateTime::currentSecsSinceEpoch();
@@ -74,7 +74,7 @@ class UserInfo{
 public:
     QString _userId = "";                 // ID
     QString _phoneNum = "";               // 电话
-    QString _niceName = "";               // 昵称
+    QString _nickName = "";               // 昵称
     QString _personalSignature = "";      // 个性签名
     QIcon _headPortrait;             	  // 头像
 };
@@ -104,23 +104,22 @@ public:
     static MessageInfo makeMessageInfo(const QString& chatSessionId, MessageType messageType,
                             const UserInfo& sender, const QByteArray& content, const QString& extraData) {
         if(messageType == TEXT_TYPE){
-            makeTextMessage(chatSessionId, sender, content);
+            return makeTextMessage(chatSessionId, sender, content);
         }
         else if(messageType == IMAGE_TYPE){
-            makeImageMessage(chatSessionId, sender, content);
+            return makeImageMessage(chatSessionId, sender, content);
         }
         else if(messageType == FILE_TYPE){
             // 是文件类型时，这个extraData就是文件名
-            makeFileMessage(chatSessionId, sender, content, extraData);
+           return makeFileMessage(chatSessionId, sender, content, extraData);
         }
         else if(messageType == VOICE_TYPE){
-            makeVoiceMessage(chatSessionId, sender, content);
+            return makeVoiceMessage(chatSessionId, sender, content);
         }
         else{
-            MessageInfo();
+            return MessageInfo();
         }
     }
-
 
 private:
     // 使用UUID生成唯一的 messageId
@@ -192,10 +191,6 @@ public:
     MessageInfo _lastMessage;       	 // 最后一条消息，用于在会话列表中显示
     QIcon _headPortrait;		  	 	 // 会话图标，用于在会话列表中显示
 };
-
-
-
-
 
 
 } // end model

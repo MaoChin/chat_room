@@ -5,6 +5,9 @@
 #include <QPushButton>
 #include <QLineEdit>
 
+#include "rightwindowmessageshowarea.h"
+#include "rightwindowmessageeditarea.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWidget;
@@ -54,6 +57,7 @@ private:
     QWidget* _windowMiddle;
     QWidget* _windowRight;
 
+    // 左侧窗口
     // 用户头像按钮
     QPushButton* _userHeadPortraitBtn;
     // 会话标签页按钮
@@ -63,10 +67,18 @@ private:
     // 好友申请标签页按钮
     QPushButton* _friendApplyTabBtn;
 
+    // 中间窗口
     // 搜索框
     QLineEdit* _searchBar;
     // 添加好友按钮
     QPushButton* _addFriendBtn;
+
+    // 右侧窗口
+    // 消息展示区
+    RightWindowMessageShowArea* _rightWindowMessageShowArea;
+    // 消息编辑区
+    RightWindowMessageEditArea* _rightWindowMessageEditArea;
+
 
 
     // 选中标签页

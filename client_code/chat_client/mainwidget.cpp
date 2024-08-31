@@ -1,6 +1,7 @@
 #include "mainwidget.h"
 #include "middlewindowarea.h"
 #include "./ui_mainwidget.h"
+#include "debug.h"
 
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -52,7 +53,7 @@ void MainWidget::initMainWindow(){
 
     _windowLeft->setFixedWidth(70);
     _windowMiddle->setFixedWidth(300);
-    _windowRight->setMinimumWidth(500);
+    _windowRight->setMinimumWidth(600);
 
     _windowLeft->setStyleSheet("QWidget { background-color: rgb(46, 46, 46); }");
     _windowMiddle->setStyleSheet("QWidget { background-color: rgb(240, 240, 240); }");
@@ -141,7 +142,48 @@ void MainWidget::initMiddleWindow(){
     layout->addWidget(middleWindowArea, 1, 0, 1, 5);
 }
 void MainWidget::initRightWindow(){
+    // 垂直布局管理器
+    QVBoxLayout* rightWindowLayout = new QVBoxLayout();
+    rightWindowLayout->setSpacing(0);
+    rightWindowLayout->setContentsMargins(0, 0, 0, 0);
+    rightWindowLayout->setAlignment(Qt::AlignTop);
+    _windowRight->setLayout(rightWindowLayout);
 
+    // 最上方的标题页
+    QWidget* titleWidget = new QWidget();
+    titleWidget->setFixedHeight(62);
+    titleWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+    titleWidget->setObjectName("titleWidget");
+    titleWidget->setStyleSheet("#titleWidget { border-left: 1px solid rgb(230, 230, 230); border-bottom: 1px solid rgb(230, 230, 230); }");
+    rightWindowLayout->addWidget(titleWidget);
+    // titleWidget内部的布局管理器
+    QHBoxLayout* titleLayout = new QHBoxLayout();
+    titleLayout->setSpacing(0);
+    titleLayout->setContentsMargins(10, 0, 10, 0);
+    titleWidget->setLayout(titleLayout);
+
+    QLabel* titleName = new QLabel();
+    titleName->setStyleSheet("QLabel { font-size: 20px; border-bottom: 1px solid rgb(230, 230, 230); }");
+    titleLayout->addWidget(titleName);
+
+#ifdef TEST_UI
+    titleName->setText("小八");
+#endif
+
+    QPushButton* extraBtn = new QPushButton();
+    extraBtn->setFixedSize(30, 30);
+    extraBtn->setIconSize(QSize(30, 30));
+    extraBtn->setIcon(QIcon(":/resource/image/more.png"));
+    extraBtn->setStyleSheet("QPushButton { border: none; background-color: rgb(245, 245, 245); }"
+                            " QPushButton:pressed { background-color: rgb(220, 220, 220); }");
+    titleLayout->addWidget(extraBtn);
+
+    // 中间的消息展示区
+    _rightWindowMessageShowArea = new RightWindowMessageShowArea();
+    rightWindowLayout->addWidget(_rightWindowMessageShowArea);
+    // 下方的消息编辑区
+    _rightWindowMessageEditArea = new RightWindowMessageEditArea();
+    rightWindowLayout->addWidget(_rightWindowMessageEditArea, 0, Qt::AlignBottom);
 }
 
 // 信号槽的初始化

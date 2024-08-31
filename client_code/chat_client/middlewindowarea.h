@@ -49,6 +49,8 @@ public:
     // 鼠标点击事件
     void mousePressEvent(QMouseEvent* event) override;
     void select();
+    // 选中之后要做的操作，根据不同的页面类型有不同的操作，所以使用多态
+    virtual void active();
     // 鼠标悬停事件
     void enterEvent(QEnterEvent* event) override;
     // 鼠标离开事件
@@ -56,7 +58,7 @@ public:
 
 protected:
     // 这个是为了给子类继承后访问
-    QLabel* messageLabel;
+    QLabel* _messageLabel;
 
 private:
     // 指向 MiddleWindowArea
@@ -73,6 +75,9 @@ public:
     ChatSesionItem(QWidget* owner, const QIcon& headPortrait, const QString& chatSessionId,
                    const QString& chatSessionName, const QString& lastMessage);
 
+    // 选中时的操作
+    void active() override;
+
 
 private:
     QString _chatSessionId = "";
@@ -87,7 +92,8 @@ class FriendItem : public MiddleWindowAreaItem{
 public:
     FriendItem(QWidget* owner, const QIcon& headPortrait, const QString& userId,
                    const QString& nickName, const QString& personalSignature);
-
+    // 选中时的操作
+    void active() override;
 
 private:
     QString _userId = "";
@@ -101,8 +107,8 @@ class FriendApplyItem : public MiddleWindowAreaItem{
 public:
     FriendApplyItem(QWidget* owner, const QIcon& headPortrait, const QString& userId,
                     const QString& nickName);
-
-
+    // 选中时的操作
+    void active() override;
 
 private:
     QString _userId = "";

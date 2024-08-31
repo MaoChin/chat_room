@@ -36,7 +36,7 @@ MiddleWindowArea::MiddleWindowArea(QWidget *parent)
 #if TEST_UI
     for(int i = 0; i < 30; ++i){
         QIcon headPortrait(":/resource/image/headPortrait.png");
-        addItem(CHATSESSION_TYPE, QString::number(i), headPortrait, "小八", "消息");
+        addItem(FRIENDAPPLY_TYPE, QString::number(i), headPortrait, "小八", "消息");
     }
 
 #endif
@@ -74,10 +74,10 @@ void MiddleWindowArea::clearAllItem(){
     // 解决：从后向前删除或者一直删除 0 下标的元素
     // 还有个注意点：从后向前遍历时 i 不能使用size_t类型！！否则会死循环
     for(int i = layout->count() - 1; i >= 0; --i){
-        // 去到第i个位置的元素
+        // 去掉第i个位置的元素
         QLayoutItem* layoutItem = layout->takeAt(i);
         // delete 掉
-        if(layoutItem->widget()){
+        if(layoutItem && layoutItem->widget()){
             delete layoutItem->widget();
         }
     }
@@ -129,17 +129,17 @@ MiddleWindowAreaItem::MiddleWindowAreaItem(QWidget *onwer, const QIcon &headPort
     nameLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
 
     // 消息预览
-    QLabel* messageLabel = new QLabel();
-    messageLabel->setText(text);
-    messageLabel->setFixedHeight(35);
-    messageLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+    _messageLabel = new QLabel();
+    _messageLabel->setText(text);
+    _messageLabel->setFixedHeight(35);
+    _messageLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
 
     // (0, 0)位置，占2行2列
     layout->addWidget(headPortraitBtn, 0, 0, 2, 2);
-    // (0, 2)位置，占1行1列
-    layout->addWidget(nameLabel, 0, 2, 1, 1);
-    // (1, 2)位置，占1行1列
-    layout->addWidget(messageLabel, 1, 2, 1, 1);
+    // (0, 2)位置，占1行8列，8列主要是为了兼容好友申请按钮
+    layout->addWidget(nameLabel, 0, 2, 1, 8);
+    // (1, 2)位置，占1行8列
+    layout->addWidget(_messageLabel, 1, 2, 1, 8);
 }
 
 // 这个重写的函数是为了使MiddleWindowAreaItem可以使用QSS样式表！
@@ -187,9 +187,16 @@ void MiddleWindowAreaItem::select(){
     }
     this->setStyleSheet("QWidget { background-color: rgb(210, 210, 210); }");
     _selected = true;
+    // 这个是多态调用
+    this->active();
 }
 
-//  具体的列表项
+void MiddleWindowAreaItem::active(){
+
+}
+
+// 具体的列表项
+// 会话列表项
 ChatSesionItem::ChatSesionItem(QWidget* owner, const QIcon& headPortrait, const QString& chatSessionId,
                                const QString& chatSessionName, const QString& lastMessage)
     : MiddleWindowAreaItem(owner, headPortrait, chatSessionName, lastMessage),
@@ -198,6 +205,11 @@ ChatSesionItem::ChatSesionItem(QWidget* owner, const QIcon& headPortrait, const 
 
 }
 
+void ChatSesionItem::active(){
+
+}
+
+// 好友列表项
 FriendItem::FriendItem(QWidget* owner, const QIcon& headPortrait, const QString& userId,
                        const QString& nickName, const QString& personalSignature)
     : MiddleWindowAreaItem(owner, headPortrait, nickName, personalSignature),
@@ -206,12 +218,36 @@ FriendItem::FriendItem(QWidget* owner, const QIcon& headPortrait, const QString&
 
 }
 
+void FriendItem::active(){
+
+}
+
+// 好友申请列表项
 FriendApplyItem::FriendApplyItem(QWidget *owner, const QIcon &headPortrait, const QString &userId,
                                  const QString &nickName)
     : MiddleWindowAreaItem(owner, headPortrait, nickName, ""),
     _userId(userId)
 {
     // 对于好友申请列表，需要有“接受”和“拒绝”的按钮
-    // 这里先把 messageLabel删掉，其实感觉留下更好，可以用来表示验证信息
+    // 这里先把 _messageLabel删掉，其实感觉留下更好，可以用来表示验证信息
+    QGridLayout* layout = dynamic_cast<QGridLayout*>(this->layout());
+    layout->removeWidget(_messageLabel);
+    // 别忘了delete
+    delete _messageLabel;
+
+    QPushButton* acceptBtn = new QPushButton();
+    acceptBtn->setStyleSheet("QPushButton { font-size: 15px; }");
+    acceptBtn->setText("接受");
+    QPushButton* refuseBtn = new QPushButton();
+    refuseBtn->setStyleSheet("QPushButton { font-size: 15px; }");
+    refuseBtn->setText("拒绝");
+
+    // 在(1, 2)位置，占一行一列
+    layout->addWidget(acceptBtn, 1, 2, 1, 1);
+    // 在(1, 4)位置，占一行一列
+    layout->addWidget(refuseBtn, 1, 4, 1, 1);
+}
+
+void FriendApplyItem::active(){
 
 }

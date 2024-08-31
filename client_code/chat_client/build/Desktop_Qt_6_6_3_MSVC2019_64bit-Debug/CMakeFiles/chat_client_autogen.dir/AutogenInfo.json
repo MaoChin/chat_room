@@ -343,6 +343,18 @@
 			"MU",
 			"NLOY5YBGEN/moc_data.cpp",
 			null
+		],
+		[
+			"E:/Code/chat_room/client_code/chat_client/rightwindowmessageeditarea.h",
+			"MU",
+			"EWIEGA46WW/moc_rightwindowmessageeditarea.cpp",
+			null
+		],
+		[
+			"E:/Code/chat_room/client_code/chat_client/rightwindowmessageshowarea.h",
+			"MU",
+			"EWIEGA46WW/moc_rightwindowmessageshowarea.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -407,6 +419,16 @@
 		],
 		[
 			"E:/Code/chat_room/client_code/chat_client/middlewindowarea.cpp",
+			"MU",
+			null
+		],
+		[
+			"E:/Code/chat_room/client_code/chat_client/rightwindowmessageeditarea.cpp",
+			"MU",
+			null
+		],
+		[
+			"E:/Code/chat_room/client_code/chat_client/rightwindowmessageshowarea.cpp",
 			"MU",
 			null
 		]
