@@ -10,5 +10,11 @@
         <file>resource/image/friendApplyTabNotActive.png</file>
         <file>resource/image/addFriend.png</file>
         <file>resource/image/more.png</file>
+        <file>resource/image/fileBtn.png</file>
+        <file>resource/image/imageBtn.png</file>
+        <file>resource/image/voiceBtn.png</file>
+        <file>resource/image/showHistoryBtn.png</file>
+        <file>resource/image/confirmModifyBtn.png</file>
+        <file>resource/image/modifyBtn.png</file>
     </qresource>
 </RCC>

@@ -14,7 +14,7 @@ public:
 
 
 private:
-    QPushButton* _sendPictureBtn;
+    QPushButton* _sendImageBtn;
     QPushButton* _sendFileBtn;
     QPushButton* _sendVoiceBtn;
     QPushButton* _showHistoryMessageBtn;

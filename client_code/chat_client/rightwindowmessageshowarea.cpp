@@ -1,5 +1,8 @@
 #include "rightwindowmessageshowarea.h"
 #include "debug.h"
+#include "selfinfowidget.h"
+#include "userinfowidget.h"
+#include "mainwidget.h"
 
 #include <QScrollBar>
 #include <QVBoxLayout>
@@ -18,7 +21,7 @@ RightWindowMessageShowArea::RightWindowMessageShowArea() {
     this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     this->setWidgetResizable(true);
     // 设置滚动条
-    this->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 2px; background-color: rgb(240, 240, 240); }");
+    this->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 3px; background-color: rgb(240, 240, 240); }");
     this->horizontalScrollBar()->setStyleSheet("QScrollBar:horizontal { height: 0px; }");
     this->setStyleSheet("QScrollArea { border: none; }");
 
@@ -31,11 +34,22 @@ RightWindowMessageShowArea::RightWindowMessageShowArea() {
     layout->setContentsMargins(0, 0, 0, 0);
     _container->setLayout(layout);
 
-#ifdef TEST_UI
+#if TEST_UI
+    UserInfo user;
+    user._headPortrait = QIcon(":/resource/image/headPortrait.png");
+    user._nickName = "小八";
+    user._userId = "111";
+    user._phoneNum = "12345678";
+    user._personalSignature = "你好";
+    MessageInfo message = MessageInfo::makeMessageInfo("", model::TEXT_TYPE, user, "aaa", "");
+    this->addMessage(false, message);
     for(int i = 0; i < 10; ++i){
         UserInfo user;
         user._headPortrait = QIcon(":/resource/image/headPortrait.png");
         user._nickName = "小八";
+        user._userId = "111";
+        user._phoneNum = "12345678";
+        user._personalSignature = "你好";
         MessageInfo message = MessageInfo::makeMessageInfo("", model::TEXT_TYPE, user, "aaa", "");
         this->addMessage(true, message);
     }
@@ -123,6 +137,35 @@ MessageItem* MessageItem::makeMessageItem(bool isLeft, const model::MessageInfo 
         layout->addWidget(headPortrait, 0, 1, 2, 1, Qt::AlignTop | Qt::AlignRight);
         layout->addWidget(nameAndTime, 0, 0, 1, 1, Qt::AlignRight);
         layout->addWidget(contentWidget, 1, 0, 1, 1);
+    }
+
+    // 连接信号槽
+    // 点击用户头像显示用户信息
+    // BUG：不能在这里 getInstance!!!!否则会死循环的，在初始化的时候又调用初始化！！
+    // MainWidget* mainWidget = MainWidget::getInstance();
+    if(isLeft){
+        // 点击别人的头像显示他人详细信息界面
+        connect(headPortrait, &QPushButton::clicked, messageItem, [=](){
+            // 其父控件设置成主窗口
+            // 只能在内部getInstance，这时候已经初始化完了
+            MainWidget* mainWidget = MainWidget::getInstance();
+            UserInfoWidget* userInfoWidget = new UserInfoWidget(mainWidget, message._sender);
+            // 弹出非模态对话框（非阻塞）
+            // userInfoWidget->show();
+            // 弹出模态对话框（阻塞）
+            userInfoWidget->exec();
+        });
+    }
+    else{
+        // 点击自己头像显示个人信息界面
+        connect(headPortrait, &QPushButton::clicked, messageItem, [=](){
+            MainWidget* mainWidget = MainWidget::getInstance();
+            SelfInfoWidget* selfInfoWidget = new SelfInfoWidget(mainWidget);
+            // 弹出非模态对话框（非阻塞）
+            // selfInfoWidget->show();
+            // 弹出模态对话框（阻塞）
+            selfInfoWidget->exec();
+        });
     }
 
     return messageItem;

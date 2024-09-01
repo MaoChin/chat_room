@@ -3,3 +3,5 @@
 #include "EWIEGA46WW/moc_middlewindowarea.cpp"
 #include "EWIEGA46WW/moc_rightwindowmessageeditarea.cpp"
 #include "EWIEGA46WW/moc_rightwindowmessageshowarea.cpp"
+#include "EWIEGA46WW/moc_selfinfowidget.cpp"
+#include "EWIEGA46WW/moc_userinfowidget.cpp"

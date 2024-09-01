@@ -15,7 +15,7 @@ MiddleWindowArea::MiddleWindowArea(QWidget *parent)
     // 开启滚动效果
     this->setWidgetResizable(true);
     // 设置滚动条样式
-    this->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 8px; background-color: rgb(46, 46, 46); }");
+    this->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 4px; background-color: rgb(240, 240, 240); }");
     this->horizontalScrollBar()->setStyleSheet("QScrollBar:horizontal { height: 0px; background-color: rgb(46, 46, 46); }");
     this->setStyleSheet("QWidget { border: none; }");
 

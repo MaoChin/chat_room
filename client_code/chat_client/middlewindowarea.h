@@ -83,6 +83,7 @@ private:
     QString _chatSessionId = "";
 
 };
+
 ////////////////////////////
 /// \brief 好友列表项
 class FriendItem : public MiddleWindowAreaItem{
@@ -98,6 +99,7 @@ public:
 private:
     QString _userId = "";
 };
+
 ///////////////////////////
 /// \brief 好友申请列表项
 class FriendApplyItem : public MiddleWindowAreaItem{

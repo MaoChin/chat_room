@@ -2,6 +2,7 @@
 #include "middlewindowarea.h"
 #include "./ui_mainwidget.h"
 #include "debug.h"
+#include "selfinfowidget.h"
 
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -26,9 +27,13 @@ MainWidget::MainWidget(QWidget *parent)
     this->setWindowIcon(QIcon(":/resource/image/myChat.png"));
 
     initMainWindow();
+    LOG() << "test0";
     initLeftWindow();
+    LOG() << "test1";
     initMiddleWindow();
+    LOG() << "test2";
     initRightWindow();
+    LOG() << "test3";
     initSignalSlot();
 
 }
@@ -166,7 +171,7 @@ void MainWidget::initRightWindow(){
     titleName->setStyleSheet("QLabel { font-size: 20px; border-bottom: 1px solid rgb(230, 230, 230); }");
     titleLayout->addWidget(titleName);
 
-#ifdef TEST_UI
+#if TEST_UI
     titleName->setText("小八");
 #endif
 
@@ -193,6 +198,14 @@ void MainWidget::initSignalSlot(){
     connect(_friendTabBtn, &QPushButton::clicked, this, &MainWidget::switchTabToFriend);
     connect(_friendApplyTabBtn, &QPushButton::clicked, this, &MainWidget::switchTabToFriendApply);
 
+    // 点击自己头像显示个人信息界面
+    connect(_userHeadPortraitBtn, &QPushButton::clicked, this, [=](){
+        SelfInfoWidget* selfInfoWidget = new SelfInfoWidget(this);
+        // 弹出非模态对话框（非阻塞）
+        // selfInfoWidget->show();
+        // 弹出模态对话框（阻塞）
+        selfInfoWidget->exec();
+    });
 
 
 

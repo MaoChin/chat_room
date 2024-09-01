@@ -30,6 +30,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         debug.h
         rightwindowmessageshowarea.h rightwindowmessageshowarea.cpp
         rightwindowmessageeditarea.h rightwindowmessageeditarea.cpp
+        selfinfowidget.h selfinfowidget.cpp
+        userinfowidget.h userinfowidget.cpp
 
 
     )
