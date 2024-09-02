@@ -183,7 +183,9 @@ chat_client_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtGui/qvectornd.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtGui/qwindowdefs.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtGui/qwindowdefs_win.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QCheckBox \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QDialog \
+	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QHBoxLayout \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QLabel \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QLineEdit \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QPlainTextEdit \
@@ -192,9 +194,14 @@ chat_client_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QWidget \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qabstractbutton.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qabstractscrollarea.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qboxlayout.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qcheckbox.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qdialog.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qframe.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qgridlayout.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qlabel.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qlayout.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qlayoutitem.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qlineedit.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qplaintextedit.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qpushbutton.h \
@@ -433,6 +440,10 @@ chat_client_autogen/timestamp: \
 	E:/Code/chat_room/client_code/chat_client/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Release/CMakeFiles/3.29.3/CMakeRCCompiler.cmake \
 	E:/Code/chat_room/client_code/chat_client/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Release/CMakeFiles/3.29.3/CMakeSystem.cmake \
 	E:/Code/chat_room/client_code/chat_client/debug.h \
+	E:/Code/chat_room/client_code/chat_client/groupchoosefrienddialog.cpp \
+	E:/Code/chat_room/client_code/chat_client/groupchoosefrienddialog.h \
+	E:/Code/chat_room/client_code/chat_client/groupsessiondetailwidget.cpp \
+	E:/Code/chat_room/client_code/chat_client/groupsessiondetailwidget.h \
 	E:/Code/chat_room/client_code/chat_client/main.cpp \
 	E:/Code/chat_room/client_code/chat_client/mainwidget.cpp \
 	E:/Code/chat_room/client_code/chat_client/mainwidget.h \
@@ -446,6 +457,8 @@ chat_client_autogen/timestamp: \
 	E:/Code/chat_room/client_code/chat_client/rightwindowmessageshowarea.h \
 	E:/Code/chat_room/client_code/chat_client/selfinfowidget.cpp \
 	E:/Code/chat_room/client_code/chat_client/selfinfowidget.h \
+	E:/Code/chat_room/client_code/chat_client/sessiondetailwidget.cpp \
+	E:/Code/chat_room/client_code/chat_client/sessiondetailwidget.h \
 	E:/Code/chat_room/client_code/chat_client/userinfowidget.cpp \
 	E:/Code/chat_room/client_code/chat_client/userinfowidget.h \
 	E:/Code/chat_room/client_code/chat_client/mainwidget.ui \

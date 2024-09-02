@@ -327,6 +327,12 @@
 			null
 		],
 		[
+			"E:/Code/chat_room/client_code/chat_client/groupchoosefrienddialog.h",
+			"MU",
+			"EWIEGA46WW/moc_groupchoosefrienddialog.cpp",
+			null
+		],
+		[
 			"E:/Code/chat_room/client_code/chat_client/mainwidget.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwidget.cpp",
@@ -354,6 +360,24 @@
 			"E:/Code/chat_room/client_code/chat_client/rightwindowmessageshowarea.h",
 			"MU",
 			"EWIEGA46WW/moc_rightwindowmessageshowarea.cpp",
+			null
+		],
+		[
+			"E:/Code/chat_room/client_code/chat_client/selfinfowidget.h",
+			"MU",
+			"EWIEGA46WW/moc_selfinfowidget.cpp",
+			null
+		],
+		[
+			"E:/Code/chat_room/client_code/chat_client/sessiondetailwidget.h",
+			"MU",
+			"EWIEGA46WW/moc_sessiondetailwidget.cpp",
+			null
+		],
+		[
+			"E:/Code/chat_room/client_code/chat_client/userinfowidget.h",
+			"MU",
+			"EWIEGA46WW/moc_userinfowidget.cpp",
 			null
 		]
 	],
@@ -411,6 +435,11 @@
 	"SETTINGS_FILE" : "E:/Code/chat_room/client_code/chat_client/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Debug/CMakeFiles/chat_client_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[
+			"E:/Code/chat_room/client_code/chat_client/groupchoosefrienddialog.cpp",
+			"MU",
+			null
+		],
 		[ "E:/Code/chat_room/client_code/chat_client/main.cpp", "MU", null ],
 		[
 			"E:/Code/chat_room/client_code/chat_client/mainwidget.cpp",
@@ -429,6 +458,21 @@
 		],
 		[
 			"E:/Code/chat_room/client_code/chat_client/rightwindowmessageshowarea.cpp",
+			"MU",
+			null
+		],
+		[
+			"E:/Code/chat_room/client_code/chat_client/selfinfowidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"E:/Code/chat_room/client_code/chat_client/sessiondetailwidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"E:/Code/chat_room/client_code/chat_client/userinfowidget.cpp",
 			"MU",
 			null
 		]

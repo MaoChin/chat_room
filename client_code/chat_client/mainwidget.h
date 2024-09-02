@@ -74,6 +74,12 @@ private:
     QPushButton* _addFriendBtn;
 
     // 右侧窗口
+    // 上方的标题页
+    QWidget* _titleWidget;
+    // 标题名
+    QLabel* _titleName;
+    // 会话详情按钮
+    QPushButton* _extraBtn;
     // 消息展示区
     RightWindowMessageShowArea* _rightWindowMessageShowArea;
     // 消息编辑区

@@ -10,15 +10,24 @@
 	"INPUTS" : 
 	[
 		"E:/Code/chat_room/client_code/chat_client/resource/image/headPortrait.png",
+		"E:/Code/chat_room/client_code/chat_client/resource/image/showHistoryBtn.png",
+		"E:/Code/chat_room/client_code/chat_client/resource/image/fileBtn.png",
 		"E:/Code/chat_room/client_code/chat_client/resource/image/chatSessionTabActive.png",
 		"E:/Code/chat_room/client_code/chat_client/resource/image/friendTabNotActive.png",
+		"E:/Code/chat_room/client_code/chat_client/resource/image/imageBtn.png",
 		"E:/Code/chat_room/client_code/chat_client/resource/image/more.png",
+		"E:/Code/chat_room/client_code/chat_client/resource/image/voiceBtn.png",
 		"E:/Code/chat_room/client_code/chat_client/resource/image/chatSessionTabNotActive.png",
 		"E:/Code/chat_room/client_code/chat_client/resource/image/friendTabActive.png",
 		"E:/Code/chat_room/client_code/chat_client/resource/image/friendApplyTabNotActive.png",
 		"E:/Code/chat_room/client_code/chat_client/resource/image/addFriend.png",
 		"E:/Code/chat_room/client_code/chat_client/resource/image/friendApplyTabActive.png",
-		"E:/Code/chat_room/client_code/chat_client/resource/image/myChat.png"
+		"E:/Code/chat_room/client_code/chat_client/resource/image/unchecked.png",
+		"E:/Code/chat_room/client_code/chat_client/resource/image/createGroupChat.png",
+		"E:/Code/chat_room/client_code/chat_client/resource/image/modifyBtn.png",
+		"E:/Code/chat_room/client_code/chat_client/resource/image/myChat.png",
+		"E:/Code/chat_room/client_code/chat_client/resource/image/checked.png",
+		"E:/Code/chat_room/client_code/chat_client/resource/image/confirmModifyBtn.png"
 	],
 	"LOCK_FILE" : "E:/Code/chat_room/client_code/chat_client/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Debug/CMakeFiles/chat_client_autogen.dir/AutoRcc_resource_EWIEGA46WW_Lock.lock",
 	"MULTI_CONFIG" : false,

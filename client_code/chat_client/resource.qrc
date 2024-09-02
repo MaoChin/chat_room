@@ -16,5 +16,8 @@
         <file>resource/image/showHistoryBtn.png</file>
         <file>resource/image/confirmModifyBtn.png</file>
         <file>resource/image/modifyBtn.png</file>
+        <file>resource/image/createGroupChat.png</file>
+        <file>resource/image/checked.png</file>
+        <file>resource/image/unchecked.png</file>
     </qresource>
 </RCC>

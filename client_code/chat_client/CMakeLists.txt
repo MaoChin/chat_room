@@ -32,6 +32,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         rightwindowmessageeditarea.h rightwindowmessageeditarea.cpp
         selfinfowidget.h selfinfowidget.cpp
         userinfowidget.h userinfowidget.cpp
+        sessiondetailwidget.h sessiondetailwidget.cpp
+        groupchoosefrienddialog.h groupchoosefrienddialog.cpp
+        groupsessiondetailwidget.h groupsessiondetailwidget.cpp
 
 
     )

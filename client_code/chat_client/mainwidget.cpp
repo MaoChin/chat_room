@@ -3,6 +3,8 @@
 #include "./ui_mainwidget.h"
 #include "debug.h"
 #include "selfinfowidget.h"
+#include "sessiondetailwidget.h"
+#include "groupsessiondetailwidget.h"
 
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -155,33 +157,33 @@ void MainWidget::initRightWindow(){
     _windowRight->setLayout(rightWindowLayout);
 
     // 最上方的标题页
-    QWidget* titleWidget = new QWidget();
-    titleWidget->setFixedHeight(62);
-    titleWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-    titleWidget->setObjectName("titleWidget");
-    titleWidget->setStyleSheet("#titleWidget { border-left: 1px solid rgb(230, 230, 230); border-bottom: 1px solid rgb(230, 230, 230); }");
-    rightWindowLayout->addWidget(titleWidget);
-    // titleWidget内部的布局管理器
+    _titleWidget = new QWidget();
+    _titleWidget->setFixedHeight(62);
+    _titleWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+    _titleWidget->setObjectName("_titleWidget");
+    _titleWidget->setStyleSheet("#_titleWidget { border-left: 1px solid rgb(230, 230, 230); border-bottom: 1px solid rgb(230, 230, 230); }");
+    rightWindowLayout->addWidget(_titleWidget);
+    // _titleWidget内部的布局管理器
     QHBoxLayout* titleLayout = new QHBoxLayout();
     titleLayout->setSpacing(0);
     titleLayout->setContentsMargins(10, 0, 10, 0);
-    titleWidget->setLayout(titleLayout);
+    _titleWidget->setLayout(titleLayout);
 
-    QLabel* titleName = new QLabel();
-    titleName->setStyleSheet("QLabel { font-size: 20px; border-bottom: 1px solid rgb(230, 230, 230); }");
-    titleLayout->addWidget(titleName);
+    _titleName = new QLabel();
+    _titleName->setStyleSheet("QLabel { font-size: 20px; border-bottom: 1px solid rgb(230, 230, 230); }");
+    titleLayout->addWidget(_titleName);
 
 #if TEST_UI
-    titleName->setText("小八");
+    _titleName->setText("小八");
 #endif
 
-    QPushButton* extraBtn = new QPushButton();
-    extraBtn->setFixedSize(30, 30);
-    extraBtn->setIconSize(QSize(30, 30));
-    extraBtn->setIcon(QIcon(":/resource/image/more.png"));
-    extraBtn->setStyleSheet("QPushButton { border: none; background-color: rgb(245, 245, 245); }"
+    _extraBtn = new QPushButton();
+    _extraBtn->setFixedSize(35, 40);
+    _extraBtn->setIconSize(QSize(35, 35));
+    _extraBtn->setIcon(QIcon(":/resource/image/more.png"));
+    _extraBtn->setStyleSheet("QPushButton { border: none; background-color: rgb(245, 245, 245); }"
                             " QPushButton:pressed { background-color: rgb(220, 220, 220); }");
-    titleLayout->addWidget(extraBtn);
+    titleLayout->addWidget(_extraBtn);
 
     // 中间的消息展示区
     _rightWindowMessageShowArea = new RightWindowMessageShowArea();
@@ -205,6 +207,29 @@ void MainWidget::initSignalSlot(){
         // selfInfoWidget->show();
         // 弹出模态对话框（阻塞）
         selfInfoWidget->exec();
+    });
+
+    // 点击右侧页面的会话详情按钮弹出会话详情页
+    connect(_extraBtn, &QPushButton::clicked, this, [=](){
+        // TODO 具体是单聊还是群聊后续判断
+        bool isSignalSession = true;
+
+#if TEST_GROUP_SESSION_DETAIL
+        isSignalSession = false;
+#endif
+
+        if(isSignalSession){
+            // 单聊详情页
+            SessionDetailWidget* sessionDetailWidget = new SessionDetailWidget(this);
+            // 弹出模态对话框（阻塞）
+            sessionDetailWidget->exec();
+        }
+        else{
+            // 群聊详情页
+            GroupSessionDetailWidget* groupSessionDetailWidget = new GroupSessionDetailWidget(this);
+            // 弹出模态对话框（阻塞）
+            groupSessionDetailWidget->exec();
+        }
     });
 
 

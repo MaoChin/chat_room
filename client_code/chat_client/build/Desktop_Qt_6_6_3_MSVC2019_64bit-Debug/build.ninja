@@ -103,6 +103,42 @@ build CMakeFiles\chat_client.dir\rightwindowmessageeditarea.cpp.obj: CXX_COMPILE
   TARGET_COMPILE_PDB = CMakeFiles\chat_client.dir\
   TARGET_PDB = chat_client.pdb
 
+build CMakeFiles\chat_client.dir\selfinfowidget.cpp.obj: CXX_COMPILER__chat_client_unscanned_Debug E$:\Code\chat_room\client_code\chat_client\selfinfowidget.cpp || cmake_object_order_depends_target_chat_client
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  FLAGS = -DQT_QML_DEBUG /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
+  INCLUDES = -IE:\Code\chat_room\client_code\chat_client\build\Desktop_Qt_6_6_3_MSVC2019_64bit-Debug\chat_client_autogen\include -external:ID:\Qt\6.6.3\msvc2019_64\include\QtCore -external:ID:\Qt\6.6.3\msvc2019_64\include -external:ID:\Qt\6.6.3\msvc2019_64\mkspecs\win32-msvc -external:ID:\Qt\6.6.3\msvc2019_64\include\QtWidgets -external:ID:\Qt\6.6.3\msvc2019_64\include\QtGui -external:W0
+  OBJECT_DIR = CMakeFiles\chat_client.dir
+  OBJECT_FILE_DIR = CMakeFiles\chat_client.dir
+  TARGET_COMPILE_PDB = CMakeFiles\chat_client.dir\
+  TARGET_PDB = chat_client.pdb
+
+build CMakeFiles\chat_client.dir\userinfowidget.cpp.obj: CXX_COMPILER__chat_client_unscanned_Debug E$:\Code\chat_room\client_code\chat_client\userinfowidget.cpp || cmake_object_order_depends_target_chat_client
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  FLAGS = -DQT_QML_DEBUG /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
+  INCLUDES = -IE:\Code\chat_room\client_code\chat_client\build\Desktop_Qt_6_6_3_MSVC2019_64bit-Debug\chat_client_autogen\include -external:ID:\Qt\6.6.3\msvc2019_64\include\QtCore -external:ID:\Qt\6.6.3\msvc2019_64\include -external:ID:\Qt\6.6.3\msvc2019_64\mkspecs\win32-msvc -external:ID:\Qt\6.6.3\msvc2019_64\include\QtWidgets -external:ID:\Qt\6.6.3\msvc2019_64\include\QtGui -external:W0
+  OBJECT_DIR = CMakeFiles\chat_client.dir
+  OBJECT_FILE_DIR = CMakeFiles\chat_client.dir
+  TARGET_COMPILE_PDB = CMakeFiles\chat_client.dir\
+  TARGET_PDB = chat_client.pdb
+
+build CMakeFiles\chat_client.dir\sessiondetailwidget.cpp.obj: CXX_COMPILER__chat_client_unscanned_Debug E$:\Code\chat_room\client_code\chat_client\sessiondetailwidget.cpp || cmake_object_order_depends_target_chat_client
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  FLAGS = -DQT_QML_DEBUG /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
+  INCLUDES = -IE:\Code\chat_room\client_code\chat_client\build\Desktop_Qt_6_6_3_MSVC2019_64bit-Debug\chat_client_autogen\include -external:ID:\Qt\6.6.3\msvc2019_64\include\QtCore -external:ID:\Qt\6.6.3\msvc2019_64\include -external:ID:\Qt\6.6.3\msvc2019_64\mkspecs\win32-msvc -external:ID:\Qt\6.6.3\msvc2019_64\include\QtWidgets -external:ID:\Qt\6.6.3\msvc2019_64\include\QtGui -external:W0
+  OBJECT_DIR = CMakeFiles\chat_client.dir
+  OBJECT_FILE_DIR = CMakeFiles\chat_client.dir
+  TARGET_COMPILE_PDB = CMakeFiles\chat_client.dir\
+  TARGET_PDB = chat_client.pdb
+
+build CMakeFiles\chat_client.dir\groupchoosefrienddialog.cpp.obj: CXX_COMPILER__chat_client_unscanned_Debug E$:\Code\chat_room\client_code\chat_client\groupchoosefrienddialog.cpp || cmake_object_order_depends_target_chat_client
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  FLAGS = -DQT_QML_DEBUG /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
+  INCLUDES = -IE:\Code\chat_room\client_code\chat_client\build\Desktop_Qt_6_6_3_MSVC2019_64bit-Debug\chat_client_autogen\include -external:ID:\Qt\6.6.3\msvc2019_64\include\QtCore -external:ID:\Qt\6.6.3\msvc2019_64\include -external:ID:\Qt\6.6.3\msvc2019_64\mkspecs\win32-msvc -external:ID:\Qt\6.6.3\msvc2019_64\include\QtWidgets -external:ID:\Qt\6.6.3\msvc2019_64\include\QtGui -external:W0
+  OBJECT_DIR = CMakeFiles\chat_client.dir
+  OBJECT_FILE_DIR = CMakeFiles\chat_client.dir
+  TARGET_COMPILE_PDB = CMakeFiles\chat_client.dir\
+  TARGET_PDB = chat_client.pdb
+
 build CMakeFiles\chat_client.dir\chat_client_autogen\EWIEGA46WW\qrc_resource.cpp.obj: CXX_COMPILER__chat_client_unscanned_Debug E$:\Code\chat_room\client_code\chat_client\build\Desktop_Qt_6_6_3_MSVC2019_64bit-Debug\chat_client_autogen\EWIEGA46WW\qrc_resource.cpp || cmake_object_order_depends_target_chat_client
   DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = -DQT_QML_DEBUG /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
@@ -120,7 +156,7 @@ build CMakeFiles\chat_client.dir\chat_client_autogen\EWIEGA46WW\qrc_resource.cpp
 #############################################
 # Link the executable chat_client.exe
 
-build chat_client.exe: CXX_EXECUTABLE_LINKER__chat_client_Debug CMakeFiles\chat_client.dir\chat_client_autogen\mocs_compilation.cpp.obj CMakeFiles\chat_client.dir\main.cpp.obj CMakeFiles\chat_client.dir\mainwidget.cpp.obj CMakeFiles\chat_client.dir\middlewindowarea.cpp.obj CMakeFiles\chat_client.dir\rightwindowmessageshowarea.cpp.obj CMakeFiles\chat_client.dir\rightwindowmessageeditarea.cpp.obj CMakeFiles\chat_client.dir\chat_client_autogen\EWIEGA46WW\qrc_resource.cpp.obj | D$:\Qt\6.6.3\msvc2019_64\lib\Qt6Widgetsd.lib D$:\Qt\6.6.3\msvc2019_64\lib\Qt6Guid.lib D$:\Qt\6.6.3\msvc2019_64\lib\Qt6Cored.lib D$:\Qt\6.6.3\msvc2019_64\lib\Qt6EntryPointd.lib || chat_client_autogen chat_client_autogen_timestamp_deps
+build chat_client.exe: CXX_EXECUTABLE_LINKER__chat_client_Debug CMakeFiles\chat_client.dir\chat_client_autogen\mocs_compilation.cpp.obj CMakeFiles\chat_client.dir\main.cpp.obj CMakeFiles\chat_client.dir\mainwidget.cpp.obj CMakeFiles\chat_client.dir\middlewindowarea.cpp.obj CMakeFiles\chat_client.dir\rightwindowmessageshowarea.cpp.obj CMakeFiles\chat_client.dir\rightwindowmessageeditarea.cpp.obj CMakeFiles\chat_client.dir\selfinfowidget.cpp.obj CMakeFiles\chat_client.dir\userinfowidget.cpp.obj CMakeFiles\chat_client.dir\sessiondetailwidget.cpp.obj CMakeFiles\chat_client.dir\groupchoosefrienddialog.cpp.obj CMakeFiles\chat_client.dir\chat_client_autogen\EWIEGA46WW\qrc_resource.cpp.obj | D$:\Qt\6.6.3\msvc2019_64\lib\Qt6Widgetsd.lib D$:\Qt\6.6.3\msvc2019_64\lib\Qt6Guid.lib D$:\Qt\6.6.3\msvc2019_64\lib\Qt6Cored.lib D$:\Qt\6.6.3\msvc2019_64\lib\Qt6EntryPointd.lib || chat_client_autogen chat_client_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:windows
   LINK_LIBRARIES = D:\Qt\6.6.3\msvc2019_64\lib\Qt6Widgetsd.lib  D:\Qt\6.6.3\msvc2019_64\lib\Qt6Guid.lib  D:\Qt\6.6.3\msvc2019_64\lib\Qt6Cored.lib  mpr.lib  userenv.lib  D:\Qt\6.6.3\msvc2019_64\lib\Qt6EntryPointd.lib  shell32.lib  d3d11.lib  dxgi.lib  dxguid.lib  d3d12.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
@@ -213,7 +249,7 @@ build chat_client_autogen\timestamp chat_client_autogen\mocs_compilation.cpp | $
 #############################################
 # Custom command for chat_client_autogen\EWIEGA46WW\qrc_resource.cpp
 
-build chat_client_autogen\EWIEGA46WW\qrc_resource.cpp | ${cmake_ninja_workdir}chat_client_autogen\EWIEGA46WW\qrc_resource.cpp: CUSTOM_COMMAND E$:\Code\chat_room\client_code\chat_client\resource.qrc CMakeFiles\chat_client_autogen.dir\AutoRcc_resource_EWIEGA46WW_Info.json E$:\Code\chat_room\client_code\chat_client\resource\image\headPortrait.png E$:\Code\chat_room\client_code\chat_client\resource\image\chatSessionTabActive.png E$:\Code\chat_room\client_code\chat_client\resource\image\friendTabNotActive.png E$:\Code\chat_room\client_code\chat_client\resource\image\more.png E$:\Code\chat_room\client_code\chat_client\resource\image\chatSessionTabNotActive.png E$:\Code\chat_room\client_code\chat_client\resource\image\friendTabActive.png E$:\Code\chat_room\client_code\chat_client\resource\image\friendApplyTabNotActive.png E$:\Code\chat_room\client_code\chat_client\resource\image\addFriend.png E$:\Code\chat_room\client_code\chat_client\resource\image\friendApplyTabActive.png E$:\Code\chat_room\client_code\chat_client\resource\image\myChat.png D$:\Qt\6.6.3\msvc2019_64\.\bin\rcc.exe D$:\Qt\6.6.3\msvc2019_64\.\bin\rcc.exe || chat_client_autogen chat_client_autogen_timestamp_deps
+build chat_client_autogen\EWIEGA46WW\qrc_resource.cpp | ${cmake_ninja_workdir}chat_client_autogen\EWIEGA46WW\qrc_resource.cpp: CUSTOM_COMMAND E$:\Code\chat_room\client_code\chat_client\resource.qrc CMakeFiles\chat_client_autogen.dir\AutoRcc_resource_EWIEGA46WW_Info.json E$:\Code\chat_room\client_code\chat_client\resource\image\headPortrait.png E$:\Code\chat_room\client_code\chat_client\resource\image\showHistoryBtn.png E$:\Code\chat_room\client_code\chat_client\resource\image\fileBtn.png E$:\Code\chat_room\client_code\chat_client\resource\image\chatSessionTabActive.png E$:\Code\chat_room\client_code\chat_client\resource\image\friendTabNotActive.png E$:\Code\chat_room\client_code\chat_client\resource\image\imageBtn.png E$:\Code\chat_room\client_code\chat_client\resource\image\more.png E$:\Code\chat_room\client_code\chat_client\resource\image\voiceBtn.png E$:\Code\chat_room\client_code\chat_client\resource\image\chatSessionTabNotActive.png E$:\Code\chat_room\client_code\chat_client\resource\image\friendTabActive.png E$:\Code\chat_room\client_code\chat_client\resource\image\friendApplyTabNotActive.png E$:\Code\chat_room\client_code\chat_client\resource\image\addFriend.png E$:\Code\chat_room\client_code\chat_client\resource\image\friendApplyTabActive.png E$:\Code\chat_room\client_code\chat_client\resource\image\unchecked.png E$:\Code\chat_room\client_code\chat_client\resource\image\createGroupChat.png E$:\Code\chat_room\client_code\chat_client\resource\image\modifyBtn.png E$:\Code\chat_room\client_code\chat_client\resource\image\myChat.png E$:\Code\chat_room\client_code\chat_client\resource\image\checked.png E$:\Code\chat_room\client_code\chat_client\resource\image\confirmModifyBtn.png D$:\Qt\6.6.3\msvc2019_64\.\bin\rcc.exe D$:\Qt\6.6.3\msvc2019_64\.\bin\rcc.exe || chat_client_autogen chat_client_autogen_timestamp_deps
   COMMAND = C:\windows\system32\cmd.exe /C "cd /D E:\Code\chat_room\client_code\chat_client\build\Desktop_Qt_6_6_3_MSVC2019_64bit-Debug && D:\Qt\Tools\CMake_64\bin\cmake.exe -E cmake_autorcc E:/Code/chat_room/client_code/chat_client/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Debug/CMakeFiles/chat_client_autogen.dir/AutoRcc_resource_EWIEGA46WW_Info.json Debug"
   DESC = Automatic RCC for resource.qrc
   restat = 1
