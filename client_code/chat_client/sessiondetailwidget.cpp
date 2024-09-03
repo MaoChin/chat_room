@@ -2,7 +2,6 @@
 
 #include "debug.h"
 #include "groupchoosefrienddialog.h"
-#include "userinfowidget.h"
 
 #include <QVBoxLayout>
 #include <QPushButton>

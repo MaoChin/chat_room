@@ -12,6 +12,9 @@ class RightWindowMessageEditArea : public QWidget
 public:
     explicit RightWindowMessageEditArea(QWidget *parent = nullptr);
 
+    // 初始化信号槽
+    void initSignalSlot();
+
 
 private:
     QPushButton* _sendImageBtn;

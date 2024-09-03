@@ -3,6 +3,9 @@
 
 #include <QDialog>
 #include <QWidget>
+#include <QGridLayout>
+
+class HeadPortraitItem;
 
 class GroupSessionDetailWidget : public QDialog
 {
@@ -10,8 +13,14 @@ class GroupSessionDetailWidget : public QDialog
 public:
     GroupSessionDetailWidget(QWidget* parent);
 
-private:
+    void addGroupMember(HeadPortraitItem* headPortraitItem);
 
+private:
+    QGridLayout* _gridLayout;
+
+    // 表示 群成员Item 放置的位置
+    int _curRow = 0;
+    int _curCol = 1;
 };
 
 #endif // GROUPSESSIONDETAILWIDGET_H

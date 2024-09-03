@@ -1,10 +1,11 @@
 #include "rightwindowmessageeditarea.h"
+#include "historymessagedialog.h"
 
 #include <QVBoxLayout>
 #include <QScrollBar>
 
 RightWindowMessageEditArea::RightWindowMessageEditArea(QWidget *parent)
-    : QWidget{parent}
+    : QWidget(parent)
 {
     this->setFixedHeight(200);
     this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
@@ -24,8 +25,9 @@ RightWindowMessageEditArea::RightWindowMessageEditArea(QWidget *parent)
     vlayout->addLayout(hlayout);
 
     // 按钮设置
-    QString btnStyle = "QPushButton { background-color: rgb(245, 245, 245); border: none; }"
-                       "QPushButton:pressed { background-color: rgb(255, 255, 255); }";
+    QString btnStyle = "QPushButton { background-color: rgb(240, 240, 240); border: none; }";
+    btnStyle += "QPushButton:hover { background-color: rgb(225, 225, 225); }";
+    btnStyle += "QPushButton:pressed { background-color: rgb(255, 255, 255); }";
     QSize fixedSize(24, 24);
     QSize iconSize(24, 24);
     _sendImageBtn = new QPushButton();
@@ -58,7 +60,7 @@ RightWindowMessageEditArea::RightWindowMessageEditArea(QWidget *parent)
 
     _textEditArea = new QPlainTextEdit();
     _textEditArea->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    _textEditArea->setStyleSheet("QPlainTextEdit { border: none; background-color: transparent; font-size: 14px; padding: 10px; }");
+    _textEditArea->setStyleSheet("QPlainTextEdit { border: none; background-color: transparent; font-size: 14px; padding: 14px; }");
     _textEditArea->verticalScrollBar()->setStyleSheet("QScrollBar { width: 2px; background-color: rgb(45, 45, 45); }");
     vlayout->addWidget(_textEditArea);
 
@@ -72,4 +74,16 @@ RightWindowMessageEditArea::RightWindowMessageEditArea(QWidget *parent)
     sendMessageBtnStyle += "QPushButton:pressed {background-color: rgb(210, 210, 210); }";
     _sendMessageBtn->setStyleSheet(sendMessageBtnStyle);
     vlayout->addWidget(_sendMessageBtn, 0, Qt::AlignRight | Qt::AlignVCenter);
+
+    // 初始化信号槽
+    initSignalSlot();
+}
+
+void RightWindowMessageEditArea::initSignalSlot(){
+    // 点击历史消息按钮弹出历史消息对话框
+    connect(_showHistoryMessageBtn, &QPushButton::clicked, this, [=](){
+        HistoryMessageDialog* historyMessageDialog = new HistoryMessageDialog(this);
+        historyMessageDialog->exec();
+    });
+
 }

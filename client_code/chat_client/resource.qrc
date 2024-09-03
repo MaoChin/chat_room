@@ -8,7 +8,6 @@
         <file>resource/image/friendTabNotActive.png</file>
         <file>resource/image/friendApplyTabActive.png</file>
         <file>resource/image/friendApplyTabNotActive.png</file>
-        <file>resource/image/addFriend.png</file>
         <file>resource/image/more.png</file>
         <file>resource/image/fileBtn.png</file>
         <file>resource/image/imageBtn.png</file>
@@ -19,5 +18,7 @@
         <file>resource/image/createGroupChat.png</file>
         <file>resource/image/checked.png</file>
         <file>resource/image/unchecked.png</file>
+        <file>resource/image/search.png</file>
+        <file>resource/image/addFriend.png</file>
     </qresource>
 </RCC>

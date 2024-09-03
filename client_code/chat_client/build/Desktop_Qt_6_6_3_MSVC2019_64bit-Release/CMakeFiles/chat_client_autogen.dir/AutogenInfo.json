@@ -321,6 +321,12 @@
 	"HEADERS" : 
 	[
 		[
+			"E:/Code/chat_room/client_code/chat_client/addfrineddialog.h",
+			"MU",
+			"EWIEGA46WW/moc_addfrineddialog.cpp",
+			null
+		],
+		[
 			"E:/Code/chat_room/client_code/chat_client/debug.h",
 			"MU",
 			"EWIEGA46WW/moc_debug.cpp",
@@ -336,6 +342,12 @@
 			"E:/Code/chat_room/client_code/chat_client/groupsessiondetailwidget.h",
 			"MU",
 			"EWIEGA46WW/moc_groupsessiondetailwidget.cpp",
+			null
+		],
+		[
+			"E:/Code/chat_room/client_code/chat_client/historymessagedialog.h",
+			"MU",
+			"EWIEGA46WW/moc_historymessagedialog.cpp",
 			null
 		],
 		[
@@ -443,12 +455,22 @@
 	"SOURCES" : 
 	[
 		[
+			"E:/Code/chat_room/client_code/chat_client/addfrineddialog.cpp",
+			"MU",
+			null
+		],
+		[
 			"E:/Code/chat_room/client_code/chat_client/groupchoosefrienddialog.cpp",
 			"MU",
 			null
 		],
 		[
 			"E:/Code/chat_room/client_code/chat_client/groupsessiondetailwidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"E:/Code/chat_room/client_code/chat_client/historymessagedialog.cpp",
 			"MU",
 			null
 		],

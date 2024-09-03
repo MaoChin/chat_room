@@ -185,12 +185,14 @@ chat_client_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtGui/qwindowdefs_win.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QCheckBox \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QDialog \
+	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QGridLayout \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QHBoxLayout \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QLabel \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QLineEdit \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QPlainTextEdit \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QPushButton \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QScrollArea \
+	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QVBoxLayout \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QWidget \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qabstractbutton.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qabstractscrollarea.h \
@@ -435,6 +437,8 @@ chat_client_autogen/timestamp: \
 	D:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/Platform/Windows.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake \
 	E:/Code/chat_room/client_code/chat_client/CMakeLists.txt \
+	E:/Code/chat_room/client_code/chat_client/addfrineddialog.cpp \
+	E:/Code/chat_room/client_code/chat_client/addfrineddialog.h \
 	E:/Code/chat_room/client_code/chat_client/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Release/.qtc/package-manager/auto-setup.cmake \
 	E:/Code/chat_room/client_code/chat_client/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Release/CMakeFiles/3.29.3/CMakeCXXCompiler.cmake \
 	E:/Code/chat_room/client_code/chat_client/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Release/CMakeFiles/3.29.3/CMakeRCCompiler.cmake \
@@ -444,6 +448,8 @@ chat_client_autogen/timestamp: \
 	E:/Code/chat_room/client_code/chat_client/groupchoosefrienddialog.h \
 	E:/Code/chat_room/client_code/chat_client/groupsessiondetailwidget.cpp \
 	E:/Code/chat_room/client_code/chat_client/groupsessiondetailwidget.h \
+	E:/Code/chat_room/client_code/chat_client/historymessagedialog.cpp \
+	E:/Code/chat_room/client_code/chat_client/historymessagedialog.h \
 	E:/Code/chat_room/client_code/chat_client/main.cpp \
 	E:/Code/chat_room/client_code/chat_client/mainwidget.cpp \
 	E:/Code/chat_room/client_code/chat_client/mainwidget.h \

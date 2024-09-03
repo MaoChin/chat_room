@@ -5,6 +5,7 @@
 #include "selfinfowidget.h"
 #include "sessiondetailwidget.h"
 #include "groupsessiondetailwidget.h"
+#include "addfrineddialog.h"
 
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -64,7 +65,7 @@ void MainWidget::initMainWindow(){
 
     _windowLeft->setStyleSheet("QWidget { background-color: rgb(46, 46, 46); }");
     _windowMiddle->setStyleSheet("QWidget { background-color: rgb(240, 240, 240); }");
-    _windowRight->setStyleSheet("QWidget { background-color: rgb(245, 245, 245); }");
+    _windowRight->setStyleSheet("QWidget { background-color: rgb(240, 240, 240); }");
 
     layout->addWidget(_windowLeft);
     layout->addWidget(_windowMiddle);
@@ -120,14 +121,15 @@ void MainWidget::initMiddleWindow(){
     _searchBar = new QLineEdit();
     _searchBar->setFixedHeight(30);
     _searchBar->setPlaceholderText("搜索");
-    _searchBar->setStyleSheet("QLineEdit { border-radius: 5px; background-color: rgb(205, 205, 205); padding-left: 10px; }");
+    _searchBar->setStyleSheet("QLineEdit { border-radius: 5px; background-color: rgb(210, 210, 210); padding-left: 10px; }");
 
     _addFriendBtn = new QPushButton();
     _addFriendBtn->setFixedSize(30, 30);
-    _addFriendBtn->setIconSize(QSize(30, 30));
+    _addFriendBtn->setIconSize(QSize(25, 25));
     _addFriendBtn->setIcon(QIcon(":/resource/image/addFriend.png"));
-    QString styleSheet = "QPushButton { border-radius: 5px; background-color: rgb(200, 200, 200); }";
-    styleSheet += " QPushButton:pressed {background-color: rgb(240, 240, 240); }";
+    QString styleSheet = "QPushButton { border-radius: 5px; background-color: rgb(210, 210, 210); }";
+    styleSheet += "QPushButton:hover { background-color: rgb(230, 230, 230); }";
+    styleSheet += " QPushButton:pressed {background-color: rgb(245, 245, 245); }";
     _addFriendBtn->setStyleSheet(styleSheet);
 
     // 设置一些空白区域，仅仅是为了占位，使搜索框和边框之间有空白
@@ -148,6 +150,7 @@ void MainWidget::initMiddleWindow(){
     // (1, 0)位置，占1行5列
     layout->addWidget(middleWindowArea, 1, 0, 1, 5);
 }
+
 void MainWidget::initRightWindow(){
     // 垂直布局管理器
     QVBoxLayout* rightWindowLayout = new QVBoxLayout();
@@ -181,8 +184,10 @@ void MainWidget::initRightWindow(){
     _extraBtn->setFixedSize(35, 40);
     _extraBtn->setIconSize(QSize(35, 35));
     _extraBtn->setIcon(QIcon(":/resource/image/more.png"));
-    _extraBtn->setStyleSheet("QPushButton { border: none; background-color: rgb(245, 245, 245); }"
-                            " QPushButton:pressed { background-color: rgb(220, 220, 220); }");
+    QString extraBtnStyle = "QPushButton { border: none; background-color: transparent; }";
+    extraBtnStyle += "QPushButton:hover { background-color: rgb(235, 235, 235); }";
+    extraBtnStyle += "QPushButton:pressed { background-color: rgb(220, 220, 220); }";
+    _extraBtn->setStyleSheet(extraBtnStyle);
     titleLayout->addWidget(_extraBtn);
 
     // 中间的消息展示区
@@ -230,6 +235,26 @@ void MainWidget::initSignalSlot(){
             // 弹出模态对话框（阻塞）
             groupSessionDetailWidget->exec();
         }
+    });
+
+    // 点击中间页面添加好友按钮弹出添加好友搜索框
+    connect(_addFriendBtn, &QPushButton::clicked, this, [=](){
+        AddFrinedDialog* addFriendDialog = new AddFrinedDialog(this);
+        addFriendDialog->exec();
+    });
+
+    // 在中间页面搜索框输入时就跳转到添加好友页面
+    // QLineEdit 有两个信号：textEdit和textChanged
+    // textEdit是用户编辑内容时触发；textChanged是只要内容有变化就触发，包括在代码中setText
+    // 若使用textChanged，就会在槽函数中setText时再次触发信号 -》无限死循环了！！
+    connect(_searchBar, &QLineEdit::textEdited, this, [=](){
+        const QString searchKey = _searchBar->text();
+        AddFrinedDialog* addFriendDialog = new AddFrinedDialog(this);
+        // 设置添加好友页面的搜索框内容
+        addFriendDialog->setSearchBarContent(searchKey);
+        // 把主页面的搜索框内容清空
+        _searchBar->setText("");
+        addFriendDialog->exec();
     });
 
 
