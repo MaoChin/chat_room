@@ -456,6 +456,8 @@ chat_client_autogen/timestamp: \
 	E:/Code/chat_room/client_code/chat_client/middlewindowarea.cpp \
 	E:/Code/chat_room/client_code/chat_client/middlewindowarea.h \
 	E:/Code/chat_room/client_code/chat_client/model/data.h \
+	E:/Code/chat_room/client_code/chat_client/phoneloginwidget.cpp \
+	E:/Code/chat_room/client_code/chat_client/phoneloginwidget.h \
 	E:/Code/chat_room/client_code/chat_client/resource.qrc \
 	E:/Code/chat_room/client_code/chat_client/rightwindowmessageeditarea.cpp \
 	E:/Code/chat_room/client_code/chat_client/rightwindowmessageeditarea.h \
@@ -467,5 +469,7 @@ chat_client_autogen/timestamp: \
 	E:/Code/chat_room/client_code/chat_client/sessiondetailwidget.h \
 	E:/Code/chat_room/client_code/chat_client/userinfowidget.cpp \
 	E:/Code/chat_room/client_code/chat_client/userinfowidget.h \
+	E:/Code/chat_room/client_code/chat_client/usernameloginwidget.cpp \
+	E:/Code/chat_room/client_code/chat_client/usernameloginwidget.h \
 	E:/Code/chat_room/client_code/chat_client/mainwidget.ui \
 	D:/Qt/Tools/CMake_64/bin/cmake.exe

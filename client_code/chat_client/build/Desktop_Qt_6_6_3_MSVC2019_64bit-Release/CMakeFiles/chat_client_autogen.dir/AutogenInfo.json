@@ -369,6 +369,12 @@
 			null
 		],
 		[
+			"E:/Code/chat_room/client_code/chat_client/phoneloginwidget.h",
+			"MU",
+			"EWIEGA46WW/moc_phoneloginwidget.cpp",
+			null
+		],
+		[
 			"E:/Code/chat_room/client_code/chat_client/rightwindowmessageeditarea.h",
 			"MU",
 			"EWIEGA46WW/moc_rightwindowmessageeditarea.cpp",
@@ -393,9 +399,21 @@
 			null
 		],
 		[
+			"E:/Code/chat_room/client_code/chat_client/toast.h",
+			"MU",
+			"EWIEGA46WW/moc_toast.cpp",
+			null
+		],
+		[
 			"E:/Code/chat_room/client_code/chat_client/userinfowidget.h",
 			"MU",
 			"EWIEGA46WW/moc_userinfowidget.cpp",
+			null
+		],
+		[
+			"E:/Code/chat_room/client_code/chat_client/usernameloginwidget.h",
+			"MU",
+			"EWIEGA46WW/moc_usernameloginwidget.cpp",
 			null
 		]
 	],
@@ -486,6 +504,11 @@
 			null
 		],
 		[
+			"E:/Code/chat_room/client_code/chat_client/phoneloginwidget.cpp",
+			"MU",
+			null
+		],
+		[
 			"E:/Code/chat_room/client_code/chat_client/rightwindowmessageeditarea.cpp",
 			"MU",
 			null
@@ -505,8 +528,14 @@
 			"MU",
 			null
 		],
+		[ "E:/Code/chat_room/client_code/chat_client/toast.cpp", "MU", null ],
 		[
 			"E:/Code/chat_room/client_code/chat_client/userinfowidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"E:/Code/chat_room/client_code/chat_client/usernameloginwidget.cpp",
 			"MU",
 			null
 		]

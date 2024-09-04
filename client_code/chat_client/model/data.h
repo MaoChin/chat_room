@@ -74,7 +74,7 @@ class UserInfo{
 public:
     QString _userId = "";                 // ID
     QString _phoneNum = "";               // 电话
-    QString _nickName = "";               // 昵称
+    QString _nickName = "";               // 昵称/用户名
     QString _personalSignature = "";      // 个性签名
     QIcon _headPortrait;             	  // 头像
 };

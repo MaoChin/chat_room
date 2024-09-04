@@ -37,6 +37,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         groupsessiondetailwidget.h groupsessiondetailwidget.cpp
         addfrineddialog.h addfrineddialog.cpp
         historymessagedialog.h historymessagedialog.cpp
+        usernameloginwidget.h usernameloginwidget.cpp
+        phoneloginwidget.h phoneloginwidget.cpp
+        toast.h toast.cpp
 
 
     )

@@ -166,6 +166,33 @@ build CMakeFiles\chat_client.dir\historymessagedialog.cpp.obj: CXX_COMPILER__cha
   TARGET_COMPILE_PDB = CMakeFiles\chat_client.dir\
   TARGET_PDB = chat_client.pdb
 
+build CMakeFiles\chat_client.dir\usernameloginwidget.cpp.obj: CXX_COMPILER__chat_client_unscanned_Release E$:\Code\chat_room\client_code\chat_client\usernameloginwidget.cpp || cmake_object_order_depends_target_chat_client
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Zc:__cplusplus -permissive- -utf-8
+  INCLUDES = -IE:\Code\chat_room\client_code\chat_client\build\Desktop_Qt_6_6_3_MSVC2019_64bit-Release\chat_client_autogen\include -external:ID:\Qt\6.6.3\msvc2019_64\include\QtCore -external:ID:\Qt\6.6.3\msvc2019_64\include -external:ID:\Qt\6.6.3\msvc2019_64\mkspecs\win32-msvc -external:ID:\Qt\6.6.3\msvc2019_64\include\QtWidgets -external:ID:\Qt\6.6.3\msvc2019_64\include\QtGui -external:W0
+  OBJECT_DIR = CMakeFiles\chat_client.dir
+  OBJECT_FILE_DIR = CMakeFiles\chat_client.dir
+  TARGET_COMPILE_PDB = CMakeFiles\chat_client.dir\
+  TARGET_PDB = chat_client.pdb
+
+build CMakeFiles\chat_client.dir\phoneloginwidget.cpp.obj: CXX_COMPILER__chat_client_unscanned_Release E$:\Code\chat_room\client_code\chat_client\phoneloginwidget.cpp || cmake_object_order_depends_target_chat_client
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Zc:__cplusplus -permissive- -utf-8
+  INCLUDES = -IE:\Code\chat_room\client_code\chat_client\build\Desktop_Qt_6_6_3_MSVC2019_64bit-Release\chat_client_autogen\include -external:ID:\Qt\6.6.3\msvc2019_64\include\QtCore -external:ID:\Qt\6.6.3\msvc2019_64\include -external:ID:\Qt\6.6.3\msvc2019_64\mkspecs\win32-msvc -external:ID:\Qt\6.6.3\msvc2019_64\include\QtWidgets -external:ID:\Qt\6.6.3\msvc2019_64\include\QtGui -external:W0
+  OBJECT_DIR = CMakeFiles\chat_client.dir
+  OBJECT_FILE_DIR = CMakeFiles\chat_client.dir
+  TARGET_COMPILE_PDB = CMakeFiles\chat_client.dir\
+  TARGET_PDB = chat_client.pdb
+
+build CMakeFiles\chat_client.dir\toast.cpp.obj: CXX_COMPILER__chat_client_unscanned_Release E$:\Code\chat_room\client_code\chat_client\toast.cpp || cmake_object_order_depends_target_chat_client
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Zc:__cplusplus -permissive- -utf-8
+  INCLUDES = -IE:\Code\chat_room\client_code\chat_client\build\Desktop_Qt_6_6_3_MSVC2019_64bit-Release\chat_client_autogen\include -external:ID:\Qt\6.6.3\msvc2019_64\include\QtCore -external:ID:\Qt\6.6.3\msvc2019_64\include -external:ID:\Qt\6.6.3\msvc2019_64\mkspecs\win32-msvc -external:ID:\Qt\6.6.3\msvc2019_64\include\QtWidgets -external:ID:\Qt\6.6.3\msvc2019_64\include\QtGui -external:W0
+  OBJECT_DIR = CMakeFiles\chat_client.dir
+  OBJECT_FILE_DIR = CMakeFiles\chat_client.dir
+  TARGET_COMPILE_PDB = CMakeFiles\chat_client.dir\
+  TARGET_PDB = chat_client.pdb
+
 build CMakeFiles\chat_client.dir\chat_client_autogen\EWIEGA46WW\qrc_resource.cpp.obj: CXX_COMPILER__chat_client_unscanned_Release E$:\Code\chat_room\client_code\chat_client\build\Desktop_Qt_6_6_3_MSVC2019_64bit-Release\chat_client_autogen\EWIEGA46WW\qrc_resource.cpp || cmake_object_order_depends_target_chat_client
   DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Zc:__cplusplus -permissive- -utf-8
@@ -183,7 +210,7 @@ build CMakeFiles\chat_client.dir\chat_client_autogen\EWIEGA46WW\qrc_resource.cpp
 #############################################
 # Link the executable chat_client.exe
 
-build chat_client.exe: CXX_EXECUTABLE_LINKER__chat_client_Release CMakeFiles\chat_client.dir\chat_client_autogen\mocs_compilation.cpp.obj CMakeFiles\chat_client.dir\main.cpp.obj CMakeFiles\chat_client.dir\mainwidget.cpp.obj CMakeFiles\chat_client.dir\middlewindowarea.cpp.obj CMakeFiles\chat_client.dir\rightwindowmessageshowarea.cpp.obj CMakeFiles\chat_client.dir\rightwindowmessageeditarea.cpp.obj CMakeFiles\chat_client.dir\selfinfowidget.cpp.obj CMakeFiles\chat_client.dir\userinfowidget.cpp.obj CMakeFiles\chat_client.dir\sessiondetailwidget.cpp.obj CMakeFiles\chat_client.dir\groupchoosefrienddialog.cpp.obj CMakeFiles\chat_client.dir\groupsessiondetailwidget.cpp.obj CMakeFiles\chat_client.dir\addfrineddialog.cpp.obj CMakeFiles\chat_client.dir\historymessagedialog.cpp.obj CMakeFiles\chat_client.dir\chat_client_autogen\EWIEGA46WW\qrc_resource.cpp.obj | D$:\Qt\6.6.3\msvc2019_64\lib\Qt6Widgets.lib D$:\Qt\6.6.3\msvc2019_64\lib\Qt6Gui.lib D$:\Qt\6.6.3\msvc2019_64\lib\Qt6Core.lib D$:\Qt\6.6.3\msvc2019_64\lib\Qt6EntryPoint.lib || chat_client_autogen chat_client_autogen_timestamp_deps
+build chat_client.exe: CXX_EXECUTABLE_LINKER__chat_client_Release CMakeFiles\chat_client.dir\chat_client_autogen\mocs_compilation.cpp.obj CMakeFiles\chat_client.dir\main.cpp.obj CMakeFiles\chat_client.dir\mainwidget.cpp.obj CMakeFiles\chat_client.dir\middlewindowarea.cpp.obj CMakeFiles\chat_client.dir\rightwindowmessageshowarea.cpp.obj CMakeFiles\chat_client.dir\rightwindowmessageeditarea.cpp.obj CMakeFiles\chat_client.dir\selfinfowidget.cpp.obj CMakeFiles\chat_client.dir\userinfowidget.cpp.obj CMakeFiles\chat_client.dir\sessiondetailwidget.cpp.obj CMakeFiles\chat_client.dir\groupchoosefrienddialog.cpp.obj CMakeFiles\chat_client.dir\groupsessiondetailwidget.cpp.obj CMakeFiles\chat_client.dir\addfrineddialog.cpp.obj CMakeFiles\chat_client.dir\historymessagedialog.cpp.obj CMakeFiles\chat_client.dir\usernameloginwidget.cpp.obj CMakeFiles\chat_client.dir\phoneloginwidget.cpp.obj CMakeFiles\chat_client.dir\toast.cpp.obj CMakeFiles\chat_client.dir\chat_client_autogen\EWIEGA46WW\qrc_resource.cpp.obj | D$:\Qt\6.6.3\msvc2019_64\lib\Qt6Widgets.lib D$:\Qt\6.6.3\msvc2019_64\lib\Qt6Gui.lib D$:\Qt\6.6.3\msvc2019_64\lib\Qt6Core.lib D$:\Qt\6.6.3\msvc2019_64\lib\Qt6EntryPoint.lib || chat_client_autogen chat_client_autogen_timestamp_deps
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /O2 /Ob2 /DNDEBUG -MD
   LINK_FLAGS = /machine:x64 /INCREMENTAL:NO /subsystem:windows
   LINK_LIBRARIES = D:\Qt\6.6.3\msvc2019_64\lib\Qt6Widgets.lib  D:\Qt\6.6.3\msvc2019_64\lib\Qt6Gui.lib  D:\Qt\6.6.3\msvc2019_64\lib\Qt6Core.lib  mpr.lib  userenv.lib  D:\Qt\6.6.3\msvc2019_64\lib\Qt6EntryPoint.lib  shell32.lib  d3d11.lib  dxgi.lib  dxguid.lib  d3d12.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
