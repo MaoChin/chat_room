@@ -20,5 +20,6 @@
         <file>resource/image/unchecked.png</file>
         <file>resource/image/search.png</file>
         <file>resource/image/addFriend.png</file>
+        <file>resource/image/defaultHeadPortrait.png</file>
     </qresource>
 </RCC>

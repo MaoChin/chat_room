@@ -1,4 +1,5 @@
 #pragma once
+
 #include <QString>
 #include <QIcon>
 #include <QUuid>
@@ -8,8 +9,12 @@
 #include <QDebug>
 #include <QFileInfo>
 
+// protobuf 文件编译后生成的头文件，搞了个 qpb
+#include "base.qpb.h"
+
 // 命名空间：约定最外层目录下使用全局空间，子目录下命名空间和目录名一致
 namespace model{
+
 ////////////////////////
 /// \brief some micro
 // qDebug , __FILE__ , __LINE__ 也是宏，arg() 表示格式化解析，noquote()表示打印时不带""
@@ -32,6 +37,7 @@ static inline QString getFileName(const QString& path){
     QFileInfo fileInfo(path);
     return fileInfo.fileName();
 }
+
 // QByteArray转QIcon
 static inline QIcon makeQIcon(const QByteArray& byteArray){
     // 借助QPixmap
@@ -40,7 +46,9 @@ static inline QIcon makeQIcon(const QByteArray& byteArray){
     QIcon icon(pixmap);
     return icon;
 }
+
 // 文件操作
+// 读文件到 QByteArray
 static inline QByteArray readFileToByteArray(const QString& path){
     QFile file(path);
     bool ok = file.open(QFile::ReadOnly);
@@ -52,6 +60,8 @@ static inline QByteArray readFileToByteArray(const QString& path){
     file.close();
     return content;
 }
+
+// 写文件
 static inline bool writeByteArrayToFile(const QString& path, const QByteArray& content){
     QFile file(path);
     bool ok = file.open(QFile::WriteOnly);
@@ -66,7 +76,6 @@ static inline bool writeByteArrayToFile(const QString& path, const QByteArray& c
     return true;
 }
 
-
 ////////////////////////
 /// \brief The UserInfo class
 ///
@@ -77,6 +86,23 @@ public:
     QString _nickName = "";               // 昵称/用户名
     QString _personalSignature = "";      // 个性签名
     QIcon _headPortrait;             	  // 头像
+
+    // 把 protobuf 文件中的 UserInfo 对象转换到Qt中
+    void loadUserInfo(const my_chat_proto::UserInfo& userInfo){
+        this->_userId = userInfo.userId();
+        this->_phoneNum = userInfo.phoneNumber();
+        this->_nickName = userInfo.nickName();
+        this->_personalSignature = userInfo.personSignature();
+        if(userInfo.headPortrait().isEmpty()){
+            // 用户没有设置头像，就使用默认头像
+            this->_headPortrait = QIcon(":/resource/image/defaultHeadPortrait.png");
+        }
+        else{
+            // makeIcon 可以将 QByteArray 类型转换成 QIcon
+            this->_headPortrait = makeQIcon(userInfo.headPortrait());
+        }
+    }
+
 };
 
 enum MessageType{

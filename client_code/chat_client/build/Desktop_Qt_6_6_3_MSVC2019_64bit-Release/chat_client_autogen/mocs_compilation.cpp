@@ -10,5 +10,6 @@
 #include "EWIEGA46WW/moc_rightwindowmessageshowarea.cpp"
 #include "EWIEGA46WW/moc_selfinfowidget.cpp"
 #include "EWIEGA46WW/moc_sessiondetailwidget.cpp"
+#include "EWIEGA46WW/moc_toast.cpp"
 #include "EWIEGA46WW/moc_userinfowidget.cpp"
 #include "EWIEGA46WW/moc_usernameloginwidget.cpp"

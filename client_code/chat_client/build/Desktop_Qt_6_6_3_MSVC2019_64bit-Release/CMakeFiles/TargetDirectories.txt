@@ -1,4 +1,5 @@
 E:/Code/chat_room/client_code/chat_client/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Release/CMakeFiles/chat_client.dir
+E:/Code/chat_room/client_code/chat_client/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Release/CMakeFiles/chat_client_qtprotobufgen_deps_0.dir
 E:/Code/chat_room/client_code/chat_client/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Release/CMakeFiles/edit_cache.dir
 E:/Code/chat_room/client_code/chat_client/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Release/CMakeFiles/rebuild_cache.dir
 E:/Code/chat_room/client_code/chat_client/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Release/CMakeFiles/list_install_components.dir

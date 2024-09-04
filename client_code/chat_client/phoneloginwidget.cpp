@@ -84,8 +84,8 @@ PhoneLoginWidget::PhoneLoginWidget(QWidget *parent)
     // 也是分成5列
     gridLayout->addWidget(tipLabel, 0, 0, 1, 5);
     gridLayout->addWidget(phoneEdit, 1, 0, 1, 5);
-    gridLayout->addWidget(verifyCodeEdit, 2, 0, 1, 4);
-    gridLayout->addWidget(getVerifyCodeBtn, 2, 4, 1, 1);
+    gridLayout->addWidget(verifyCodeEdit, 2, 0, 1, 3);
+    gridLayout->addWidget(getVerifyCodeBtn, 2, 3, 1, 2);
     gridLayout->addWidget(submitBtn, 3, 0, 1, 5);
     gridLayout->addWidget(userNameModeBtn, 4, 0, 1, 1);
     gridLayout->addWidget(switchModeBtn, 4, 4, 1, 1);

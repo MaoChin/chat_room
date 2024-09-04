@@ -13,7 +13,7 @@ public:
     // 不用指定父窗口，全局通知的父窗口是 桌面
     Toast(const QString& message);
 
-    // 直接通过静态函数展示通知，不需要创建该对象就直接使用了
+    // 直接通过静态函数展示通知，使用时不需要创建该对象就直接使用
     static void showMessage(const QString& message);
 
 

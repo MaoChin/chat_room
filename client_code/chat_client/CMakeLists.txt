@@ -1,3 +1,4 @@
+# cmake的最小依赖版本
 cmake_minimum_required(VERSION 3.16)
 
 project(chat_client VERSION 0.1 LANGUAGES CXX)
@@ -9,8 +10,13 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# 引入 protobuf 文件，PB_FILES变量就指代所有的 proto 文件
+file(GLOB PB_FILES "./proto/*.proto")
+
+# 引入各种组件
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+# 这里引入 protobuf
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Protobuf)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -40,9 +46,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         usernameloginwidget.h usernameloginwidget.cpp
         phoneloginwidget.h phoneloginwidget.cpp
         toast.h toast.cpp
-
-
     )
+    # 编译 chat_client 依赖 PROTO_FILES, 具体就是 PB_FILES 变量的值
+    qt_add_protobuf(chat_client PROTO_FILES ${PB_FILES})
+
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET chat_client APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
 #                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
