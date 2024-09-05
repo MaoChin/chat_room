@@ -12,6 +12,7 @@
 // protobuf 文件编译后生成的头文件，搞了个 qpb
 #include "base.qpb.h"
 
+
 // 命名空间：约定最外层目录下使用全局空间，子目录下命名空间和目录名一致
 namespace model{
 
@@ -28,6 +29,7 @@ static inline QString makeFormatTime(int64_t timestamp){
     QDateTime dateTime = QDateTime::fromSecsSinceEpoch(timestamp);
     return dateTime.toString("MM-dd HH:mm:ss");
 }
+
 static inline int64_t getTimestamp(){
     return QDateTime::currentSecsSinceEpoch();
 }
@@ -88,7 +90,7 @@ public:
     QIcon _headPortrait;             	  // 头像
 
     // 把 protobuf 文件中的 UserInfo 对象转换到Qt中
-    void loadUserInfo(const my_chat_proto::UserInfo& userInfo){
+    void load(const my_chat_proto::UserInfo& userInfo){
         this->_userId = userInfo.userId();
         this->_phoneNum = userInfo.phoneNumber();
         this->_nickName = userInfo.nickName();
@@ -105,12 +107,14 @@ public:
 
 };
 
+// 枚举消息类型
 enum MessageType{
     TEXT_TYPE,
     IMAGE_TYPE,
     FILE_TYPE,
     VOICE_TYPE
 };
+
 //////////////////////
 /// \brief The MessageInfo class
 ///
@@ -122,7 +126,8 @@ public:
     MessageType _messageType;			// 消息类型
     UserInfo _sender;					// 发送者信息
     QByteArray _content;				// 消息内容，由于类型多变，所以使用QByteArray，表示二进制数据
-    // 文件消息一般比较大，而网络是比较慢且贵的资源，所以获取文件消息时可以先拿到fileId，再获取相关文件(常用)
+    // 非文本消息一般比较大，而网络是比较慢且贵的资源，所以获取文件消息时可以先拿到fileId，再获取相关文件(常用)
+    // 这样也就使得服务端传递的 非文本 消息内容可能不存在
     QString _fileId = "";				// 标识文件消息，如图片，文件，语音
     QString _fileName = "";				// 只有消息类型是FILE_TYPE时才有用
 
@@ -144,6 +149,50 @@ public:
         }
         else{
             return MessageInfo();
+        }
+    }
+
+    // 把 protobuf 文件中的 MessageInfo 对象转换到Qt中，约定网络通信中使用 protobuf格式
+    void load(const my_chat_proto::MessageInfo& messageInfo){
+        this->_chatSessionId = messageInfo.chatSessionId();
+        this->_messageId = messageInfo.messageId();
+        // makeFormatTime 函数可以把int64类型转换成QString
+        this->_sendTime = makeFormatTime(messageInfo.timestamp());
+        this->_sender.load(messageInfo.sender());
+
+        if(messageInfo.message().messageType() == my_chat_proto::MessageTypeGadget::MessageType::TEXT){
+            // 文本消息
+            this->_messageType = TEXT_TYPE;
+            // 文本消息不会不存在
+            this->_content = messageInfo.message().textMessage().textContent().toUtf8();
+        }
+        else if(messageInfo.message().messageType() == my_chat_proto::MessageTypeGadget::MessageType::IMAGE){
+            // 图片消息
+            this->_messageType = IMAGE_TYPE;
+            if(messageInfo.message().hasImageMessage()){
+                this->_fileId = messageInfo.message().imageMessage().fileId();
+                this->_content = messageInfo.message().imageMessage().imageContent();
+            }
+        }
+        else if(messageInfo.message().messageType() == my_chat_proto::MessageTypeGadget::MessageType::FILE){
+            // 文件消息
+            this->_messageType = FILE_TYPE;
+            if(messageInfo.message().hasFileMessage()){
+                this->_fileId = messageInfo.message().fileMessage().fileId();
+                this->_fileName = messageInfo.message().fileMessage().fileName();
+                this->_content = messageInfo.message().fileMessage().fileContents();
+            }
+        }
+        else if(messageInfo.message().messageType() == my_chat_proto::MessageTypeGadget::MessageType::VOICE){
+            // 语言消息
+            this->_messageType = VOICE_TYPE;
+            if(messageInfo.message().hasVoiceMessage()){
+                this->_fileId = messageInfo.message().voiceMessage().fileId();
+                this->_content = messageInfo.message().voiceMessage().voiceContents();
+            }
+        }
+        else{
+            LOG() << "消息类型出错！" << messageInfo.message().messageType();
         }
     }
 
@@ -216,7 +265,32 @@ public:
     QString _userId = "";				 // 对于单聊就是对方ID，群聊就设成""
     MessageInfo _lastMessage;       	 // 最后一条消息，用于在会话列表中显示
     QIcon _headPortrait;		  	 	 // 会话图标，用于在会话列表中显示
-};
 
+    void load(const my_chat_proto::ChatSessionInfo& chatSessionIofo){
+        this->_chatSessionId = chatSessionIofo.chatSessionId();
+        this->_chatSessionName = chatSessionIofo.chatSessionName();
+        this->_lastMessage.load(chatSessionIofo.prevMessage());
+
+        if(!chatSessionIofo.singleChatFriendId().isEmpty()){
+            this->_userId = chatSessionIofo.singleChatFriendId();
+        }
+
+        // TODO prevMessage不存在？
+        if(!chatSessionIofo.headPortrait().isEmpty()){
+            this->_headPortrait = makeQIcon(chatSessionIofo.headPortrait());
+        }
+        else {
+            // 使用默认头像
+            if(this->_userId == ""){
+                // 群聊
+                this->_headPortrait = QIcon(":/resource/image/groupSessionHeadPortrait.png");
+            }
+            else{
+                // 单聊
+                this->_headPortrait = QIcon(":/resource/image/defaultHeadPortrait.png");
+            }
+        }
+    }
+};
 
 } // end model

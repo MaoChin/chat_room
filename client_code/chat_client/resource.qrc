@@ -21,5 +21,6 @@
         <file>resource/image/search.png</file>
         <file>resource/image/addFriend.png</file>
         <file>resource/image/defaultHeadPortrait.png</file>
+        <file>resource/image/groupSessionHeadPortrait.png</file>
     </qresource>
 </RCC>

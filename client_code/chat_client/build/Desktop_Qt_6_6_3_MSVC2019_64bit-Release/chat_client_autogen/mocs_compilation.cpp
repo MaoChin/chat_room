@@ -5,6 +5,8 @@
 #include "EWIEGA46WW/moc_historymessagedialog.cpp"
 #include "EWIEGA46WW/moc_mainwidget.cpp"
 #include "EWIEGA46WW/moc_middlewindowarea.cpp"
+#include "NLOY5YBGEN/moc_datacenter.cpp"
+#include "5SSUPNRDSB/moc_netclient.cpp"
 #include "EWIEGA46WW/moc_phoneloginwidget.cpp"
 #include "EWIEGA46WW/moc_rightwindowmessageeditarea.cpp"
 #include "EWIEGA46WW/moc_rightwindowmessageshowarea.cpp"

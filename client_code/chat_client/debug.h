@@ -10,5 +10,7 @@
 // 跳过登录
 #define TEST_SKIP_LOGIN 0
 
+// 测试网络连通性
+#define TEST_NETWORK 1
 
 #endif // DEBUG_H
