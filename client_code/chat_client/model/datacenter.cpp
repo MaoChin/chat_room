@@ -18,7 +18,9 @@ DataCenter* DataCenter::getInstance(){
     return _instance;
 }
 
-DataCenter::DataCenter(){
+DataCenter::DataCenter()
+    :_netClient(this)
+{
     // 进行一些初始化
     // 其他的指针可以通过 nullptr 判断数据是否有效，所以先不 new 出来，等到从服务端获取到数据再说
     // 而 hash 类型直接通过key的有无就可以判断数据是否有效了

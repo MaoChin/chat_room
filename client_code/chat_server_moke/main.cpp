@@ -1,6 +1,7 @@
 #include "widget.h"
 
 #include "httpserver.h"
+#include "websocketserver.h"
 
 #include <QApplication>
 
@@ -12,11 +13,20 @@ int main(int argc, char *argv[])
 
     // 启动HTTP服务器
     HttpServer* httpserver = HttpServer::getInstance();
-    if(httpserver->init()){
+    if(httpserver->initHttpServer()){
         qDebug() << "HTTP服务器启动成功";
     }
     else{
         qDebug() << "HTTP服务器启动失败";
+    }
+
+    // 启动websocket服务器
+    WebsocketServer* websocketServer = WebsocketServer::getInstance();
+    if(websocketServer->initWebsocket()){
+        qDebug() << "websocket 服务器启动成功";
+    }
+    else{
+        qDebug() << "websocket 服务器启动失败";
     }
 
     Widget w;

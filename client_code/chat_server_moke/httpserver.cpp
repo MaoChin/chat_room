@@ -3,6 +3,7 @@
 
 #include <QDebug>
 
+
 HttpServer* HttpServer::_instance = nullptr;
 
 HttpServer::HttpServer()
@@ -15,7 +16,7 @@ HttpServer* HttpServer::getInstance(){
     return _instance;
 }
 
-bool HttpServer::init(){
+bool HttpServer::initHttpServer(){
     // 直接 listen，内部集成了 socket,bind,listen
     int ret = _httpServer.listen(QHostAddress::Any, 8080);
 

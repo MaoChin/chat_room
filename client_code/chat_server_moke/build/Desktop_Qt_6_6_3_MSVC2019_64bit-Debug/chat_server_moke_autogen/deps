@@ -187,6 +187,7 @@ chat_server_moke_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtHttpServer/qthttpserverexports.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtHttpServer/qthttpserverglobal.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/QAbstractSocket \
+	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/QHostAddress \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/QNetworkProxy \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/QNetworkRequest \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/QSslConfiguration \
@@ -215,10 +216,12 @@ chat_server_moke_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/qtprotobufexports.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/qtprotobufglobal.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/qtprotobuftypes.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtWebSockets/QWebSocketServer \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWebSockets/qtwebsocketsexports.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWebSockets/qwebsocket.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWebSockets/qwebsocketprotocol.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWebSockets/qwebsockets_global.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtWebSockets/qwebsocketserver.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QWidget \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qsizepolicy.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qtwidgets-config.h \
@@ -568,6 +571,8 @@ chat_server_moke_autogen/timestamp: \
 	E:/Code/chat_room/client_code/chat_server_moke/httpserver.cpp \
 	E:/Code/chat_room/client_code/chat_server_moke/httpserver.h \
 	E:/Code/chat_room/client_code/chat_server_moke/main.cpp \
+	E:/Code/chat_room/client_code/chat_server_moke/websocketserver.cpp \
+	E:/Code/chat_room/client_code/chat_server_moke/websocketserver.h \
 	E:/Code/chat_room/client_code/chat_server_moke/widget.cpp \
 	E:/Code/chat_room/client_code/chat_server_moke/widget.h \
 	E:/Code/chat_room/client_code/chat_server_moke/widget.ui \

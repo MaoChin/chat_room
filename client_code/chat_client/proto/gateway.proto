@@ -13,7 +13,7 @@ message ClientAuthenticationReq {
 message ClientAuthenticationRsp {
     string request_id = 1;
     bool success = 2;
-    string errmsg = 3;
+    string errmsg = 3; 
 }
 
 //通信接口统一采用POST请求实现,正文采用protobuf协议进行组织

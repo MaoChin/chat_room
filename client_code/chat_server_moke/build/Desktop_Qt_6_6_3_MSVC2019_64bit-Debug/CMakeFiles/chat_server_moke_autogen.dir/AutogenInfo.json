@@ -484,6 +484,12 @@
 			null
 		],
 		[
+			"E:/Code/chat_room/client_code/chat_server_moke/websocketserver.h",
+			"MU",
+			"EWIEGA46WW/moc_websocketserver.cpp",
+			null
+		],
+		[
 			"E:/Code/chat_room/client_code/chat_server_moke/widget.h",
 			"MU",
 			"EWIEGA46WW/moc_widget.cpp",
@@ -649,6 +655,11 @@
 			null
 		],
 		[ "E:/Code/chat_room/client_code/chat_server_moke/main.cpp", "MU", null ],
+		[
+			"E:/Code/chat_room/client_code/chat_server_moke/websocketserver.cpp",
+			"MU",
+			null
+		],
 		[
 			"E:/Code/chat_room/client_code/chat_server_moke/widget.cpp",
 			"MU",

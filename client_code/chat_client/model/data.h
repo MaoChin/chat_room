@@ -11,6 +11,15 @@
 
 // protobuf 文件编译后生成的头文件，搞了个 qpb
 #include "base.qpb.h"
+#include "file.qpb.h"
+#include "friend.qpb.h"
+#include "gateway.qpb.h"
+#include "message_storage.qpb.h"
+#include "message_transmit.qpb.h"
+#include "notify.qpb.h"
+#include "user.qpb.h"
+#include "voice_recognition.qpb.h"
+
 
 
 // 命名空间：约定最外层目录下使用全局空间，子目录下命名空间和目录名一致

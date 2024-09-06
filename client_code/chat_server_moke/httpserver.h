@@ -5,6 +5,8 @@
 #include <QHttpServer>
 #include <QProtobufSerializer>
 
+
+// 模拟的HTTP服务器
 class HttpServer : public QObject
 {
     Q_OBJECT
@@ -13,7 +15,7 @@ public:
     static HttpServer* getInstance();
 
     // 初始化
-    bool init();
+    bool initHttpServer();
 
 private:
     HttpServer();
@@ -25,6 +27,7 @@ private:
 
     // Http 服务器
     QHttpServer _httpServer;
+    // protobuf 模块
     QProtobufSerializer _serializer;
 
 

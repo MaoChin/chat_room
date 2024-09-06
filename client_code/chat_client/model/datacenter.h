@@ -29,6 +29,14 @@ public:
     // 从文件中读取数据到内存中
     void readFromDataFile();
 
+    const QString& getLoginSessionId(){
+        return _loginSessionId;
+    }
+
+    void ping(){
+        _netClient.ping();
+    }
+
 private:
     // 构造函数私有
     DataCenter();

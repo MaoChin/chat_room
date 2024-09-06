@@ -28,8 +28,10 @@ int main(int argc, char *argv[])
 
     // 网络连通性测试
 #if TEST_NETWORK
-    network::NetClient netClient(nullptr);
-    netClient.ping();
+    // network::NetClient netClient(nullptr);
+    // netClient.ping();
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    dataCenter->ping();
 #endif
 
     return a.exec();

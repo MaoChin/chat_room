@@ -7,6 +7,7 @@ chat_client_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QFlags \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QHash \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QList \
+	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QMetaObject \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QMetaType \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QObject \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QRect \
@@ -216,11 +217,13 @@ chat_client_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/qtnetworkexports.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/qtnetworkglobal.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/QProtobufMessage \
+	D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/QProtobufSerializer \
 	D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/qabstractprotobufserializer.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/qprotobuflazymessagepointer.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/qprotobufmessage.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/qprotobufobject.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/qprotobufoneof.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/qprotobufserializer.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/qtprotobufexports.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/qtprotobufglobal.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/qtprotobuftypes.h \
