@@ -37,6 +37,18 @@ public:
         _netClient.ping();
     }
 
+    // 通过网络获取当前用户个人信息
+    // asynchronous：异步的，由于网络I/O非常慢而且不可靠，所以网络请求一般都设置成异步的
+    // 通过信号槽机制处理请求完成时的事务
+    void getMyselfAsync();
+    // 设置个人用户信息
+    void setMyself(std::shared_ptr<my_chat_proto::GetUserInfoRsp> respObj);
+
+    // 直接获取个人信息
+    model::UserInfo* getMyself() {
+        return _myself;
+    }
+
 private:
     // 构造函数私有
     DataCenter();
@@ -97,6 +109,9 @@ private:
 
 
 signals:
+    // 自定义信号槽
+    // 1. getMyselfAsync() 请求完成信号
+    void getMyselfDone();
 };
 
 }  // end namespace

@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QWebSocketServer>
+#include <QProtobufSerializer>
 
 
 // 模拟的Websocket服务器
@@ -27,6 +28,9 @@ private:
 
     // websocket服务器
     QWebSocketServer _websocketServer;
+
+    // protobuf模块
+    QProtobufSerializer _serializer;
 
 
 

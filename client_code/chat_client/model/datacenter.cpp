@@ -126,5 +126,17 @@ void DataCenter::readFromDataFile(){
     }
 }
 
+void DataCenter::getMyselfAsync(){
+    // 数据中心类只负责数据相关，网络部分还是交给netClinet
+    _netClient.getMyself(_loginSessionId);
+}
+
+void DataCenter::setMyself(std::shared_ptr<my_chat_proto::GetUserInfoRsp> respObj){
+    if(_myself == nullptr){
+        _myself = new model::UserInfo();
+    }
+    _myself->load(respObj->userInfo());
+}
+
 
 }  // end namespace

@@ -571,6 +571,8 @@ chat_server_moke_autogen/timestamp: \
 	E:/Code/chat_room/client_code/chat_server_moke/httpserver.cpp \
 	E:/Code/chat_room/client_code/chat_server_moke/httpserver.h \
 	E:/Code/chat_room/client_code/chat_server_moke/main.cpp \
+	E:/Code/chat_room/client_code/chat_server_moke/resource.qrc \
+	E:/Code/chat_room/client_code/chat_server_moke/util.h \
 	E:/Code/chat_room/client_code/chat_server_moke/websocketserver.cpp \
 	E:/Code/chat_room/client_code/chat_server_moke/websocketserver.h \
 	E:/Code/chat_room/client_code/chat_server_moke/widget.cpp \

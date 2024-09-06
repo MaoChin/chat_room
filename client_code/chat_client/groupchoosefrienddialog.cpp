@@ -37,7 +37,7 @@ void GroupChooseFriendDialog::initLeftWidget(QHBoxLayout *layout){
     scrollArea->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     scrollArea->setWidgetResizable(true);
     scrollArea->horizontalScrollBar()->setStyleSheet("QScrollBar:horizontal { height: 0px; }");
-    scrollArea->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 3px; background-color: rgb(230, 230, 230)}");
+    scrollArea->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 2px; background-color: rgb(70, 70, 70)}");
     scrollArea->setStyleSheet("QScrollArea { border: none; }");
     layout->addWidget(scrollArea, 1);  // 1 表示拉伸系数
 

@@ -21,7 +21,7 @@ RightWindowMessageShowArea::RightWindowMessageShowArea() {
     this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     this->setWidgetResizable(true);
     // 设置滚动条
-    this->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 3px; background-color: rgb(240, 240, 240); }");
+    this->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 2px; background-color: rgb(70, 70, 70); }");
     this->horizontalScrollBar()->setStyleSheet("QScrollBar:horizontal { height: 0px; }");
     this->setStyleSheet("QScrollArea { border: none; }");
 

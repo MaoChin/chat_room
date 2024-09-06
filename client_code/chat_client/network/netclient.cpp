@@ -21,6 +21,7 @@ void NetClient::ping(){
     httpReq.setUrl(QUrl(HTTP_URL + "/ping"));
 
     // 发起请求，接收响应
+    // 异步的请求，只是发出请求，响应由信号槽进行处理
     QNetworkReply* httpResp = _httpClient.get(httpReq);
 
     // 由于不可靠的网络，这个响应不直到啥时候能回来，所以设置信号槽
@@ -35,7 +36,6 @@ void NetClient::ping(){
         LOG() << "HTTP ping success，response message: " << httpResp->readAll();
         httpResp->deleteLater();
     });
-
 }
 
 
@@ -67,7 +67,6 @@ void NetClient::initWebsocket(){
     // 建立连接
     _websocketClient.open(QUrl(WEBSOCKET_URL));
 
-
 }
 
 void NetClient::webSocketSendAuthentication(){
@@ -89,6 +88,50 @@ void NetClient::webSocketSendAuthentication(){
 QString NetClient::makeRequestId(){
     // 直接使用uuid
     return "Request" + QUuid::createUuid().toString().sliced(25, 12);
+}
+
+
+// 把发送 HTTP 请求的操作单独封装成一个函数
+QNetworkReply* NetClient::sendHttpRequest(const QString &httpRequestPath, const QByteArray &httpBody){
+    // 构建网络请求
+    QNetworkRequest httpReq;
+    httpReq.setUrl(QUrl(HTTP_URL + httpRequestPath));
+    httpReq.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-protobuf");
+    // 异步的请求，只是发出请求，响应由信号槽进行处理
+    return _httpClient.post(httpReq, httpBody);
+}
+
+// 获取当前用户自身信息
+void NetClient::getMyself(const QString &loginSessionId){
+    // 构造请求body
+    my_chat_proto::GetUserInfoReq reqObj;
+    reqObj.setRequestId(makeRequestId());
+    reqObj.setSessionId(loginSessionId);
+    QByteArray body = reqObj.serialize(&_serializer);
+
+    // 异步的请求，只是发出请求，响应由信号槽进行处理
+    QNetworkReply* httpResp = sendHttpRequest("/service/user/get_user_info", body);
+    LOG() << "getMyself: send request, requestId: " << reqObj.requestId();
+
+    // 关联网络请求返回时的信号槽
+    connect(httpResp, &QNetworkReply::finished, this, [=]() {
+        // 处理响应
+        bool ok = false;
+        QString errmsg;
+        std::shared_ptr<my_chat_proto::GetUserInfoRsp> respObj = handleHttpResponse<my_chat_proto::GetUserInfoRsp>(httpResp, &ok, &errmsg);
+
+        if(!ok){
+            LOG() << "getMyself error, requestId: "  << respObj->requestId() << "error message: " << errmsg;
+            return;
+        }
+
+        // 保存数据
+        _dataCenter->setMyself(respObj);
+
+        // 最后要通知调用逻辑，HTTP 响应已经处理完成 --》通过自定义信号槽通知
+        emit _dataCenter->getMyselfDone();
+        LOG() << "getMyself: handle response succeed, requestId: " << respObj->requestId();
+    });
 }
 
 

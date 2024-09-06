@@ -6,6 +6,7 @@
 #include "sessiondetailwidget.h"
 #include "groupsessiondetailwidget.h"
 #include "addfrineddialog.h"
+#include "model/datacenter.h"
 
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -81,7 +82,8 @@ void MainWidget::initLeftWindow(){
     _userHeadPortraitBtn = new QPushButton();
     _userHeadPortraitBtn->setFixedSize(48, 48);
     _userHeadPortraitBtn->setIconSize(QSize(48, 48));
-    _userHeadPortraitBtn->setIcon(QIcon(":/resource/image/headPortrait.png"));
+    // 头像应该从服务器获取
+    // _userHeadPortraitBtn->setIcon(QIcon(":/resource/image/headPortrait.png"));
     _userHeadPortraitBtn->setStyleSheet("QWidget { background-color: transparent; }");
 
     _chatSessionTabBtn = new QPushButton();
@@ -258,6 +260,21 @@ void MainWidget::initSignalSlot(){
     });
 
 
+    ///////////////////////////////
+    /// 前后端交互！！
+    // 获取当前用户信息, 大体的数据流向: 网络(NetClient)->DataCenter->界面显示
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+
+    // 先连接 HTTP 响应处理完成的自定义的信号槽
+    connect(dataCenter, &model::DataCenter::getMyselfDone, this, [=]() {
+        // 这里已经处理完 getMyself 的响应了,即对应的数据已经在 DataCenter 里了!!
+        // 直接把数据设置到界面即可
+        model::UserInfo* userInfo = dataCenter->getMyself();
+        _userHeadPortraitBtn->setIcon(userInfo->_headPortrait);
+    });
+
+    // 再异步调用,调用后网络和DataCenter模块会发送网络请求,接收响应并处理响应,处理完响应后就触发getMyselfDone信号!
+    dataCenter->getMyselfAsync();
 
 
 

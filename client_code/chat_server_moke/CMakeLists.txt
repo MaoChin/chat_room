@@ -29,6 +29,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         httpserver.h httpserver.cpp
         websocketserver.h websocketserver.cpp
+        util.h
+        resource.qrc
 
 
     )

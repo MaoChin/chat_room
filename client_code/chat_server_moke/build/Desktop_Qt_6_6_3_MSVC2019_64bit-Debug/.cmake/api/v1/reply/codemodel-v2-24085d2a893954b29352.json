@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-42c32ce6ef5fa5a51487.json",
+					"jsonFile" : "directory-.-Debug-4c7a8591d1a06122afb3.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -46,7 +46,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "chat_server_moke::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-chat_server_moke-Debug-b1b5129394e576e41def.json",
+					"jsonFile" : "target-chat_server_moke-Debug-fbbf2597121c5a248646.json",
 					"name" : "chat_server_moke",
 					"projectIndex" : 0
 				},
@@ -67,7 +67,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "chat_server_moke_qtprotobufgen_deps_0::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-chat_server_moke_qtprotobufgen_deps_0-Debug-8c7f031bb281ea1bf935.json",
+					"jsonFile" : "target-chat_server_moke_qtprotobufgen_deps_0-Debug-2a956f97570c2d4aed10.json",
 					"name" : "chat_server_moke_qtprotobufgen_deps_0",
 					"projectIndex" : 0
 				}

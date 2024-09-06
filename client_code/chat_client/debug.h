@@ -8,9 +8,9 @@
 #define TEST_GROUP_SESSION_DETAIL 1
 
 // 跳过登录
-#define TEST_SKIP_LOGIN 0
+#define TEST_SKIP_LOGIN 1
 
 // 测试网络连通性
-#define TEST_NETWORK 1
+#define TEST_NETWORK 0
 
 #endif // DEBUG_H

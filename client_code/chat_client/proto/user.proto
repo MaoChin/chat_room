@@ -86,7 +86,7 @@ message GetUserInfoReq {
     optional string user_id = 2;
     optional string session_id = 3;
 }
-message GetUserInfoRsp {
+message GetUserInfoRsp { 
     string request_id = 1;
     bool success = 2;
     string errmsg = 3; 

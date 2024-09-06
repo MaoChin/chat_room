@@ -31,7 +31,7 @@ GroupSessionDetailWidget::GroupSessionDetailWidget(QWidget* parent)
     scrollArea->setFixedSize(340, 350);
     scrollArea->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     scrollArea->horizontalScrollBar()->setStyleSheet("QScrollBar:horizontal { height: 0px; }");
-    scrollArea->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 3px; background-color: rgb(230, 230, 230)}");
+    scrollArea->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 2px; background-color: rgb(70, 70, 70)}");
     scrollArea->setStyleSheet("QScrollArea { border: none; background-color: transparent; }");
 
     // 设置滚动区域内的QWidget

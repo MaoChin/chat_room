@@ -1298,6 +1298,7 @@ E:/Code/chat_room/client_code/chat_server_moke/build/Desktop_Qt_6_6_3_MSVC2019_6
  miu:moc_message_storage.qpb.cpp
 E:/Code/chat_room/client_code/chat_server_moke/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Debug/gateway_protobuftyperegistrations.cpp
 E:/Code/chat_room/client_code/chat_server_moke/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Debug/message_storage_protobuftyperegistrations.cpp
+E:/Code/chat_room/client_code/chat_server_moke/util.h
 E:/Code/chat_room/client_code/chat_server_moke/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Debug/notify.qpb.cpp
  miu:moc_notify.qpb.cpp
 E:/Code/chat_room/client_code/chat_server_moke/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Debug/user.qpb.cpp
@@ -1500,8 +1501,14 @@ E:/Code/chat_room/client_code/chat_server_moke/httpserver.cpp
 E:/Code/chat_room/client_code/chat_server_moke/websocketserver.h
  mmc:Q_OBJECT
  mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/QFlags
+ mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/QHash
+ mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/QList
+ mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/QMetaObject
+ mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/QMetaType
  mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/QObject
  mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/QString
+ mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/QVariant
+ mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/QtEndian
  mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/q20functional.h
  mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/q20memory.h
  mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/q20type_traits.h
@@ -1536,6 +1543,7 @@ E:/Code/chat_room/client_code/chat_server_moke/websocketserver.h
  mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/qdatastream.h
  mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/qdatetime.h
  mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/qdebug.h
+ mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/qendian.h
  mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/qexceptionhandling.h
  mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/qflags.h
  mdp:D:/Qt/6.6.3/msvc2019_64/include/QtCore/qfloat16.h
@@ -1629,6 +1637,14 @@ E:/Code/chat_room/client_code/chat_server_moke/websocketserver.h
  mdp:D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/qtnetwork-config.h
  mdp:D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/qtnetworkexports.h
  mdp:D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/qtnetworkglobal.h
+ mdp:D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/QProtobufMessage
+ mdp:D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/QProtobufSerializer
+ mdp:D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/qabstractprotobufserializer.h
+ mdp:D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/qprotobufmessage.h
+ mdp:D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/qprotobufserializer.h
+ mdp:D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/qtprotobufexports.h
+ mdp:D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/qtprotobufglobal.h
+ mdp:D:/Qt/6.6.3/msvc2019_64/include/QtProtobuf/qtprotobuftypes.h
  mdp:D:/Qt/6.6.3/msvc2019_64/include/QtWebSockets/QWebSocketServer
  mdp:D:/Qt/6.6.3/msvc2019_64/include/QtWebSockets/qtwebsocketsexports.h
  mdp:D:/Qt/6.6.3/msvc2019_64/include/QtWebSockets/qwebsocketprotocol.h

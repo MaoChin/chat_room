@@ -6,6 +6,7 @@ chat_client_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QFileInfo \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QFlags \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QHash \
+	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QIODevice \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QList \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QMetaObject \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QMetaType \
@@ -197,6 +198,7 @@ chat_client_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/QAbstractSocket \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/QNetworkAccessManager \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/QNetworkProxy \
+	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/QNetworkReply \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/QNetworkRequest \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/QSslConfiguration \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/QSslError \
@@ -205,6 +207,7 @@ chat_client_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/qhostaddress.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/qnetworkaccessmanager.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/qnetworkproxy.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/qnetworkreply.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/qnetworkrequest.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/qssl.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/qsslcertificate.h \

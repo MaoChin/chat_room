@@ -17,6 +17,9 @@ public:
     // 初始化
     bool initHttpServer();
 
+    // 获取用户信息
+    QHttpServerResponse getUserInfo(const QHttpServerRequest& httpReq);
+
 private:
     HttpServer();
 

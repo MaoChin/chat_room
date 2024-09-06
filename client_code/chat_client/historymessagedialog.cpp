@@ -156,7 +156,7 @@ HistoryMessageDialog::HistoryMessageDialog(QWidget* parent)
     scrollArea->setWidgetResizable(true);
     scrollArea->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     scrollArea->horizontalScrollBar()->setStyleSheet("QScrollBar:horizontal { height: 0px; }");
-    scrollArea->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 2px; background-color: rgb(230, 230, 230); }");
+    scrollArea->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 2px; background-color: rgb(70, 70, 70); }");
     scrollArea->setStyleSheet(" QScrollArea { border: none; background-color: transparent; }");
 
     // 滚动区域内配套的QWidget

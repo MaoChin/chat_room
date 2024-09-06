@@ -415,7 +415,8 @@
 		"D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6HttpServer/Qt6HttpServerTargets-relwithdebinfo.cmake",
 		"D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6HttpServer/Qt6HttpServerAdditionalTargetInfo.cmake",
 		"D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6HttpServer/Qt6HttpServerVersionlessTargets.cmake",
-		"D:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/GNUInstallDirs.cmake"
+		"D:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/GNUInstallDirs.cmake",
+		"E:/Code/chat_room/client_code/chat_server_moke/resource.qrc"
 	],
 	"CMAKE_SOURCE_DIR" : "E:/Code/chat_room/client_code/chat_server_moke",
 	"CROSS_CONFIG" : false,
@@ -481,6 +482,12 @@
 			"E:/Code/chat_room/client_code/chat_server_moke/httpserver.h",
 			"MU",
 			"EWIEGA46WW/moc_httpserver.cpp",
+			null
+		],
+		[
+			"E:/Code/chat_room/client_code/chat_server_moke/util.h",
+			"MU",
+			"EWIEGA46WW/moc_util.cpp",
 			null
 		],
 		[
