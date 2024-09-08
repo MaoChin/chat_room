@@ -45,9 +45,34 @@ public:
     void setMyself(std::shared_ptr<my_chat_proto::GetUserInfoRsp> respObj);
 
     // 直接获取个人信息
-    model::UserInfo* getMyself() {
+    UserInfo* getMyself() {
         return _myself;
     }
+
+    // 通过网络获取当前用户好友列表信息
+    // asynchronous：异步的，由于网络I/O非常慢而且不可靠，所以网络请求一般都设置成异步的
+    // 通过信号槽机制处理请求完成时的事务
+    void getFriendUserListAsync();
+    // 设置当前用户好友列表信息
+    void setFriendUserList(std::shared_ptr<my_chat_proto::GetFriendListRsp> respObj);
+
+    // 直接获取好友列表信息
+    QList<UserInfo>* getFriendUserList(){
+        return _friendUserList;
+    }
+
+    // 通过网络获取当前用户会话列表信息
+    // asynchronous：异步的，由于网络I/O非常慢而且不可靠，所以网络请求一般都设置成异步的
+    // 通过信号槽机制处理请求完成时的事务
+    void getChatSessionListAsync();
+    // 设置当前用户好友列表信息
+    void setChatSessionList(std::shared_ptr<my_chat_proto::GetFriendListRsp> respObj);
+
+    // 直接获取会话列表信息
+    QList<ChatSessionInfo>* getChatSessionList(){
+        return _chatSessionList;
+    }
+
 
 private:
     // 构造函数私有
@@ -111,7 +136,17 @@ private:
 signals:
     // 自定义信号槽
     // 1. getMyselfAsync() 请求完成信号
-    void getMyselfDone();
+    void getMyselfAsyncDone();
+
+    // 2. getFriendUserListAsync() 请求完成信号
+    void getFriendUserListAsyncDone();
+
+    // 3. getChatSessionListAsync() 请求完成信号
+    void getChatSessionListAsyncDone();
+
+    // 4. getApplyUserListAsync() 请求完成信号
+    void getApplyUserListAsyncDone();
+
 };
 
 }  // end namespace

@@ -20,6 +20,9 @@ public:
     // 获取用户信息
     QHttpServerResponse getUserInfo(const QHttpServerRequest& httpReq);
 
+    // 获取当前用户好友信息
+    QHttpServerResponse getFriendUserList(const QHttpServerRequest& httpReq);
+
 private:
     HttpServer();
 

@@ -7,6 +7,7 @@
 
 #include "rightwindowmessageshowarea.h"
 #include "rightwindowmessageeditarea.h"
+#include "middlewindowarea.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -45,6 +46,16 @@ private:
     void loadFriendTab();
     void loadFriendApplyTab();
 
+    // 和DataCenter的交互
+    // 直接从DataCenter中加载好友列表
+    void loadFriendListFromDataCenter();
+
+    // 直接从DataCenter中加载会话列表
+    void loadChatSessionListFromDataCenter();
+
+    // 直接从DataCenter中加载好友申请列表
+    void loadApplyUserListFromDataCenter();
+
 
 private:
     // 搞成单例
@@ -53,37 +64,39 @@ private:
     Ui::MainWidget *ui;
 
     // 窗口中的各个子窗口
-    QWidget* _windowLeft;
-    QWidget* _windowMiddle;
-    QWidget* _windowRight;
+    QWidget* _windowLeft = nullptr;
+    QWidget* _windowMiddle = nullptr;
+    QWidget* _windowRight = nullptr;
 
     // 左侧窗口
     // 用户头像按钮
-    QPushButton* _userHeadPortraitBtn;
+    QPushButton* _userHeadPortraitBtn = nullptr;
     // 会话标签页按钮
-    QPushButton* _chatSessionTabBtn;
+    QPushButton* _chatSessionTabBtn = nullptr;
     // 好友标签页按钮
-    QPushButton* _friendTabBtn;
+    QPushButton* _friendTabBtn = nullptr;
     // 好友申请标签页按钮
-    QPushButton* _friendApplyTabBtn;
+    QPushButton* _friendApplyTabBtn = nullptr;
 
     // 中间窗口
     // 搜索框
-    QLineEdit* _searchBar;
+    QLineEdit* _searchBar = nullptr;
     // 添加好友按钮
-    QPushButton* _addFriendBtn;
+    QPushButton* _addFriendBtn = nullptr;
+    // 好友/会话/申请好友 列表区
+    MiddleWindowArea* _middleWindowArea = nullptr;
 
     // 右侧窗口
     // 上方的标题页
-    QWidget* _titleWidget;
+    QWidget* _titleWidget = nullptr;
     // 标题名
-    QLabel* _titleName;
+    QLabel* _titleName = nullptr;
     // 会话详情按钮
-    QPushButton* _extraBtn;
+    QPushButton* _extraBtn = nullptr;
     // 消息展示区
-    RightWindowMessageShowArea* _rightWindowMessageShowArea;
+    RightWindowMessageShowArea* _rightWindowMessageShowArea = nullptr;
     // 消息编辑区
-    RightWindowMessageEditArea* _rightWindowMessageEditArea;
+    RightWindowMessageEditArea* _rightWindowMessageEditArea = nullptr;
 
 
 

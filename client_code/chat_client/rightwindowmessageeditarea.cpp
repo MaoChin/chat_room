@@ -13,14 +13,15 @@ RightWindowMessageEditArea::RightWindowMessageEditArea(QWidget *parent)
     // 布局管理器
     QVBoxLayout* vlayout = new QVBoxLayout();
     vlayout->setSpacing(0);
+    vlayout->setAlignment(Qt::AlignTop);
     // 左，上，右，下
     vlayout->setContentsMargins(10, 10, 12, 12);
     this->setLayout(vlayout);
 
     QHBoxLayout* hlayout = new QHBoxLayout();
     hlayout->setSpacing(15);
-    hlayout->setContentsMargins(20, 10, 0, 0);
-    hlayout->setAlignment(Qt::AlignLeft | Qt::AlignTop);
+    hlayout->setContentsMargins(10, 0, 0, 0);
+    hlayout->setAlignment(Qt::AlignLeft);
     // 垂直布局中有水平布局
     vlayout->addLayout(hlayout);
 
@@ -60,7 +61,9 @@ RightWindowMessageEditArea::RightWindowMessageEditArea(QWidget *parent)
 
     _textEditArea = new QPlainTextEdit();
     _textEditArea->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    _textEditArea->setStyleSheet("QPlainTextEdit { border: none; background-color: transparent; font-size: 14px; padding: 14px; }");
+    QString editAreaStyle = "QPlainTextEdit { border: none; background-color: transparent; font-size: 14px; padding: 14px; }";
+    editAreaStyle += "QPlainTextEdit:pressed { background-color: rgn(225, 225, 225); }";
+    _textEditArea->setStyleSheet(editAreaStyle);
     _textEditArea->verticalScrollBar()->setStyleSheet("QScrollBar { width: 2px; background-color: rgb(45, 45, 45); }");
     vlayout->addWidget(_textEditArea);
 

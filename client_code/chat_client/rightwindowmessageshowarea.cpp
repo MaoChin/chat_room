@@ -23,7 +23,7 @@ RightWindowMessageShowArea::RightWindowMessageShowArea() {
     // 设置滚动条
     this->verticalScrollBar()->setStyleSheet("QScrollBar:vertical { width: 2px; background-color: rgb(70, 70, 70); }");
     this->horizontalScrollBar()->setStyleSheet("QScrollBar:horizontal { height: 0px; }");
-    this->setStyleSheet("QScrollArea { border: none; }");
+    this->setStyleSheet("QScrollArea { border: none; border-bottom: 1px solid rgb(220, 220, 220); }");
 
     _container = new QWidget();
     this->setWidget(_container);

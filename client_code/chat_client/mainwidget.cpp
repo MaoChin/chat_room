@@ -40,6 +40,15 @@ MainWidget::MainWidget(QWidget *parent)
     LOG() << "test3";
     initSignalSlot();
 
+    // 获取当前用户好友列表
+    loadFriendTab();
+
+    // 获取当前用户会话列表
+    loadChatSessionTab();
+
+    // 获取当前用户好友申请列表
+    loadFriendApplyTab();
+
 }
 
 
@@ -142,7 +151,7 @@ void MainWidget::initMiddleWindow(){
     space2->setFixedWidth(10);
     space3->setFixedWidth(10);
 
-    MiddleWindowArea* middleWindowArea = new MiddleWindowArea();
+    _middleWindowArea = new MiddleWindowArea();
 
     layout->addWidget(space1, 0, 0);
     layout->addWidget(_searchBar, 0, 1);
@@ -150,7 +159,7 @@ void MainWidget::initMiddleWindow(){
     layout->addWidget(_addFriendBtn, 0, 3);
     layout->addWidget(space3, 0, 4);
     // (1, 0)位置，占1行5列
-    layout->addWidget(middleWindowArea, 1, 0, 1, 5);
+    layout->addWidget(_middleWindowArea, 1, 0, 1, 5);
 }
 
 void MainWidget::initRightWindow(){
@@ -166,7 +175,7 @@ void MainWidget::initRightWindow(){
     _titleWidget->setFixedHeight(62);
     _titleWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     _titleWidget->setObjectName("_titleWidget");
-    _titleWidget->setStyleSheet("#_titleWidget { border-left: 1px solid rgb(230, 230, 230); border-bottom: 1px solid rgb(230, 230, 230); }");
+    _titleWidget->setStyleSheet("#_titleWidget { border-left: 1px solid rgb(220, 220, 220); border-bottom: 1px solid rgb(220, 220, 220); }");
     rightWindowLayout->addWidget(_titleWidget);
     // _titleWidget内部的布局管理器
     QHBoxLayout* titleLayout = new QHBoxLayout();
@@ -266,7 +275,7 @@ void MainWidget::initSignalSlot(){
     model::DataCenter* dataCenter = model::DataCenter::getInstance();
 
     // 先连接 HTTP 响应处理完成的自定义的信号槽
-    connect(dataCenter, &model::DataCenter::getMyselfDone, this, [=]() {
+    connect(dataCenter, &model::DataCenter::getMyselfAsyncDone, this, [=]() {
         // 这里已经处理完 getMyself 的响应了,即对应的数据已经在 DataCenter 里了!!
         // 直接把数据设置到界面即可
         model::UserInfo* userInfo = dataCenter->getMyself();
@@ -309,12 +318,78 @@ void MainWidget::switchTabToFriendApply(){
 }
 
 void MainWidget::loadChatSessionTab(){
+    // 如果 DataCenter 中有数据就直接加载，否则从服务器获取数据
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    if(dataCenter->getChatSessionList() == nullptr){
+        // 通过网络获取
+        // 先连接 HTTP 响应处理完成的自定义的信号槽
+        connect(dataCenter, &model::DataCenter::getChatSessionListAsyncDone, this, &MainWidget::loadChatSessionListFromDataCenter, Qt::UniqueConnection);
+        // 再异步调用,调用后网络和DataCenter模块会发送网络请求,接收响应并处理响应,处理完响应后就触发getChatSessionListAsyncDone信号!
+        dataCenter->getChatSessionListAsync();
+    }
+    else{
+        // 直接加载DataCenter中的_chatSessionList
+        loadChatSessionListFromDataCenter();
+    }
 
 }
 
 void MainWidget::loadFriendTab(){
+    // 如果 DataCenter 中有数据就直接加载，否则从服务器获取数据
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    if(dataCenter->getFriendUserList() == nullptr){
+        // 先连接 HTTP 响应处理完成的自定义的信号槽
+        // 因为每次切换到好友列表页都会调用这个函数，多次调用后会使这个信号绑定多个相同的槽函数！所以最后加一个 Qt::UniqueConnection
+        connect(dataCenter, &model::DataCenter::getFriendUserListAsyncDone, this, &MainWidget::loadFriendListFromDataCenter, Qt::UniqueConnection);
+
+        // 再异步调用,调用后网络和DataCenter模块会发送网络请求,接收响应并处理响应,处理完响应后就触发getFriendUserListAsyncDone信号!
+        dataCenter->getFriendUserListAsync();
+    }
+    else{
+        // 直接加载DataCenter中的数据到界面即可
+        loadFriendListFromDataCenter();
+    }
+}
+
+void MainWidget::loadFriendApplyTab(){
 
 }
-void MainWidget::loadFriendApplyTab(){
+
+void MainWidget::loadFriendListFromDataCenter(){
+    if(_activeTab != FRIEND_TAB){
+        return;
+    }
+
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    QList<model::UserInfo>* friendUserList = dataCenter->getFriendUserList();
+    if(friendUserList == nullptr){
+        return;
+    }
+
+    // 先清空页面原有的数据
+    _middleWindowArea->clearAllItem();
+    // 遍历List，把数据加载到界面
+    for(const model::UserInfo& userInfo : *friendUserList){
+        _middleWindowArea->addItem(FRIEND_TYPE, userInfo._userId, userInfo._headPortrait, userInfo._nickName, userInfo._personalSignature);
+    }
+}
+
+void MainWidget::loadChatSessionListFromDataCenter(){
+    if(_activeTab != CHATSESSION_TAB){
+        // 当前不是会话页
+        return;
+    }
+
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    QList<model::ChatSessionInfo>* chatSessionList = dataCenter->getChatSessionList();
+    if(chatSessionList == nullptr){
+        return;
+    }
+
+    // 先清空页面原有的数据
+    _middleWindowArea->clearAllItem();
+    for(auto& chatSessionInfo : *chatSessionList){
+        _middleWindowArea->addItem(CHATSESSION_TYPE, chatSessionInfo._chatSessionId, chatSessionInfo._headPortrait, chatSessionInfo._chatSessionName, chatSessionInfo._lastMessage);
+    }
 
 }

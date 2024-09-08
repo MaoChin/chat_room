@@ -134,5 +134,38 @@ void NetClient::getMyself(const QString &loginSessionId){
     });
 }
 
+void NetClient::getFriendUserList(const QString &logSessionId){
+    // 构造请求
+    my_chat_proto::GetFriendListReq reqObj;
+    reqObj.setRequestId(makeRequestId());
+    reqObj.setSessionId(logSessionId);
+    QByteArray body = reqObj.serialize(&_serializer);
+
+    // 发送请求
+    QNetworkReply* httpResp = sendHttpRequest("/service/friend/get_friend_list", body);
+    LOG() << "getFriendUserList: send request, requestId: " << reqObj.requestId();
+
+    // 关联网络请求返回时的信号槽
+    connect(httpResp, &QNetworkReply::finished, this, [=]() {
+        bool ok = false;
+        QString errmsg;
+        std::shared_ptr<my_chat_proto::GetFriendListRsp> respObj = handleHttpResponse<my_chat_proto::GetFriendListRsp>(httpResp, &ok, &errmsg);
+
+        if(!ok){
+            LOG() << "getFriendUserList error, requestId: "  << respObj->requestId() << "error message: " << errmsg;
+            return;
+        }
+
+        _dataCenter->setFriendUserList(respObj);
+
+        // 发出响应处理完成信号
+        emit _dataCenter->getFriendUserListDone();
+        LOG() << "getFriendUserList: handle response succeed, requestId: " << respObj->requestId();
+    });
+
+
+
+}
+
 
 }  // end namespace

@@ -82,6 +82,9 @@ public:
     // 获取当前用户自身信息
     void getMyself(const QString& loginSessionId);
 
+    // 获取当前用户好友列表
+    void getFriendUserList(const QString& logSessionId);
+
 
 private:
     // 数据中心模块（DataCenter和网络模块强相关！）

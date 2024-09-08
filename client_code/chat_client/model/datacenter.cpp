@@ -138,5 +138,25 @@ void DataCenter::setMyself(std::shared_ptr<my_chat_proto::GetUserInfoRsp> respOb
     _myself->load(respObj->userInfo());
 }
 
+void DataCenter::getFriendUserListAsync(){
+    // 一样的抛给NitClient
+    _netClient.getFriendUserList(_loginSessionId);
+}
+
+void DataCenter::setFriendUserList(std::shared_ptr<my_chat_proto::GetFriendListRsp> respObj){
+    if(_friendUserList == nullptr){
+        _friendUserList = new QList<UserInfo>();
+    }
+    // 清除旧的数据
+    _friendUserList->clear();
+
+    const QList<my_chat_proto::UserInfo>& userInfoListPb = respObj->friendList();
+    for(const auto& userInfoPb : userInfoListPb){
+        UserInfo userInfo;
+        userInfo.load(userInfoPb);
+        _friendUserList->push_back(userInfo);
+    }
+}
+
 
 }  // end namespace

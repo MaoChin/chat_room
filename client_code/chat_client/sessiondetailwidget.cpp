@@ -97,10 +97,12 @@ SessionDetailWidget::SessionDetailWidget(QWidget* parent)
         // 弹出模态对话框
         chooseFriendDialog->exec();
     });
-    connect(userItem->getHeadPortrait(), &QPushButton::clicked, this, [=](){
+
+    // connect(userItem->getHeadPortrait(), &QPushButton::clicked, this, [=](){
         // TODO 这里需要想办法获取 userInfo
         // UserInfoWidget* userInfoWidget = new UserInfoWidget();
         // userInfoWidget->exec();
-    });
+    // });
+
 }
 
