@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+# other git repository
+./server_code/etcd-cpp-apiv3/*

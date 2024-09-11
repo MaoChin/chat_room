@@ -1,0 +1,3 @@
+[2024-09-10 17:41:43] [12887] [warning] [main.cc:16] aaa, bbb
+[2024-09-10 17:41:43] [12887] [error  ] [main.cc:17] aaa, bbb
+[2024-09-10 17:41:43] [12887] [critical] [main.cc:18] aaa, bbb
