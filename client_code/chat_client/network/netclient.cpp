@@ -129,7 +129,7 @@ void NetClient::getMyself(const QString &loginSessionId){
         _dataCenter->setMyself(respObj);
 
         // 最后要通知调用逻辑，HTTP 响应已经处理完成 --》通过自定义信号槽通知
-        emit _dataCenter->getMyselfDone();
+        emit _dataCenter->getMyselfAsyncDone();
         LOG() << "getMyself: handle response succeed, requestId: " << respObj->requestId();
     });
 }
@@ -156,15 +156,75 @@ void NetClient::getFriendUserList(const QString &logSessionId){
             return;
         }
 
+        // 再回到dataCenter处理一下数据
         _dataCenter->setFriendUserList(respObj);
 
         // 发出响应处理完成信号
-        emit _dataCenter->getFriendUserListDone();
+        emit _dataCenter->getFriendUserListAsyncDone();
         LOG() << "getFriendUserList: handle response succeed, requestId: " << respObj->requestId();
     });
+}
 
+void NetClient::getChatSessionList(const QString& loginSessionId){
+    // 构造请求
+    my_chat_proto::GetChatSessionListReq reqObj;
+    reqObj.setSessionId(loginSessionId);
+    reqObj.setRequestId(makeRequestId());
+    QByteArray body = reqObj.serialize(&_serializer);
 
+    // 发送HTTP请求
+    QNetworkReply* httpResp = sendHttpRequest("/service/friend/get_chat_session_list", body);
+    LOG() << "getChatSesionList: send request, requestId: " << reqObj.requestId();
 
+    // 关联HTTP请求返回时的信号槽
+    connect(httpResp, &QNetworkReply::finished, this, [=]() {
+        bool ok = false;
+        QString errmsg;
+        std::shared_ptr<my_chat_proto::GetChatSessionListRsp> respObj = handleHttpResponse<my_chat_proto::GetChatSessionListRsp>(httpResp, &ok, &errmsg);
+
+        if(!ok){
+            LOG() << "getChatSesionList error, requestId: "  << respObj->requestId() << "error message: " << errmsg;
+            return;
+        }
+
+        // 再回到dataCenter处理一下数据
+        _dataCenter->setChatSessionList(respObj);
+
+        // 发出响应处理完毕的信号，让界面进行填充
+        emit _dataCenter->getChatSessionListAsyncDone();
+        LOG() << "getFriendUserList: handle response succeed, requestId: " << respObj->requestId();
+    });
+}
+
+void NetClient::getApplyUserList(const QString& loginSessionId){
+    // 构造请求
+    my_chat_proto::GetPendingFriendEventListReq reqObj;
+    reqObj.setSessionId(loginSessionId);
+    reqObj.setRequestId(makeRequestId());
+
+    QByteArray body = reqObj.serialize(&_serializer);
+    // 发送HTTP请求
+    QNetworkReply* httpResp = sendHttpRequest("/service/friend/get_pending_friend_events", body);
+    LOG() << "getApplyUserList: send request, requestId: " << reqObj.requestId();
+
+    // 关联HTTP响应的槽函数
+    connect(httpResp, &QNetworkReply::finished, this, [=]() {
+        bool ok = false;
+        QString errmsg;
+        std::shared_ptr<my_chat_proto::GetPendingFriendEventListRsp> respObj = handleHttpResponse<my_chat_proto::GetPendingFriendEventListRsp>(httpResp, &ok, &errmsg);
+
+        if(!ok){
+            LOG() << "getApplyUserList error, requestId: "  << respObj->requestId() << "error message: " << errmsg;
+            return;
+        }
+
+        // 再回到DataCenter中把proto类型的数据放到DataCenter中
+        _dataCenter->setApplyUserList(respObj);
+
+        // 发出 getApplyUserListAsyncDone 信号，让界面填充相关信息
+        emit _dataCenter->getApplyUserListAsyncDone();
+        LOG() << "getApplyUserList: handle response succeed, requestId: " << respObj->requestId();
+    });
 }
 
 

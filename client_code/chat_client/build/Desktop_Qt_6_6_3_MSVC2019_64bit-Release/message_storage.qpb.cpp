@@ -420,7 +420,7 @@ public:
           m_msgCount(other.m_msgCount),
           m_curTime(other.m_curTime),
           m_userId(other.m_userId),
-          m_sessionId(other.m_sessionId)
+          m_loginSessionId(other.m_loginSessionId)
     {
     }
 
@@ -429,7 +429,7 @@ public:
     QtProtobuf::int64 m_msgCount;
     QtProtobuf::int64 m_curTime;
     QString m_userId;
-    QString m_sessionId;
+    QString m_loginSessionId;
 };
 
 GetRecentMsgReq::~GetRecentMsgReq() = default;
@@ -437,7 +437,7 @@ GetRecentMsgReq::~GetRecentMsgReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 25> qt_protobuf_GetRecentMsgReq_uint_data;
-    const char qt_protobuf_GetRecentMsgReq_char_data[89];
+    const char qt_protobuf_GetRecentMsgReq_char_data[94];
 } qt_protobuf_GetRecentMsgReq_metadata {
     // data
     {
@@ -456,36 +456,36 @@ static constexpr struct {
         54, /* = msgCount */
         63, /* = curTime */
         71, /* = userId */
-        78, /* = sessionId */
-        88, /* = end-of-string-marker */
+        78, /* = loginSessionId */
+        93, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = chatSessionId */
         3, /* = msgCount */
         4, /* = curTime */
         5, /* = userId */
-        6, /* = sessionId */
+        6, /* = loginSessionId */
         // Property indices:
         0, /* = requestId */
         1, /* = chatSessionId */
         2, /* = msgCount */
         3, /* = curTime */
         4, /* = userId */
-        5, /* = sessionId */
+        5, /* = loginSessionId */
         // Field flags:
         QtProtobufPrivate::NoFlags, /* = requestId */
         QtProtobufPrivate::NoFlags, /* = chatSessionId */
         QtProtobufPrivate::NoFlags, /* = msgCount */
         QtProtobufPrivate::NoFlags, /* = curTime */
         QtProtobufPrivate::NoFlags, /* = userId */
-        QtProtobufPrivate::NoFlags, /* = sessionId */
+        QtProtobufPrivate::NoFlags, /* = loginSessionId */
     },
     // char_data
     /* metadata char_data: */
     "my_chat_proto.GetRecentMsgReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0chatSessionId\0msgCount\0curTime\0userId\0"
-    "sessionId\0"
+    "loginSessionId\0"
 };
 
 const QtProtobufPrivate::QProtobufPropertyOrdering GetRecentMsgReq::propertyOrdering = {
@@ -564,9 +564,9 @@ QString GetRecentMsgReq::userId() const
     return dptr->m_userId;
 }
 
-QString GetRecentMsgReq::sessionId() const
+QString GetRecentMsgReq::loginSessionId() const
 {
-    return dptr->m_sessionId;
+    return dptr->m_loginSessionId;
 }
 
 void GetRecentMsgReq::setRequestId(const QString &requestId)
@@ -609,11 +609,11 @@ void GetRecentMsgReq::setUserId(const QString &userId)
     }
 }
 
-void GetRecentMsgReq::setSessionId(const QString &sessionId)
+void GetRecentMsgReq::setLoginSessionId(const QString &loginSessionId)
 {
-    if (dptr->m_sessionId != sessionId) {
+    if (dptr->m_loginSessionId != loginSessionId) {
         dptr.detach();
-        dptr->m_sessionId = sessionId;
+        dptr->m_loginSessionId = loginSessionId;
     }
 }
 

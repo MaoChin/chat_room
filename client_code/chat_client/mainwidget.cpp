@@ -47,7 +47,7 @@ MainWidget::MainWidget(QWidget *parent)
     loadChatSessionTab();
 
     // 获取当前用户好友申请列表
-    loadFriendApplyTab();
+    loadApplyUserTab();
 
 }
 
@@ -285,8 +285,6 @@ void MainWidget::initSignalSlot(){
     // 再异步调用,调用后网络和DataCenter模块会发送网络请求,接收响应并处理响应,处理完响应后就触发getMyselfDone信号!
     dataCenter->getMyselfAsync();
 
-
-
 }
 
 // 切换到会话页
@@ -314,7 +312,7 @@ void MainWidget::switchTabToFriendApply(){
     _chatSessionTabBtn->setIcon(QIcon(":/resource/image/chatSessionTabNotActive.png"));
     _friendTabBtn->setIcon(QIcon(":/resource/image/friendTabNotActive.png"));
 
-    this->loadFriendApplyTab();
+    this->loadApplyUserTab();
 }
 
 void MainWidget::loadChatSessionTab(){
@@ -351,8 +349,19 @@ void MainWidget::loadFriendTab(){
     }
 }
 
-void MainWidget::loadFriendApplyTab(){
+void MainWidget::loadApplyUserTab(){
+    // 如果 DataCenter 中有数据就直接加载，否则从服务器获取数据
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    if(dataCenter->getApplyUserList() == nullptr){
+        // 发送网络请求获取数据
+        connect(dataCenter, &model::DataCenter::getApplyUserListAsyncDone, this, &MainWidget::loadApplyUserListFromDataCenter, Qt::UniqueConnection);
 
+        dataCenter->getApplyUserListAsync();
+    }
+    else{
+        // 直接从DataCenter中加载数据
+        loadApplyUserListFromDataCenter();
+    }
 }
 
 void MainWidget::loadFriendListFromDataCenter(){
@@ -365,6 +374,9 @@ void MainWidget::loadFriendListFromDataCenter(){
     if(friendUserList == nullptr){
         return;
     }
+
+    // 测试连接信号槽中 Qt::UniqueConnection的作用
+    // LOG() << "test Qt::UniqueConnection";
 
     // 先清空页面原有的数据
     _middleWindowArea->clearAllItem();
@@ -388,8 +400,41 @@ void MainWidget::loadChatSessionListFromDataCenter(){
 
     // 先清空页面原有的数据
     _middleWindowArea->clearAllItem();
-    for(auto& chatSessionInfo : *chatSessionList){
-        _middleWindowArea->addItem(CHATSESSION_TYPE, chatSessionInfo._chatSessionId, chatSessionInfo._headPortrait, chatSessionInfo._chatSessionName, chatSessionInfo._lastMessage);
+    for(const model::ChatSessionInfo& chatSessionInfo : *chatSessionList){
+        model::MessageType curMessageType = chatSessionInfo._lastMessage._messageType;
+
+        if(curMessageType == model::TEXT_TYPE){
+            _middleWindowArea->addItem(CHATSESSION_TYPE, chatSessionInfo._chatSessionId, chatSessionInfo._headPortrait, chatSessionInfo._chatSessionName, chatSessionInfo._lastMessage._content);
+        }
+        else if(curMessageType == model::IMAGE_TYPE){
+            _middleWindowArea->addItem(CHATSESSION_TYPE, chatSessionInfo._chatSessionId, chatSessionInfo._headPortrait, chatSessionInfo._chatSessionName, "[图片]");
+        }
+        else if(curMessageType == model::FILE_TYPE){
+            _middleWindowArea->addItem(CHATSESSION_TYPE, chatSessionInfo._chatSessionId, chatSessionInfo._headPortrait, chatSessionInfo._chatSessionName, "[文件] " + chatSessionInfo._lastMessage._fileName);
+        }
+        else if(curMessageType == model::VOICE_TYPE){
+            _middleWindowArea->addItem(CHATSESSION_TYPE, chatSessionInfo._chatSessionId, chatSessionInfo._headPortrait, chatSessionInfo._chatSessionName, "[语音]");
+        }
+        else{
+            LOG() << "消息类型错误: " << curMessageType;
+        }
+    }
+}
+
+void MainWidget::loadApplyUserListFromDataCenter(){
+    if(_activeTab != FRIENDAPPLY_TAB){
+        return;
     }
 
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    QList<model::UserInfo>* applyUserList = dataCenter->getApplyUserList();
+    if(applyUserList == nullptr){
+        return;
+    }
+
+    // 清空页面原有的数据
+    _middleWindowArea->clearAllItem();
+    for(const model::UserInfo& applyUserInfo : *applyUserList){
+        _middleWindowArea->addItem(FRIENDAPPLY_TYPE, applyUserInfo._userId, applyUserInfo._headPortrait, applyUserInfo._nickName, "");
+    }
 }

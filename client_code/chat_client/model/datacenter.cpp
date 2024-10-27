@@ -158,5 +158,42 @@ void DataCenter::setFriendUserList(std::shared_ptr<my_chat_proto::GetFriendListR
     }
 }
 
+void DataCenter::getChatSessionListAsync(){
+    _netClient.getChatSessionList(_loginSessionId);
+}
+
+void DataCenter::setChatSessionList(std::shared_ptr<my_chat_proto::GetChatSessionListRsp> respObj){
+    if(_chatSessionList == nullptr){
+        _chatSessionList = new QList<ChatSessionInfo>();
+    }
+    // 清除旧的数据
+    _chatSessionList->clear();
+
+    const QList<my_chat_proto::ChatSessionInfo>& chatSessionListPb = respObj->chatSessionInfoList();
+    for(const my_chat_proto::ChatSessionInfo& chatSessionInfoPb : chatSessionListPb){
+        ChatSessionInfo chatSessionInfo;
+        chatSessionInfo.load(chatSessionInfoPb);
+        _chatSessionList->push_back(chatSessionInfo);
+    }
+}
+
+void DataCenter::getApplyUserListAsync(){
+    _netClient.getApplyUserList(_loginSessionId);
+}
+
+void DataCenter::setApplyUserList(std::shared_ptr<my_chat_proto::GetPendingFriendEventListRsp> respObj){
+    if(_applyUserList == nullptr){
+        _applyUserList = new QList<UserInfo>();
+    }
+    _applyUserList->clear();
+
+    const QList<my_chat_proto::FriendEvent>& applyUserEventListPb = respObj->event();
+    for(const my_chat_proto::FriendEvent& applyUserEventPb : applyUserEventListPb){
+        UserInfo userInfo;
+        userInfo.load(applyUserEventPb.sender());
+        _applyUserList->push_back(userInfo);
+    }
+}
+
 
 }  // end namespace

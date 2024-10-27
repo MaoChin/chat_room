@@ -27,7 +27,7 @@ HttpServer* HttpServer::getInstance(){
     return _instance;
 }
 
-my_chat_proto::UserInfo makeUserInfo(int index, QByteArray headPortraitByte){
+my_chat_proto::UserInfo makeUserInfo(int index, const QByteArray& headPortraitByte){
     my_chat_proto::UserInfo userInfo;
     userInfo.setUserId(QString::number(100 + index));
     userInfo.setNickName("小八");
@@ -35,6 +35,43 @@ my_chat_proto::UserInfo makeUserInfo(int index, QByteArray headPortraitByte){
     userInfo.setHeadPortrait(headPortraitByte);
     userInfo.setPhoneNumber("12345466");
     return userInfo;
+}
+
+// 这几个消息的构造要多看几遍 proto 文件中 这些不同消息类型的结构
+my_chat_proto::MessageInfo makeTextMessageInfo(int index, const QString& chatSessionId, const QByteArray& headPortrait){
+    my_chat_proto::MessageInfo messageInfo;
+    messageInfo.setChatSessionId(chatSessionId);
+    messageInfo.setMessageId(QString::number(index));
+    messageInfo.setTimestamp(getTimestamp());
+    messageInfo.setSender(makeUserInfo(index, headPortrait));
+
+    my_chat_proto::TextMessageInfo textMessage;
+    textMessage.setTextContent("这是一条消息");
+
+    my_chat_proto::MessageContent messageContent;
+    messageContent.setMessageType(my_chat_proto::MessageTypeGadget::TEXT);
+    messageContent.setTextMessage(textMessage);
+
+    messageInfo.setMessage(messageContent);
+    return messageInfo;
+}
+
+my_chat_proto::MessageInfo makeImageMessageInfo(int index, const QString& chatSessionId, const QByteArray& headPortrait){
+    my_chat_proto::MessageInfo messageInfo;
+    messageInfo.setChatSessionId(chatSessionId);
+    messageInfo.setMessageId(QString::number(index));
+    messageInfo.setTimestamp(getTimestamp());
+    messageInfo.setSender(makeUserInfo(index, headPortrait));
+
+    my_chat_proto::ImageMessageInfo imageMessage;
+    imageMessage.setFileId("testImage");
+
+    my_chat_proto::MessageContent messageContent;
+    messageContent.setImageMessage(imageMessage);
+    messageContent.setMessageType(my_chat_proto::MessageTypeGadget::IMAGE);
+
+    messageInfo.setMessage(messageContent);
+    return messageInfo;
 }
 
 bool HttpServer::initHttpServer(){
@@ -54,6 +91,14 @@ bool HttpServer::initHttpServer(){
 
     _httpServer.route("/service/friend/get_friend_list", [=](const QHttpServerRequest& httpReq) {
         return this->getFriendUserList(httpReq);
+    });
+
+    _httpServer.route("/service/friend/get_chat_session_list", [=](const QHttpServerRequest& httpReq) {
+        return this->getChatSessionList(httpReq);
+    });
+
+    _httpServer.route("/service/friend/get_pending_friend_events", [=](const QHttpServerRequest& httpReq) {
+        return this->getApplyUserList(httpReq);
     });
 
     // listen 成功就返回绑定的端口 8080
@@ -104,6 +149,73 @@ QHttpServerResponse HttpServer::getFriendUserList(const QHttpServerRequest &http
         my_chat_proto::UserInfo userInfo = makeUserInfo(i, headPortraitByte);
         respObj.friendList().push_back(userInfo);
     }
+
+    QByteArray body = respObj.serialize(&_serializer);
+
+    // 发送响应
+    QHttpServerResponse httpResp(body, QHttpServerResponse::StatusCode::Ok);
+    httpResp.setHeader("Content-Type", "application/x-protobuf");
+    return httpResp;
+}
+
+QHttpServerResponse HttpServer::getChatSessionList(const QHttpServerRequest &httpReq){
+    LOG() << "get a http request: get chat session list";
+    // 解析请求
+    my_chat_proto::GetChatSessionListReq reqObj;
+    reqObj.deserialize(&_serializer, httpReq.body());
+
+    // 构造响应
+    my_chat_proto::GetChatSessionListRsp respObj;
+    respObj.setRequestId(reqObj.requestId());
+    respObj.setSuccess(true);
+    respObj.setErrmsg("");
+
+
+    QByteArray headPortraitByte = readFileToByteArray(":/resource/image/headPortrait.png");
+    QList<my_chat_proto::ChatSessionInfo> chatSessionInfoList;
+    for(int i = 0; i < 20; ++i){
+        my_chat_proto::ChatSessionInfo chatSession;
+        QString chatSessionId = QString::number(100 + i);
+        chatSession.setChatSessionId(chatSessionId);
+        chatSession.setChatSessionName("会话" + QString::number(i));
+        chatSession.setSingleChatFriendId(QString::number(1000 + 1));
+        chatSession.setHeadPortrait(headPortraitByte);
+
+        chatSession.setPrevMessage(makeTextMessageInfo(i, chatSessionId, headPortraitByte));
+        chatSessionInfoList.push_back(chatSession);
+    }
+    respObj.setChatSessionInfoList(chatSessionInfoList);
+
+    // 序列化
+    QByteArray body = respObj.serialize(&_serializer);
+
+    // 发送响应
+    QHttpServerResponse httpResp(body, QHttpServerResponse::StatusCode::Ok);
+    httpResp.setHeader("Content-Type", "application/x-protobuf");
+    return httpResp;
+}
+
+QHttpServerResponse HttpServer::getApplyUserList(const QHttpServerRequest &httpReq){
+    LOG() << "get a http request: get apply user list";
+    // 解析请求
+    my_chat_proto::GetPendingFriendEventListReq reqObj;
+    reqObj.deserialize(&_serializer, httpReq.body());
+
+    // 构造响应
+    my_chat_proto::GetPendingFriendEventListRsp respObj;
+    respObj.setRequestId(reqObj.requestId());
+    respObj.setSuccess(true);
+    respObj.setErrmsg("");
+
+    QByteArray headPortraitByte = readFileToByteArray(":/resource/image/headPortrait.png");
+    QList<my_chat_proto::FriendEvent> friendEventList;
+    for(int i = 0; i < 10; ++i){
+        my_chat_proto::FriendEvent friendEvent;
+        friendEvent.setEventId(QString::number(10 + i));
+        friendEvent.setSender(makeUserInfo(i, headPortraitByte));
+        friendEventList.push_back(friendEvent);
+    }
+    respObj.setEvent(friendEventList);
 
     QByteArray body = respObj.serialize(&_serializer);
 

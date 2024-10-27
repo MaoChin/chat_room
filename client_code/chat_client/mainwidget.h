@@ -44,7 +44,7 @@ private:
 
     void loadChatSessionTab();
     void loadFriendTab();
-    void loadFriendApplyTab();
+    void loadApplyUserTab();
 
     // 和DataCenter的交互
     // 直接从DataCenter中加载好友列表

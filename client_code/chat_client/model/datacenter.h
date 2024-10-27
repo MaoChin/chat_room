@@ -66,11 +66,21 @@ public:
     // 通过信号槽机制处理请求完成时的事务
     void getChatSessionListAsync();
     // 设置当前用户好友列表信息
-    void setChatSessionList(std::shared_ptr<my_chat_proto::GetFriendListRsp> respObj);
+    void setChatSessionList(std::shared_ptr<my_chat_proto::GetChatSessionListRsp> respObj);
 
     // 直接获取会话列表信息
     QList<ChatSessionInfo>* getChatSessionList(){
         return _chatSessionList;
+    }
+
+    // 通过网络获取当前用户好友申请列表信息
+    void getApplyUserListAsync();
+    // 设置当前用户好友申请列表信息
+    void setApplyUserList(std::shared_ptr<my_chat_proto::GetPendingFriendEventListRsp> respObj);
+
+    // 直接获取好友申请列表信息
+    QList<UserInfo>* getApplyUserList(){
+        return _applyUserList;
     }
 
 

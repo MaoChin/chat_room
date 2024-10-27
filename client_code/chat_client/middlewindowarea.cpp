@@ -235,11 +235,15 @@ FriendApplyItem::FriendApplyItem(QWidget *owner, const QIcon &headPortrait, cons
     // 别忘了delete
     delete _messageLabel;
 
+    QString btnStyle = "QPushButton { font-size: 14px; }";
+    btnStyle += "QPushButton:hover { background-color: rgb(200, 200, 200); }";
+    btnStyle += "QPushButton:pressed { background-color: rgb(220, 220, 220); }";
+
     QPushButton* acceptBtn = new QPushButton();
-    acceptBtn->setStyleSheet("QPushButton { font-size: 15px; }");
+    acceptBtn->setStyleSheet(btnStyle);
     acceptBtn->setText("接受");
     QPushButton* refuseBtn = new QPushButton();
-    refuseBtn->setStyleSheet("QPushButton { font-size: 15px; }");
+    refuseBtn->setStyleSheet(btnStyle);
     refuseBtn->setText("拒绝");
 
     // 在(1, 2)位置，占一行一列

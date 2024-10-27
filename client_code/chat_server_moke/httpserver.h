@@ -23,6 +23,13 @@ public:
     // 获取当前用户好友信息
     QHttpServerResponse getFriendUserList(const QHttpServerRequest& httpReq);
 
+    // 获取当前用户会话列表信息
+    QHttpServerResponse getChatSessionList(const QHttpServerRequest& httpReq);
+
+    // 获取当前用户好友申请列表信息
+    QHttpServerResponse getApplyUserList(const QHttpServerRequest& httpReq);
+
+
 private:
     HttpServer();
 

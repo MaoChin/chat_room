@@ -147,7 +147,7 @@ class GetRecentMsgReq : public QProtobufMessage
     Q_PROPERTY(QtProtobuf::int64 msgCount READ msgCount WRITE setMsgCount SCRIPTABLE false)
     Q_PROPERTY(QtProtobuf::int64 curTime READ curTime WRITE setCurTime SCRIPTABLE false)
     Q_PROPERTY(QString userId READ userId WRITE setUserId SCRIPTABLE true)
-    Q_PROPERTY(QString sessionId READ sessionId WRITE setSessionId SCRIPTABLE true)
+    Q_PROPERTY(QString loginSessionId READ loginSessionId WRITE setLoginSessionId SCRIPTABLE true)
 
 public:
     enum QtProtobufFieldEnum {
@@ -156,7 +156,7 @@ public:
         MsgCountProtoFieldNumber = 3,
         CurTimeProtoFieldNumber = 4,
         UserIdProtoFieldNumber = 5,
-        SessionIdProtoFieldNumber = 6,
+        LoginSessionIdProtoFieldNumber = 6,
     };
     Q_ENUM(QtProtobufFieldEnum)
 
@@ -179,13 +179,13 @@ public:
 
     QString userId() const;
 
-    QString sessionId() const;
+    QString loginSessionId() const;
     void setRequestId(const QString &requestId);
     void setChatSessionId(const QString &chatSessionId);
     void setMsgCount(const QtProtobuf::int64 &msgCount);
     void setCurTime(const QtProtobuf::int64 &curTime);
     void setUserId(const QString &userId);
-    void setSessionId(const QString &sessionId);
+    void setLoginSessionId(const QString &loginSessionId);
     static void registerTypes();
 
 private:
