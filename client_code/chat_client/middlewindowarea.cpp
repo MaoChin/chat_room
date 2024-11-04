@@ -1,6 +1,8 @@
 #include "middlewindowarea.h"
 #include "debug.h"
 #include "model/data.h"
+#include "model/datacenter.h"
+#include "mainwidget.h"
 
 #include <QScrollBar>
 #include <QVBoxLayout>
@@ -8,6 +10,7 @@
 #include <QLabel>
 #include <QStyleOption>
 #include <QPainter>
+#include <QTimer>
 
 MiddleWindowArea::MiddleWindowArea(QWidget *parent)
     : QScrollArea{parent}
@@ -95,6 +98,20 @@ void MiddleWindowArea::selectItem(int index){
     }
     MiddleWindowAreaItem* middleWindowAreaItem = dynamic_cast<MiddleWindowAreaItem*>(layoutItem->widget());
     middleWindowAreaItem->select();
+}
+
+void MiddleWindowArea::scrollToTop(){
+    QTimer* timer = new QTimer();
+    connect(timer, &QTimer::timeout, this, [=]() {
+        // 获取到垂直滚动条的最小值
+        int minValue = this->verticalScrollBar()->minimum();
+        // 设置滚动条的滚动位置
+        this->verticalScrollBar()->setValue(minValue);
+
+        timer->stop();
+        timer->deleteLater();
+    });
+    timer->start(300);
 }
 
 
@@ -192,7 +209,7 @@ void MiddleWindowAreaItem::select(){
 }
 
 void MiddleWindowAreaItem::active(){
-
+    // 父类的方法，不需要实现
 }
 
 // 具体的列表项
@@ -200,13 +217,72 @@ void MiddleWindowAreaItem::active(){
 ChatSesionItem::ChatSesionItem(QWidget* owner, const QIcon& headPortrait, const QString& chatSessionId,
                                const QString& chatSessionName, const QString& lastMessage)
     : MiddleWindowAreaItem(owner, headPortrait, chatSessionName, lastMessage),
-    _chatSessionId(chatSessionId)
+    _chatSessionId(chatSessionId),
+    _showText(lastMessage)
 {
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    // 处理 更新特定会话展示中最后一条消息 的信号
+    connect(dataCenter, &model::DataCenter::updateLastMessage, this, &ChatSesionItem::updateLastMessage);
 
+    // 显示未读消息信息，每次重启客户端都能走到这一段逻辑
+    int unread = dataCenter->getUnreadNum(chatSessionId);
+    if(unread > 0){
+        this->_messageLabel->setText("[未读" + QString::number(unread) + "条]: " + _showText);
+    }
 }
 
 void ChatSesionItem::active(){
+    // 点击会话时的操作--右侧窗口显示这个聊天会话的历史消息
+    MainWidget* mainWidget = MainWidget::getInstance();
+    mainWidget->loadRecentMessage(_chatSessionId);
 
+    // 清除这个会话的未读消息
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    dataCenter->clearUnreadMessage(_chatSessionId);
+    this->_messageLabel->setText(_showText);
+}
+
+void ChatSesionItem::updateLastMessage(const QString &chatSessionId){
+    if(this->_chatSessionId != chatSessionId){
+        // 不是这个会话
+        return;
+    }
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    QList<model::MessageInfo>* messageList = dataCenter->getChatSessionRecentMessage(chatSessionId);
+    if(messageList == nullptr || messageList->size() == 0){
+        // 没有消息
+        return;
+    }
+
+    // 获取显示内容
+    const model::MessageInfo& lastMessage = messageList->back();
+    if(lastMessage._messageType == model::MessageType::TEXT_TYPE){
+        _showText = lastMessage._content;
+    }
+    else if(lastMessage._messageType == model::MessageType::FILE_TYPE){
+        _showText = "[文件] " + lastMessage._fileName;
+    }
+    else if(lastMessage._messageType == model::MessageType::IMAGE_TYPE){
+        _showText = "[图片] " + lastMessage._fileName;
+    }
+    else if(lastMessage._messageType == model::MessageType::VOICE_TYPE){
+        _showText = "[语音] ";
+    }
+    else{
+        LOG() << "message type error: " << lastMessage._messageType;
+        return;
+    }
+
+    // 进行渲染，要判断这个会话是不是 当前选中的会话
+    if(dataCenter->getCurChatSessionId() == chatSessionId){
+        this->_messageLabel->setText(_showText);
+    }
+    else{
+        int unread = dataCenter->getUnreadNum(chatSessionId);
+        if(unread > 0){
+            this->_messageLabel->setText("[未读" + QString::number(unread) + "条]: " + _showText);
+        }
+    }
 }
 
 // 好友列表项
@@ -219,7 +295,9 @@ FriendItem::FriendItem(QWidget* owner, const QIcon& headPortrait, const QString&
 }
 
 void FriendItem::active(){
-
+    // 点击好友时的操--切换到会话列表项，并且右侧窗口显示对应的聊天历史消息
+    MainWidget* mainWidget = MainWidget::getInstance();
+    mainWidget->clickFriendInFriendItem(_userId);
 }
 
 // 好友申请列表项
@@ -250,8 +328,24 @@ FriendApplyItem::FriendApplyItem(QWidget *owner, const QIcon &headPortrait, cons
     layout->addWidget(acceptBtn, 1, 2, 1, 1);
     // 在(1, 4)位置，占一行一列
     layout->addWidget(refuseBtn, 1, 4, 1, 1);
+
+    // 点击“接受”按钮的信号槽
+    connect(acceptBtn, &QPushButton::clicked, this, &FriendApplyItem::acceptAddFriendApply);
+    // 点击“拒绝”按钮的信号槽
+    connect(refuseBtn, &QPushButton::clicked, this, &FriendApplyItem::refuseAddFriendApply);
 }
 
 void FriendApplyItem::active(){
 
+}
+
+void FriendApplyItem::acceptAddFriendApply(){
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    // 这个操作完成的处理需要更新申请列表和好友列表，放到mainWidget中进行
+    dataCenter->acceptAddFriendApplyAsync(_userId);
+}
+
+void FriendApplyItem::refuseAddFriendApply(){
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    dataCenter->refuseAddFriendApplyAsync(_userId);
 }

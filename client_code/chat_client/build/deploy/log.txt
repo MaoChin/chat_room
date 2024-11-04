@@ -1,0 +1,25 @@
+[file: netclient.cpp, line: 1020] userNameLogin: send request, requestId:  Request1432b69cf646
+[file: netclient.cpp, line: 262] getMyself: send request, requestId:  Requestf465caeabfa6
+[file: netclient.cpp, line: 295] getFriendUserList: send request, requestId:  Requestf16291728d13
+[file: netclient.cpp, line: 327] getChatSesionList: send request, requestId:  Request35e175cdba33
+[file: netclient.cpp, line: 359] getApplyUserList: send request, requestId:  Request5b63d0fbc7b4
+[file: netclient.cpp, line: 1041] userNameLoginAsyncDone: handle response succeed, requestId:  Request1432b69cf646
+[file: netclient.cpp, line: 51] websocket client: websocket connected
+[file: netclient.cpp, line: 94] websocket 身份认证，requestId:  Request919e9fa612c1  , loginSessonId:  testLoginSessionId
+[file: netclient.cpp, line: 282] getMyself: handle response succeed, requestId:  Requestf465caeabfa6
+[file: netclient.cpp, line: 314] getFriendUserList: handle response succeed, requestId:  Requestf16291728d13
+[file: netclient.cpp, line: 378] getApplyUserList: handle response succeed, requestId:  Request5b63d0fbc7b4
+[file: netclient.cpp, line: 346] getFriendUserList: handle response succeed, requestId:  Request35e175cdba33
+[file: netclient.cpp, line: 393] getChatSessionRecentMessage: send request, requestId:  Request6bb905a61c30
+[file: netclient.cpp, line: 1126] getSingleFileContent: send request, requestId:  Request2064ffe61f3f
+[file: netclient.cpp, line: 1126] getSingleFileContent: send request, requestId:  Request2be78bc72fbc
+[file: netclient.cpp, line: 1126] getSingleFileContent: send request, requestId:  Requestd6f701b111c0
+[file: netclient.cpp, line: 418] getChatSessionRecentMessageAsyncDone: handle response succeed, requestId:  Request6bb905a61c30
+[file: netclient.cpp, line: 1144] getSingleFileContentAsyncDone: handle response succeed, requestId:  Requestd6f701b111c0
+[file: netclient.cpp, line: 1144] getSingleFileContentAsyncDone: handle response succeed, requestId:  Request2064ffe61f3f
+[file: netclient.cpp, line: 1144] getSingleFileContentAsyncDone: handle response succeed, requestId:  Request2be78bc72fbc
+[file: soundrecorder.cpp, line: 74] ActiveState
+[file: soundrecorder.cpp, line: 69] IdleState
+[file: soundrecorder.cpp, line: 77] StoppedState
+[file: netclient.cpp, line: 1020] userNameLogin: send request, requestId:  Request81bc431ca1e2
+[file: netclient.cpp, line: 1020] userNameLogin: send request, requestId:  Request0001f1683693

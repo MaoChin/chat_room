@@ -94,13 +94,13 @@ message GetUserInfoRsp {
 }
 //----------------------------
 //用户头像修改 
-message SetUserAvatarReq {
+message SetUserHeadPortraitReq {
     string request_id = 1;
     optional string user_id = 2;
     optional string session_id = 3;
-    bytes avatar = 4;
+    bytes head_portrait = 4;
 }
-message SetUserAvatarRsp {
+message SetUserHeadPortraitRsp {
     string request_id = 1;
     bool success = 2;
     string errmsg = 3; 
@@ -120,13 +120,13 @@ message SetUserNicknameRsp {
 }
 //----------------------------
 //用户签名修改 
-message SetUserDescriptionReq {
+message SetUserSignatureReq {
     string request_id = 1;
     optional string user_id = 2;
     optional string session_id = 3;
-    string description = 4;
+    string signature = 4;
 }
-message SetUserDescriptionRsp {
+message SetUserSignatureRsp {
     string request_id = 1;
     bool success = 2;
     string errmsg = 3; 
@@ -154,8 +154,8 @@ service UserService {
     rpc PhoneRegister(PhoneRegisterReq) returns (PhoneRegisterRsp);
     rpc PhoneLogin(PhoneLoginReq) returns (PhoneLoginRsp);
     rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoRsp);
-    rpc SetUserAvatar(SetUserAvatarReq) returns (SetUserAvatarRsp);
+    rpc SetUserHeadPortrait(SetUserHeadPortraitReq) returns (SetUserHeadPortraitRsp);
     rpc SetUserNickname(SetUserNicknameReq) returns (SetUserNicknameRsp);
-    rpc SetUserDescription(SetUserDescriptionReq) returns (SetUserDescriptionRsp);
+    rpc SetUserDescription(SetUserSignatureReq) returns (SetUserSignatureRsp);
     rpc SetUserPhoneNumber(SetUserPhoneNumberReq) returns (SetUserPhoneNumberRsp);
 }

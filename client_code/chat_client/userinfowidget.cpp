@@ -1,7 +1,11 @@
 #include "userinfowidget.h"
+#include "mainwidget.h"
 
 #include <QGridLayout>
 #include <QPushButton>
+#include <QMessageBox>
+
+#include "model/datacenter.h"
 
 UserInfoWidget::UserInfoWidget(QWidget* parent, const model::UserInfo& userInfo)
     : QDialog(parent),
@@ -97,4 +101,60 @@ UserInfoWidget::UserInfoWidget(QWidget* parent, const model::UserInfo& userInfo)
     layout->addWidget(_applyFriendBtn, 3, 0);
     layout->addWidget(_sendMessageBtn, 3, 1);
     layout->addWidget(_deleteFriendBtn, 3, 2);
+
+    // 判断页面中三个按钮的可用状态
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    model::UserInfo* friendInfo = dataCenter->findFriendById(_userInfo._userId);
+    if(friendInfo == nullptr){
+        // 这个用户不是我的好友
+        _sendMessageBtn->setEnabled(false);
+        _deleteFriendBtn->setEnabled(false);
+    }
+    else{
+        // 是我的好友
+        _applyFriendBtn->setEnabled(false);
+    }
+
+    initSignalSlot();
+}
+
+void UserInfoWidget::initSignalSlot(){
+    // 申请好友按钮的信号槽
+    connect(_applyFriendBtn, &QPushButton::clicked, this, &UserInfoWidget::clickApplyFriendBtn);
+
+    // 发送消息按钮的信号槽
+    connect(_sendMessageBtn, &QPushButton::clicked, this, [=]() {
+        // 直接调用主界面的点击好友的函数就好
+        MainWidget* mainWidget = MainWidget::getInstance();
+        mainWidget->clickFriendInFriendItem(_userInfo._userId);
+
+        // 关闭这个好友详情页面
+        this->close();
+    });
+
+    // 删除好友按钮的信号槽
+    connect(_deleteFriendBtn, &QPushButton::clicked, this, &UserInfoWidget::clickDeleteFriendBtn);
+}
+
+void UserInfoWidget::clickApplyFriendBtn(){
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    dataCenter->addFriendApplyAsync(_userInfo._userId);
+
+    // 关闭这个好友详情页面
+    this->close();
+}
+
+void UserInfoWidget::clickDeleteFriendBtn(){
+    // 弹出对话框, 让用户确认是否真的要删除
+    auto result = QMessageBox::warning(this, "确认删除", "确认删除当前好友?", QMessageBox::Ok | QMessageBox::Cancel);
+    if (result != QMessageBox::Ok) {
+        LOG() << "calcel delete friend";
+        return;
+    }
+
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    dataCenter->deleteFriendAsync(_userInfo._userId);
+
+    // 关闭这个好友详情页面
+    this->close();
 }

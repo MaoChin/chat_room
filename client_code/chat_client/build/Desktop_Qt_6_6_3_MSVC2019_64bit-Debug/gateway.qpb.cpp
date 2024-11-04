@@ -3,7 +3,7 @@
 #include "gateway.qpb.h"
 #include <QtProtobuf/qprotobufserializer.h>
 
-namespace bite_im {
+namespace my_chat_proto {
 
 class ClientAuthenticationReq_QtProtobufData : public QSharedData
 {
@@ -29,7 +29,7 @@ ClientAuthenticationReq::~ClientAuthenticationReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 9> qt_protobuf_ClientAuthenticationReq_uint_data;
-    const char qt_protobuf_ClientAuthenticationReq_char_data[53];
+    const char qt_protobuf_ClientAuthenticationReq_char_data[59];
 } qt_protobuf_ClientAuthenticationReq_metadata {
     // data
     {
@@ -38,14 +38,14 @@ static constexpr struct {
         3, /* = field number offset */
         5, /* = property index offset */
         7, /* = field flags offset */
-        31, /* = message full name length */
+        37, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        32, /* = requestId */
-        42, /* = sessionId */
-        52, /* = end-of-string-marker */
+        38, /* = requestId */
+        48, /* = sessionId */
+        58, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = sessionId */
@@ -58,7 +58,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.ClientAuthenticationReq\0" /* = full message name */
+    "my_chat_proto.ClientAuthenticationReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0sessionId\0"
 };
@@ -167,7 +167,7 @@ ClientAuthenticationRsp::~ClientAuthenticationRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 13> qt_protobuf_ClientAuthenticationRsp_uint_data;
-    const char qt_protobuf_ClientAuthenticationRsp_char_data[58];
+    const char qt_protobuf_ClientAuthenticationRsp_char_data[64];
 } qt_protobuf_ClientAuthenticationRsp_metadata {
     // data
     {
@@ -176,15 +176,15 @@ static constexpr struct {
         4, /* = field number offset */
         7, /* = property index offset */
         10, /* = field flags offset */
-        31, /* = message full name length */
+        37, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        32, /* = requestId */
-        42, /* = success */
-        50, /* = errmsg */
-        57, /* = end-of-string-marker */
+        38, /* = requestId */
+        48, /* = success */
+        56, /* = errmsg */
+        63, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -200,7 +200,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.ClientAuthenticationRsp\0" /* = full message name */
+    "my_chat_proto.ClientAuthenticationRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0"
 };
@@ -295,6 +295,6 @@ void ClientAuthenticationRsp::setErrmsg(const QString &errmsg)
     }
 }
 
-} // namespace bite_im
+} // namespace my_chat_proto
 
 #include "moc_gateway.qpb.cpp"

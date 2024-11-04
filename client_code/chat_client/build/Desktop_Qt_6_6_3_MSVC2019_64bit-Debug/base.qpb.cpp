@@ -3,13 +3,13 @@
 #include "base.qpb.h"
 #include <QtProtobuf/qprotobufserializer.h>
 
-namespace bite_im {
+namespace my_chat_proto {
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarMessageTypeGadget(MessageTypeGadget::registerTypes);
 void MessageTypeGadget::registerTypes()
 {
     qRegisterMetaType<MessageType>();
-    qRegisterMetaType<bite_im::MessageTypeGadget::MessageType>();
-    qRegisterProtobufEnumType<bite_im::MessageTypeGadget::MessageType>();
+    qRegisterMetaType<my_chat_proto::MessageTypeGadget::MessageType>();
+    qRegisterProtobufEnumType<my_chat_proto::MessageTypeGadget::MessageType>();
 }
 
 
@@ -24,17 +24,17 @@ public:
     UserInfo_QtProtobufData(const UserInfo_QtProtobufData &other)
         : QSharedData(other),
           m_userId(other.m_userId),
-          m_nickname(other.m_nickname),
+          m_nickName(other.m_nickName),
           m_personSignature(other.m_personSignature),
-          m_phone(other.m_phone),
+          m_phoneNumber(other.m_phoneNumber),
           m_headPortrait(other.m_headPortrait)
     {
     }
 
     QString m_userId;
-    QString m_nickname;
+    QString m_nickName;
     QString m_personSignature;
-    QString m_phone;
+    QString m_phoneNumber;
     QByteArray m_headPortrait;
 };
 
@@ -43,7 +43,7 @@ UserInfo::~UserInfo() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 21> qt_protobuf_UserInfo_uint_data;
-    const char qt_protobuf_UserInfo_char_data[69];
+    const char qt_protobuf_UserInfo_char_data[81];
 } qt_protobuf_UserInfo_metadata {
     // data
     {
@@ -52,41 +52,41 @@ static constexpr struct {
         6, /* = field number offset */
         11, /* = property index offset */
         16, /* = field flags offset */
-        16, /* = message full name length */
+        22, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        17, /* = userId */
-        24, /* = nickname */
-        33, /* = personSignature */
-        49, /* = phone */
-        55, /* = headPortrait */
-        68, /* = end-of-string-marker */
+        23, /* = userId */
+        30, /* = nickName */
+        39, /* = personSignature */
+        55, /* = phoneNumber */
+        67, /* = headPortrait */
+        80, /* = end-of-string-marker */
         // Field numbers:
         1, /* = userId */
-        2, /* = nickname */
+        2, /* = nickName */
         3, /* = personSignature */
-        4, /* = phone */
+        4, /* = phoneNumber */
         5, /* = headPortrait */
         // Property indices:
         0, /* = userId */
-        1, /* = nickname */
+        1, /* = nickName */
         2, /* = personSignature */
-        3, /* = phone */
+        3, /* = phoneNumber */
         4, /* = headPortrait */
         // Field flags:
         QtProtobufPrivate::NoFlags, /* = userId */
-        QtProtobufPrivate::NoFlags, /* = nickname */
+        QtProtobufPrivate::NoFlags, /* = nickName */
         QtProtobufPrivate::NoFlags, /* = personSignature */
-        QtProtobufPrivate::NoFlags, /* = phone */
+        QtProtobufPrivate::NoFlags, /* = phoneNumber */
         QtProtobufPrivate::NoFlags, /* = headPortrait */
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.UserInfo\0" /* = full message name */
+    "my_chat_proto.UserInfo\0" /* = full message name */
     /* field char_data: */
-    "userId\0nickname\0personSignature\0phone\0headPortrait\0"
+    "userId\0nickName\0personSignature\0phoneNumber\0headPortrait\0"
 };
 
 const QtProtobufPrivate::QProtobufPropertyOrdering UserInfo::propertyOrdering = {
@@ -131,9 +131,9 @@ bool UserInfo::operator ==(const UserInfo &other) const
 {
     return QProtobufMessage::isEqual(*this, other)
         && dptr->m_userId == other.dptr->m_userId
-        && dptr->m_nickname == other.dptr->m_nickname
+        && dptr->m_nickName == other.dptr->m_nickName
         && dptr->m_personSignature == other.dptr->m_personSignature
-        && dptr->m_phone == other.dptr->m_phone
+        && dptr->m_phoneNumber == other.dptr->m_phoneNumber
         && dptr->m_headPortrait == other.dptr->m_headPortrait;
 }
 
@@ -147,9 +147,9 @@ QString UserInfo::userId() const
     return dptr->m_userId;
 }
 
-QString UserInfo::nickname() const
+QString UserInfo::nickName() const
 {
-    return dptr->m_nickname;
+    return dptr->m_nickName;
 }
 
 QString UserInfo::personSignature() const
@@ -157,9 +157,9 @@ QString UserInfo::personSignature() const
     return dptr->m_personSignature;
 }
 
-QString UserInfo::phone() const
+QString UserInfo::phoneNumber() const
 {
-    return dptr->m_phone;
+    return dptr->m_phoneNumber;
 }
 
 QByteArray UserInfo::headPortrait() const
@@ -175,11 +175,11 @@ void UserInfo::setUserId(const QString &userId)
     }
 }
 
-void UserInfo::setNickname(const QString &nickname)
+void UserInfo::setNickName(const QString &nickName)
 {
-    if (dptr->m_nickname != nickname) {
+    if (dptr->m_nickName != nickName) {
         dptr.detach();
-        dptr->m_nickname = nickname;
+        dptr->m_nickName = nickName;
     }
 }
 
@@ -191,11 +191,11 @@ void UserInfo::setPersonSignature(const QString &personSignature)
     }
 }
 
-void UserInfo::setPhone(const QString &phone)
+void UserInfo::setPhoneNumber(const QString &phoneNumber)
 {
-    if (dptr->m_phone != phone) {
+    if (dptr->m_phoneNumber != phoneNumber) {
         dptr.detach();
-        dptr->m_phone = phone;
+        dptr->m_phoneNumber = phoneNumber;
     }
 }
 
@@ -241,7 +241,7 @@ ChatSessionInfo::~ChatSessionInfo() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 21> qt_protobuf_ChatSessionInfo_uint_data;
-    const char qt_protobuf_ChatSessionInfo_char_data[99];
+    const char qt_protobuf_ChatSessionInfo_char_data[105];
 } qt_protobuf_ChatSessionInfo_metadata {
     // data
     {
@@ -250,17 +250,17 @@ static constexpr struct {
         6, /* = field number offset */
         11, /* = property index offset */
         16, /* = field flags offset */
-        23, /* = message full name length */
+        29, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        24, /* = singleChatFriendId */
-        43, /* = chatSessionId */
-        57, /* = chatSessionName */
-        73, /* = prevMessage */
-        85, /* = headPortrait */
-        98, /* = end-of-string-marker */
+        30, /* = singleChatFriendId */
+        49, /* = chatSessionId */
+        63, /* = chatSessionName */
+        79, /* = prevMessage */
+        91, /* = headPortrait */
+        104, /* = end-of-string-marker */
         // Field numbers:
         1, /* = singleChatFriendId */
         2, /* = chatSessionId */
@@ -282,7 +282,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.ChatSessionInfo\0" /* = full message name */
+    "my_chat_proto.ChatSessionInfo\0" /* = full message name */
     /* field char_data: */
     "singleChatFriendId\0chatSessionId\0chatSessionName\0prevMessage\0headPortrait\0"
 };
@@ -416,30 +416,30 @@ void ChatSessionInfo::setHeadPortrait(const QByteArray &headPortrait)
 }
 
 
-class StringMessageInfo_QtProtobufData : public QSharedData
+class TextMessageInfo_QtProtobufData : public QSharedData
 {
 public:
-    StringMessageInfo_QtProtobufData()
+    TextMessageInfo_QtProtobufData()
         : QSharedData()
     {
     }
 
-    StringMessageInfo_QtProtobufData(const StringMessageInfo_QtProtobufData &other)
+    TextMessageInfo_QtProtobufData(const TextMessageInfo_QtProtobufData &other)
         : QSharedData(other),
-          m_content(other.m_content)
+          m_textContent(other.m_textContent)
     {
     }
 
-    QString m_content;
+    QString m_textContent;
 };
 
-StringMessageInfo::~StringMessageInfo() = default;
+TextMessageInfo::~TextMessageInfo() = default;
 
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
-    const std::array<uint, 5> qt_protobuf_StringMessageInfo_uint_data;
-    const char qt_protobuf_StringMessageInfo_char_data[35];
-} qt_protobuf_StringMessageInfo_metadata {
+    const std::array<uint, 5> qt_protobuf_TextMessageInfo_uint_data;
+    const char qt_protobuf_TextMessageInfo_char_data[43];
+} qt_protobuf_TextMessageInfo_metadata {
     // data
     {
         0, /* = version */
@@ -447,86 +447,86 @@ static constexpr struct {
         2, /* = field number offset */
         3, /* = property index offset */
         4, /* = field flags offset */
-        25, /* = message full name length */
+        29, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        26, /* = content */
-        34, /* = end-of-string-marker */
+        30, /* = textContent */
+        42, /* = end-of-string-marker */
         // Field numbers:
-        1, /* = content */
+        1, /* = textContent */
         // Property indices:
-        0, /* = content */
+        0, /* = textContent */
         // Field flags:
-        QtProtobufPrivate::NoFlags, /* = content */
+        QtProtobufPrivate::NoFlags, /* = textContent */
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.StringMessageInfo\0" /* = full message name */
+    "my_chat_proto.TextMessageInfo\0" /* = full message name */
     /* field char_data: */
-    "content\0"
+    "textContent\0"
 };
 
-const QtProtobufPrivate::QProtobufPropertyOrdering StringMessageInfo::propertyOrdering = {
-    &qt_protobuf_StringMessageInfo_metadata.data
+const QtProtobufPrivate::QProtobufPropertyOrdering TextMessageInfo::propertyOrdering = {
+    &qt_protobuf_TextMessageInfo_metadata.data
 };
 
-void StringMessageInfo::registerTypes()
+void TextMessageInfo::registerTypes()
 {
-    qRegisterMetaType<StringMessageInfo>();
-    qRegisterMetaType<StringMessageInfoRepeated>();
+    qRegisterMetaType<TextMessageInfo>();
+    qRegisterMetaType<TextMessageInfoRepeated>();
 }
 
-StringMessageInfo::StringMessageInfo()
-    : QProtobufMessage(&StringMessageInfo::staticMetaObject),
-      dptr(new StringMessageInfo_QtProtobufData)
+TextMessageInfo::TextMessageInfo()
+    : QProtobufMessage(&TextMessageInfo::staticMetaObject),
+      dptr(new TextMessageInfo_QtProtobufData)
 {
 }
 
-StringMessageInfo::StringMessageInfo(const StringMessageInfo &other)
+TextMessageInfo::TextMessageInfo(const TextMessageInfo &other)
     : QProtobufMessage(other),
       dptr(other.dptr)
 {
 }
-StringMessageInfo &StringMessageInfo::operator =(const StringMessageInfo &other)
+TextMessageInfo &TextMessageInfo::operator =(const TextMessageInfo &other)
 {
     QProtobufMessage::operator=(other);
     dptr = other.dptr;
     return *this;
 }
-StringMessageInfo::StringMessageInfo(StringMessageInfo &&other) noexcept
+TextMessageInfo::TextMessageInfo(TextMessageInfo &&other) noexcept
     : QProtobufMessage(std::move(other)),
       dptr(std::move(other.dptr))
 {
 }
-StringMessageInfo &StringMessageInfo::operator =(StringMessageInfo &&other) noexcept
+TextMessageInfo &TextMessageInfo::operator =(TextMessageInfo &&other) noexcept
 {
     QProtobufMessage::operator=(std::move(other));
     dptr.swap(other.dptr);
     return *this;
 }
-bool StringMessageInfo::operator ==(const StringMessageInfo &other) const
+bool TextMessageInfo::operator ==(const TextMessageInfo &other) const
 {
     return QProtobufMessage::isEqual(*this, other)
-        && dptr->m_content == other.dptr->m_content;
+        && dptr->m_textContent == other.dptr->m_textContent;
 }
 
-bool StringMessageInfo::operator !=(const StringMessageInfo &other) const
+bool TextMessageInfo::operator !=(const TextMessageInfo &other) const
 {
     return !this->operator ==(other);
 }
 
-QString StringMessageInfo::content() const
+QString TextMessageInfo::textContent() const
 {
-    return dptr->m_content;
+    return dptr->m_textContent;
 }
 
-void StringMessageInfo::setContent(const QString &content)
+void TextMessageInfo::setTextContent(const QString &textContent)
 {
-    if (dptr->m_content != content) {
+    if (dptr->m_textContent != textContent) {
         dptr.detach();
-        dptr->m_content = content;
+        dptr->m_textContent = textContent;
     }
 }
 
@@ -555,7 +555,7 @@ ImageMessageInfo::~ImageMessageInfo() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 9> qt_protobuf_ImageMessageInfo_uint_data;
-    const char qt_protobuf_ImageMessageInfo_char_data[46];
+    const char qt_protobuf_ImageMessageInfo_char_data[52];
 } qt_protobuf_ImageMessageInfo_metadata {
     // data
     {
@@ -564,14 +564,14 @@ static constexpr struct {
         3, /* = field number offset */
         5, /* = property index offset */
         7, /* = field flags offset */
-        24, /* = message full name length */
+        30, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        25, /* = fileId */
-        32, /* = imageContent */
-        45, /* = end-of-string-marker */
+        31, /* = fileId */
+        38, /* = imageContent */
+        51, /* = end-of-string-marker */
         // Field numbers:
         1, /* = fileId */
         2, /* = imageContent */
@@ -584,7 +584,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.ImageMessageInfo\0" /* = full message name */
+    "my_chat_proto.ImageMessageInfo\0" /* = full message name */
     /* field char_data: */
     "fileId\0imageContent\0"
 };
@@ -693,7 +693,7 @@ FileMessageInfo::~FileMessageInfo() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_FileMessageInfo_uint_data;
-    const char qt_protobuf_FileMessageInfo_char_data[63];
+    const char qt_protobuf_FileMessageInfo_char_data[69];
 } qt_protobuf_FileMessageInfo_metadata {
     // data
     {
@@ -702,16 +702,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        23, /* = message full name length */
+        29, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        24, /* = fileId */
-        31, /* = fileSize */
-        40, /* = fileName */
-        49, /* = fileContents */
-        62, /* = end-of-string-marker */
+        30, /* = fileId */
+        37, /* = fileSize */
+        46, /* = fileName */
+        55, /* = fileContents */
+        68, /* = end-of-string-marker */
         // Field numbers:
         1, /* = fileId */
         2, /* = fileSize */
@@ -730,7 +730,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.FileMessageInfo\0" /* = full message name */
+    "my_chat_proto.FileMessageInfo\0" /* = full message name */
     /* field char_data: */
     "fileId\0fileSize\0fileName\0fileContents\0"
 };
@@ -838,32 +838,32 @@ void FileMessageInfo::setFileContents(const QByteArray &fileContents)
 }
 
 
-class SpeechMessageInfo_QtProtobufData : public QSharedData
+class VoiceMessageInfo_QtProtobufData : public QSharedData
 {
 public:
-    SpeechMessageInfo_QtProtobufData()
+    VoiceMessageInfo_QtProtobufData()
         : QSharedData()
     {
     }
 
-    SpeechMessageInfo_QtProtobufData(const SpeechMessageInfo_QtProtobufData &other)
+    VoiceMessageInfo_QtProtobufData(const VoiceMessageInfo_QtProtobufData &other)
         : QSharedData(other),
           m_fileId(other.m_fileId),
-          m_fileContents(other.m_fileContents)
+          m_voiceContents(other.m_voiceContents)
     {
     }
 
     QString m_fileId;
-    QByteArray m_fileContents;
+    QByteArray m_voiceContents;
 };
 
-SpeechMessageInfo::~SpeechMessageInfo() = default;
+VoiceMessageInfo::~VoiceMessageInfo() = default;
 
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
-    const std::array<uint, 9> qt_protobuf_SpeechMessageInfo_uint_data;
-    const char qt_protobuf_SpeechMessageInfo_char_data[47];
-} qt_protobuf_SpeechMessageInfo_metadata {
+    const std::array<uint, 9> qt_protobuf_VoiceMessageInfo_uint_data;
+    const char qt_protobuf_VoiceMessageInfo_char_data[53];
+} qt_protobuf_VoiceMessageInfo_metadata {
     // data
     {
         0, /* = version */
@@ -871,90 +871,90 @@ static constexpr struct {
         3, /* = field number offset */
         5, /* = property index offset */
         7, /* = field flags offset */
-        25, /* = message full name length */
+        30, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        26, /* = fileId */
-        33, /* = fileContents */
-        46, /* = end-of-string-marker */
+        31, /* = fileId */
+        38, /* = voiceContents */
+        52, /* = end-of-string-marker */
         // Field numbers:
         1, /* = fileId */
-        2, /* = fileContents */
+        2, /* = voiceContents */
         // Property indices:
         0, /* = fileId */
-        1, /* = fileContents */
+        1, /* = voiceContents */
         // Field flags:
         QtProtobufPrivate::NoFlags, /* = fileId */
-        QtProtobufPrivate::NoFlags, /* = fileContents */
+        QtProtobufPrivate::NoFlags, /* = voiceContents */
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.SpeechMessageInfo\0" /* = full message name */
+    "my_chat_proto.VoiceMessageInfo\0" /* = full message name */
     /* field char_data: */
-    "fileId\0fileContents\0"
+    "fileId\0voiceContents\0"
 };
 
-const QtProtobufPrivate::QProtobufPropertyOrdering SpeechMessageInfo::propertyOrdering = {
-    &qt_protobuf_SpeechMessageInfo_metadata.data
+const QtProtobufPrivate::QProtobufPropertyOrdering VoiceMessageInfo::propertyOrdering = {
+    &qt_protobuf_VoiceMessageInfo_metadata.data
 };
 
-void SpeechMessageInfo::registerTypes()
+void VoiceMessageInfo::registerTypes()
 {
-    qRegisterMetaType<SpeechMessageInfo>();
-    qRegisterMetaType<SpeechMessageInfoRepeated>();
+    qRegisterMetaType<VoiceMessageInfo>();
+    qRegisterMetaType<VoiceMessageInfoRepeated>();
 }
 
-SpeechMessageInfo::SpeechMessageInfo()
-    : QProtobufMessage(&SpeechMessageInfo::staticMetaObject),
-      dptr(new SpeechMessageInfo_QtProtobufData)
+VoiceMessageInfo::VoiceMessageInfo()
+    : QProtobufMessage(&VoiceMessageInfo::staticMetaObject),
+      dptr(new VoiceMessageInfo_QtProtobufData)
 {
 }
 
-SpeechMessageInfo::SpeechMessageInfo(const SpeechMessageInfo &other)
+VoiceMessageInfo::VoiceMessageInfo(const VoiceMessageInfo &other)
     : QProtobufMessage(other),
       dptr(other.dptr)
 {
 }
-SpeechMessageInfo &SpeechMessageInfo::operator =(const SpeechMessageInfo &other)
+VoiceMessageInfo &VoiceMessageInfo::operator =(const VoiceMessageInfo &other)
 {
     QProtobufMessage::operator=(other);
     dptr = other.dptr;
     return *this;
 }
-SpeechMessageInfo::SpeechMessageInfo(SpeechMessageInfo &&other) noexcept
+VoiceMessageInfo::VoiceMessageInfo(VoiceMessageInfo &&other) noexcept
     : QProtobufMessage(std::move(other)),
       dptr(std::move(other.dptr))
 {
 }
-SpeechMessageInfo &SpeechMessageInfo::operator =(SpeechMessageInfo &&other) noexcept
+VoiceMessageInfo &VoiceMessageInfo::operator =(VoiceMessageInfo &&other) noexcept
 {
     QProtobufMessage::operator=(std::move(other));
     dptr.swap(other.dptr);
     return *this;
 }
-bool SpeechMessageInfo::operator ==(const SpeechMessageInfo &other) const
+bool VoiceMessageInfo::operator ==(const VoiceMessageInfo &other) const
 {
     return QProtobufMessage::isEqual(*this, other);
 }
 
-bool SpeechMessageInfo::operator !=(const SpeechMessageInfo &other) const
+bool VoiceMessageInfo::operator !=(const VoiceMessageInfo &other) const
 {
     return !this->operator ==(other);
 }
 
-QString SpeechMessageInfo::fileId() const
+QString VoiceMessageInfo::fileId() const
 {
     return dptr->m_fileId;
 }
 
-QByteArray SpeechMessageInfo::fileContents() const
+QByteArray VoiceMessageInfo::voiceContents() const
 {
-    return dptr->m_fileContents;
+    return dptr->m_voiceContents;
 }
 
-void SpeechMessageInfo::setFileId(const QString &fileId)
+void VoiceMessageInfo::setFileId(const QString &fileId)
 {
     if (dptr->m_fileId != fileId) {
         dptr.detach();
@@ -962,11 +962,11 @@ void SpeechMessageInfo::setFileId(const QString &fileId)
     }
 }
 
-void SpeechMessageInfo::setFileContents(const QByteArray &fileContents)
+void VoiceMessageInfo::setVoiceContents(const QByteArray &voiceContents)
 {
-    if (dptr->m_fileContents != fileContents) {
+    if (dptr->m_voiceContents != voiceContents) {
         dptr.detach();
-        dptr->m_fileContents = fileContents;
+        dptr->m_voiceContents = voiceContents;
     }
 }
 
@@ -976,7 +976,7 @@ class MessageContent_QtProtobufData : public QSharedData
 public:
     MessageContent_QtProtobufData()
         : QSharedData(),
-          m_messageType(MessageTypeGadget::MessageType::STRING)
+          m_messageType(MessageTypeGadget::MessageType::TEXT)
     {
     }
 
@@ -996,7 +996,7 @@ MessageContent::~MessageContent() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 21> qt_protobuf_MessageContent_uint_data;
-    const char qt_protobuf_MessageContent_char_data[89];
+    const char qt_protobuf_MessageContent_char_data[92];
 } qt_protobuf_MessageContent_metadata {
     // data
     {
@@ -1005,41 +1005,41 @@ static constexpr struct {
         6, /* = field number offset */
         11, /* = property index offset */
         16, /* = field flags offset */
-        22, /* = message full name length */
+        28, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        23, /* = messageType */
-        35, /* = stringMessage */
-        49, /* = fileMessage */
-        61, /* = speechMessage */
-        75, /* = imageMessage */
-        88, /* = end-of-string-marker */
+        29, /* = messageType */
+        41, /* = textMessage */
+        53, /* = fileMessage */
+        65, /* = voiceMessage */
+        78, /* = imageMessage */
+        91, /* = end-of-string-marker */
         // Field numbers:
         1, /* = messageType */
-        2, /* = stringMessage */
+        2, /* = textMessage */
         3, /* = fileMessage */
-        4, /* = speechMessage */
+        4, /* = voiceMessage */
         5, /* = imageMessage */
         // Property indices:
         0, /* = messageType */
-        1, /* = stringMessage */
+        1, /* = textMessage */
         3, /* = fileMessage */
-        5, /* = speechMessage */
+        5, /* = voiceMessage */
         7, /* = imageMessage */
         // Field flags:
         QtProtobufPrivate::NoFlags, /* = messageType */
-        QtProtobufPrivate::Oneof, /* = stringMessage */
+        QtProtobufPrivate::Oneof, /* = textMessage */
         QtProtobufPrivate::Oneof, /* = fileMessage */
-        QtProtobufPrivate::Oneof, /* = speechMessage */
+        QtProtobufPrivate::Oneof, /* = voiceMessage */
         QtProtobufPrivate::Oneof, /* = imageMessage */
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.MessageContent\0" /* = full message name */
+    "my_chat_proto.MessageContent\0" /* = full message name */
     /* field char_data: */
-    "messageType\0stringMessage\0fileMessage\0speechMessage\0imageMessage\0"
+    "messageType\0textMessage\0fileMessage\0voiceMessage\0imageMessage\0"
 };
 
 const QtProtobufPrivate::QProtobufPropertyOrdering MessageContent::propertyOrdering = {
@@ -1097,20 +1097,20 @@ MessageTypeGadget::MessageType MessageContent::messageType() const
     return dptr->m_messageType;
 }
 
-StringMessageInfo *MessageContent::stringMessage_p() const
+TextMessageInfo *MessageContent::textMessage_p() const
 {
     return dptr->m_msg_content.holdsField(2) ?
-        dptr->m_msg_content.value<StringMessageInfo>() : nullptr;
+        dptr->m_msg_content.value<TextMessageInfo>() : nullptr;
 }
 
-bool MessageContent::hasStringMessage() const
+bool MessageContent::hasTextMessage() const
 {
     return dptr->m_msg_content.holdsField(2);
 }
-StringMessageInfo &MessageContent::stringMessage() const
+TextMessageInfo &MessageContent::textMessage() const
 {
     Q_ASSERT(dptr->m_msg_content.holdsField(2));
-    return *(dptr->m_msg_content.value<StringMessageInfo>());
+    return *(dptr->m_msg_content.value<TextMessageInfo>());
 }
 
 FileMessageInfo *MessageContent::fileMessage_p() const
@@ -1129,20 +1129,20 @@ FileMessageInfo &MessageContent::fileMessage() const
     return *(dptr->m_msg_content.value<FileMessageInfo>());
 }
 
-SpeechMessageInfo *MessageContent::speechMessage_p() const
+VoiceMessageInfo *MessageContent::voiceMessage_p() const
 {
     return dptr->m_msg_content.holdsField(4) ?
-        dptr->m_msg_content.value<SpeechMessageInfo>() : nullptr;
+        dptr->m_msg_content.value<VoiceMessageInfo>() : nullptr;
 }
 
-bool MessageContent::hasSpeechMessage() const
+bool MessageContent::hasVoiceMessage() const
 {
     return dptr->m_msg_content.holdsField(4);
 }
-SpeechMessageInfo &MessageContent::speechMessage() const
+VoiceMessageInfo &MessageContent::voiceMessage() const
 {
     Q_ASSERT(dptr->m_msg_content.holdsField(4));
-    return *(dptr->m_msg_content.value<SpeechMessageInfo>());
+    return *(dptr->m_msg_content.value<VoiceMessageInfo>());
 }
 
 ImageMessageInfo *MessageContent::imageMessage_p() const
@@ -1169,22 +1169,22 @@ void MessageContent::setMessageType(const MessageTypeGadget::MessageType &messag
     }
 }
 
-void MessageContent::setStringMessage(const StringMessageInfo &stringMessage)
+void MessageContent::setTextMessage(const TextMessageInfo &textMessage)
 {
-    if (!dptr->m_msg_content.isEqual(stringMessage, 2)) {
+    if (!dptr->m_msg_content.isEqual(textMessage, 2)) {
         dptr.detach();
-        dptr->m_msg_content.setValue(stringMessage, 2);
+        dptr->m_msg_content.setValue(textMessage, 2);
     }
 }
 
-void MessageContent::setStringMessage_p(StringMessageInfo *stringMessage)
+void MessageContent::setTextMessage_p(TextMessageInfo *textMessage)
 {
-    const StringMessageInfo &value = *stringMessage;
+    const TextMessageInfo &value = *textMessage;
     if (!dptr->m_msg_content.isEqual(value, 2)) {
         dptr.detach();
         dptr->m_msg_content.setValue(value, 2);
     }
-    delete stringMessage;
+    delete textMessage;
 }
 
 void MessageContent::setFileMessage(const FileMessageInfo &fileMessage)
@@ -1205,22 +1205,22 @@ void MessageContent::setFileMessage_p(FileMessageInfo *fileMessage)
     delete fileMessage;
 }
 
-void MessageContent::setSpeechMessage(const SpeechMessageInfo &speechMessage)
+void MessageContent::setVoiceMessage(const VoiceMessageInfo &voiceMessage)
 {
-    if (!dptr->m_msg_content.isEqual(speechMessage, 4)) {
+    if (!dptr->m_msg_content.isEqual(voiceMessage, 4)) {
         dptr.detach();
-        dptr->m_msg_content.setValue(speechMessage, 4);
+        dptr->m_msg_content.setValue(voiceMessage, 4);
     }
 }
 
-void MessageContent::setSpeechMessage_p(SpeechMessageInfo *speechMessage)
+void MessageContent::setVoiceMessage_p(VoiceMessageInfo *voiceMessage)
 {
-    const SpeechMessageInfo &value = *speechMessage;
+    const VoiceMessageInfo &value = *voiceMessage;
     if (!dptr->m_msg_content.isEqual(value, 4)) {
         dptr.detach();
         dptr->m_msg_content.setValue(value, 4);
     }
-    delete speechMessage;
+    delete voiceMessage;
 }
 
 void MessageContent::setImageMessage(const ImageMessageInfo &imageMessage)
@@ -1290,7 +1290,7 @@ MessageInfo::~MessageInfo() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 21> qt_protobuf_MessageInfo_uint_data;
-    const char qt_protobuf_MessageInfo_char_data[70];
+    const char qt_protobuf_MessageInfo_char_data[76];
 } qt_protobuf_MessageInfo_metadata {
     // data
     {
@@ -1299,17 +1299,17 @@ static constexpr struct {
         6, /* = field number offset */
         11, /* = property index offset */
         16, /* = field flags offset */
-        19, /* = message full name length */
+        25, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        20, /* = messageId */
-        30, /* = chatSessionId */
-        44, /* = timestamp */
-        54, /* = sender */
-        61, /* = message */
-        69, /* = end-of-string-marker */
+        26, /* = messageId */
+        36, /* = chatSessionId */
+        50, /* = timestamp */
+        60, /* = sender */
+        67, /* = message */
+        75, /* = end-of-string-marker */
         // Field numbers:
         1, /* = messageId */
         2, /* = chatSessionId */
@@ -1331,7 +1331,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.MessageInfo\0" /* = full message name */
+    "my_chat_proto.MessageInfo\0" /* = full message name */
     /* field char_data: */
     "messageId\0chatSessionId\0timestamp\0sender\0message\0"
 };
@@ -1510,7 +1510,7 @@ Message::~Message() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 9> qt_protobuf_Message_uint_data;
-    const char qt_protobuf_Message_char_data[35];
+    const char qt_protobuf_Message_char_data[41];
 } qt_protobuf_Message_metadata {
     // data
     {
@@ -1519,14 +1519,14 @@ static constexpr struct {
         3, /* = field number offset */
         5, /* = property index offset */
         7, /* = field flags offset */
-        15, /* = message full name length */
+        21, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        16, /* = requestId */
-        26, /* = message */
-        34, /* = end-of-string-marker */
+        22, /* = requestId */
+        32, /* = message */
+        40, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = message */
@@ -1539,7 +1539,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.Message\0" /* = full message name */
+    "my_chat_proto.Message\0" /* = full message name */
     /* field char_data: */
     "requestId\0message\0"
 };
@@ -1659,7 +1659,7 @@ FileDownloadData::~FileDownloadData() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 9> qt_protobuf_FileDownloadData_uint_data;
-    const char qt_protobuf_FileDownloadData_char_data[45];
+    const char qt_protobuf_FileDownloadData_char_data[51];
 } qt_protobuf_FileDownloadData_metadata {
     // data
     {
@@ -1668,14 +1668,14 @@ static constexpr struct {
         3, /* = field number offset */
         5, /* = property index offset */
         7, /* = field flags offset */
-        24, /* = message full name length */
+        30, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        25, /* = fileId */
-        32, /* = fileContent */
-        44, /* = end-of-string-marker */
+        31, /* = fileId */
+        38, /* = fileContent */
+        50, /* = end-of-string-marker */
         // Field numbers:
         1, /* = fileId */
         2, /* = fileContent */
@@ -1688,7 +1688,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.FileDownloadData\0" /* = full message name */
+    "my_chat_proto.FileDownloadData\0" /* = full message name */
     /* field char_data: */
     "fileId\0fileContent\0"
 };
@@ -1797,7 +1797,7 @@ FileUploadData::~FileUploadData() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 13> qt_protobuf_FileUploadData_uint_data;
-    const char qt_protobuf_FileUploadData_char_data[54];
+    const char qt_protobuf_FileUploadData_char_data[60];
 } qt_protobuf_FileUploadData_metadata {
     // data
     {
@@ -1806,15 +1806,15 @@ static constexpr struct {
         4, /* = field number offset */
         7, /* = property index offset */
         10, /* = field flags offset */
-        22, /* = message full name length */
+        28, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        23, /* = fileName */
-        32, /* = fileSize */
-        41, /* = fileContent */
-        53, /* = end-of-string-marker */
+        29, /* = fileName */
+        38, /* = fileSize */
+        47, /* = fileContent */
+        59, /* = end-of-string-marker */
         // Field numbers:
         1, /* = fileName */
         2, /* = fileSize */
@@ -1830,7 +1830,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.FileUploadData\0" /* = full message name */
+    "my_chat_proto.FileUploadData\0" /* = full message name */
     /* field char_data: */
     "fileName\0fileSize\0fileContent\0"
 };
@@ -1925,6 +1925,6 @@ void FileUploadData::setFileContent(const QByteArray &fileContent)
     }
 }
 
-} // namespace bite_im
+} // namespace my_chat_proto
 
 #include "moc_base.qpb.cpp"

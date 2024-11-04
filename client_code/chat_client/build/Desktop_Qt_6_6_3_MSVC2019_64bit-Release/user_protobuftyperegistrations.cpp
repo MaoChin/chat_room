@@ -14,12 +14,12 @@ static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarPhoneLoginReq(qRegisterP
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarPhoneLoginRsp(qRegisterProtobufType<PhoneLoginRsp>);
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarGetUserInfoReq(qRegisterProtobufType<GetUserInfoReq>);
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarGetUserInfoRsp(qRegisterProtobufType<GetUserInfoRsp>);
-static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarSetUserAvatarReq(qRegisterProtobufType<SetUserAvatarReq>);
-static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarSetUserAvatarRsp(qRegisterProtobufType<SetUserAvatarRsp>);
+static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarSetUserHeadPortraitReq(qRegisterProtobufType<SetUserHeadPortraitReq>);
+static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarSetUserHeadPortraitRsp(qRegisterProtobufType<SetUserHeadPortraitRsp>);
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarSetUserNicknameReq(qRegisterProtobufType<SetUserNicknameReq>);
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarSetUserNicknameRsp(qRegisterProtobufType<SetUserNicknameRsp>);
-static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarSetUserDescriptionReq(qRegisterProtobufType<SetUserDescriptionReq>);
-static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarSetUserDescriptionRsp(qRegisterProtobufType<SetUserDescriptionRsp>);
+static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarSetUserSignatureReq(qRegisterProtobufType<SetUserSignatureReq>);
+static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarSetUserSignatureRsp(qRegisterProtobufType<SetUserSignatureRsp>);
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarSetUserPhoneNumberReq(qRegisterProtobufType<SetUserPhoneNumberReq>);
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarSetUserPhoneNumberRsp(qRegisterProtobufType<SetUserPhoneNumberRsp>);
 static bool RegisterUserProtobufTypes = [](){ qRegisterProtobufTypes(); return true; }();

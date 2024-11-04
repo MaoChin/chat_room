@@ -3,7 +3,7 @@
 #include "file.qpb.h"
 #include <QtProtobuf/qprotobufserializer.h>
 
-namespace bite_im {
+namespace my_chat_proto {
 
 class GetSingleFileReq_QtProtobufData : public QSharedData
 {
@@ -33,7 +33,7 @@ GetSingleFileReq::~GetSingleFileReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_GetSingleFileReq_uint_data;
-    const char qt_protobuf_GetSingleFileReq_char_data[60];
+    const char qt_protobuf_GetSingleFileReq_char_data[66];
 } qt_protobuf_GetSingleFileReq_metadata {
     // data
     {
@@ -42,16 +42,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        24, /* = message full name length */
+        30, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        25, /* = requestId */
-        35, /* = fileId */
-        42, /* = userId */
-        49, /* = sessionId */
-        59, /* = end-of-string-marker */
+        31, /* = requestId */
+        41, /* = fileId */
+        48, /* = userId */
+        55, /* = sessionId */
+        65, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = fileId */
@@ -70,7 +70,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetSingleFileReq\0" /* = full message name */
+    "my_chat_proto.GetSingleFileReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0fileId\0userId\0sessionId\0"
 };
@@ -210,7 +210,7 @@ GetSingleFileRsp::~GetSingleFileRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_GetSingleFileRsp_uint_data;
-    const char qt_protobuf_GetSingleFileRsp_char_data[60];
+    const char qt_protobuf_GetSingleFileRsp_char_data[66];
 } qt_protobuf_GetSingleFileRsp_metadata {
     // data
     {
@@ -219,16 +219,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        24, /* = message full name length */
+        30, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        25, /* = requestId */
-        35, /* = success */
-        43, /* = errmsg */
-        50, /* = fileData */
-        59, /* = end-of-string-marker */
+        31, /* = requestId */
+        41, /* = success */
+        49, /* = errmsg */
+        56, /* = fileData */
+        65, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -247,7 +247,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetSingleFileRsp\0" /* = full message name */
+    "my_chat_proto.GetSingleFileRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0fileData\0"
 };
@@ -399,7 +399,7 @@ GetMultiFileReq::~GetMultiFileReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_GetMultiFileReq_uint_data;
-    const char qt_protobuf_GetMultiFileReq_char_data[63];
+    const char qt_protobuf_GetMultiFileReq_char_data[69];
 } qt_protobuf_GetMultiFileReq_metadata {
     // data
     {
@@ -408,16 +408,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        23, /* = message full name length */
+        29, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        24, /* = requestId */
-        34, /* = userId */
-        41, /* = sessionId */
-        51, /* = fileIdList */
-        62, /* = end-of-string-marker */
+        30, /* = requestId */
+        40, /* = userId */
+        47, /* = sessionId */
+        57, /* = fileIdList */
+        68, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = userId */
@@ -436,7 +436,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetMultiFileReq\0" /* = full message name */
+    "my_chat_proto.GetMultiFileReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0userId\0sessionId\0fileIdList\0"
 };
@@ -579,7 +579,7 @@ GetMultiFileRsp::~GetMultiFileRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_GetMultiFileRsp_uint_data;
-    const char qt_protobuf_GetMultiFileRsp_char_data[59];
+    const char qt_protobuf_GetMultiFileRsp_char_data[65];
 } qt_protobuf_GetMultiFileRsp_metadata {
     // data
     {
@@ -588,16 +588,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        23, /* = message full name length */
+        29, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        24, /* = requestId */
-        34, /* = success */
-        42, /* = errmsg */
-        49, /* = fileData */
-        58, /* = end-of-string-marker */
+        30, /* = requestId */
+        40, /* = success */
+        48, /* = errmsg */
+        55, /* = fileData */
+        64, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -616,7 +616,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetMultiFileRsp\0" /* = full message name */
+    "my_chat_proto.GetMultiFileRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0fileData\0"
 };
@@ -763,7 +763,7 @@ PutSingleFileReq::~PutSingleFileReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_PutSingleFileReq_uint_data;
-    const char qt_protobuf_PutSingleFileReq_char_data[62];
+    const char qt_protobuf_PutSingleFileReq_char_data[68];
 } qt_protobuf_PutSingleFileReq_metadata {
     // data
     {
@@ -772,16 +772,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        24, /* = message full name length */
+        30, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        25, /* = requestId */
-        35, /* = userId */
-        42, /* = sessionId */
-        52, /* = fileData */
-        61, /* = end-of-string-marker */
+        31, /* = requestId */
+        41, /* = userId */
+        48, /* = sessionId */
+        58, /* = fileData */
+        67, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = userId */
@@ -800,7 +800,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.PutSingleFileReq\0" /* = full message name */
+    "my_chat_proto.PutSingleFileReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0userId\0sessionId\0fileData\0"
 };
@@ -954,7 +954,7 @@ PutSingleFileRsp::~PutSingleFileRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_PutSingleFileRsp_uint_data;
-    const char qt_protobuf_PutSingleFileRsp_char_data[60];
+    const char qt_protobuf_PutSingleFileRsp_char_data[66];
 } qt_protobuf_PutSingleFileRsp_metadata {
     // data
     {
@@ -963,16 +963,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        24, /* = message full name length */
+        30, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        25, /* = requestId */
-        35, /* = success */
-        43, /* = errmsg */
-        50, /* = fileInfo */
-        59, /* = end-of-string-marker */
+        31, /* = requestId */
+        41, /* = success */
+        49, /* = errmsg */
+        56, /* = fileInfo */
+        65, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -991,7 +991,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.PutSingleFileRsp\0" /* = full message name */
+    "my_chat_proto.PutSingleFileRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0fileInfo\0"
 };
@@ -1143,7 +1143,7 @@ PutMultiFileReq::~PutMultiFileReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_PutMultiFileReq_uint_data;
-    const char qt_protobuf_PutMultiFileReq_char_data[61];
+    const char qt_protobuf_PutMultiFileReq_char_data[67];
 } qt_protobuf_PutMultiFileReq_metadata {
     // data
     {
@@ -1152,16 +1152,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        23, /* = message full name length */
+        29, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        24, /* = requestId */
-        34, /* = userId */
-        41, /* = sessionId */
-        51, /* = fileData */
-        60, /* = end-of-string-marker */
+        30, /* = requestId */
+        40, /* = userId */
+        47, /* = sessionId */
+        57, /* = fileData */
+        66, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = userId */
@@ -1180,7 +1180,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.PutMultiFileReq\0" /* = full message name */
+    "my_chat_proto.PutMultiFileReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0userId\0sessionId\0fileData\0"
 };
@@ -1323,7 +1323,7 @@ PutMultiFileRsp::~PutMultiFileRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_PutMultiFileRsp_uint_data;
-    const char qt_protobuf_PutMultiFileRsp_char_data[59];
+    const char qt_protobuf_PutMultiFileRsp_char_data[65];
 } qt_protobuf_PutMultiFileRsp_metadata {
     // data
     {
@@ -1332,16 +1332,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        23, /* = message full name length */
+        29, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        24, /* = requestId */
-        34, /* = success */
-        42, /* = errmsg */
-        49, /* = fileInfo */
-        58, /* = end-of-string-marker */
+        30, /* = requestId */
+        40, /* = success */
+        48, /* = errmsg */
+        55, /* = fileInfo */
+        64, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -1360,7 +1360,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.PutMultiFileRsp\0" /* = full message name */
+    "my_chat_proto.PutMultiFileRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0fileInfo\0"
 };
@@ -1475,6 +1475,6 @@ void PutMultiFileRsp::setFileInfo(const FileMessageInfoRepeated &fileInfo)
     }
 }
 
-} // namespace bite_im
+} // namespace my_chat_proto
 
 #include "moc_file.qpb.cpp"

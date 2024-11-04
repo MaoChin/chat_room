@@ -35,7 +35,7 @@ class NewMessageReq : public QProtobufMessage
     Q_DECLARE_PROTOBUF_SERIALIZERS(NewMessageReq)
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(QString userId READ userId WRITE setUserId SCRIPTABLE true)
-    Q_PROPERTY(QString sessionId READ sessionId WRITE setSessionId SCRIPTABLE true)
+    Q_PROPERTY(QString loginSessionId READ loginSessionId WRITE setLoginSessionId SCRIPTABLE true)
     Q_PROPERTY(QString chatSessionId READ chatSessionId WRITE setChatSessionId SCRIPTABLE true)
     Q_PROPERTY(my_chat_proto::MessageContent *message_p READ message_p WRITE setMessage_p SCRIPTABLE false)
 
@@ -43,7 +43,7 @@ public:
     enum QtProtobufFieldEnum {
         RequestIdProtoFieldNumber = 1,
         UserIdProtoFieldNumber = 2,
-        SessionIdProtoFieldNumber = 3,
+        LoginSessionIdProtoFieldNumber = 3,
         ChatSessionIdProtoFieldNumber = 4,
         MessageProtoFieldNumber = 5,
     };
@@ -62,14 +62,14 @@ public:
 
     QString userId() const;
 
-    QString sessionId() const;
+    QString loginSessionId() const;
 
     QString chatSessionId() const;
 
     MessageContent &message() const;
     void setRequestId(const QString &requestId);
     void setUserId(const QString &userId);
-    void setSessionId(const QString &sessionId);
+    void setLoginSessionId(const QString &loginSessionId);
     void setChatSessionId(const QString &chatSessionId);
     void setMessage(const MessageContent &message);
     static void registerTypes();

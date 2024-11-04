@@ -17,7 +17,7 @@
 #include <memory>
 
 
-namespace bite_im {
+namespace my_chat_proto {
 class ClientAuthenticationReq;
 using ClientAuthenticationReqRepeated = QList<ClientAuthenticationReq>;
 class ClientAuthenticationRsp;
@@ -99,8 +99,8 @@ public:
 private:
     QExplicitlySharedDataPointer<ClientAuthenticationRsp_QtProtobufData> dptr;
 };
-} // namespace bite_im
+} // namespace my_chat_proto
 
-Q_DECLARE_METATYPE(bite_im::ClientAuthenticationReq)
-Q_DECLARE_METATYPE(bite_im::ClientAuthenticationRsp)
+Q_DECLARE_METATYPE(my_chat_proto::ClientAuthenticationReq)
+Q_DECLARE_METATYPE(my_chat_proto::ClientAuthenticationRsp)
 #endif // QPROTOBUF_GATEWAY_H

@@ -19,7 +19,7 @@
 #include <memory>
 
 
-namespace bite_im {
+namespace my_chat_proto {
 class NewMessageReq;
 using NewMessageReqRepeated = QList<NewMessageReq>;
 class NewMessageRsp;
@@ -35,15 +35,15 @@ class NewMessageReq : public QProtobufMessage
     Q_DECLARE_PROTOBUF_SERIALIZERS(NewMessageReq)
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(QString userId READ userId WRITE setUserId SCRIPTABLE true)
-    Q_PROPERTY(QString sessionId READ sessionId WRITE setSessionId SCRIPTABLE true)
+    Q_PROPERTY(QString loginSessionId READ loginSessionId WRITE setLoginSessionId SCRIPTABLE true)
     Q_PROPERTY(QString chatSessionId READ chatSessionId WRITE setChatSessionId SCRIPTABLE true)
-    Q_PROPERTY(bite_im::MessageContent *message_p READ message_p WRITE setMessage_p SCRIPTABLE false)
+    Q_PROPERTY(my_chat_proto::MessageContent *message_p READ message_p WRITE setMessage_p SCRIPTABLE false)
 
 public:
     enum QtProtobufFieldEnum {
         RequestIdProtoFieldNumber = 1,
         UserIdProtoFieldNumber = 2,
-        SessionIdProtoFieldNumber = 3,
+        LoginSessionIdProtoFieldNumber = 3,
         ChatSessionIdProtoFieldNumber = 4,
         MessageProtoFieldNumber = 5,
     };
@@ -62,14 +62,14 @@ public:
 
     QString userId() const;
 
-    QString sessionId() const;
+    QString loginSessionId() const;
 
     QString chatSessionId() const;
 
     MessageContent &message() const;
     void setRequestId(const QString &requestId);
     void setUserId(const QString &userId);
-    void setSessionId(const QString &sessionId);
+    void setLoginSessionId(const QString &loginSessionId);
     void setChatSessionId(const QString &chatSessionId);
     void setMessage(const MessageContent &message);
     static void registerTypes();
@@ -130,7 +130,7 @@ class GetTransmitTargetRsp : public QProtobufMessage
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(bool success READ success WRITE setSuccess SCRIPTABLE true)
     Q_PROPERTY(QString errmsg READ errmsg WRITE setErrmsg SCRIPTABLE true)
-    Q_PROPERTY(bite_im::MessageInfo *message_p READ message_p WRITE setMessage_p SCRIPTABLE false)
+    Q_PROPERTY(my_chat_proto::MessageInfo *message_p READ message_p WRITE setMessage_p SCRIPTABLE false)
     Q_PROPERTY(QStringList targetIdList READ targetIdList WRITE setTargetIdList SCRIPTABLE true)
 
 public:
@@ -174,9 +174,9 @@ private:
     void setMessage_p(MessageInfo *message);
     QExplicitlySharedDataPointer<GetTransmitTargetRsp_QtProtobufData> dptr;
 };
-} // namespace bite_im
+} // namespace my_chat_proto
 
-Q_DECLARE_METATYPE(bite_im::NewMessageReq)
-Q_DECLARE_METATYPE(bite_im::NewMessageRsp)
-Q_DECLARE_METATYPE(bite_im::GetTransmitTargetRsp)
+Q_DECLARE_METATYPE(my_chat_proto::NewMessageReq)
+Q_DECLARE_METATYPE(my_chat_proto::NewMessageRsp)
+Q_DECLARE_METATYPE(my_chat_proto::GetTransmitTargetRsp)
 #endif // QPROTOBUF_MESSAGE_TRANSMIT_H

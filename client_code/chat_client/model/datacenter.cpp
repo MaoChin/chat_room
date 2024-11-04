@@ -138,6 +138,98 @@ void DataCenter::setMyself(std::shared_ptr<my_chat_proto::GetUserInfoRsp> respOb
     _myself->load(respObj->userInfo());
 }
 
+void DataCenter::deleteFriendById(const QString &friendId){
+    // 删除好友时也要把对应的会话给删了（单聊会话）
+    if(_friendUserList == nullptr || _chatSessionList == nullptr){
+        return;
+    }
+
+    // 使用这个删除接口！参数是 lambda表达式
+    _friendUserList->removeIf([=](const UserInfo& userInfo) {
+        // true表示删除！
+        return userInfo._userId == friendId;
+    });
+
+    // 删除单聊会话
+    _chatSessionList->removeIf([=](const ChatSessionInfo& chatSessionInfo) {
+        if(chatSessionInfo._userId == ""){
+            // 群聊
+            return false;
+        }
+        if(chatSessionInfo._userId != friendId){
+            return false;
+        }
+        // 如果要删除的会话是当前选中的会话，还要清空右侧显示界面
+        if(chatSessionInfo._chatSessionId == this->_currentChatSessionId){
+            // 通过信号实现
+            emit this->clearCurChatSession();
+        }
+        return true;
+    });
+}
+
+UserInfo DataCenter::deleteFromApplyUserList(const QString &friendId){
+    if(_applyUserList == nullptr){
+        return UserInfo();
+    }
+
+    for(auto it = _applyUserList->begin(); it != _applyUserList->end(); ++it){
+        if(it->_userId == friendId){
+            UserInfo newFriendInfo = *it;
+            _applyUserList->erase(it);
+            return newFriendInfo;
+        }
+    }
+    return UserInfo();
+}
+
+ChatSessionInfo *DataCenter::getChatSessionInfo(const QString &chatSessionId){
+    if(_chatSessionList == nullptr){
+        return nullptr;
+    }
+    for(auto& chatSession : *_chatSessionList){
+        if(chatSession._chatSessionId == chatSessionId){
+            return &chatSession;
+        }
+    }
+    return nullptr;
+}
+
+ChatSessionInfo *DataCenter::getChatSessionInfoByUserId(const QString &userId){
+    if(_chatSessionList == nullptr){
+        return nullptr;
+    }
+    for(auto& chatSession : *_chatSessionList){
+        if(chatSession._userId == userId){
+            return &chatSession;
+        }
+    }
+    return nullptr;
+}
+
+void DataCenter::topChatSession(const ChatSessionInfo &chatSessionInfo){
+    if(_chatSessionList == nullptr){
+        return;
+    }
+    auto it = _chatSessionList->begin();
+    for(; it != _chatSessionList->end(); ++it){
+        if(it->_chatSessionId == chatSessionInfo._chatSessionId){
+            break;
+        }
+    }
+    if(it != _chatSessionList->end()){
+        // 保存一下
+        ChatSessionInfo tmp = chatSessionInfo;
+        _chatSessionList->erase(it);
+        _chatSessionList->push_front(tmp);
+    }
+}
+
+void DataCenter::addChatSessionMessage(const MessageInfo &messageInfo){
+    QList<MessageInfo>& messageList = (*_chatSessionToPrevMessage)[messageInfo._chatSessionId];
+    messageList.push_back(messageInfo);
+}
+
 void DataCenter::getFriendUserListAsync(){
     // 一样的抛给NitClient
     _netClient.getFriendUserList(_loginSessionId);
@@ -195,5 +287,166 @@ void DataCenter::setApplyUserList(std::shared_ptr<my_chat_proto::GetPendingFrien
     }
 }
 
+void DataCenter::getChatSessionRecentMessageAsync(const QString &chatSessionId, bool updateUI){
+    _netClient.getChatSessionRecentMessage(_loginSessionId, chatSessionId, updateUI);
+}
+
+void DataCenter::setChatSessionRecentMessage(const QString &chatSessionId, std::shared_ptr<my_chat_proto::GetRecentMsgRsp> respObj){
+    QList<MessageInfo>& messageList = (*_chatSessionToPrevMessage)[chatSessionId];
+    messageList.clear();
+    for(auto& elem : respObj->msgList()){
+        MessageInfo message;
+        message.load(elem);
+        messageList.push_back(message);
+    }
+}
+
+void DataCenter::sendTextMessageAsync(const QString &chatSessionId, const QString &content){
+    // 网络统一发送所有类型的数据，所以要传数据类型，最后把文本消息转成 QByteArray 类型
+    _netClient.sendMessage(_loginSessionId, chatSessionId, model::MessageType::TEXT_TYPE, content.toUtf8(), "");
+}
+
+void DataCenter::sendImageMessageAsync(const QString &chatSessionId, const QByteArray &content){
+    // 网络统一发送所有类型的数据，所以要传数据类型
+    _netClient.sendMessage(_loginSessionId, chatSessionId, model::MessageType::IMAGE_TYPE, content, "");
+}
+
+void DataCenter::sendFileMessageAsync(const QString &chatSessionId, const QString &fileName, const QByteArray &content){
+    // 网络统一发送所有类型的数据，所以要传数据类型
+    _netClient.sendMessage(_loginSessionId, chatSessionId, model::MessageType::FILE_TYPE, content, fileName);
+}
+
+void DataCenter::sendVoiceMessageAsync(const QString &chatSessionId, const QByteArray &content){
+    // 网络统一发送所有类型的数据，所以要传数据类型
+    _netClient.sendMessage(_loginSessionId, chatSessionId, model::MessageType::VOICE_TYPE, content, "");
+}
+
+void DataCenter::modifyNickNameAsync(const QString &newNickName){
+    _netClient.modifyNickName(_loginSessionId, newNickName);
+}
+
+void DataCenter::modifyPersonalSignatureAsync(const QString &newPersonalSignature){
+    _netClient.modifyPersonalSignature(_loginSessionId, newPersonalSignature);
+}
+
+void DataCenter::getPhoneVerifyCodeAsync(const QString &phoneNum){
+    // 这里不传 loginSessionId，为了兼容手机号注册登录！
+    _netClient.getPhoneVerifyCode(phoneNum);
+}
+
+void DataCenter::modifyPhoneNumAsync(const QString &newPhoneNum, const QString& verifyCodeId,
+                                     const QString& verifyCode){
+    _netClient.modifyPhoneNum(_loginSessionId, newPhoneNum, verifyCodeId, verifyCode);
+}
+
+void DataCenter::modifyHeadPortraitAsync(const QByteArray &newHeadPortraitBytes){
+    _netClient.modifyHeadPortrait(_loginSessionId, newHeadPortraitBytes);
+}
+
+void DataCenter::addFriendApplyAsync(const QString &friendId){
+    _netClient.addFriendApply(_loginSessionId, friendId);
+}
+
+void DataCenter::deleteFriendAsync(const QString &friendId){
+    _netClient.deleteFriend(_loginSessionId, friendId);
+}
+
+void DataCenter::acceptAddFriendApplyAsync(const QString &friendId){
+    _netClient.acceptAddFriendApply(_loginSessionId, friendId);
+}
+
+void DataCenter::refuseAddFriendApplyAsync(const QString &friendId){
+    _netClient.refuseAddFriendApply(_loginSessionId, friendId);
+}
+
+void DataCenter::createGroupChatSessionAsync(const QList<QString> &groupSessionIdList){
+    _netClient.createGroupChatSession(_loginSessionId, groupSessionIdList);
+}
+
+void DataCenter::getChatSessionMemberListAsync(const QString& chatSessionId){
+    _netClient.getChatSessionMemberList(_loginSessionId, chatSessionId);
+}
+
+void DataCenter::setChatSessionMemberList(const QString &chatSessionId, const QList<my_chat_proto::UserInfo> &memberListPb){
+    QList<model::UserInfo>& curMemberList = (*_chatSessionToMemberList)[chatSessionId];
+    // 先清空
+    curMemberList.clear();
+    for(const auto& userInfoPb : memberListPb){
+        // 把pb结构的userInfo转换成自己的userInfo
+        UserInfo userInfo;
+        userInfo.load(userInfoPb);
+        curMemberList.push_back(userInfo);
+    }
+}
+
+void DataCenter::searchUserAsync(const QString &searchKey){
+    _netClient.searchUser(_loginSessionId, searchKey);
+}
+
+void DataCenter::setSearchUserList(const QList<my_chat_proto::UserInfo> &searchUserListPb){
+    if(_searchUserList == nullptr){
+        _searchUserList = new QList<UserInfo>();
+    }
+    // 先清空
+    _searchUserList->clear();
+    for(const auto& userInfoPb : searchUserListPb){
+        // 把pb结构的userInfo转换成自己的userInfo
+        UserInfo userInfo;
+        userInfo.load(userInfoPb);
+        _searchUserList->push_back(userInfo);
+    }
+}
+
+void DataCenter::searchHistoryMessageBySearchKeyAsync(const QString &searchKey){
+    _netClient.searchHistoryMessageBySearchKey(_loginSessionId, _currentChatSessionId, searchKey);
+}
+
+void DataCenter::setSearchHistoryMessageList(const QList<my_chat_proto::MessageInfo> &searchHistoryMessageListPb){
+    if(_searchHistoryMessageList == nullptr){
+        _searchHistoryMessageList = new QList<MessageInfo>();
+    }
+    // 先清空
+    _searchHistoryMessageList->clear();
+    for(const auto& messageInfoPb : searchHistoryMessageListPb){
+        // 把pb结构的userInfo转换成自己的userInfo
+        MessageInfo messageInfo;
+        messageInfo.load(messageInfoPb);
+        _searchHistoryMessageList->push_back(messageInfo);
+    }
+}
+
+void DataCenter::searchHistoryMessageByTimeAsync(const QDateTime &beginTime, const QDateTime &endTime){
+    _netClient.searchHistoryMessageByTime(_loginSessionId, _currentChatSessionId, beginTime, endTime);
+}
+
+void DataCenter::userNameSignUpAsync(const QString& userName, const QString& password){
+    // 登录注册的http请求都不需要 loginSessionId
+    _netClient.userNameSignUp(userName, password);
+}
+
+void DataCenter::userNameLoginAsync(const QString& userName, const QString& password){
+    // 登录注册的http请求都不需要 loginSessionId
+    _netClient.userNameLogin(userName, password);
+}
+
+void DataCenter::phoneSignUpAsync(const QString &phoneNum, const QString &verifyCode){
+    // 登录注册的http请求都不需要 loginSessionId
+    // 对于手机号的登录/注册，有一个验证码ID
+    _netClient.phoneSignUp(phoneNum, this->getPhoneVerifyCodeId(), verifyCode);
+}
+
+void DataCenter::phoneLoginAsync(const QString &phoneNum, const QString &verifyCode){
+    // 登录注册的http请求都不需要 loginSessionId
+    // 对于手机号的登录/注册，有一个验证码ID
+    _netClient.phoneLogin(phoneNum, this->getPhoneVerifyCodeId(), verifyCode);
+}
+
+void DataCenter::getSingleFileContentAsync(const QString &fileId){
+    _netClient.getSingleFileContent(_loginSessionId, fileId);
+}
+
+void DataCenter::voiceConvertTextAsync(const QString &fileId, const QByteArray &content){
+    _netClient.voiceConvertText(_loginSessionId, fileId, content);
+}
 
 }  // end namespace

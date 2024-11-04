@@ -19,15 +19,15 @@
 #include <memory>
 
 
-namespace bite_im {
+namespace my_chat_proto {
 class GetFriendListReq;
 using GetFriendListReqRepeated = QList<GetFriendListReq>;
 class GetFriendListRsp;
 using GetFriendListRspRepeated = QList<GetFriendListRsp>;
-class FriendRemoveReq;
-using FriendRemoveReqRepeated = QList<FriendRemoveReq>;
-class FriendRemoveRsp;
-using FriendRemoveRspRepeated = QList<FriendRemoveRsp>;
+class FriendDeleteReq;
+using FriendDeleteReqRepeated = QList<FriendDeleteReq>;
+class FriendDeleteRsp;
+using FriendDeleteRspRepeated = QList<FriendDeleteRsp>;
 class FriendAddReq;
 using FriendAddReqRepeated = QList<FriendAddReq>;
 class FriendAddRsp;
@@ -42,10 +42,10 @@ class FriendEvent;
 using FriendEventRepeated = QList<FriendEvent>;
 class GetPendingFriendEventListRsp;
 using GetPendingFriendEventListRspRepeated = QList<GetPendingFriendEventListRsp>;
-class FriendSearchReq;
-using FriendSearchReqRepeated = QList<FriendSearchReq>;
-class FriendSearchRsp;
-using FriendSearchRspRepeated = QList<FriendSearchRsp>;
+class UserSearchReq;
+using UserSearchReqRepeated = QList<UserSearchReq>;
+class UserSearchRsp;
+using UserSearchRspRepeated = QList<UserSearchRsp>;
 class GetChatSessionListReq;
 using GetChatSessionListReqRepeated = QList<GetChatSessionListReq>;
 class GetChatSessionListRsp;
@@ -109,7 +109,7 @@ class GetFriendListRsp : public QProtobufMessage
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(bool success READ success WRITE setSuccess SCRIPTABLE true)
     Q_PROPERTY(QString errmsg READ errmsg WRITE setErrmsg SCRIPTABLE true)
-    Q_PROPERTY(bite_im::UserInfoRepeated friendListData READ friendList WRITE setFriendList SCRIPTABLE true)
+    Q_PROPERTY(my_chat_proto::UserInfoRepeated friendListData READ friendList WRITE setFriendList SCRIPTABLE true)
 
 public:
     enum QtProtobufFieldEnum {
@@ -147,34 +147,34 @@ private:
     QExplicitlySharedDataPointer<GetFriendListRsp_QtProtobufData> dptr;
 };
 
-class FriendRemoveReq_QtProtobufData;
-class FriendRemoveReq : public QProtobufMessage
+class FriendDeleteReq_QtProtobufData;
+class FriendDeleteReq : public QProtobufMessage
 {
     Q_GADGET
     Q_PROTOBUF_OBJECT
-    Q_DECLARE_PROTOBUF_SERIALIZERS(FriendRemoveReq)
+    Q_DECLARE_PROTOBUF_SERIALIZERS(FriendDeleteReq)
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(QString userId READ userId WRITE setUserId SCRIPTABLE true)
     Q_PROPERTY(QString sessionId READ sessionId WRITE setSessionId SCRIPTABLE true)
-    Q_PROPERTY(QString peerId READ peerId WRITE setPeerId SCRIPTABLE true)
+    Q_PROPERTY(QString friendId READ friendId WRITE setFriendId SCRIPTABLE true)
 
 public:
     enum QtProtobufFieldEnum {
         RequestIdProtoFieldNumber = 1,
         UserIdProtoFieldNumber = 2,
         SessionIdProtoFieldNumber = 3,
-        PeerIdProtoFieldNumber = 4,
+        FriendIdProtoFieldNumber = 4,
     };
     Q_ENUM(QtProtobufFieldEnum)
 
-    FriendRemoveReq();
-    ~FriendRemoveReq();
-    FriendRemoveReq(const FriendRemoveReq &other);
-    FriendRemoveReq &operator =(const FriendRemoveReq &other);
-    FriendRemoveReq(FriendRemoveReq &&other) noexcept;
-    FriendRemoveReq &operator =(FriendRemoveReq &&other) noexcept;
-    bool operator ==(const FriendRemoveReq &other) const;
-    bool operator !=(const FriendRemoveReq &other) const;
+    FriendDeleteReq();
+    ~FriendDeleteReq();
+    FriendDeleteReq(const FriendDeleteReq &other);
+    FriendDeleteReq &operator =(const FriendDeleteReq &other);
+    FriendDeleteReq(FriendDeleteReq &&other) noexcept;
+    FriendDeleteReq &operator =(FriendDeleteReq &&other) noexcept;
+    bool operator ==(const FriendDeleteReq &other) const;
+    bool operator !=(const FriendDeleteReq &other) const;
 
     QString requestId() const;
 
@@ -182,23 +182,23 @@ public:
 
     QString sessionId() const;
 
-    QString peerId() const;
+    QString friendId() const;
     void setRequestId(const QString &requestId);
     void setUserId(const QString &userId);
     void setSessionId(const QString &sessionId);
-    void setPeerId(const QString &peerId);
+    void setFriendId(const QString &friendId);
     static void registerTypes();
 
 private:
-    QExplicitlySharedDataPointer<FriendRemoveReq_QtProtobufData> dptr;
+    QExplicitlySharedDataPointer<FriendDeleteReq_QtProtobufData> dptr;
 };
 
-class FriendRemoveRsp_QtProtobufData;
-class FriendRemoveRsp : public QProtobufMessage
+class FriendDeleteRsp_QtProtobufData;
+class FriendDeleteRsp : public QProtobufMessage
 {
     Q_GADGET
     Q_PROTOBUF_OBJECT
-    Q_DECLARE_PROTOBUF_SERIALIZERS(FriendRemoveRsp)
+    Q_DECLARE_PROTOBUF_SERIALIZERS(FriendDeleteRsp)
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(bool success READ success WRITE setSuccess SCRIPTABLE true)
     Q_PROPERTY(QString errmsg READ errmsg WRITE setErrmsg SCRIPTABLE true)
@@ -211,14 +211,14 @@ public:
     };
     Q_ENUM(QtProtobufFieldEnum)
 
-    FriendRemoveRsp();
-    ~FriendRemoveRsp();
-    FriendRemoveRsp(const FriendRemoveRsp &other);
-    FriendRemoveRsp &operator =(const FriendRemoveRsp &other);
-    FriendRemoveRsp(FriendRemoveRsp &&other) noexcept;
-    FriendRemoveRsp &operator =(FriendRemoveRsp &&other) noexcept;
-    bool operator ==(const FriendRemoveRsp &other) const;
-    bool operator !=(const FriendRemoveRsp &other) const;
+    FriendDeleteRsp();
+    ~FriendDeleteRsp();
+    FriendDeleteRsp(const FriendDeleteRsp &other);
+    FriendDeleteRsp &operator =(const FriendDeleteRsp &other);
+    FriendDeleteRsp(FriendDeleteRsp &&other) noexcept;
+    FriendDeleteRsp &operator =(FriendDeleteRsp &&other) noexcept;
+    bool operator ==(const FriendDeleteRsp &other) const;
+    bool operator !=(const FriendDeleteRsp &other) const;
 
     QString requestId() const;
 
@@ -231,7 +231,7 @@ public:
     static void registerTypes();
 
 private:
-    QExplicitlySharedDataPointer<FriendRemoveRsp_QtProtobufData> dptr;
+    QExplicitlySharedDataPointer<FriendDeleteRsp_QtProtobufData> dptr;
 };
 
 class FriendAddReq_QtProtobufData;
@@ -243,14 +243,14 @@ class FriendAddReq : public QProtobufMessage
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(QString sessionId READ sessionId WRITE setSessionId SCRIPTABLE true)
     Q_PROPERTY(QString userId READ userId WRITE setUserId SCRIPTABLE true)
-    Q_PROPERTY(QString respondentId READ respondentId WRITE setRespondentId SCRIPTABLE true)
+    Q_PROPERTY(QString friendId READ friendId WRITE setFriendId SCRIPTABLE true)
 
 public:
     enum QtProtobufFieldEnum {
         RequestIdProtoFieldNumber = 1,
         SessionIdProtoFieldNumber = 2,
         UserIdProtoFieldNumber = 3,
-        RespondentIdProtoFieldNumber = 4,
+        FriendIdProtoFieldNumber = 4,
     };
     Q_ENUM(QtProtobufFieldEnum)
 
@@ -269,11 +269,11 @@ public:
 
     QString userId() const;
 
-    QString respondentId() const;
+    QString friendId() const;
     void setRequestId(const QString &requestId);
     void setSessionId(const QString &sessionId);
     void setUserId(const QString &userId);
-    void setRespondentId(const QString &respondentId);
+    void setFriendId(const QString &friendId);
     static void registerTypes();
 
 private:
@@ -476,7 +476,7 @@ class FriendEvent : public QProtobufMessage
     Q_PROTOBUF_OBJECT
     Q_DECLARE_PROTOBUF_SERIALIZERS(FriendEvent)
     Q_PROPERTY(QString eventId READ eventId WRITE setEventId SCRIPTABLE true)
-    Q_PROPERTY(bite_im::UserInfo *sender_p READ sender_p WRITE setSender_p SCRIPTABLE false)
+    Q_PROPERTY(my_chat_proto::UserInfo *sender_p READ sender_p WRITE setSender_p SCRIPTABLE false)
 
 public:
     enum QtProtobufFieldEnum {
@@ -516,7 +516,7 @@ class GetPendingFriendEventListRsp : public QProtobufMessage
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(bool success READ success WRITE setSuccess SCRIPTABLE true)
     Q_PROPERTY(QString errmsg READ errmsg WRITE setErrmsg SCRIPTABLE true)
-    Q_PROPERTY(bite_im::FriendEventRepeated eventData READ event WRITE setEvent SCRIPTABLE true)
+    Q_PROPERTY(my_chat_proto::FriendEventRepeated eventData READ event WRITE setEvent SCRIPTABLE true)
 
 public:
     enum QtProtobufFieldEnum {
@@ -554,12 +554,12 @@ private:
     QExplicitlySharedDataPointer<GetPendingFriendEventListRsp_QtProtobufData> dptr;
 };
 
-class FriendSearchReq_QtProtobufData;
-class FriendSearchReq : public QProtobufMessage
+class UserSearchReq_QtProtobufData;
+class UserSearchReq : public QProtobufMessage
 {
     Q_GADGET
     Q_PROTOBUF_OBJECT
-    Q_DECLARE_PROTOBUF_SERIALIZERS(FriendSearchReq)
+    Q_DECLARE_PROTOBUF_SERIALIZERS(UserSearchReq)
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(QString searchKey READ searchKey WRITE setSearchKey SCRIPTABLE true)
     Q_PROPERTY(QString sessionId READ sessionId WRITE setSessionId SCRIPTABLE true)
@@ -574,14 +574,14 @@ public:
     };
     Q_ENUM(QtProtobufFieldEnum)
 
-    FriendSearchReq();
-    ~FriendSearchReq();
-    FriendSearchReq(const FriendSearchReq &other);
-    FriendSearchReq &operator =(const FriendSearchReq &other);
-    FriendSearchReq(FriendSearchReq &&other) noexcept;
-    FriendSearchReq &operator =(FriendSearchReq &&other) noexcept;
-    bool operator ==(const FriendSearchReq &other) const;
-    bool operator !=(const FriendSearchReq &other) const;
+    UserSearchReq();
+    ~UserSearchReq();
+    UserSearchReq(const UserSearchReq &other);
+    UserSearchReq &operator =(const UserSearchReq &other);
+    UserSearchReq(UserSearchReq &&other) noexcept;
+    UserSearchReq &operator =(UserSearchReq &&other) noexcept;
+    bool operator ==(const UserSearchReq &other) const;
+    bool operator !=(const UserSearchReq &other) const;
 
     QString requestId() const;
 
@@ -597,19 +597,19 @@ public:
     static void registerTypes();
 
 private:
-    QExplicitlySharedDataPointer<FriendSearchReq_QtProtobufData> dptr;
+    QExplicitlySharedDataPointer<UserSearchReq_QtProtobufData> dptr;
 };
 
-class FriendSearchRsp_QtProtobufData;
-class FriendSearchRsp : public QProtobufMessage
+class UserSearchRsp_QtProtobufData;
+class UserSearchRsp : public QProtobufMessage
 {
     Q_GADGET
     Q_PROTOBUF_OBJECT
-    Q_DECLARE_PROTOBUF_SERIALIZERS(FriendSearchRsp)
+    Q_DECLARE_PROTOBUF_SERIALIZERS(UserSearchRsp)
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(bool success READ success WRITE setSuccess SCRIPTABLE true)
     Q_PROPERTY(QString errmsg READ errmsg WRITE setErrmsg SCRIPTABLE true)
-    Q_PROPERTY(bite_im::UserInfoRepeated userInfoData READ userInfo WRITE setUserInfo SCRIPTABLE true)
+    Q_PROPERTY(my_chat_proto::UserInfoRepeated userInfoData READ userInfo WRITE setUserInfo SCRIPTABLE true)
 
 public:
     enum QtProtobufFieldEnum {
@@ -620,14 +620,14 @@ public:
     };
     Q_ENUM(QtProtobufFieldEnum)
 
-    FriendSearchRsp();
-    ~FriendSearchRsp();
-    FriendSearchRsp(const FriendSearchRsp &other);
-    FriendSearchRsp &operator =(const FriendSearchRsp &other);
-    FriendSearchRsp(FriendSearchRsp &&other) noexcept;
-    FriendSearchRsp &operator =(FriendSearchRsp &&other) noexcept;
-    bool operator ==(const FriendSearchRsp &other) const;
-    bool operator !=(const FriendSearchRsp &other) const;
+    UserSearchRsp();
+    ~UserSearchRsp();
+    UserSearchRsp(const UserSearchRsp &other);
+    UserSearchRsp &operator =(const UserSearchRsp &other);
+    UserSearchRsp(UserSearchRsp &&other) noexcept;
+    UserSearchRsp &operator =(UserSearchRsp &&other) noexcept;
+    bool operator ==(const UserSearchRsp &other) const;
+    bool operator !=(const UserSearchRsp &other) const;
 
     QString requestId() const;
 
@@ -644,7 +644,7 @@ public:
     static void registerTypes();
 
 private:
-    QExplicitlySharedDataPointer<FriendSearchRsp_QtProtobufData> dptr;
+    QExplicitlySharedDataPointer<UserSearchRsp_QtProtobufData> dptr;
 };
 
 class GetChatSessionListReq_QtProtobufData;
@@ -697,7 +697,7 @@ class GetChatSessionListRsp : public QProtobufMessage
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(bool success READ success WRITE setSuccess SCRIPTABLE true)
     Q_PROPERTY(QString errmsg READ errmsg WRITE setErrmsg SCRIPTABLE true)
-    Q_PROPERTY(bite_im::ChatSessionInfoRepeated chatSessionInfoListData READ chatSessionInfoList WRITE setChatSessionInfoList SCRIPTABLE true)
+    Q_PROPERTY(my_chat_proto::ChatSessionInfoRepeated chatSessionInfoListData READ chatSessionInfoList WRITE setChatSessionInfoList SCRIPTABLE true)
 
 public:
     enum QtProtobufFieldEnum {
@@ -796,7 +796,7 @@ class ChatSessionCreateRsp : public QProtobufMessage
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(bool success READ success WRITE setSuccess SCRIPTABLE true)
     Q_PROPERTY(QString errmsg READ errmsg WRITE setErrmsg SCRIPTABLE true)
-    Q_PROPERTY(bite_im::ChatSessionInfo *chatSessionInfo_p READ chatSessionInfo_p WRITE setChatSessionInfo_p SCRIPTABLE false)
+    Q_PROPERTY(my_chat_proto::ChatSessionInfo *chatSessionInfo_p READ chatSessionInfo_p WRITE setChatSessionInfo_p SCRIPTABLE false)
 
 public:
     enum QtProtobufFieldEnum {
@@ -890,7 +890,7 @@ class GetChatSessionMemberRsp : public QProtobufMessage
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(bool success READ success WRITE setSuccess SCRIPTABLE true)
     Q_PROPERTY(QString errmsg READ errmsg WRITE setErrmsg SCRIPTABLE true)
-    Q_PROPERTY(bite_im::UserInfoRepeated memberInfoListData READ memberInfoList WRITE setMemberInfoList SCRIPTABLE true)
+    Q_PROPERTY(my_chat_proto::UserInfoRepeated memberInfoListData READ memberInfoList WRITE setMemberInfoList SCRIPTABLE true)
 
 public:
     enum QtProtobufFieldEnum {
@@ -927,25 +927,25 @@ public:
 private:
     QExplicitlySharedDataPointer<GetChatSessionMemberRsp_QtProtobufData> dptr;
 };
-} // namespace bite_im
+} // namespace my_chat_proto
 
-Q_DECLARE_METATYPE(bite_im::GetFriendListReq)
-Q_DECLARE_METATYPE(bite_im::GetFriendListRsp)
-Q_DECLARE_METATYPE(bite_im::FriendRemoveReq)
-Q_DECLARE_METATYPE(bite_im::FriendRemoveRsp)
-Q_DECLARE_METATYPE(bite_im::FriendAddReq)
-Q_DECLARE_METATYPE(bite_im::FriendAddRsp)
-Q_DECLARE_METATYPE(bite_im::FriendAddProcessReq)
-Q_DECLARE_METATYPE(bite_im::FriendAddProcessRsp)
-Q_DECLARE_METATYPE(bite_im::GetPendingFriendEventListReq)
-Q_DECLARE_METATYPE(bite_im::FriendEvent)
-Q_DECLARE_METATYPE(bite_im::GetPendingFriendEventListRsp)
-Q_DECLARE_METATYPE(bite_im::FriendSearchReq)
-Q_DECLARE_METATYPE(bite_im::FriendSearchRsp)
-Q_DECLARE_METATYPE(bite_im::GetChatSessionListReq)
-Q_DECLARE_METATYPE(bite_im::GetChatSessionListRsp)
-Q_DECLARE_METATYPE(bite_im::ChatSessionCreateReq)
-Q_DECLARE_METATYPE(bite_im::ChatSessionCreateRsp)
-Q_DECLARE_METATYPE(bite_im::GetChatSessionMemberReq)
-Q_DECLARE_METATYPE(bite_im::GetChatSessionMemberRsp)
+Q_DECLARE_METATYPE(my_chat_proto::GetFriendListReq)
+Q_DECLARE_METATYPE(my_chat_proto::GetFriendListRsp)
+Q_DECLARE_METATYPE(my_chat_proto::FriendDeleteReq)
+Q_DECLARE_METATYPE(my_chat_proto::FriendDeleteRsp)
+Q_DECLARE_METATYPE(my_chat_proto::FriendAddReq)
+Q_DECLARE_METATYPE(my_chat_proto::FriendAddRsp)
+Q_DECLARE_METATYPE(my_chat_proto::FriendAddProcessReq)
+Q_DECLARE_METATYPE(my_chat_proto::FriendAddProcessRsp)
+Q_DECLARE_METATYPE(my_chat_proto::GetPendingFriendEventListReq)
+Q_DECLARE_METATYPE(my_chat_proto::FriendEvent)
+Q_DECLARE_METATYPE(my_chat_proto::GetPendingFriendEventListRsp)
+Q_DECLARE_METATYPE(my_chat_proto::UserSearchReq)
+Q_DECLARE_METATYPE(my_chat_proto::UserSearchRsp)
+Q_DECLARE_METATYPE(my_chat_proto::GetChatSessionListReq)
+Q_DECLARE_METATYPE(my_chat_proto::GetChatSessionListRsp)
+Q_DECLARE_METATYPE(my_chat_proto::ChatSessionCreateReq)
+Q_DECLARE_METATYPE(my_chat_proto::ChatSessionCreateRsp)
+Q_DECLARE_METATYPE(my_chat_proto::GetChatSessionMemberReq)
+Q_DECLARE_METATYPE(my_chat_proto::GetChatSessionMemberRsp)
 #endif // QPROTOBUF_FRIEND_H

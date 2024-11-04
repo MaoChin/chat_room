@@ -1,7 +1,7 @@
 #include <QtProtobuf/qprotobufserializer.h>
 #include "file.qpb.h"
 
-namespace bite_im {
+namespace my_chat_proto {
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarGetSingleFileReq(qRegisterProtobufType<GetSingleFileReq>);
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarGetSingleFileRsp(qRegisterProtobufType<GetSingleFileRsp>);
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarGetMultiFileReq(qRegisterProtobufType<GetMultiFileReq>);
@@ -11,5 +11,5 @@ static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarPutSingleFileRsp(qRegist
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarPutMultiFileReq(qRegisterProtobufType<PutMultiFileReq>);
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarPutMultiFileRsp(qRegisterProtobufType<PutMultiFileRsp>);
 static bool RegisterFileProtobufTypes = [](){ qRegisterProtobufTypes(); return true; }();
-} // namespace bite_im
+} // namespace my_chat_proto
 

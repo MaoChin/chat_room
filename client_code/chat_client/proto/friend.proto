@@ -27,13 +27,13 @@ message GetFriendListRsp {
 
 //--------------------------------------
 //好友删除
-message FriendRemoveReq {
+message FriendDeleteReq {
     string request_id = 1;
     optional string user_id = 2;
     optional string session_id = 3;
-    string peer_id = 4;
+    string friend_id = 4;
 }
-message FriendRemoveRsp {
+message FriendDeleteRsp {
     string request_id = 1;
     bool success = 2;
     string errmsg = 3; 
@@ -44,7 +44,7 @@ message FriendAddReq {
     string request_id = 1;
     optional string session_id = 2;
     optional string user_id = 3;//申请人id
-    string respondent_id = 4;//被申请人id
+    string friend_id = 4;//被申请人id
 }
 message FriendAddRsp {
     string request_id = 1;
@@ -89,14 +89,14 @@ message GetPendingFriendEventListRsp {
 }
 
 //--------------------------------------
-//好友搜索
-message FriendSearchReq {
+//用户搜索
+message UserSearchReq {
     string request_id = 1;
     string search_key = 2;//就是名称模糊匹配关键字
     optional string session_id = 3;
     optional string user_id = 4;
 }
-message FriendSearchRsp {
+message UserSearchRsp {
     string request_id = 1;
     bool success = 2;
     string errmsg = 3; 
@@ -150,10 +150,10 @@ message GetChatSessionMemberRsp {
 
 service FriendService {
     rpc GetFriendList(GetFriendListReq) returns (GetFriendListRsp);
-    rpc FriendRemove(FriendRemoveReq) returns (FriendRemoveRsp);
+    rpc FriendRemove(FriendDeleteReq) returns (FriendDeleteRsp);
     rpc FriendAdd(FriendAddReq) returns (FriendAddRsp);
     rpc FriendAddProcess(FriendAddProcessReq) returns (FriendAddProcessRsp);
-    rpc FriendSearch(FriendSearchReq) returns (FriendSearchRsp);
+    rpc UserSearch(UserSearchReq) returns (UserSearchRsp);
     rpc GetChatSessionList(GetChatSessionListReq) returns (GetChatSessionListRsp);
     rpc ChatSessionCreate(ChatSessionCreateReq) returns (ChatSessionCreateRsp);
     rpc GetChatSessionMember(GetChatSessionMemberReq) returns (GetChatSessionMemberRsp);

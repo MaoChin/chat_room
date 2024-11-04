@@ -298,15 +298,15 @@ void NotifyFriendAddProcess::setUserInfo(const UserInfo &userInfo)
 }
 
 
-class NotifyFriendRemove_QtProtobufData : public QSharedData
+class NotifyFriendDelete_QtProtobufData : public QSharedData
 {
 public:
-    NotifyFriendRemove_QtProtobufData()
+    NotifyFriendDelete_QtProtobufData()
         : QSharedData()
     {
     }
 
-    NotifyFriendRemove_QtProtobufData(const NotifyFriendRemove_QtProtobufData &other)
+    NotifyFriendDelete_QtProtobufData(const NotifyFriendDelete_QtProtobufData &other)
         : QSharedData(other),
           m_userId(other.m_userId)
     {
@@ -315,13 +315,13 @@ public:
     QString m_userId;
 };
 
-NotifyFriendRemove::~NotifyFriendRemove() = default;
+NotifyFriendDelete::~NotifyFriendDelete() = default;
 
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
-    const std::array<uint, 5> qt_protobuf_NotifyFriendRemove_uint_data;
-    const char qt_protobuf_NotifyFriendRemove_char_data[41];
-} qt_protobuf_NotifyFriendRemove_metadata {
+    const std::array<uint, 5> qt_protobuf_NotifyFriendDelete_uint_data;
+    const char qt_protobuf_NotifyFriendDelete_char_data[41];
+} qt_protobuf_NotifyFriendDelete_metadata {
     // data
     {
         0, /* = version */
@@ -345,66 +345,66 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "my_chat_proto.NotifyFriendRemove\0" /* = full message name */
+    "my_chat_proto.NotifyFriendDelete\0" /* = full message name */
     /* field char_data: */
     "userId\0"
 };
 
-const QtProtobufPrivate::QProtobufPropertyOrdering NotifyFriendRemove::propertyOrdering = {
-    &qt_protobuf_NotifyFriendRemove_metadata.data
+const QtProtobufPrivate::QProtobufPropertyOrdering NotifyFriendDelete::propertyOrdering = {
+    &qt_protobuf_NotifyFriendDelete_metadata.data
 };
 
-void NotifyFriendRemove::registerTypes()
+void NotifyFriendDelete::registerTypes()
 {
-    qRegisterMetaType<NotifyFriendRemove>();
-    qRegisterMetaType<NotifyFriendRemoveRepeated>();
+    qRegisterMetaType<NotifyFriendDelete>();
+    qRegisterMetaType<NotifyFriendDeleteRepeated>();
 }
 
-NotifyFriendRemove::NotifyFriendRemove()
-    : QProtobufMessage(&NotifyFriendRemove::staticMetaObject),
-      dptr(new NotifyFriendRemove_QtProtobufData)
+NotifyFriendDelete::NotifyFriendDelete()
+    : QProtobufMessage(&NotifyFriendDelete::staticMetaObject),
+      dptr(new NotifyFriendDelete_QtProtobufData)
 {
 }
 
-NotifyFriendRemove::NotifyFriendRemove(const NotifyFriendRemove &other)
+NotifyFriendDelete::NotifyFriendDelete(const NotifyFriendDelete &other)
     : QProtobufMessage(other),
       dptr(other.dptr)
 {
 }
-NotifyFriendRemove &NotifyFriendRemove::operator =(const NotifyFriendRemove &other)
+NotifyFriendDelete &NotifyFriendDelete::operator =(const NotifyFriendDelete &other)
 {
     QProtobufMessage::operator=(other);
     dptr = other.dptr;
     return *this;
 }
-NotifyFriendRemove::NotifyFriendRemove(NotifyFriendRemove &&other) noexcept
+NotifyFriendDelete::NotifyFriendDelete(NotifyFriendDelete &&other) noexcept
     : QProtobufMessage(std::move(other)),
       dptr(std::move(other.dptr))
 {
 }
-NotifyFriendRemove &NotifyFriendRemove::operator =(NotifyFriendRemove &&other) noexcept
+NotifyFriendDelete &NotifyFriendDelete::operator =(NotifyFriendDelete &&other) noexcept
 {
     QProtobufMessage::operator=(std::move(other));
     dptr.swap(other.dptr);
     return *this;
 }
-bool NotifyFriendRemove::operator ==(const NotifyFriendRemove &other) const
+bool NotifyFriendDelete::operator ==(const NotifyFriendDelete &other) const
 {
     return QProtobufMessage::isEqual(*this, other)
         && dptr->m_userId == other.dptr->m_userId;
 }
 
-bool NotifyFriendRemove::operator !=(const NotifyFriendRemove &other) const
+bool NotifyFriendDelete::operator !=(const NotifyFriendDelete &other) const
 {
     return !this->operator ==(other);
 }
 
-QString NotifyFriendRemove::userId() const
+QString NotifyFriendDelete::userId() const
 {
     return dptr->m_userId;
 }
 
-void NotifyFriendRemove::setUserId(const QString &userId)
+void NotifyFriendDelete::setUserId(const QString &userId)
 {
     if (dptr->m_userId != userId) {
         dptr.detach();
@@ -722,7 +722,7 @@ static constexpr struct {
         42, /* = notifyType */
         53, /* = friendAddApply */
         68, /* = friendProcessResult */
-        88, /* = friendRemove */
+        88, /* = friendDelete */
         101, /* = newChatSessionInfo */
         120, /* = newMessageInfo */
         135, /* = end-of-string-marker */
@@ -731,7 +731,7 @@ static constexpr struct {
         2, /* = notifyType */
         3, /* = friendAddApply */
         4, /* = friendProcessResult */
-        7, /* = friendRemove */
+        7, /* = friendDelete */
         5, /* = newChatSessionInfo */
         6, /* = newMessageInfo */
         // Property indices:
@@ -739,7 +739,7 @@ static constexpr struct {
         1, /* = notifyType */
         2, /* = friendAddApply */
         4, /* = friendProcessResult */
-        6, /* = friendRemove */
+        6, /* = friendDelete */
         8, /* = newChatSessionInfo */
         10, /* = newMessageInfo */
         // Field flags:
@@ -747,7 +747,7 @@ static constexpr struct {
         QtProtobufPrivate::NoFlags, /* = notifyType */
         QtProtobufPrivate::Oneof, /* = friendAddApply */
         QtProtobufPrivate::Oneof, /* = friendProcessResult */
-        QtProtobufPrivate::Oneof, /* = friendRemove */
+        QtProtobufPrivate::Oneof, /* = friendDelete */
         QtProtobufPrivate::Oneof, /* = newChatSessionInfo */
         QtProtobufPrivate::Oneof, /* = newMessageInfo */
     },
@@ -755,7 +755,7 @@ static constexpr struct {
     /* metadata char_data: */
     "my_chat_proto.NotifyMessage\0" /* = full message name */
     /* field char_data: */
-    "notifyEventId\0notifyType\0friendAddApply\0friendProcessResult\0friendRemove\0"
+    "notifyEventId\0notifyType\0friendAddApply\0friendProcessResult\0friendDelete\0"
     "newChatSessionInfo\0newMessageInfo\0"
 };
 
@@ -851,20 +851,20 @@ NotifyFriendAddProcess &NotifyMessage::friendProcessResult() const
     return *(dptr->m_notify_remarks.value<NotifyFriendAddProcess>());
 }
 
-NotifyFriendRemove *NotifyMessage::friendRemove_p() const
+NotifyFriendDelete *NotifyMessage::friendDelete_p() const
 {
     return dptr->m_notify_remarks.holdsField(7) ?
-        dptr->m_notify_remarks.value<NotifyFriendRemove>() : nullptr;
+        dptr->m_notify_remarks.value<NotifyFriendDelete>() : nullptr;
 }
 
-bool NotifyMessage::hasFriendRemove() const
+bool NotifyMessage::hasFriendDelete() const
 {
     return dptr->m_notify_remarks.holdsField(7);
 }
-NotifyFriendRemove &NotifyMessage::friendRemove() const
+NotifyFriendDelete &NotifyMessage::friendDelete() const
 {
     Q_ASSERT(dptr->m_notify_remarks.holdsField(7));
-    return *(dptr->m_notify_remarks.value<NotifyFriendRemove>());
+    return *(dptr->m_notify_remarks.value<NotifyFriendDelete>());
 }
 
 NotifyNewChatSession *NotifyMessage::newChatSessionInfo_p() const
@@ -951,22 +951,22 @@ void NotifyMessage::setFriendProcessResult_p(NotifyFriendAddProcess *friendProce
     delete friendProcessResult;
 }
 
-void NotifyMessage::setFriendRemove(const NotifyFriendRemove &friendRemove)
+void NotifyMessage::setFriendDelete(const NotifyFriendDelete &friendDelete)
 {
-    if (!dptr->m_notify_remarks.isEqual(friendRemove, 7)) {
+    if (!dptr->m_notify_remarks.isEqual(friendDelete, 7)) {
         dptr.detach();
-        dptr->m_notify_remarks.setValue(friendRemove, 7);
+        dptr->m_notify_remarks.setValue(friendDelete, 7);
     }
 }
 
-void NotifyMessage::setFriendRemove_p(NotifyFriendRemove *friendRemove)
+void NotifyMessage::setFriendDelete_p(NotifyFriendDelete *friendDelete)
 {
-    const NotifyFriendRemove &value = *friendRemove;
+    const NotifyFriendDelete &value = *friendDelete;
     if (!dptr->m_notify_remarks.isEqual(value, 7)) {
         dptr.detach();
         dptr->m_notify_remarks.setValue(value, 7);
     }
-    delete friendRemove;
+    delete friendDelete;
 }
 
 void NotifyMessage::setNewChatSessionInfo(const NotifyNewChatSession &newChatSessionInfo)

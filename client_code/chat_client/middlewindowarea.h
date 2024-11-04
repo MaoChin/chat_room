@@ -27,6 +27,9 @@ public:
     // 选中某个item
     void selectItem(int index);
 
+    // 将滚动条移动到最头部
+    void scrollToTop();
+
 private:
     // 具体的内容widget
     QWidget* _container;
@@ -56,6 +59,7 @@ public:
     // 鼠标离开事件
     void leaveEvent(QEvent* event) override;
 
+
 protected:
     // 这个是为了给子类继承后访问
     QLabel* _messageLabel;
@@ -78,10 +82,14 @@ public:
     // 选中时的操作
     void active() override;
 
+    // 更新指定会话的最后一条消息
+    void updateLastMessage(const QString& chatSessionId);
+
 
 private:
     QString _chatSessionId = "";
-
+    // 把预览的最后一条消息文本进行存储，方便直接使用
+    QString _showText;
 };
 
 ////////////////////////////
@@ -112,7 +120,14 @@ public:
     // 选中时的操作
     void active() override;
 
+    // 接受好友申请的操作
+    void acceptAddFriendApply();
+    // 拒绝好友申请的操作
+    void refuseAddFriendApply();
+
+
 private:
+    // 申请人的用户id
     QString _userId = "";
 };
 

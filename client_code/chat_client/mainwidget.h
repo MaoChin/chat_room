@@ -26,25 +26,24 @@ public:
     static MainWidget* getInstance();
 
 
-private:
-    // 构造函数私有化
-    MainWidget(QWidget *parent = nullptr);
+    RightWindowMessageShowArea* getRightWindowMessageShowArea(){
+        return _rightWindowMessageShowArea;
+    }
 
-    void initMainWindow();
-    void initLeftWindow();
-    void initMiddleWindow();
-    void initRightWindow();
-    void initSignalSlot();
-
-
+public:
     void switchTabToChatSession();
     void switchTabToFriend();
     void switchTabToFriendApply();
 
+    void clickFriendInFriendItem(const QString& friendId);
 
     void loadChatSessionTab();
     void loadFriendTab();
     void loadApplyUserTab();
+    void loadRecentMessage(const QString& chatSessionId);
+
+    // 初始化websocket
+    void initWebsocket();
 
     // 和DataCenter的交互
     // 直接从DataCenter中加载好友列表
@@ -56,6 +55,18 @@ private:
     // 直接从DataCenter中加载好友申请列表
     void loadApplyUserListFromDataCenter();
 
+    // 直接从DataCenter中加载会话最近消息列表
+    void loadRecentMessageFromDataCenter(const QString& chatSessionId);
+
+private:
+    // 构造函数私有化
+    MainWidget(QWidget *parent = nullptr);
+
+    void initMainWindow();
+    void initLeftWindow();
+    void initMiddleWindow();
+    void initRightWindow();
+    void initSignalSlot();
 
 private:
     // 搞成单例

@@ -1,6 +1,7 @@
 #include "addfrineddialog.h"
 
 #include "debug.h"
+#include "model/datacenter.h"
 
 #include <QGridLayout>
 #include <QLineEdit>
@@ -48,7 +49,7 @@ ResultFriendItem::ResultFriendItem(const model::UserInfo &userInfo)
 
     QPushButton* addBtn = new QPushButton();
     addBtn->setFixedSize(90, 30);
-    addBtn->setText("申请好友");
+    addBtn->setText("添加好友");
     QString addBtnStyle = "QPushButton { border: none; border-radius: 8px; font-size: 18px; color: rgb(255, 255, 255); background-color: rgb(137, 217, 97); }";
     addBtnStyle += "QPushButton:hover { background-color: rgb(200, 200, 200); }";
     addBtnStyle += "QPushButton:pressed { background-color: rgb(220, 220, 220); }";
@@ -58,11 +59,26 @@ ResultFriendItem::ResultFriendItem(const model::UserInfo &userInfo)
     gridLayout->addWidget(nickNameLabel, 0, 1, 1, 1);
     gridLayout->addWidget(personalSignatureLabel, 1, 1, 1, 1);
     gridLayout->addWidget(addBtn, 0, 3, 2, 1);
+
+    // 关联 addBtn 按钮的信号槽
+    connect(addBtn, &QPushButton::clicked, this, [=]() {
+        model::DataCenter* dataCenter = model::DataCenter::getInstance();
+        dataCenter->addFriendApplyAsync(_userInfo._userId);
+
+        // 点击后把这个按钮设置成不能被点击
+        addBtn->setEnabled(false);
+        addBtn->setText("已申请");
+        QString addBtnStyle = "QPushButton { border: none; border-radius: 8px; "
+                              "font-size: 18px; color: rgb(255, 255, 255); "
+                              "background-color: rgb(200, 200, 200); }";
+        addBtn->setStyleSheet(addBtnStyle);
+    });
+
 }
 
 
 // 添加好友页面
-AddFrinedDialog::AddFrinedDialog(QWidget* parent)
+AddFriendDialog::AddFriendDialog(QWidget* parent)
     :QDialog(parent)
 {
     // 基本属性
@@ -137,14 +153,45 @@ AddFrinedDialog::AddFrinedDialog(QWidget* parent)
     }
 #endif
 
+
+    // 关联searchBtn的信号槽
+    connect(searchBtn, &QPushButton::clicked, this, &AddFriendDialog::clickSearchBtn);
 }
 
-void AddFrinedDialog::addResultFriendItem(const model::UserInfo &userInfo){
+void AddFriendDialog::clickSearchBtn(){
+    // 1. 拿到输入框的内容
+    const QString& searchKey = _searchBar->text();
+    if (searchKey.isEmpty()) {
+        return;
+    }
+
+    // 2. 给服务器发起请求
+    model::DataCenter *dataCenter = model::DataCenter::getInstance();
+    connect(dataCenter, &model::DataCenter::searchUserAsyncDone, this,
+            &AddFriendDialog::clickSearchBtnDone, Qt::UniqueConnection);
+    dataCenter->searchUserAsync(searchKey);
+}
+
+void AddFriendDialog::clickSearchBtnDone(){
+    // 1. 拿到 DataCenter 中的搜索结果列表
+    model::DataCenter *dataCenter = model::DataCenter::getInstance();
+    QList<model::UserInfo>* searchUserList = dataCenter->getSearchUserList();
+    if (searchUserList == nullptr) {
+        return;
+    }
+
+    this->clearResultFriendItem();
+    for (const auto& userInfo : *searchUserList) {
+        this->addResultFriendItem(userInfo);
+    }
+}
+
+void AddFriendDialog::addResultFriendItem(const model::UserInfo &userInfo){
     ResultFriendItem* resultFriendItem = new ResultFriendItem(userInfo);
     _resultContainer->layout()->addWidget(resultFriendItem);
 }
 
-void AddFrinedDialog::clearResultFriendItem(){
+void AddFriendDialog::clearResultFriendItem(){
     QVBoxLayout* vlayout = dynamic_cast<QVBoxLayout*>(_resultContainer->layout());
     for(int i = vlayout->count() - 1; i >= 0; --i){
         auto* item = vlayout->takeAt(i);
@@ -155,7 +202,7 @@ void AddFrinedDialog::clearResultFriendItem(){
     }
 }
 
-void AddFrinedDialog::setSearchBarContent(const QString& searchKey){
+void AddFriendDialog::setSearchBarContent(const QString& searchKey){
     _searchBar->setText(searchKey);
 }
 

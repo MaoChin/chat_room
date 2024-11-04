@@ -15,8 +15,8 @@ file(GLOB PB_FILES "./proto/*.proto")
 
 # 引入各种组件
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-# 这里引入 protobuf, Network(HTTP, TCP, UDP....) Websocket 模块
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Protobuf Network WebSockets)
+# 这里引入 protobuf, Network(HTTP, TCP, UDP....) Websocket  Multimedia 模块
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Protobuf Network WebSockets Multimedia)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -48,6 +48,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         toast.h toast.cpp
         model/datacenter.h model/datacenter.cpp
         network/netclient.h network/netclient.cpp
+        verifycodewidget.h verifycodewidget.cpp
+        soundrecorder.h soundrecorder.cpp
     )
 
     # 编译 chat_client 依赖 PROTO_FILES, 具体就是 PB_FILES 变量的值
@@ -71,8 +73,8 @@ else()
     endif()
 endif()
 
-# 这里表示需要链接的动态库，加上prtobuf,network,websocket
-target_link_libraries(chat_client PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::Protobuf Qt6::Network Qt6::WebSockets)
+# 这里表示需要链接的动态库，加上prtobuf,network,websocket,multimedia
+target_link_libraries(chat_client PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::Protobuf Qt6::Network Qt6::WebSockets Qt6::Multimedia)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

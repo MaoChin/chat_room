@@ -3,7 +3,7 @@
 #include "friend.qpb.h"
 #include <QtProtobuf/qprotobufserializer.h>
 
-namespace bite_im {
+namespace my_chat_proto {
 
 class GetFriendListReq_QtProtobufData : public QSharedData
 {
@@ -31,7 +31,7 @@ GetFriendListReq::~GetFriendListReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 13> qt_protobuf_GetFriendListReq_uint_data;
-    const char qt_protobuf_GetFriendListReq_char_data[53];
+    const char qt_protobuf_GetFriendListReq_char_data[59];
 } qt_protobuf_GetFriendListReq_metadata {
     // data
     {
@@ -40,15 +40,15 @@ static constexpr struct {
         4, /* = field number offset */
         7, /* = property index offset */
         10, /* = field flags offset */
-        24, /* = message full name length */
+        30, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        25, /* = requestId */
-        35, /* = userId */
-        42, /* = sessionId */
-        52, /* = end-of-string-marker */
+        31, /* = requestId */
+        41, /* = userId */
+        48, /* = sessionId */
+        58, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = userId */
@@ -64,7 +64,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetFriendListReq\0" /* = full message name */
+    "my_chat_proto.GetFriendListReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0userId\0sessionId\0"
 };
@@ -187,7 +187,7 @@ GetFriendListRsp::~GetFriendListRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_GetFriendListRsp_uint_data;
-    const char qt_protobuf_GetFriendListRsp_char_data[62];
+    const char qt_protobuf_GetFriendListRsp_char_data[68];
 } qt_protobuf_GetFriendListRsp_metadata {
     // data
     {
@@ -196,16 +196,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        24, /* = message full name length */
+        30, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        25, /* = requestId */
-        35, /* = success */
-        43, /* = errmsg */
-        50, /* = friendList */
-        61, /* = end-of-string-marker */
+        31, /* = requestId */
+        41, /* = success */
+        49, /* = errmsg */
+        56, /* = friendList */
+        67, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -224,7 +224,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetFriendListRsp\0" /* = full message name */
+    "my_chat_proto.GetFriendListRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0friendList\0"
 };
@@ -340,36 +340,36 @@ void GetFriendListRsp::setFriendList(const UserInfoRepeated &friendList)
 }
 
 
-class FriendRemoveReq_QtProtobufData : public QSharedData
+class FriendDeleteReq_QtProtobufData : public QSharedData
 {
 public:
-    FriendRemoveReq_QtProtobufData()
+    FriendDeleteReq_QtProtobufData()
         : QSharedData()
     {
     }
 
-    FriendRemoveReq_QtProtobufData(const FriendRemoveReq_QtProtobufData &other)
+    FriendDeleteReq_QtProtobufData(const FriendDeleteReq_QtProtobufData &other)
         : QSharedData(other),
           m_requestId(other.m_requestId),
           m_userId(other.m_userId),
           m_sessionId(other.m_sessionId),
-          m_peerId(other.m_peerId)
+          m_friendId(other.m_friendId)
     {
     }
 
     QString m_requestId;
     QString m_userId;
     QString m_sessionId;
-    QString m_peerId;
+    QString m_friendId;
 };
 
-FriendRemoveReq::~FriendRemoveReq() = default;
+FriendDeleteReq::~FriendDeleteReq() = default;
 
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
-    const std::array<uint, 17> qt_protobuf_FriendRemoveReq_uint_data;
-    const char qt_protobuf_FriendRemoveReq_char_data[59];
-} qt_protobuf_FriendRemoveReq_metadata {
+    const std::array<uint, 17> qt_protobuf_FriendDeleteReq_uint_data;
+    const char qt_protobuf_FriendDeleteReq_char_data[67];
+} qt_protobuf_FriendDeleteReq_metadata {
     // data
     {
         0, /* = version */
@@ -377,110 +377,110 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        23, /* = message full name length */
+        29, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        24, /* = requestId */
-        34, /* = userId */
-        41, /* = sessionId */
-        51, /* = peerId */
-        58, /* = end-of-string-marker */
+        30, /* = requestId */
+        40, /* = userId */
+        47, /* = sessionId */
+        57, /* = friendId */
+        66, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = userId */
         3, /* = sessionId */
-        4, /* = peerId */
+        4, /* = friendId */
         // Property indices:
         0, /* = requestId */
         1, /* = userId */
         2, /* = sessionId */
-        3, /* = peerId */
+        3, /* = friendId */
         // Field flags:
         QtProtobufPrivate::NoFlags, /* = requestId */
         QtProtobufPrivate::NoFlags, /* = userId */
         QtProtobufPrivate::NoFlags, /* = sessionId */
-        QtProtobufPrivate::NoFlags, /* = peerId */
+        QtProtobufPrivate::NoFlags, /* = friendId */
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.FriendRemoveReq\0" /* = full message name */
+    "my_chat_proto.FriendDeleteReq\0" /* = full message name */
     /* field char_data: */
-    "requestId\0userId\0sessionId\0peerId\0"
+    "requestId\0userId\0sessionId\0friendId\0"
 };
 
-const QtProtobufPrivate::QProtobufPropertyOrdering FriendRemoveReq::propertyOrdering = {
-    &qt_protobuf_FriendRemoveReq_metadata.data
+const QtProtobufPrivate::QProtobufPropertyOrdering FriendDeleteReq::propertyOrdering = {
+    &qt_protobuf_FriendDeleteReq_metadata.data
 };
 
-void FriendRemoveReq::registerTypes()
+void FriendDeleteReq::registerTypes()
 {
-    qRegisterMetaType<FriendRemoveReq>();
-    qRegisterMetaType<FriendRemoveReqRepeated>();
+    qRegisterMetaType<FriendDeleteReq>();
+    qRegisterMetaType<FriendDeleteReqRepeated>();
 }
 
-FriendRemoveReq::FriendRemoveReq()
-    : QProtobufMessage(&FriendRemoveReq::staticMetaObject),
-      dptr(new FriendRemoveReq_QtProtobufData)
+FriendDeleteReq::FriendDeleteReq()
+    : QProtobufMessage(&FriendDeleteReq::staticMetaObject),
+      dptr(new FriendDeleteReq_QtProtobufData)
 {
 }
 
-FriendRemoveReq::FriendRemoveReq(const FriendRemoveReq &other)
+FriendDeleteReq::FriendDeleteReq(const FriendDeleteReq &other)
     : QProtobufMessage(other),
       dptr(other.dptr)
 {
 }
-FriendRemoveReq &FriendRemoveReq::operator =(const FriendRemoveReq &other)
+FriendDeleteReq &FriendDeleteReq::operator =(const FriendDeleteReq &other)
 {
     QProtobufMessage::operator=(other);
     dptr = other.dptr;
     return *this;
 }
-FriendRemoveReq::FriendRemoveReq(FriendRemoveReq &&other) noexcept
+FriendDeleteReq::FriendDeleteReq(FriendDeleteReq &&other) noexcept
     : QProtobufMessage(std::move(other)),
       dptr(std::move(other.dptr))
 {
 }
-FriendRemoveReq &FriendRemoveReq::operator =(FriendRemoveReq &&other) noexcept
+FriendDeleteReq &FriendDeleteReq::operator =(FriendDeleteReq &&other) noexcept
 {
     QProtobufMessage::operator=(std::move(other));
     dptr.swap(other.dptr);
     return *this;
 }
-bool FriendRemoveReq::operator ==(const FriendRemoveReq &other) const
+bool FriendDeleteReq::operator ==(const FriendDeleteReq &other) const
 {
     return QProtobufMessage::isEqual(*this, other)
         && dptr->m_requestId == other.dptr->m_requestId
-        && dptr->m_peerId == other.dptr->m_peerId;
+        && dptr->m_friendId == other.dptr->m_friendId;
 }
 
-bool FriendRemoveReq::operator !=(const FriendRemoveReq &other) const
+bool FriendDeleteReq::operator !=(const FriendDeleteReq &other) const
 {
     return !this->operator ==(other);
 }
 
-QString FriendRemoveReq::requestId() const
+QString FriendDeleteReq::requestId() const
 {
     return dptr->m_requestId;
 }
 
-QString FriendRemoveReq::userId() const
+QString FriendDeleteReq::userId() const
 {
     return dptr->m_userId;
 }
 
-QString FriendRemoveReq::sessionId() const
+QString FriendDeleteReq::sessionId() const
 {
     return dptr->m_sessionId;
 }
 
-QString FriendRemoveReq::peerId() const
+QString FriendDeleteReq::friendId() const
 {
-    return dptr->m_peerId;
+    return dptr->m_friendId;
 }
 
-void FriendRemoveReq::setRequestId(const QString &requestId)
+void FriendDeleteReq::setRequestId(const QString &requestId)
 {
     if (dptr->m_requestId != requestId) {
         dptr.detach();
@@ -488,7 +488,7 @@ void FriendRemoveReq::setRequestId(const QString &requestId)
     }
 }
 
-void FriendRemoveReq::setUserId(const QString &userId)
+void FriendDeleteReq::setUserId(const QString &userId)
 {
     if (dptr->m_userId != userId) {
         dptr.detach();
@@ -496,7 +496,7 @@ void FriendRemoveReq::setUserId(const QString &userId)
     }
 }
 
-void FriendRemoveReq::setSessionId(const QString &sessionId)
+void FriendDeleteReq::setSessionId(const QString &sessionId)
 {
     if (dptr->m_sessionId != sessionId) {
         dptr.detach();
@@ -504,25 +504,25 @@ void FriendRemoveReq::setSessionId(const QString &sessionId)
     }
 }
 
-void FriendRemoveReq::setPeerId(const QString &peerId)
+void FriendDeleteReq::setFriendId(const QString &friendId)
 {
-    if (dptr->m_peerId != peerId) {
+    if (dptr->m_friendId != friendId) {
         dptr.detach();
-        dptr->m_peerId = peerId;
+        dptr->m_friendId = friendId;
     }
 }
 
 
-class FriendRemoveRsp_QtProtobufData : public QSharedData
+class FriendDeleteRsp_QtProtobufData : public QSharedData
 {
 public:
-    FriendRemoveRsp_QtProtobufData()
+    FriendDeleteRsp_QtProtobufData()
         : QSharedData(),
           m_success(false)
     {
     }
 
-    FriendRemoveRsp_QtProtobufData(const FriendRemoveRsp_QtProtobufData &other)
+    FriendDeleteRsp_QtProtobufData(const FriendDeleteRsp_QtProtobufData &other)
         : QSharedData(other),
           m_requestId(other.m_requestId),
           m_success(other.m_success),
@@ -535,13 +535,13 @@ public:
     QString m_errmsg;
 };
 
-FriendRemoveRsp::~FriendRemoveRsp() = default;
+FriendDeleteRsp::~FriendDeleteRsp() = default;
 
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
-    const std::array<uint, 13> qt_protobuf_FriendRemoveRsp_uint_data;
-    const char qt_protobuf_FriendRemoveRsp_char_data[50];
-} qt_protobuf_FriendRemoveRsp_metadata {
+    const std::array<uint, 13> qt_protobuf_FriendDeleteRsp_uint_data;
+    const char qt_protobuf_FriendDeleteRsp_char_data[56];
+} qt_protobuf_FriendDeleteRsp_metadata {
     // data
     {
         0, /* = version */
@@ -549,15 +549,15 @@ static constexpr struct {
         4, /* = field number offset */
         7, /* = property index offset */
         10, /* = field flags offset */
-        23, /* = message full name length */
+        29, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        24, /* = requestId */
-        34, /* = success */
-        42, /* = errmsg */
-        49, /* = end-of-string-marker */
+        30, /* = requestId */
+        40, /* = success */
+        48, /* = errmsg */
+        55, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -573,50 +573,50 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.FriendRemoveRsp\0" /* = full message name */
+    "my_chat_proto.FriendDeleteRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0"
 };
 
-const QtProtobufPrivate::QProtobufPropertyOrdering FriendRemoveRsp::propertyOrdering = {
-    &qt_protobuf_FriendRemoveRsp_metadata.data
+const QtProtobufPrivate::QProtobufPropertyOrdering FriendDeleteRsp::propertyOrdering = {
+    &qt_protobuf_FriendDeleteRsp_metadata.data
 };
 
-void FriendRemoveRsp::registerTypes()
+void FriendDeleteRsp::registerTypes()
 {
-    qRegisterMetaType<FriendRemoveRsp>();
-    qRegisterMetaType<FriendRemoveRspRepeated>();
+    qRegisterMetaType<FriendDeleteRsp>();
+    qRegisterMetaType<FriendDeleteRspRepeated>();
 }
 
-FriendRemoveRsp::FriendRemoveRsp()
-    : QProtobufMessage(&FriendRemoveRsp::staticMetaObject),
-      dptr(new FriendRemoveRsp_QtProtobufData)
+FriendDeleteRsp::FriendDeleteRsp()
+    : QProtobufMessage(&FriendDeleteRsp::staticMetaObject),
+      dptr(new FriendDeleteRsp_QtProtobufData)
 {
 }
 
-FriendRemoveRsp::FriendRemoveRsp(const FriendRemoveRsp &other)
+FriendDeleteRsp::FriendDeleteRsp(const FriendDeleteRsp &other)
     : QProtobufMessage(other),
       dptr(other.dptr)
 {
 }
-FriendRemoveRsp &FriendRemoveRsp::operator =(const FriendRemoveRsp &other)
+FriendDeleteRsp &FriendDeleteRsp::operator =(const FriendDeleteRsp &other)
 {
     QProtobufMessage::operator=(other);
     dptr = other.dptr;
     return *this;
 }
-FriendRemoveRsp::FriendRemoveRsp(FriendRemoveRsp &&other) noexcept
+FriendDeleteRsp::FriendDeleteRsp(FriendDeleteRsp &&other) noexcept
     : QProtobufMessage(std::move(other)),
       dptr(std::move(other.dptr))
 {
 }
-FriendRemoveRsp &FriendRemoveRsp::operator =(FriendRemoveRsp &&other) noexcept
+FriendDeleteRsp &FriendDeleteRsp::operator =(FriendDeleteRsp &&other) noexcept
 {
     QProtobufMessage::operator=(std::move(other));
     dptr.swap(other.dptr);
     return *this;
 }
-bool FriendRemoveRsp::operator ==(const FriendRemoveRsp &other) const
+bool FriendDeleteRsp::operator ==(const FriendDeleteRsp &other) const
 {
     return QProtobufMessage::isEqual(*this, other)
         && dptr->m_requestId == other.dptr->m_requestId
@@ -624,27 +624,27 @@ bool FriendRemoveRsp::operator ==(const FriendRemoveRsp &other) const
         && dptr->m_errmsg == other.dptr->m_errmsg;
 }
 
-bool FriendRemoveRsp::operator !=(const FriendRemoveRsp &other) const
+bool FriendDeleteRsp::operator !=(const FriendDeleteRsp &other) const
 {
     return !this->operator ==(other);
 }
 
-QString FriendRemoveRsp::requestId() const
+QString FriendDeleteRsp::requestId() const
 {
     return dptr->m_requestId;
 }
 
-bool FriendRemoveRsp::success() const
+bool FriendDeleteRsp::success() const
 {
     return dptr->m_success;
 }
 
-QString FriendRemoveRsp::errmsg() const
+QString FriendDeleteRsp::errmsg() const
 {
     return dptr->m_errmsg;
 }
 
-void FriendRemoveRsp::setRequestId(const QString &requestId)
+void FriendDeleteRsp::setRequestId(const QString &requestId)
 {
     if (dptr->m_requestId != requestId) {
         dptr.detach();
@@ -652,7 +652,7 @@ void FriendRemoveRsp::setRequestId(const QString &requestId)
     }
 }
 
-void FriendRemoveRsp::setSuccess(const bool &success)
+void FriendDeleteRsp::setSuccess(const bool &success)
 {
     if (dptr->m_success != success) {
         dptr.detach();
@@ -660,7 +660,7 @@ void FriendRemoveRsp::setSuccess(const bool &success)
     }
 }
 
-void FriendRemoveRsp::setErrmsg(const QString &errmsg)
+void FriendDeleteRsp::setErrmsg(const QString &errmsg)
 {
     if (dptr->m_errmsg != errmsg) {
         dptr.detach();
@@ -682,14 +682,14 @@ public:
           m_requestId(other.m_requestId),
           m_sessionId(other.m_sessionId),
           m_userId(other.m_userId),
-          m_respondentId(other.m_respondentId)
+          m_friendId(other.m_friendId)
     {
     }
 
     QString m_requestId;
     QString m_sessionId;
     QString m_userId;
-    QString m_respondentId;
+    QString m_friendId;
 };
 
 FriendAddReq::~FriendAddReq() = default;
@@ -697,7 +697,7 @@ FriendAddReq::~FriendAddReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_FriendAddReq_uint_data;
-    const char qt_protobuf_FriendAddReq_char_data[62];
+    const char qt_protobuf_FriendAddReq_char_data[64];
 } qt_protobuf_FriendAddReq_metadata {
     // data
     {
@@ -706,37 +706,37 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        20, /* = message full name length */
+        26, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        21, /* = requestId */
-        31, /* = sessionId */
-        41, /* = userId */
-        48, /* = respondentId */
-        61, /* = end-of-string-marker */
+        27, /* = requestId */
+        37, /* = sessionId */
+        47, /* = userId */
+        54, /* = friendId */
+        63, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = sessionId */
         3, /* = userId */
-        4, /* = respondentId */
+        4, /* = friendId */
         // Property indices:
         0, /* = requestId */
         1, /* = sessionId */
         2, /* = userId */
-        3, /* = respondentId */
+        3, /* = friendId */
         // Field flags:
         QtProtobufPrivate::NoFlags, /* = requestId */
         QtProtobufPrivate::NoFlags, /* = sessionId */
         QtProtobufPrivate::NoFlags, /* = userId */
-        QtProtobufPrivate::NoFlags, /* = respondentId */
+        QtProtobufPrivate::NoFlags, /* = friendId */
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.FriendAddReq\0" /* = full message name */
+    "my_chat_proto.FriendAddReq\0" /* = full message name */
     /* field char_data: */
-    "requestId\0sessionId\0userId\0respondentId\0"
+    "requestId\0sessionId\0userId\0friendId\0"
 };
 
 const QtProtobufPrivate::QProtobufPropertyOrdering FriendAddReq::propertyOrdering = {
@@ -781,7 +781,7 @@ bool FriendAddReq::operator ==(const FriendAddReq &other) const
 {
     return QProtobufMessage::isEqual(*this, other)
         && dptr->m_requestId == other.dptr->m_requestId
-        && dptr->m_respondentId == other.dptr->m_respondentId;
+        && dptr->m_friendId == other.dptr->m_friendId;
 }
 
 bool FriendAddReq::operator !=(const FriendAddReq &other) const
@@ -804,9 +804,9 @@ QString FriendAddReq::userId() const
     return dptr->m_userId;
 }
 
-QString FriendAddReq::respondentId() const
+QString FriendAddReq::friendId() const
 {
-    return dptr->m_respondentId;
+    return dptr->m_friendId;
 }
 
 void FriendAddReq::setRequestId(const QString &requestId)
@@ -833,11 +833,11 @@ void FriendAddReq::setUserId(const QString &userId)
     }
 }
 
-void FriendAddReq::setRespondentId(const QString &respondentId)
+void FriendAddReq::setFriendId(const QString &friendId)
 {
-    if (dptr->m_respondentId != respondentId) {
+    if (dptr->m_friendId != friendId) {
         dptr.detach();
-        dptr->m_respondentId = respondentId;
+        dptr->m_friendId = friendId;
     }
 }
 
@@ -871,7 +871,7 @@ FriendAddRsp::~FriendAddRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_FriendAddRsp_uint_data;
-    const char qt_protobuf_FriendAddRsp_char_data[61];
+    const char qt_protobuf_FriendAddRsp_char_data[67];
 } qt_protobuf_FriendAddRsp_metadata {
     // data
     {
@@ -880,16 +880,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        20, /* = message full name length */
+        26, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        21, /* = requestId */
-        31, /* = success */
-        39, /* = errmsg */
-        46, /* = notifyEventId */
-        60, /* = end-of-string-marker */
+        27, /* = requestId */
+        37, /* = success */
+        45, /* = errmsg */
+        52, /* = notifyEventId */
+        66, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -908,7 +908,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.FriendAddRsp\0" /* = full message name */
+    "my_chat_proto.FriendAddRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0notifyEventId\0"
 };
@@ -1051,7 +1051,7 @@ FriendAddProcessReq::~FriendAddProcessReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 25> qt_protobuf_FriendAddProcessReq_uint_data;
-    const char qt_protobuf_FriendAddProcessReq_char_data[88];
+    const char qt_protobuf_FriendAddProcessReq_char_data[94];
 } qt_protobuf_FriendAddProcessReq_metadata {
     // data
     {
@@ -1060,18 +1060,18 @@ static constexpr struct {
         7, /* = field number offset */
         13, /* = property index offset */
         19, /* = field flags offset */
-        27, /* = message full name length */
+        33, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        28, /* = requestId */
-        38, /* = notifyEventId */
-        52, /* = agree */
-        58, /* = applyUserId */
-        70, /* = sessionId */
-        80, /* = userId */
-        87, /* = end-of-string-marker */
+        34, /* = requestId */
+        44, /* = notifyEventId */
+        58, /* = agree */
+        64, /* = applyUserId */
+        76, /* = sessionId */
+        86, /* = userId */
+        93, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = notifyEventId */
@@ -1096,7 +1096,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.FriendAddProcessReq\0" /* = full message name */
+    "my_chat_proto.FriendAddProcessReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0notifyEventId\0agree\0applyUserId\0sessionId\0"
     "userId\0"
@@ -1262,7 +1262,7 @@ FriendAddProcessRsp::~FriendAddProcessRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_FriendAddProcessRsp_uint_data;
-    const char qt_protobuf_FriendAddProcessRsp_char_data[67];
+    const char qt_protobuf_FriendAddProcessRsp_char_data[73];
 } qt_protobuf_FriendAddProcessRsp_metadata {
     // data
     {
@@ -1271,16 +1271,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        27, /* = message full name length */
+        33, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        28, /* = requestId */
-        38, /* = success */
-        46, /* = errmsg */
-        53, /* = newSessionId */
-        66, /* = end-of-string-marker */
+        34, /* = requestId */
+        44, /* = success */
+        52, /* = errmsg */
+        59, /* = newSessionId */
+        72, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -1299,7 +1299,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.FriendAddProcessRsp\0" /* = full message name */
+    "my_chat_proto.FriendAddProcessRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0newSessionId\0"
 };
@@ -1434,7 +1434,7 @@ GetPendingFriendEventListReq::~GetPendingFriendEventListReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 13> qt_protobuf_GetPendingFriendEventListReq_uint_data;
-    const char qt_protobuf_GetPendingFriendEventListReq_char_data[65];
+    const char qt_protobuf_GetPendingFriendEventListReq_char_data[71];
 } qt_protobuf_GetPendingFriendEventListReq_metadata {
     // data
     {
@@ -1443,15 +1443,15 @@ static constexpr struct {
         4, /* = field number offset */
         7, /* = property index offset */
         10, /* = field flags offset */
-        36, /* = message full name length */
+        42, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        37, /* = requestId */
-        47, /* = sessionId */
-        57, /* = userId */
-        64, /* = end-of-string-marker */
+        43, /* = requestId */
+        53, /* = sessionId */
+        63, /* = userId */
+        70, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = sessionId */
@@ -1467,7 +1467,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetPendingFriendEventListReq\0" /* = full message name */
+    "my_chat_proto.GetPendingFriendEventListReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0sessionId\0userId\0"
 };
@@ -1588,7 +1588,7 @@ FriendEvent::~FriendEvent() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 9> qt_protobuf_FriendEvent_uint_data;
-    const char qt_protobuf_FriendEvent_char_data[36];
+    const char qt_protobuf_FriendEvent_char_data[42];
 } qt_protobuf_FriendEvent_metadata {
     // data
     {
@@ -1597,14 +1597,14 @@ static constexpr struct {
         3, /* = field number offset */
         5, /* = property index offset */
         7, /* = field flags offset */
-        19, /* = message full name length */
+        25, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        20, /* = eventId */
-        28, /* = sender */
-        35, /* = end-of-string-marker */
+        26, /* = eventId */
+        34, /* = sender */
+        41, /* = end-of-string-marker */
         // Field numbers:
         1, /* = eventId */
         3, /* = sender */
@@ -1617,7 +1617,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.FriendEvent\0" /* = full message name */
+    "my_chat_proto.FriendEvent\0" /* = full message name */
     /* field char_data: */
     "eventId\0sender\0"
 };
@@ -1742,7 +1742,7 @@ GetPendingFriendEventListRsp::~GetPendingFriendEventListRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_GetPendingFriendEventListRsp_uint_data;
-    const char qt_protobuf_GetPendingFriendEventListRsp_char_data[69];
+    const char qt_protobuf_GetPendingFriendEventListRsp_char_data[75];
 } qt_protobuf_GetPendingFriendEventListRsp_metadata {
     // data
     {
@@ -1751,16 +1751,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        36, /* = message full name length */
+        42, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        37, /* = requestId */
-        47, /* = success */
-        55, /* = errmsg */
-        62, /* = event */
-        68, /* = end-of-string-marker */
+        43, /* = requestId */
+        53, /* = success */
+        61, /* = errmsg */
+        68, /* = event */
+        74, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -1779,7 +1779,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetPendingFriendEventListRsp\0" /* = full message name */
+    "my_chat_proto.GetPendingFriendEventListRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0event\0"
 };
@@ -1895,15 +1895,15 @@ void GetPendingFriendEventListRsp::setEvent(const FriendEventRepeated &event)
 }
 
 
-class FriendSearchReq_QtProtobufData : public QSharedData
+class UserSearchReq_QtProtobufData : public QSharedData
 {
 public:
-    FriendSearchReq_QtProtobufData()
+    UserSearchReq_QtProtobufData()
         : QSharedData()
     {
     }
 
-    FriendSearchReq_QtProtobufData(const FriendSearchReq_QtProtobufData &other)
+    UserSearchReq_QtProtobufData(const UserSearchReq_QtProtobufData &other)
         : QSharedData(other),
           m_requestId(other.m_requestId),
           m_searchKey(other.m_searchKey),
@@ -1918,13 +1918,13 @@ public:
     QString m_userId;
 };
 
-FriendSearchReq::~FriendSearchReq() = default;
+UserSearchReq::~UserSearchReq() = default;
 
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
-    const std::array<uint, 17> qt_protobuf_FriendSearchReq_uint_data;
-    const char qt_protobuf_FriendSearchReq_char_data[62];
-} qt_protobuf_FriendSearchReq_metadata {
+    const std::array<uint, 17> qt_protobuf_UserSearchReq_uint_data;
+    const char qt_protobuf_UserSearchReq_char_data[66];
+} qt_protobuf_UserSearchReq_metadata {
     // data
     {
         0, /* = version */
@@ -1932,16 +1932,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        23, /* = message full name length */
+        27, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        24, /* = requestId */
-        34, /* = searchKey */
-        44, /* = sessionId */
-        54, /* = userId */
-        61, /* = end-of-string-marker */
+        28, /* = requestId */
+        38, /* = searchKey */
+        48, /* = sessionId */
+        58, /* = userId */
+        65, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = searchKey */
@@ -1960,82 +1960,82 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.FriendSearchReq\0" /* = full message name */
+    "my_chat_proto.UserSearchReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0searchKey\0sessionId\0userId\0"
 };
 
-const QtProtobufPrivate::QProtobufPropertyOrdering FriendSearchReq::propertyOrdering = {
-    &qt_protobuf_FriendSearchReq_metadata.data
+const QtProtobufPrivate::QProtobufPropertyOrdering UserSearchReq::propertyOrdering = {
+    &qt_protobuf_UserSearchReq_metadata.data
 };
 
-void FriendSearchReq::registerTypes()
+void UserSearchReq::registerTypes()
 {
-    qRegisterMetaType<FriendSearchReq>();
-    qRegisterMetaType<FriendSearchReqRepeated>();
+    qRegisterMetaType<UserSearchReq>();
+    qRegisterMetaType<UserSearchReqRepeated>();
 }
 
-FriendSearchReq::FriendSearchReq()
-    : QProtobufMessage(&FriendSearchReq::staticMetaObject),
-      dptr(new FriendSearchReq_QtProtobufData)
+UserSearchReq::UserSearchReq()
+    : QProtobufMessage(&UserSearchReq::staticMetaObject),
+      dptr(new UserSearchReq_QtProtobufData)
 {
 }
 
-FriendSearchReq::FriendSearchReq(const FriendSearchReq &other)
+UserSearchReq::UserSearchReq(const UserSearchReq &other)
     : QProtobufMessage(other),
       dptr(other.dptr)
 {
 }
-FriendSearchReq &FriendSearchReq::operator =(const FriendSearchReq &other)
+UserSearchReq &UserSearchReq::operator =(const UserSearchReq &other)
 {
     QProtobufMessage::operator=(other);
     dptr = other.dptr;
     return *this;
 }
-FriendSearchReq::FriendSearchReq(FriendSearchReq &&other) noexcept
+UserSearchReq::UserSearchReq(UserSearchReq &&other) noexcept
     : QProtobufMessage(std::move(other)),
       dptr(std::move(other.dptr))
 {
 }
-FriendSearchReq &FriendSearchReq::operator =(FriendSearchReq &&other) noexcept
+UserSearchReq &UserSearchReq::operator =(UserSearchReq &&other) noexcept
 {
     QProtobufMessage::operator=(std::move(other));
     dptr.swap(other.dptr);
     return *this;
 }
-bool FriendSearchReq::operator ==(const FriendSearchReq &other) const
+bool UserSearchReq::operator ==(const UserSearchReq &other) const
 {
     return QProtobufMessage::isEqual(*this, other)
         && dptr->m_requestId == other.dptr->m_requestId
         && dptr->m_searchKey == other.dptr->m_searchKey;
 }
 
-bool FriendSearchReq::operator !=(const FriendSearchReq &other) const
+bool UserSearchReq::operator !=(const UserSearchReq &other) const
 {
     return !this->operator ==(other);
 }
 
-QString FriendSearchReq::requestId() const
+QString UserSearchReq::requestId() const
 {
     return dptr->m_requestId;
 }
 
-QString FriendSearchReq::searchKey() const
+QString UserSearchReq::searchKey() const
 {
     return dptr->m_searchKey;
 }
 
-QString FriendSearchReq::sessionId() const
+QString UserSearchReq::sessionId() const
 {
     return dptr->m_sessionId;
 }
 
-QString FriendSearchReq::userId() const
+QString UserSearchReq::userId() const
 {
     return dptr->m_userId;
 }
 
-void FriendSearchReq::setRequestId(const QString &requestId)
+void UserSearchReq::setRequestId(const QString &requestId)
 {
     if (dptr->m_requestId != requestId) {
         dptr.detach();
@@ -2043,7 +2043,7 @@ void FriendSearchReq::setRequestId(const QString &requestId)
     }
 }
 
-void FriendSearchReq::setSearchKey(const QString &searchKey)
+void UserSearchReq::setSearchKey(const QString &searchKey)
 {
     if (dptr->m_searchKey != searchKey) {
         dptr.detach();
@@ -2051,7 +2051,7 @@ void FriendSearchReq::setSearchKey(const QString &searchKey)
     }
 }
 
-void FriendSearchReq::setSessionId(const QString &sessionId)
+void UserSearchReq::setSessionId(const QString &sessionId)
 {
     if (dptr->m_sessionId != sessionId) {
         dptr.detach();
@@ -2059,7 +2059,7 @@ void FriendSearchReq::setSessionId(const QString &sessionId)
     }
 }
 
-void FriendSearchReq::setUserId(const QString &userId)
+void UserSearchReq::setUserId(const QString &userId)
 {
     if (dptr->m_userId != userId) {
         dptr.detach();
@@ -2068,16 +2068,16 @@ void FriendSearchReq::setUserId(const QString &userId)
 }
 
 
-class FriendSearchRsp_QtProtobufData : public QSharedData
+class UserSearchRsp_QtProtobufData : public QSharedData
 {
 public:
-    FriendSearchRsp_QtProtobufData()
+    UserSearchRsp_QtProtobufData()
         : QSharedData(),
           m_success(false)
     {
     }
 
-    FriendSearchRsp_QtProtobufData(const FriendSearchRsp_QtProtobufData &other)
+    UserSearchRsp_QtProtobufData(const UserSearchRsp_QtProtobufData &other)
         : QSharedData(other),
           m_requestId(other.m_requestId),
           m_success(other.m_success),
@@ -2092,13 +2092,13 @@ public:
     UserInfoRepeated m_userInfo;
 };
 
-FriendSearchRsp::~FriendSearchRsp() = default;
+UserSearchRsp::~UserSearchRsp() = default;
 
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
-    const std::array<uint, 17> qt_protobuf_FriendSearchRsp_uint_data;
-    const char qt_protobuf_FriendSearchRsp_char_data[59];
-} qt_protobuf_FriendSearchRsp_metadata {
+    const std::array<uint, 17> qt_protobuf_UserSearchRsp_uint_data;
+    const char qt_protobuf_UserSearchRsp_char_data[63];
+} qt_protobuf_UserSearchRsp_metadata {
     // data
     {
         0, /* = version */
@@ -2106,16 +2106,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        23, /* = message full name length */
+        27, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        24, /* = requestId */
-        34, /* = success */
-        42, /* = errmsg */
-        49, /* = userInfo */
-        58, /* = end-of-string-marker */
+        28, /* = requestId */
+        38, /* = success */
+        46, /* = errmsg */
+        53, /* = userInfo */
+        62, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -2134,50 +2134,50 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.FriendSearchRsp\0" /* = full message name */
+    "my_chat_proto.UserSearchRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0userInfo\0"
 };
 
-const QtProtobufPrivate::QProtobufPropertyOrdering FriendSearchRsp::propertyOrdering = {
-    &qt_protobuf_FriendSearchRsp_metadata.data
+const QtProtobufPrivate::QProtobufPropertyOrdering UserSearchRsp::propertyOrdering = {
+    &qt_protobuf_UserSearchRsp_metadata.data
 };
 
-void FriendSearchRsp::registerTypes()
+void UserSearchRsp::registerTypes()
 {
-    qRegisterMetaType<FriendSearchRsp>();
-    qRegisterMetaType<FriendSearchRspRepeated>();
+    qRegisterMetaType<UserSearchRsp>();
+    qRegisterMetaType<UserSearchRspRepeated>();
 }
 
-FriendSearchRsp::FriendSearchRsp()
-    : QProtobufMessage(&FriendSearchRsp::staticMetaObject),
-      dptr(new FriendSearchRsp_QtProtobufData)
+UserSearchRsp::UserSearchRsp()
+    : QProtobufMessage(&UserSearchRsp::staticMetaObject),
+      dptr(new UserSearchRsp_QtProtobufData)
 {
 }
 
-FriendSearchRsp::FriendSearchRsp(const FriendSearchRsp &other)
+UserSearchRsp::UserSearchRsp(const UserSearchRsp &other)
     : QProtobufMessage(other),
       dptr(other.dptr)
 {
 }
-FriendSearchRsp &FriendSearchRsp::operator =(const FriendSearchRsp &other)
+UserSearchRsp &UserSearchRsp::operator =(const UserSearchRsp &other)
 {
     QProtobufMessage::operator=(other);
     dptr = other.dptr;
     return *this;
 }
-FriendSearchRsp::FriendSearchRsp(FriendSearchRsp &&other) noexcept
+UserSearchRsp::UserSearchRsp(UserSearchRsp &&other) noexcept
     : QProtobufMessage(std::move(other)),
       dptr(std::move(other.dptr))
 {
 }
-FriendSearchRsp &FriendSearchRsp::operator =(FriendSearchRsp &&other) noexcept
+UserSearchRsp &UserSearchRsp::operator =(UserSearchRsp &&other) noexcept
 {
     QProtobufMessage::operator=(std::move(other));
     dptr.swap(other.dptr);
     return *this;
 }
-bool FriendSearchRsp::operator ==(const FriendSearchRsp &other) const
+bool UserSearchRsp::operator ==(const UserSearchRsp &other) const
 {
     return QProtobufMessage::isEqual(*this, other)
         && dptr->m_requestId == other.dptr->m_requestId
@@ -2186,38 +2186,38 @@ bool FriendSearchRsp::operator ==(const FriendSearchRsp &other) const
         && QtProtobuf::repeatedValueCompare(dptr->m_userInfo, other.dptr->m_userInfo);
 }
 
-bool FriendSearchRsp::operator !=(const FriendSearchRsp &other) const
+bool UserSearchRsp::operator !=(const UserSearchRsp &other) const
 {
     return !this->operator ==(other);
 }
 
-QString FriendSearchRsp::requestId() const
+QString UserSearchRsp::requestId() const
 {
     return dptr->m_requestId;
 }
 
-bool FriendSearchRsp::success() const
+bool UserSearchRsp::success() const
 {
     return dptr->m_success;
 }
 
-QString FriendSearchRsp::errmsg() const
+QString UserSearchRsp::errmsg() const
 {
     return dptr->m_errmsg;
 }
 
-UserInfoRepeated FriendSearchRsp::userInfo() const
+UserInfoRepeated UserSearchRsp::userInfo() const
 {
     return dptr->m_userInfo;
 }
 
-UserInfoRepeated &FriendSearchRsp::userInfo()
+UserInfoRepeated &UserSearchRsp::userInfo()
 {
     dptr.detach();
     return dptr->m_userInfo;
 }
 
-void FriendSearchRsp::setRequestId(const QString &requestId)
+void UserSearchRsp::setRequestId(const QString &requestId)
 {
     if (dptr->m_requestId != requestId) {
         dptr.detach();
@@ -2225,7 +2225,7 @@ void FriendSearchRsp::setRequestId(const QString &requestId)
     }
 }
 
-void FriendSearchRsp::setSuccess(const bool &success)
+void UserSearchRsp::setSuccess(const bool &success)
 {
     if (dptr->m_success != success) {
         dptr.detach();
@@ -2233,7 +2233,7 @@ void FriendSearchRsp::setSuccess(const bool &success)
     }
 }
 
-void FriendSearchRsp::setErrmsg(const QString &errmsg)
+void UserSearchRsp::setErrmsg(const QString &errmsg)
 {
     if (dptr->m_errmsg != errmsg) {
         dptr.detach();
@@ -2241,7 +2241,7 @@ void FriendSearchRsp::setErrmsg(const QString &errmsg)
     }
 }
 
-void FriendSearchRsp::setUserInfo(const UserInfoRepeated &userInfo)
+void UserSearchRsp::setUserInfo(const UserInfoRepeated &userInfo)
 {
     if (dptr->m_userInfo != userInfo) {
         dptr.detach();
@@ -2276,7 +2276,7 @@ GetChatSessionListReq::~GetChatSessionListReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 13> qt_protobuf_GetChatSessionListReq_uint_data;
-    const char qt_protobuf_GetChatSessionListReq_char_data[58];
+    const char qt_protobuf_GetChatSessionListReq_char_data[64];
 } qt_protobuf_GetChatSessionListReq_metadata {
     // data
     {
@@ -2285,15 +2285,15 @@ static constexpr struct {
         4, /* = field number offset */
         7, /* = property index offset */
         10, /* = field flags offset */
-        29, /* = message full name length */
+        35, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        30, /* = requestId */
-        40, /* = sessionId */
-        50, /* = userId */
-        57, /* = end-of-string-marker */
+        36, /* = requestId */
+        46, /* = sessionId */
+        56, /* = userId */
+        63, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = sessionId */
@@ -2309,7 +2309,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetChatSessionListReq\0" /* = full message name */
+    "my_chat_proto.GetChatSessionListReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0sessionId\0userId\0"
 };
@@ -2432,7 +2432,7 @@ GetChatSessionListRsp::~GetChatSessionListRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_GetChatSessionListRsp_uint_data;
-    const char qt_protobuf_GetChatSessionListRsp_char_data[76];
+    const char qt_protobuf_GetChatSessionListRsp_char_data[82];
 } qt_protobuf_GetChatSessionListRsp_metadata {
     // data
     {
@@ -2441,16 +2441,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        29, /* = message full name length */
+        35, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        30, /* = requestId */
-        40, /* = success */
-        48, /* = errmsg */
-        55, /* = chatSessionInfoList */
-        75, /* = end-of-string-marker */
+        36, /* = requestId */
+        46, /* = success */
+        54, /* = errmsg */
+        61, /* = chatSessionInfoList */
+        81, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -2469,7 +2469,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetChatSessionListRsp\0" /* = full message name */
+    "my_chat_proto.GetChatSessionListRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0chatSessionInfoList\0"
 };
@@ -2615,7 +2615,7 @@ ChatSessionCreateReq::~ChatSessionCreateReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 21> qt_protobuf_ChatSessionCreateReq_uint_data;
-    const char qt_protobuf_ChatSessionCreateReq_char_data[86];
+    const char qt_protobuf_ChatSessionCreateReq_char_data[92];
 } qt_protobuf_ChatSessionCreateReq_metadata {
     // data
     {
@@ -2624,17 +2624,17 @@ static constexpr struct {
         6, /* = field number offset */
         11, /* = property index offset */
         16, /* = field flags offset */
-        28, /* = message full name length */
+        34, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        29, /* = requestId */
-        39, /* = sessionId */
-        49, /* = userId */
-        56, /* = chatSessionName */
-        72, /* = memberIdList */
-        85, /* = end-of-string-marker */
+        35, /* = requestId */
+        45, /* = sessionId */
+        55, /* = userId */
+        62, /* = chatSessionName */
+        78, /* = memberIdList */
+        91, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = sessionId */
@@ -2656,7 +2656,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.ChatSessionCreateReq\0" /* = full message name */
+    "my_chat_proto.ChatSessionCreateReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0sessionId\0userId\0chatSessionName\0memberIdList\0"
 };
@@ -2816,7 +2816,7 @@ ChatSessionCreateRsp::~ChatSessionCreateRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_ChatSessionCreateRsp_uint_data;
-    const char qt_protobuf_ChatSessionCreateRsp_char_data[71];
+    const char qt_protobuf_ChatSessionCreateRsp_char_data[77];
 } qt_protobuf_ChatSessionCreateRsp_metadata {
     // data
     {
@@ -2825,16 +2825,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        28, /* = message full name length */
+        34, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        29, /* = requestId */
-        39, /* = success */
-        47, /* = errmsg */
-        54, /* = chatSessionInfo */
-        70, /* = end-of-string-marker */
+        35, /* = requestId */
+        45, /* = success */
+        53, /* = errmsg */
+        60, /* = chatSessionInfo */
+        76, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -2853,7 +2853,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.ChatSessionCreateRsp\0" /* = full message name */
+    "my_chat_proto.ChatSessionCreateRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0chatSessionInfo\0"
 };
@@ -3003,7 +3003,7 @@ GetChatSessionMemberReq::~GetChatSessionMemberReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_GetChatSessionMemberReq_uint_data;
-    const char qt_protobuf_GetChatSessionMemberReq_char_data[74];
+    const char qt_protobuf_GetChatSessionMemberReq_char_data[80];
 } qt_protobuf_GetChatSessionMemberReq_metadata {
     // data
     {
@@ -3012,16 +3012,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        31, /* = message full name length */
+        37, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        32, /* = requestId */
-        42, /* = sessionId */
-        52, /* = userId */
-        59, /* = chatSessionId */
-        73, /* = end-of-string-marker */
+        38, /* = requestId */
+        48, /* = sessionId */
+        58, /* = userId */
+        65, /* = chatSessionId */
+        79, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = sessionId */
@@ -3040,7 +3040,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetChatSessionMemberReq\0" /* = full message name */
+    "my_chat_proto.GetChatSessionMemberReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0sessionId\0userId\0chatSessionId\0"
 };
@@ -3177,7 +3177,7 @@ GetChatSessionMemberRsp::~GetChatSessionMemberRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_GetChatSessionMemberRsp_uint_data;
-    const char qt_protobuf_GetChatSessionMemberRsp_char_data[73];
+    const char qt_protobuf_GetChatSessionMemberRsp_char_data[79];
 } qt_protobuf_GetChatSessionMemberRsp_metadata {
     // data
     {
@@ -3186,16 +3186,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        31, /* = message full name length */
+        37, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        32, /* = requestId */
-        42, /* = success */
-        50, /* = errmsg */
-        57, /* = memberInfoList */
-        72, /* = end-of-string-marker */
+        38, /* = requestId */
+        48, /* = success */
+        56, /* = errmsg */
+        63, /* = memberInfoList */
+        78, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -3214,7 +3214,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetChatSessionMemberRsp\0" /* = full message name */
+    "my_chat_proto.GetChatSessionMemberRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0memberInfoList\0"
 };
@@ -3329,6 +3329,6 @@ void GetChatSessionMemberRsp::setMemberInfoList(const UserInfoRepeated &memberIn
     }
 }
 
-} // namespace bite_im
+} // namespace my_chat_proto
 
 #include "moc_friend.qpb.cpp"

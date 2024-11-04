@@ -19,7 +19,7 @@
 #include <memory>
 
 
-namespace bite_im {
+namespace my_chat_proto {
 
 namespace NotifyTypeGadget {
 Q_NAMESPACE
@@ -38,8 +38,8 @@ class NotifyFriendAddApply;
 using NotifyFriendAddApplyRepeated = QList<NotifyFriendAddApply>;
 class NotifyFriendAddProcess;
 using NotifyFriendAddProcessRepeated = QList<NotifyFriendAddProcess>;
-class NotifyFriendRemove;
-using NotifyFriendRemoveRepeated = QList<NotifyFriendRemove>;
+class NotifyFriendDelete;
+using NotifyFriendDeleteRepeated = QList<NotifyFriendDelete>;
 class NotifyNewChatSession;
 using NotifyNewChatSessionRepeated = QList<NotifyNewChatSession>;
 class NotifyNewMessage;
@@ -53,7 +53,7 @@ class NotifyFriendAddApply : public QProtobufMessage
     Q_GADGET
     Q_PROTOBUF_OBJECT
     Q_DECLARE_PROTOBUF_SERIALIZERS(NotifyFriendAddApply)
-    Q_PROPERTY(bite_im::UserInfo *userInfo_p READ userInfo_p WRITE setUserInfo_p SCRIPTABLE false)
+    Q_PROPERTY(my_chat_proto::UserInfo *userInfo_p READ userInfo_p WRITE setUserInfo_p SCRIPTABLE false)
 
 public:
     enum QtProtobufFieldEnum {
@@ -87,7 +87,7 @@ class NotifyFriendAddProcess : public QProtobufMessage
     Q_PROTOBUF_OBJECT
     Q_DECLARE_PROTOBUF_SERIALIZERS(NotifyFriendAddProcess)
     Q_PROPERTY(bool agree READ agree WRITE setAgree SCRIPTABLE true)
-    Q_PROPERTY(bite_im::UserInfo *userInfo_p READ userInfo_p WRITE setUserInfo_p SCRIPTABLE false)
+    Q_PROPERTY(my_chat_proto::UserInfo *userInfo_p READ userInfo_p WRITE setUserInfo_p SCRIPTABLE false)
 
 public:
     enum QtProtobufFieldEnum {
@@ -118,12 +118,12 @@ private:
     QExplicitlySharedDataPointer<NotifyFriendAddProcess_QtProtobufData> dptr;
 };
 
-class NotifyFriendRemove_QtProtobufData;
-class NotifyFriendRemove : public QProtobufMessage
+class NotifyFriendDelete_QtProtobufData;
+class NotifyFriendDelete : public QProtobufMessage
 {
     Q_GADGET
     Q_PROTOBUF_OBJECT
-    Q_DECLARE_PROTOBUF_SERIALIZERS(NotifyFriendRemove)
+    Q_DECLARE_PROTOBUF_SERIALIZERS(NotifyFriendDelete)
     Q_PROPERTY(QString userId READ userId WRITE setUserId SCRIPTABLE true)
 
 public:
@@ -132,21 +132,21 @@ public:
     };
     Q_ENUM(QtProtobufFieldEnum)
 
-    NotifyFriendRemove();
-    ~NotifyFriendRemove();
-    NotifyFriendRemove(const NotifyFriendRemove &other);
-    NotifyFriendRemove &operator =(const NotifyFriendRemove &other);
-    NotifyFriendRemove(NotifyFriendRemove &&other) noexcept;
-    NotifyFriendRemove &operator =(NotifyFriendRemove &&other) noexcept;
-    bool operator ==(const NotifyFriendRemove &other) const;
-    bool operator !=(const NotifyFriendRemove &other) const;
+    NotifyFriendDelete();
+    ~NotifyFriendDelete();
+    NotifyFriendDelete(const NotifyFriendDelete &other);
+    NotifyFriendDelete &operator =(const NotifyFriendDelete &other);
+    NotifyFriendDelete(NotifyFriendDelete &&other) noexcept;
+    NotifyFriendDelete &operator =(NotifyFriendDelete &&other) noexcept;
+    bool operator ==(const NotifyFriendDelete &other) const;
+    bool operator !=(const NotifyFriendDelete &other) const;
 
     QString userId() const;
     void setUserId(const QString &userId);
     static void registerTypes();
 
 private:
-    QExplicitlySharedDataPointer<NotifyFriendRemove_QtProtobufData> dptr;
+    QExplicitlySharedDataPointer<NotifyFriendDelete_QtProtobufData> dptr;
 };
 
 class NotifyNewChatSession_QtProtobufData;
@@ -155,7 +155,7 @@ class NotifyNewChatSession : public QProtobufMessage
     Q_GADGET
     Q_PROTOBUF_OBJECT
     Q_DECLARE_PROTOBUF_SERIALIZERS(NotifyNewChatSession)
-    Q_PROPERTY(bite_im::ChatSessionInfo *chatSessionInfo_p READ chatSessionInfo_p WRITE setChatSessionInfo_p SCRIPTABLE false)
+    Q_PROPERTY(my_chat_proto::ChatSessionInfo *chatSessionInfo_p READ chatSessionInfo_p WRITE setChatSessionInfo_p SCRIPTABLE false)
 
 public:
     enum QtProtobufFieldEnum {
@@ -188,7 +188,7 @@ class NotifyNewMessage : public QProtobufMessage
     Q_GADGET
     Q_PROTOBUF_OBJECT
     Q_DECLARE_PROTOBUF_SERIALIZERS(NotifyNewMessage)
-    Q_PROPERTY(bite_im::MessageInfo *messageInfo_p READ messageInfo_p WRITE setMessageInfo_p SCRIPTABLE false)
+    Q_PROPERTY(my_chat_proto::MessageInfo *messageInfo_p READ messageInfo_p WRITE setMessageInfo_p SCRIPTABLE false)
 
 public:
     enum QtProtobufFieldEnum {
@@ -222,16 +222,16 @@ class NotifyMessage : public QProtobufMessage
     Q_PROTOBUF_OBJECT
     Q_DECLARE_PROTOBUF_SERIALIZERS(NotifyMessage)
     Q_PROPERTY(QString notifyEventId READ notifyEventId WRITE setNotifyEventId SCRIPTABLE true)
-    Q_PROPERTY(bite_im::NotifyTypeGadget::NotifyType notifyType READ notifyType WRITE setNotifyType SCRIPTABLE true)
-    Q_PROPERTY(bite_im::NotifyFriendAddApply *friendAddApply READ friendAddApply_p WRITE setFriendAddApply_p)
+    Q_PROPERTY(my_chat_proto::NotifyTypeGadget::NotifyType notifyType READ notifyType WRITE setNotifyType SCRIPTABLE true)
+    Q_PROPERTY(my_chat_proto::NotifyFriendAddApply *friendAddApply READ friendAddApply_p WRITE setFriendAddApply_p)
     Q_PROPERTY(bool hasFriendAddApply READ hasFriendAddApply)
-    Q_PROPERTY(bite_im::NotifyFriendAddProcess *friendProcessResult READ friendProcessResult_p WRITE setFriendProcessResult_p)
+    Q_PROPERTY(my_chat_proto::NotifyFriendAddProcess *friendProcessResult READ friendProcessResult_p WRITE setFriendProcessResult_p)
     Q_PROPERTY(bool hasFriendProcessResult READ hasFriendProcessResult)
-    Q_PROPERTY(bite_im::NotifyFriendRemove *friendRemove READ friendRemove_p WRITE setFriendRemove_p)
-    Q_PROPERTY(bool hasFriendRemove READ hasFriendRemove)
-    Q_PROPERTY(bite_im::NotifyNewChatSession *newChatSessionInfo READ newChatSessionInfo_p WRITE setNewChatSessionInfo_p)
+    Q_PROPERTY(my_chat_proto::NotifyFriendDelete *friendDelete READ friendDelete_p WRITE setFriendDelete_p)
+    Q_PROPERTY(bool hasFriendDelete READ hasFriendDelete)
+    Q_PROPERTY(my_chat_proto::NotifyNewChatSession *newChatSessionInfo READ newChatSessionInfo_p WRITE setNewChatSessionInfo_p)
     Q_PROPERTY(bool hasNewChatSessionInfo READ hasNewChatSessionInfo)
-    Q_PROPERTY(bite_im::NotifyNewMessage *newMessageInfo READ newMessageInfo_p WRITE setNewMessageInfo_p)
+    Q_PROPERTY(my_chat_proto::NotifyNewMessage *newMessageInfo READ newMessageInfo_p WRITE setNewMessageInfo_p)
     Q_PROPERTY(bool hasNewMessageInfo READ hasNewMessageInfo)
 
 public:
@@ -240,7 +240,7 @@ public:
         NotifyTypeProtoFieldNumber = 2,
         FriendAddApplyProtoFieldNumber = 3,
         FriendProcessResultProtoFieldNumber = 4,
-        FriendRemoveProtoFieldNumber = 7,
+        FriendDeleteProtoFieldNumber = 7,
         NewChatSessionInfoProtoFieldNumber = 5,
         NewMessageInfoProtoFieldNumber = 6,
     };
@@ -250,7 +250,7 @@ public:
         UninitializedField = QtProtobuf::InvalidFieldNumber,
         FriendAddApply = 3,
         FriendProcessResult = 4,
-        FriendRemove = 7,
+        FriendDelete = 7,
         NewChatSessionInfo = 5,
         NewMessageInfo = 6,
     };
@@ -275,8 +275,8 @@ public:
     bool hasFriendProcessResult() const;
     NotifyFriendAddProcess &friendProcessResult() const;
 
-    bool hasFriendRemove() const;
-    NotifyFriendRemove &friendRemove() const;
+    bool hasFriendDelete() const;
+    NotifyFriendDelete &friendDelete() const;
 
     bool hasNewChatSessionInfo() const;
     NotifyNewChatSession &newChatSessionInfo() const;
@@ -288,7 +288,7 @@ public:
     void setNotifyType(const NotifyTypeGadget::NotifyType &notifyType);
     void setFriendAddApply(const NotifyFriendAddApply &friendAddApply);
     void setFriendProcessResult(const NotifyFriendAddProcess &friendProcessResult);
-    void setFriendRemove(const NotifyFriendRemove &friendRemove);
+    void setFriendDelete(const NotifyFriendDelete &friendDelete);
     void setNewChatSessionInfo(const NotifyNewChatSession &newChatSessionInfo);
     void setNewMessageInfo(const NotifyNewMessage &newMessageInfo);
     void clearNotify_remarks();
@@ -297,22 +297,22 @@ public:
 private:
     NotifyFriendAddApply *friendAddApply_p() const;
     NotifyFriendAddProcess *friendProcessResult_p() const;
-    NotifyFriendRemove *friendRemove_p() const;
+    NotifyFriendDelete *friendDelete_p() const;
     NotifyNewChatSession *newChatSessionInfo_p() const;
     NotifyNewMessage *newMessageInfo_p() const;
     void setFriendAddApply_p(NotifyFriendAddApply *friendAddApply);
     void setFriendProcessResult_p(NotifyFriendAddProcess *friendProcessResult);
-    void setFriendRemove_p(NotifyFriendRemove *friendRemove);
+    void setFriendDelete_p(NotifyFriendDelete *friendDelete);
     void setNewChatSessionInfo_p(NotifyNewChatSession *newChatSessionInfo);
     void setNewMessageInfo_p(NotifyNewMessage *newMessageInfo);
     QExplicitlySharedDataPointer<NotifyMessage_QtProtobufData> dptr;
 };
-} // namespace bite_im
+} // namespace my_chat_proto
 
-Q_DECLARE_METATYPE(bite_im::NotifyFriendAddApply)
-Q_DECLARE_METATYPE(bite_im::NotifyFriendAddProcess)
-Q_DECLARE_METATYPE(bite_im::NotifyFriendRemove)
-Q_DECLARE_METATYPE(bite_im::NotifyNewChatSession)
-Q_DECLARE_METATYPE(bite_im::NotifyNewMessage)
-Q_DECLARE_METATYPE(bite_im::NotifyMessage)
+Q_DECLARE_METATYPE(my_chat_proto::NotifyFriendAddApply)
+Q_DECLARE_METATYPE(my_chat_proto::NotifyFriendAddProcess)
+Q_DECLARE_METATYPE(my_chat_proto::NotifyFriendDelete)
+Q_DECLARE_METATYPE(my_chat_proto::NotifyNewChatSession)
+Q_DECLARE_METATYPE(my_chat_proto::NotifyNewMessage)
+Q_DECLARE_METATYPE(my_chat_proto::NotifyMessage)
 #endif // QPROTOBUF_NOTIFY_H

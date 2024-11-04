@@ -1,0 +1,16 @@
+Available HW decoding frameworks:
+     d3d11va
+     dxva2
+Available HW encoding frameworks:
+     d3d11va
+     dxva2
+[file: netclient.cpp, line: 262] getMyself: send request, requestId:  Request884b6f67bf17
+[file: netclient.cpp, line: 295] getFriendUserList: send request, requestId:  Request465a434ef86a
+[file: netclient.cpp, line: 327] getChatSesionList: send request, requestId:  Requestd36361d5cb8e
+[file: netclient.cpp, line: 359] getApplyUserList: send request, requestId:  Request72bf723c5026
+[file: netclient.cpp, line: 51] websocket client: websocket connected
+[file: netclient.cpp, line: 94] websocket 身份认证，requestId:  Requestd2a6a3c80099  , loginSessonId:  testLoginSessionId
+[file: netclient.cpp, line: 282] getMyself: handle response succeed, requestId:  Request884b6f67bf17
+[file: netclient.cpp, line: 346] getFriendUserList: handle response succeed, requestId:  Requestd36361d5cb8e
+[file: netclient.cpp, line: 314] getFriendUserList: handle response succeed, requestId:  Request465a434ef86a
+[file: netclient.cpp, line: 378] getApplyUserList: handle response succeed, requestId:  Request72bf723c5026

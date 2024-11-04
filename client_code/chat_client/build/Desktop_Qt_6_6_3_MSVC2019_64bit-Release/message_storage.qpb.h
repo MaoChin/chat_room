@@ -20,31 +20,31 @@
 
 
 namespace my_chat_proto {
-class GetHistoryMsgReq;
-using GetHistoryMsgReqRepeated = QList<GetHistoryMsgReq>;
-class GetHistoryMsgRsp;
-using GetHistoryMsgRspRepeated = QList<GetHistoryMsgRsp>;
+class MsgSearchByTimeReq;
+using MsgSearchByTimeReqRepeated = QList<MsgSearchByTimeReq>;
+class MsgSearchByTimeRsp;
+using MsgSearchByTimeRspRepeated = QList<MsgSearchByTimeRsp>;
 class GetRecentMsgReq;
 using GetRecentMsgReqRepeated = QList<GetRecentMsgReq>;
 class GetRecentMsgRsp;
 using GetRecentMsgRspRepeated = QList<GetRecentMsgRsp>;
-class MsgSearchReq;
-using MsgSearchReqRepeated = QList<MsgSearchReq>;
-class MsgSearchRsp;
-using MsgSearchRspRepeated = QList<MsgSearchRsp>;
+class MsgSearchBySearchKeyReq;
+using MsgSearchBySearchKeyReqRepeated = QList<MsgSearchBySearchKeyReq>;
+class MsgSearchBySearchKeyRsp;
+using MsgSearchBySearchKeyRspRepeated = QList<MsgSearchBySearchKeyRsp>;
 
-class GetHistoryMsgReq_QtProtobufData;
-class GetHistoryMsgReq : public QProtobufMessage
+class MsgSearchByTimeReq_QtProtobufData;
+class MsgSearchByTimeReq : public QProtobufMessage
 {
     Q_GADGET
     Q_PROTOBUF_OBJECT
-    Q_DECLARE_PROTOBUF_SERIALIZERS(GetHistoryMsgReq)
+    Q_DECLARE_PROTOBUF_SERIALIZERS(MsgSearchByTimeReq)
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(QString chatSessionId READ chatSessionId WRITE setChatSessionId SCRIPTABLE true)
     Q_PROPERTY(QtProtobuf::int64 startTime READ startTime WRITE setStartTime SCRIPTABLE false)
     Q_PROPERTY(QtProtobuf::int64 overTime READ overTime WRITE setOverTime SCRIPTABLE false)
     Q_PROPERTY(QString userId READ userId WRITE setUserId SCRIPTABLE true)
-    Q_PROPERTY(QString sessionId READ sessionId WRITE setSessionId SCRIPTABLE true)
+    Q_PROPERTY(QString loginSessionId READ loginSessionId WRITE setLoginSessionId SCRIPTABLE true)
 
 public:
     enum QtProtobufFieldEnum {
@@ -53,18 +53,18 @@ public:
         StartTimeProtoFieldNumber = 3,
         OverTimeProtoFieldNumber = 4,
         UserIdProtoFieldNumber = 5,
-        SessionIdProtoFieldNumber = 6,
+        LoginSessionIdProtoFieldNumber = 6,
     };
     Q_ENUM(QtProtobufFieldEnum)
 
-    GetHistoryMsgReq();
-    ~GetHistoryMsgReq();
-    GetHistoryMsgReq(const GetHistoryMsgReq &other);
-    GetHistoryMsgReq &operator =(const GetHistoryMsgReq &other);
-    GetHistoryMsgReq(GetHistoryMsgReq &&other) noexcept;
-    GetHistoryMsgReq &operator =(GetHistoryMsgReq &&other) noexcept;
-    bool operator ==(const GetHistoryMsgReq &other) const;
-    bool operator !=(const GetHistoryMsgReq &other) const;
+    MsgSearchByTimeReq();
+    ~MsgSearchByTimeReq();
+    MsgSearchByTimeReq(const MsgSearchByTimeReq &other);
+    MsgSearchByTimeReq &operator =(const MsgSearchByTimeReq &other);
+    MsgSearchByTimeReq(MsgSearchByTimeReq &&other) noexcept;
+    MsgSearchByTimeReq &operator =(MsgSearchByTimeReq &&other) noexcept;
+    bool operator ==(const MsgSearchByTimeReq &other) const;
+    bool operator !=(const MsgSearchByTimeReq &other) const;
 
     QString requestId() const;
 
@@ -76,25 +76,25 @@ public:
 
     QString userId() const;
 
-    QString sessionId() const;
+    QString loginSessionId() const;
     void setRequestId(const QString &requestId);
     void setChatSessionId(const QString &chatSessionId);
     void setStartTime(const QtProtobuf::int64 &startTime);
     void setOverTime(const QtProtobuf::int64 &overTime);
     void setUserId(const QString &userId);
-    void setSessionId(const QString &sessionId);
+    void setLoginSessionId(const QString &loginSessionId);
     static void registerTypes();
 
 private:
-    QExplicitlySharedDataPointer<GetHistoryMsgReq_QtProtobufData> dptr;
+    QExplicitlySharedDataPointer<MsgSearchByTimeReq_QtProtobufData> dptr;
 };
 
-class GetHistoryMsgRsp_QtProtobufData;
-class GetHistoryMsgRsp : public QProtobufMessage
+class MsgSearchByTimeRsp_QtProtobufData;
+class MsgSearchByTimeRsp : public QProtobufMessage
 {
     Q_GADGET
     Q_PROTOBUF_OBJECT
-    Q_DECLARE_PROTOBUF_SERIALIZERS(GetHistoryMsgRsp)
+    Q_DECLARE_PROTOBUF_SERIALIZERS(MsgSearchByTimeRsp)
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(bool success READ success WRITE setSuccess SCRIPTABLE true)
     Q_PROPERTY(QString errmsg READ errmsg WRITE setErrmsg SCRIPTABLE true)
@@ -109,14 +109,14 @@ public:
     };
     Q_ENUM(QtProtobufFieldEnum)
 
-    GetHistoryMsgRsp();
-    ~GetHistoryMsgRsp();
-    GetHistoryMsgRsp(const GetHistoryMsgRsp &other);
-    GetHistoryMsgRsp &operator =(const GetHistoryMsgRsp &other);
-    GetHistoryMsgRsp(GetHistoryMsgRsp &&other) noexcept;
-    GetHistoryMsgRsp &operator =(GetHistoryMsgRsp &&other) noexcept;
-    bool operator ==(const GetHistoryMsgRsp &other) const;
-    bool operator !=(const GetHistoryMsgRsp &other) const;
+    MsgSearchByTimeRsp();
+    ~MsgSearchByTimeRsp();
+    MsgSearchByTimeRsp(const MsgSearchByTimeRsp &other);
+    MsgSearchByTimeRsp &operator =(const MsgSearchByTimeRsp &other);
+    MsgSearchByTimeRsp(MsgSearchByTimeRsp &&other) noexcept;
+    MsgSearchByTimeRsp &operator =(MsgSearchByTimeRsp &&other) noexcept;
+    bool operator ==(const MsgSearchByTimeRsp &other) const;
+    bool operator !=(const MsgSearchByTimeRsp &other) const;
 
     QString requestId() const;
 
@@ -133,7 +133,7 @@ public:
     static void registerTypes();
 
 private:
-    QExplicitlySharedDataPointer<GetHistoryMsgRsp_QtProtobufData> dptr;
+    QExplicitlySharedDataPointer<MsgSearchByTimeRsp_QtProtobufData> dptr;
 };
 
 class GetRecentMsgReq_QtProtobufData;
@@ -239,15 +239,15 @@ private:
     QExplicitlySharedDataPointer<GetRecentMsgRsp_QtProtobufData> dptr;
 };
 
-class MsgSearchReq_QtProtobufData;
-class MsgSearchReq : public QProtobufMessage
+class MsgSearchBySearchKeyReq_QtProtobufData;
+class MsgSearchBySearchKeyReq : public QProtobufMessage
 {
     Q_GADGET
     Q_PROTOBUF_OBJECT
-    Q_DECLARE_PROTOBUF_SERIALIZERS(MsgSearchReq)
+    Q_DECLARE_PROTOBUF_SERIALIZERS(MsgSearchBySearchKeyReq)
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(QString userId READ userId WRITE setUserId SCRIPTABLE true)
-    Q_PROPERTY(QString sessionId READ sessionId WRITE setSessionId SCRIPTABLE true)
+    Q_PROPERTY(QString loginSessionId READ loginSessionId WRITE setLoginSessionId SCRIPTABLE true)
     Q_PROPERTY(QString chatSessionId READ chatSessionId WRITE setChatSessionId SCRIPTABLE true)
     Q_PROPERTY(QString searchKey READ searchKey WRITE setSearchKey SCRIPTABLE true)
 
@@ -255,47 +255,47 @@ public:
     enum QtProtobufFieldEnum {
         RequestIdProtoFieldNumber = 1,
         UserIdProtoFieldNumber = 2,
-        SessionIdProtoFieldNumber = 3,
+        LoginSessionIdProtoFieldNumber = 3,
         ChatSessionIdProtoFieldNumber = 4,
         SearchKeyProtoFieldNumber = 5,
     };
     Q_ENUM(QtProtobufFieldEnum)
 
-    MsgSearchReq();
-    ~MsgSearchReq();
-    MsgSearchReq(const MsgSearchReq &other);
-    MsgSearchReq &operator =(const MsgSearchReq &other);
-    MsgSearchReq(MsgSearchReq &&other) noexcept;
-    MsgSearchReq &operator =(MsgSearchReq &&other) noexcept;
-    bool operator ==(const MsgSearchReq &other) const;
-    bool operator !=(const MsgSearchReq &other) const;
+    MsgSearchBySearchKeyReq();
+    ~MsgSearchBySearchKeyReq();
+    MsgSearchBySearchKeyReq(const MsgSearchBySearchKeyReq &other);
+    MsgSearchBySearchKeyReq &operator =(const MsgSearchBySearchKeyReq &other);
+    MsgSearchBySearchKeyReq(MsgSearchBySearchKeyReq &&other) noexcept;
+    MsgSearchBySearchKeyReq &operator =(MsgSearchBySearchKeyReq &&other) noexcept;
+    bool operator ==(const MsgSearchBySearchKeyReq &other) const;
+    bool operator !=(const MsgSearchBySearchKeyReq &other) const;
 
     QString requestId() const;
 
     QString userId() const;
 
-    QString sessionId() const;
+    QString loginSessionId() const;
 
     QString chatSessionId() const;
 
     QString searchKey() const;
     void setRequestId(const QString &requestId);
     void setUserId(const QString &userId);
-    void setSessionId(const QString &sessionId);
+    void setLoginSessionId(const QString &loginSessionId);
     void setChatSessionId(const QString &chatSessionId);
     void setSearchKey(const QString &searchKey);
     static void registerTypes();
 
 private:
-    QExplicitlySharedDataPointer<MsgSearchReq_QtProtobufData> dptr;
+    QExplicitlySharedDataPointer<MsgSearchBySearchKeyReq_QtProtobufData> dptr;
 };
 
-class MsgSearchRsp_QtProtobufData;
-class MsgSearchRsp : public QProtobufMessage
+class MsgSearchBySearchKeyRsp_QtProtobufData;
+class MsgSearchBySearchKeyRsp : public QProtobufMessage
 {
     Q_GADGET
     Q_PROTOBUF_OBJECT
-    Q_DECLARE_PROTOBUF_SERIALIZERS(MsgSearchRsp)
+    Q_DECLARE_PROTOBUF_SERIALIZERS(MsgSearchBySearchKeyRsp)
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(bool success READ success WRITE setSuccess SCRIPTABLE true)
     Q_PROPERTY(QString errmsg READ errmsg WRITE setErrmsg SCRIPTABLE true)
@@ -310,14 +310,14 @@ public:
     };
     Q_ENUM(QtProtobufFieldEnum)
 
-    MsgSearchRsp();
-    ~MsgSearchRsp();
-    MsgSearchRsp(const MsgSearchRsp &other);
-    MsgSearchRsp &operator =(const MsgSearchRsp &other);
-    MsgSearchRsp(MsgSearchRsp &&other) noexcept;
-    MsgSearchRsp &operator =(MsgSearchRsp &&other) noexcept;
-    bool operator ==(const MsgSearchRsp &other) const;
-    bool operator !=(const MsgSearchRsp &other) const;
+    MsgSearchBySearchKeyRsp();
+    ~MsgSearchBySearchKeyRsp();
+    MsgSearchBySearchKeyRsp(const MsgSearchBySearchKeyRsp &other);
+    MsgSearchBySearchKeyRsp &operator =(const MsgSearchBySearchKeyRsp &other);
+    MsgSearchBySearchKeyRsp(MsgSearchBySearchKeyRsp &&other) noexcept;
+    MsgSearchBySearchKeyRsp &operator =(MsgSearchBySearchKeyRsp &&other) noexcept;
+    bool operator ==(const MsgSearchBySearchKeyRsp &other) const;
+    bool operator !=(const MsgSearchBySearchKeyRsp &other) const;
 
     QString requestId() const;
 
@@ -334,14 +334,14 @@ public:
     static void registerTypes();
 
 private:
-    QExplicitlySharedDataPointer<MsgSearchRsp_QtProtobufData> dptr;
+    QExplicitlySharedDataPointer<MsgSearchBySearchKeyRsp_QtProtobufData> dptr;
 };
 } // namespace my_chat_proto
 
-Q_DECLARE_METATYPE(my_chat_proto::GetHistoryMsgReq)
-Q_DECLARE_METATYPE(my_chat_proto::GetHistoryMsgRsp)
+Q_DECLARE_METATYPE(my_chat_proto::MsgSearchByTimeReq)
+Q_DECLARE_METATYPE(my_chat_proto::MsgSearchByTimeRsp)
 Q_DECLARE_METATYPE(my_chat_proto::GetRecentMsgReq)
 Q_DECLARE_METATYPE(my_chat_proto::GetRecentMsgRsp)
-Q_DECLARE_METATYPE(my_chat_proto::MsgSearchReq)
-Q_DECLARE_METATYPE(my_chat_proto::MsgSearchRsp)
+Q_DECLARE_METATYPE(my_chat_proto::MsgSearchBySearchKeyReq)
+Q_DECLARE_METATYPE(my_chat_proto::MsgSearchBySearchKeyRsp)
 #endif // QPROTOBUF_MESSAGE_STORAGE_H

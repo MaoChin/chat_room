@@ -10,7 +10,7 @@
 // 对于一些重要的消息通知，在桌面显眼的位置弹出消息通知，并在一定时间后自动消失
 Toast::Toast(const QString& message){
     // 基本属性
-    this->setFixedSize(500, 100);
+    this->setFixedSize(560, 140);
     this->setWindowTitle("消息通知");
     this->setWindowIcon(QIcon(":/resource/image/myChat.png"));
     this->setStyleSheet("QWidget { background-color: rgb(250, 250, 250); }");
@@ -38,7 +38,7 @@ Toast::Toast(const QString& message){
     messageLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     messageLabel->setAlignment(Qt::AlignCenter);
     messageLabel->setText(message);
-    messageLabel->setStyleSheet("QLabel { font-size: 18px; }");
+    messageLabel->setStyleSheet("QLabel { font-size: 22px; }");
     vlayout->addWidget(messageLabel);
 
     // 使用定时器实现2s后自动关闭该窗口
@@ -48,7 +48,7 @@ Toast::Toast(const QString& message){
         timer->stop();
         this->close();
     });
-    timer->start(2000);
+    timer->start(3000);
 }
 
 void Toast::showMessage(const QString &message){

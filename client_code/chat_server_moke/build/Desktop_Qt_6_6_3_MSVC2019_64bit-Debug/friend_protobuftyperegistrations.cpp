@@ -4,8 +4,8 @@
 namespace my_chat_proto {
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarGetFriendListReq(qRegisterProtobufType<GetFriendListReq>);
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarGetFriendListRsp(qRegisterProtobufType<GetFriendListRsp>);
-static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarFriendRemoveReq(qRegisterProtobufType<FriendRemoveReq>);
-static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarFriendRemoveRsp(qRegisterProtobufType<FriendRemoveRsp>);
+static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarFriendDeleteReq(qRegisterProtobufType<FriendDeleteReq>);
+static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarFriendDeleteRsp(qRegisterProtobufType<FriendDeleteRsp>);
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarFriendAddReq(qRegisterProtobufType<FriendAddReq>);
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarFriendAddRsp(qRegisterProtobufType<FriendAddRsp>);
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarFriendAddProcessReq(qRegisterProtobufType<FriendAddProcessReq>);
@@ -13,8 +13,8 @@ static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarFriendAddProcessRsp(qReg
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarGetPendingFriendEventListReq(qRegisterProtobufType<GetPendingFriendEventListReq>);
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarFriendEvent(qRegisterProtobufType<FriendEvent>);
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarGetPendingFriendEventListRsp(qRegisterProtobufType<GetPendingFriendEventListRsp>);
-static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarFriendSearchReq(qRegisterProtobufType<FriendSearchReq>);
-static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarFriendSearchRsp(qRegisterProtobufType<FriendSearchRsp>);
+static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarUserSearchReq(qRegisterProtobufType<UserSearchReq>);
+static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarUserSearchRsp(qRegisterProtobufType<UserSearchRsp>);
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarGetChatSessionListReq(qRegisterProtobufType<GetChatSessionListReq>);
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarGetChatSessionListRsp(qRegisterProtobufType<GetChatSessionListRsp>);
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarChatSessionCreateReq(qRegisterProtobufType<ChatSessionCreateReq>);

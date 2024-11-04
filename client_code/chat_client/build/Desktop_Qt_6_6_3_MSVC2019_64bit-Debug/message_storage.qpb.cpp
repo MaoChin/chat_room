@@ -3,26 +3,26 @@
 #include "message_storage.qpb.h"
 #include <QtProtobuf/qprotobufserializer.h>
 
-namespace bite_im {
+namespace my_chat_proto {
 
-class GetHistoryMsgReq_QtProtobufData : public QSharedData
+class MsgSearchByTimeReq_QtProtobufData : public QSharedData
 {
 public:
-    GetHistoryMsgReq_QtProtobufData()
+    MsgSearchByTimeReq_QtProtobufData()
         : QSharedData(),
           m_startTime(0),
           m_overTime(0)
     {
     }
 
-    GetHistoryMsgReq_QtProtobufData(const GetHistoryMsgReq_QtProtobufData &other)
+    MsgSearchByTimeReq_QtProtobufData(const MsgSearchByTimeReq_QtProtobufData &other)
         : QSharedData(other),
           m_requestId(other.m_requestId),
           m_chatSessionId(other.m_chatSessionId),
           m_startTime(other.m_startTime),
           m_overTime(other.m_overTime),
           m_userId(other.m_userId),
-          m_sessionId(other.m_sessionId)
+          m_loginSessionId(other.m_loginSessionId)
     {
     }
 
@@ -31,16 +31,16 @@ public:
     QtProtobuf::int64 m_startTime;
     QtProtobuf::int64 m_overTime;
     QString m_userId;
-    QString m_sessionId;
+    QString m_loginSessionId;
 };
 
-GetHistoryMsgReq::~GetHistoryMsgReq() = default;
+MsgSearchByTimeReq::~MsgSearchByTimeReq() = default;
 
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
-    const std::array<uint, 25> qt_protobuf_GetHistoryMsgReq_uint_data;
-    const char qt_protobuf_GetHistoryMsgReq_char_data[86];
-} qt_protobuf_GetHistoryMsgReq_metadata {
+    const std::array<uint, 25> qt_protobuf_MsgSearchByTimeReq_uint_data;
+    const char qt_protobuf_MsgSearchByTimeReq_char_data[99];
+} qt_protobuf_MsgSearchByTimeReq_metadata {
     // data
     {
         0, /* = version */
@@ -48,87 +48,87 @@ static constexpr struct {
         7, /* = field number offset */
         13, /* = property index offset */
         19, /* = field flags offset */
-        24, /* = message full name length */
+        32, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        25, /* = requestId */
-        35, /* = chatSessionId */
-        49, /* = startTime */
-        59, /* = overTime */
-        68, /* = userId */
-        75, /* = sessionId */
-        85, /* = end-of-string-marker */
+        33, /* = requestId */
+        43, /* = chatSessionId */
+        57, /* = startTime */
+        67, /* = overTime */
+        76, /* = userId */
+        83, /* = loginSessionId */
+        98, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = chatSessionId */
         3, /* = startTime */
         4, /* = overTime */
         5, /* = userId */
-        6, /* = sessionId */
+        6, /* = loginSessionId */
         // Property indices:
         0, /* = requestId */
         1, /* = chatSessionId */
         2, /* = startTime */
         3, /* = overTime */
         4, /* = userId */
-        5, /* = sessionId */
+        5, /* = loginSessionId */
         // Field flags:
         QtProtobufPrivate::NoFlags, /* = requestId */
         QtProtobufPrivate::NoFlags, /* = chatSessionId */
         QtProtobufPrivate::NoFlags, /* = startTime */
         QtProtobufPrivate::NoFlags, /* = overTime */
         QtProtobufPrivate::NoFlags, /* = userId */
-        QtProtobufPrivate::NoFlags, /* = sessionId */
+        QtProtobufPrivate::NoFlags, /* = loginSessionId */
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetHistoryMsgReq\0" /* = full message name */
+    "my_chat_proto.MsgSearchByTimeReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0chatSessionId\0startTime\0overTime\0userId\0"
-    "sessionId\0"
+    "loginSessionId\0"
 };
 
-const QtProtobufPrivate::QProtobufPropertyOrdering GetHistoryMsgReq::propertyOrdering = {
-    &qt_protobuf_GetHistoryMsgReq_metadata.data
+const QtProtobufPrivate::QProtobufPropertyOrdering MsgSearchByTimeReq::propertyOrdering = {
+    &qt_protobuf_MsgSearchByTimeReq_metadata.data
 };
 
-void GetHistoryMsgReq::registerTypes()
+void MsgSearchByTimeReq::registerTypes()
 {
-    qRegisterMetaType<GetHistoryMsgReq>();
-    qRegisterMetaType<GetHistoryMsgReqRepeated>();
+    qRegisterMetaType<MsgSearchByTimeReq>();
+    qRegisterMetaType<MsgSearchByTimeReqRepeated>();
 }
 
-GetHistoryMsgReq::GetHistoryMsgReq()
-    : QProtobufMessage(&GetHistoryMsgReq::staticMetaObject),
-      dptr(new GetHistoryMsgReq_QtProtobufData)
+MsgSearchByTimeReq::MsgSearchByTimeReq()
+    : QProtobufMessage(&MsgSearchByTimeReq::staticMetaObject),
+      dptr(new MsgSearchByTimeReq_QtProtobufData)
 {
 }
 
-GetHistoryMsgReq::GetHistoryMsgReq(const GetHistoryMsgReq &other)
+MsgSearchByTimeReq::MsgSearchByTimeReq(const MsgSearchByTimeReq &other)
     : QProtobufMessage(other),
       dptr(other.dptr)
 {
 }
-GetHistoryMsgReq &GetHistoryMsgReq::operator =(const GetHistoryMsgReq &other)
+MsgSearchByTimeReq &MsgSearchByTimeReq::operator =(const MsgSearchByTimeReq &other)
 {
     QProtobufMessage::operator=(other);
     dptr = other.dptr;
     return *this;
 }
-GetHistoryMsgReq::GetHistoryMsgReq(GetHistoryMsgReq &&other) noexcept
+MsgSearchByTimeReq::MsgSearchByTimeReq(MsgSearchByTimeReq &&other) noexcept
     : QProtobufMessage(std::move(other)),
       dptr(std::move(other.dptr))
 {
 }
-GetHistoryMsgReq &GetHistoryMsgReq::operator =(GetHistoryMsgReq &&other) noexcept
+MsgSearchByTimeReq &MsgSearchByTimeReq::operator =(MsgSearchByTimeReq &&other) noexcept
 {
     QProtobufMessage::operator=(std::move(other));
     dptr.swap(other.dptr);
     return *this;
 }
-bool GetHistoryMsgReq::operator ==(const GetHistoryMsgReq &other) const
+bool MsgSearchByTimeReq::operator ==(const MsgSearchByTimeReq &other) const
 {
     return QProtobufMessage::isEqual(*this, other)
         && dptr->m_requestId == other.dptr->m_requestId
@@ -137,42 +137,42 @@ bool GetHistoryMsgReq::operator ==(const GetHistoryMsgReq &other) const
         && dptr->m_overTime == other.dptr->m_overTime;
 }
 
-bool GetHistoryMsgReq::operator !=(const GetHistoryMsgReq &other) const
+bool MsgSearchByTimeReq::operator !=(const MsgSearchByTimeReq &other) const
 {
     return !this->operator ==(other);
 }
 
-QString GetHistoryMsgReq::requestId() const
+QString MsgSearchByTimeReq::requestId() const
 {
     return dptr->m_requestId;
 }
 
-QString GetHistoryMsgReq::chatSessionId() const
+QString MsgSearchByTimeReq::chatSessionId() const
 {
     return dptr->m_chatSessionId;
 }
 
-QtProtobuf::int64 GetHistoryMsgReq::startTime() const
+QtProtobuf::int64 MsgSearchByTimeReq::startTime() const
 {
     return dptr->m_startTime;
 }
 
-QtProtobuf::int64 GetHistoryMsgReq::overTime() const
+QtProtobuf::int64 MsgSearchByTimeReq::overTime() const
 {
     return dptr->m_overTime;
 }
 
-QString GetHistoryMsgReq::userId() const
+QString MsgSearchByTimeReq::userId() const
 {
     return dptr->m_userId;
 }
 
-QString GetHistoryMsgReq::sessionId() const
+QString MsgSearchByTimeReq::loginSessionId() const
 {
-    return dptr->m_sessionId;
+    return dptr->m_loginSessionId;
 }
 
-void GetHistoryMsgReq::setRequestId(const QString &requestId)
+void MsgSearchByTimeReq::setRequestId(const QString &requestId)
 {
     if (dptr->m_requestId != requestId) {
         dptr.detach();
@@ -180,7 +180,7 @@ void GetHistoryMsgReq::setRequestId(const QString &requestId)
     }
 }
 
-void GetHistoryMsgReq::setChatSessionId(const QString &chatSessionId)
+void MsgSearchByTimeReq::setChatSessionId(const QString &chatSessionId)
 {
     if (dptr->m_chatSessionId != chatSessionId) {
         dptr.detach();
@@ -188,7 +188,7 @@ void GetHistoryMsgReq::setChatSessionId(const QString &chatSessionId)
     }
 }
 
-void GetHistoryMsgReq::setStartTime(const QtProtobuf::int64 &startTime)
+void MsgSearchByTimeReq::setStartTime(const QtProtobuf::int64 &startTime)
 {
     if (dptr->m_startTime != startTime) {
         dptr.detach();
@@ -196,7 +196,7 @@ void GetHistoryMsgReq::setStartTime(const QtProtobuf::int64 &startTime)
     }
 }
 
-void GetHistoryMsgReq::setOverTime(const QtProtobuf::int64 &overTime)
+void MsgSearchByTimeReq::setOverTime(const QtProtobuf::int64 &overTime)
 {
     if (dptr->m_overTime != overTime) {
         dptr.detach();
@@ -204,7 +204,7 @@ void GetHistoryMsgReq::setOverTime(const QtProtobuf::int64 &overTime)
     }
 }
 
-void GetHistoryMsgReq::setUserId(const QString &userId)
+void MsgSearchByTimeReq::setUserId(const QString &userId)
 {
     if (dptr->m_userId != userId) {
         dptr.detach();
@@ -212,25 +212,25 @@ void GetHistoryMsgReq::setUserId(const QString &userId)
     }
 }
 
-void GetHistoryMsgReq::setSessionId(const QString &sessionId)
+void MsgSearchByTimeReq::setLoginSessionId(const QString &loginSessionId)
 {
-    if (dptr->m_sessionId != sessionId) {
+    if (dptr->m_loginSessionId != loginSessionId) {
         dptr.detach();
-        dptr->m_sessionId = sessionId;
+        dptr->m_loginSessionId = loginSessionId;
     }
 }
 
 
-class GetHistoryMsgRsp_QtProtobufData : public QSharedData
+class MsgSearchByTimeRsp_QtProtobufData : public QSharedData
 {
 public:
-    GetHistoryMsgRsp_QtProtobufData()
+    MsgSearchByTimeRsp_QtProtobufData()
         : QSharedData(),
           m_success(false)
     {
     }
 
-    GetHistoryMsgRsp_QtProtobufData(const GetHistoryMsgRsp_QtProtobufData &other)
+    MsgSearchByTimeRsp_QtProtobufData(const MsgSearchByTimeRsp_QtProtobufData &other)
         : QSharedData(other),
           m_requestId(other.m_requestId),
           m_success(other.m_success),
@@ -245,13 +245,13 @@ public:
     MessageInfoRepeated m_msgList;
 };
 
-GetHistoryMsgRsp::~GetHistoryMsgRsp() = default;
+MsgSearchByTimeRsp::~MsgSearchByTimeRsp() = default;
 
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
-    const std::array<uint, 17> qt_protobuf_GetHistoryMsgRsp_uint_data;
-    const char qt_protobuf_GetHistoryMsgRsp_char_data[59];
-} qt_protobuf_GetHistoryMsgRsp_metadata {
+    const std::array<uint, 17> qt_protobuf_MsgSearchByTimeRsp_uint_data;
+    const char qt_protobuf_MsgSearchByTimeRsp_char_data[67];
+} qt_protobuf_MsgSearchByTimeRsp_metadata {
     // data
     {
         0, /* = version */
@@ -259,16 +259,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        24, /* = message full name length */
+        32, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        25, /* = requestId */
-        35, /* = success */
-        43, /* = errmsg */
-        50, /* = msgList */
-        58, /* = end-of-string-marker */
+        33, /* = requestId */
+        43, /* = success */
+        51, /* = errmsg */
+        58, /* = msgList */
+        66, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -287,50 +287,50 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetHistoryMsgRsp\0" /* = full message name */
+    "my_chat_proto.MsgSearchByTimeRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0msgList\0"
 };
 
-const QtProtobufPrivate::QProtobufPropertyOrdering GetHistoryMsgRsp::propertyOrdering = {
-    &qt_protobuf_GetHistoryMsgRsp_metadata.data
+const QtProtobufPrivate::QProtobufPropertyOrdering MsgSearchByTimeRsp::propertyOrdering = {
+    &qt_protobuf_MsgSearchByTimeRsp_metadata.data
 };
 
-void GetHistoryMsgRsp::registerTypes()
+void MsgSearchByTimeRsp::registerTypes()
 {
-    qRegisterMetaType<GetHistoryMsgRsp>();
-    qRegisterMetaType<GetHistoryMsgRspRepeated>();
+    qRegisterMetaType<MsgSearchByTimeRsp>();
+    qRegisterMetaType<MsgSearchByTimeRspRepeated>();
 }
 
-GetHistoryMsgRsp::GetHistoryMsgRsp()
-    : QProtobufMessage(&GetHistoryMsgRsp::staticMetaObject),
-      dptr(new GetHistoryMsgRsp_QtProtobufData)
+MsgSearchByTimeRsp::MsgSearchByTimeRsp()
+    : QProtobufMessage(&MsgSearchByTimeRsp::staticMetaObject),
+      dptr(new MsgSearchByTimeRsp_QtProtobufData)
 {
 }
 
-GetHistoryMsgRsp::GetHistoryMsgRsp(const GetHistoryMsgRsp &other)
+MsgSearchByTimeRsp::MsgSearchByTimeRsp(const MsgSearchByTimeRsp &other)
     : QProtobufMessage(other),
       dptr(other.dptr)
 {
 }
-GetHistoryMsgRsp &GetHistoryMsgRsp::operator =(const GetHistoryMsgRsp &other)
+MsgSearchByTimeRsp &MsgSearchByTimeRsp::operator =(const MsgSearchByTimeRsp &other)
 {
     QProtobufMessage::operator=(other);
     dptr = other.dptr;
     return *this;
 }
-GetHistoryMsgRsp::GetHistoryMsgRsp(GetHistoryMsgRsp &&other) noexcept
+MsgSearchByTimeRsp::MsgSearchByTimeRsp(MsgSearchByTimeRsp &&other) noexcept
     : QProtobufMessage(std::move(other)),
       dptr(std::move(other.dptr))
 {
 }
-GetHistoryMsgRsp &GetHistoryMsgRsp::operator =(GetHistoryMsgRsp &&other) noexcept
+MsgSearchByTimeRsp &MsgSearchByTimeRsp::operator =(MsgSearchByTimeRsp &&other) noexcept
 {
     QProtobufMessage::operator=(std::move(other));
     dptr.swap(other.dptr);
     return *this;
 }
-bool GetHistoryMsgRsp::operator ==(const GetHistoryMsgRsp &other) const
+bool MsgSearchByTimeRsp::operator ==(const MsgSearchByTimeRsp &other) const
 {
     return QProtobufMessage::isEqual(*this, other)
         && dptr->m_requestId == other.dptr->m_requestId
@@ -339,38 +339,38 @@ bool GetHistoryMsgRsp::operator ==(const GetHistoryMsgRsp &other) const
         && QtProtobuf::repeatedValueCompare(dptr->m_msgList, other.dptr->m_msgList);
 }
 
-bool GetHistoryMsgRsp::operator !=(const GetHistoryMsgRsp &other) const
+bool MsgSearchByTimeRsp::operator !=(const MsgSearchByTimeRsp &other) const
 {
     return !this->operator ==(other);
 }
 
-QString GetHistoryMsgRsp::requestId() const
+QString MsgSearchByTimeRsp::requestId() const
 {
     return dptr->m_requestId;
 }
 
-bool GetHistoryMsgRsp::success() const
+bool MsgSearchByTimeRsp::success() const
 {
     return dptr->m_success;
 }
 
-QString GetHistoryMsgRsp::errmsg() const
+QString MsgSearchByTimeRsp::errmsg() const
 {
     return dptr->m_errmsg;
 }
 
-MessageInfoRepeated GetHistoryMsgRsp::msgList() const
+MessageInfoRepeated MsgSearchByTimeRsp::msgList() const
 {
     return dptr->m_msgList;
 }
 
-MessageInfoRepeated &GetHistoryMsgRsp::msgList()
+MessageInfoRepeated &MsgSearchByTimeRsp::msgList()
 {
     dptr.detach();
     return dptr->m_msgList;
 }
 
-void GetHistoryMsgRsp::setRequestId(const QString &requestId)
+void MsgSearchByTimeRsp::setRequestId(const QString &requestId)
 {
     if (dptr->m_requestId != requestId) {
         dptr.detach();
@@ -378,7 +378,7 @@ void GetHistoryMsgRsp::setRequestId(const QString &requestId)
     }
 }
 
-void GetHistoryMsgRsp::setSuccess(const bool &success)
+void MsgSearchByTimeRsp::setSuccess(const bool &success)
 {
     if (dptr->m_success != success) {
         dptr.detach();
@@ -386,7 +386,7 @@ void GetHistoryMsgRsp::setSuccess(const bool &success)
     }
 }
 
-void GetHistoryMsgRsp::setErrmsg(const QString &errmsg)
+void MsgSearchByTimeRsp::setErrmsg(const QString &errmsg)
 {
     if (dptr->m_errmsg != errmsg) {
         dptr.detach();
@@ -394,7 +394,7 @@ void GetHistoryMsgRsp::setErrmsg(const QString &errmsg)
     }
 }
 
-void GetHistoryMsgRsp::setMsgList(const MessageInfoRepeated &msgList)
+void MsgSearchByTimeRsp::setMsgList(const MessageInfoRepeated &msgList)
 {
     if (dptr->m_msgList != msgList) {
         dptr.detach();
@@ -420,7 +420,7 @@ public:
           m_msgCount(other.m_msgCount),
           m_curTime(other.m_curTime),
           m_userId(other.m_userId),
-          m_sessionId(other.m_sessionId)
+          m_loginSessionId(other.m_loginSessionId)
     {
     }
 
@@ -429,7 +429,7 @@ public:
     QtProtobuf::int64 m_msgCount;
     QtProtobuf::int64 m_curTime;
     QString m_userId;
-    QString m_sessionId;
+    QString m_loginSessionId;
 };
 
 GetRecentMsgReq::~GetRecentMsgReq() = default;
@@ -437,7 +437,7 @@ GetRecentMsgReq::~GetRecentMsgReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 25> qt_protobuf_GetRecentMsgReq_uint_data;
-    const char qt_protobuf_GetRecentMsgReq_char_data[83];
+    const char qt_protobuf_GetRecentMsgReq_char_data[94];
 } qt_protobuf_GetRecentMsgReq_metadata {
     // data
     {
@@ -446,46 +446,46 @@ static constexpr struct {
         7, /* = field number offset */
         13, /* = property index offset */
         19, /* = field flags offset */
-        23, /* = message full name length */
+        29, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        24, /* = requestId */
-        34, /* = chatSessionId */
-        48, /* = msgCount */
-        57, /* = curTime */
-        65, /* = userId */
-        72, /* = sessionId */
-        82, /* = end-of-string-marker */
+        30, /* = requestId */
+        40, /* = chatSessionId */
+        54, /* = msgCount */
+        63, /* = curTime */
+        71, /* = userId */
+        78, /* = loginSessionId */
+        93, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = chatSessionId */
         3, /* = msgCount */
         4, /* = curTime */
         5, /* = userId */
-        6, /* = sessionId */
+        6, /* = loginSessionId */
         // Property indices:
         0, /* = requestId */
         1, /* = chatSessionId */
         2, /* = msgCount */
         3, /* = curTime */
         4, /* = userId */
-        5, /* = sessionId */
+        5, /* = loginSessionId */
         // Field flags:
         QtProtobufPrivate::NoFlags, /* = requestId */
         QtProtobufPrivate::NoFlags, /* = chatSessionId */
         QtProtobufPrivate::NoFlags, /* = msgCount */
         QtProtobufPrivate::NoFlags, /* = curTime */
         QtProtobufPrivate::NoFlags, /* = userId */
-        QtProtobufPrivate::NoFlags, /* = sessionId */
+        QtProtobufPrivate::NoFlags, /* = loginSessionId */
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetRecentMsgReq\0" /* = full message name */
+    "my_chat_proto.GetRecentMsgReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0chatSessionId\0msgCount\0curTime\0userId\0"
-    "sessionId\0"
+    "loginSessionId\0"
 };
 
 const QtProtobufPrivate::QProtobufPropertyOrdering GetRecentMsgReq::propertyOrdering = {
@@ -564,9 +564,9 @@ QString GetRecentMsgReq::userId() const
     return dptr->m_userId;
 }
 
-QString GetRecentMsgReq::sessionId() const
+QString GetRecentMsgReq::loginSessionId() const
 {
-    return dptr->m_sessionId;
+    return dptr->m_loginSessionId;
 }
 
 void GetRecentMsgReq::setRequestId(const QString &requestId)
@@ -609,11 +609,11 @@ void GetRecentMsgReq::setUserId(const QString &userId)
     }
 }
 
-void GetRecentMsgReq::setSessionId(const QString &sessionId)
+void GetRecentMsgReq::setLoginSessionId(const QString &loginSessionId)
 {
-    if (dptr->m_sessionId != sessionId) {
+    if (dptr->m_loginSessionId != loginSessionId) {
         dptr.detach();
-        dptr->m_sessionId = sessionId;
+        dptr->m_loginSessionId = loginSessionId;
     }
 }
 
@@ -647,7 +647,7 @@ GetRecentMsgRsp::~GetRecentMsgRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_GetRecentMsgRsp_uint_data;
-    const char qt_protobuf_GetRecentMsgRsp_char_data[58];
+    const char qt_protobuf_GetRecentMsgRsp_char_data[64];
 } qt_protobuf_GetRecentMsgRsp_metadata {
     // data
     {
@@ -656,16 +656,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        23, /* = message full name length */
+        29, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        24, /* = requestId */
-        34, /* = success */
-        42, /* = errmsg */
-        49, /* = msgList */
-        57, /* = end-of-string-marker */
+        30, /* = requestId */
+        40, /* = success */
+        48, /* = errmsg */
+        55, /* = msgList */
+        63, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -684,7 +684,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetRecentMsgRsp\0" /* = full message name */
+    "my_chat_proto.GetRecentMsgRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0msgList\0"
 };
@@ -800,19 +800,19 @@ void GetRecentMsgRsp::setMsgList(const MessageInfoRepeated &msgList)
 }
 
 
-class MsgSearchReq_QtProtobufData : public QSharedData
+class MsgSearchBySearchKeyReq_QtProtobufData : public QSharedData
 {
 public:
-    MsgSearchReq_QtProtobufData()
+    MsgSearchBySearchKeyReq_QtProtobufData()
         : QSharedData()
     {
     }
 
-    MsgSearchReq_QtProtobufData(const MsgSearchReq_QtProtobufData &other)
+    MsgSearchBySearchKeyReq_QtProtobufData(const MsgSearchBySearchKeyReq_QtProtobufData &other)
         : QSharedData(other),
           m_requestId(other.m_requestId),
           m_userId(other.m_userId),
-          m_sessionId(other.m_sessionId),
+          m_loginSessionId(other.m_loginSessionId),
           m_chatSessionId(other.m_chatSessionId),
           m_searchKey(other.m_searchKey)
     {
@@ -820,18 +820,18 @@ public:
 
     QString m_requestId;
     QString m_userId;
-    QString m_sessionId;
+    QString m_loginSessionId;
     QString m_chatSessionId;
     QString m_searchKey;
 };
 
-MsgSearchReq::~MsgSearchReq() = default;
+MsgSearchBySearchKeyReq::~MsgSearchBySearchKeyReq() = default;
 
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
-    const std::array<uint, 21> qt_protobuf_MsgSearchReq_uint_data;
-    const char qt_protobuf_MsgSearchReq_char_data[73];
-} qt_protobuf_MsgSearchReq_metadata {
+    const std::array<uint, 21> qt_protobuf_MsgSearchBySearchKeyReq_uint_data;
+    const char qt_protobuf_MsgSearchBySearchKeyReq_char_data[95];
+} qt_protobuf_MsgSearchBySearchKeyReq_metadata {
     // data
     {
         0, /* = version */
@@ -839,82 +839,82 @@ static constexpr struct {
         6, /* = field number offset */
         11, /* = property index offset */
         16, /* = field flags offset */
-        20, /* = message full name length */
+        37, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        21, /* = requestId */
-        31, /* = userId */
-        38, /* = sessionId */
-        48, /* = chatSessionId */
-        62, /* = searchKey */
-        72, /* = end-of-string-marker */
+        38, /* = requestId */
+        48, /* = userId */
+        55, /* = loginSessionId */
+        70, /* = chatSessionId */
+        84, /* = searchKey */
+        94, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = userId */
-        3, /* = sessionId */
+        3, /* = loginSessionId */
         4, /* = chatSessionId */
         5, /* = searchKey */
         // Property indices:
         0, /* = requestId */
         1, /* = userId */
-        2, /* = sessionId */
+        2, /* = loginSessionId */
         3, /* = chatSessionId */
         4, /* = searchKey */
         // Field flags:
         QtProtobufPrivate::NoFlags, /* = requestId */
         QtProtobufPrivate::NoFlags, /* = userId */
-        QtProtobufPrivate::NoFlags, /* = sessionId */
+        QtProtobufPrivate::NoFlags, /* = loginSessionId */
         QtProtobufPrivate::NoFlags, /* = chatSessionId */
         QtProtobufPrivate::NoFlags, /* = searchKey */
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.MsgSearchReq\0" /* = full message name */
+    "my_chat_proto.MsgSearchBySearchKeyReq\0" /* = full message name */
     /* field char_data: */
-    "requestId\0userId\0sessionId\0chatSessionId\0searchKey\0"
+    "requestId\0userId\0loginSessionId\0chatSessionId\0searchKey\0"
 };
 
-const QtProtobufPrivate::QProtobufPropertyOrdering MsgSearchReq::propertyOrdering = {
-    &qt_protobuf_MsgSearchReq_metadata.data
+const QtProtobufPrivate::QProtobufPropertyOrdering MsgSearchBySearchKeyReq::propertyOrdering = {
+    &qt_protobuf_MsgSearchBySearchKeyReq_metadata.data
 };
 
-void MsgSearchReq::registerTypes()
+void MsgSearchBySearchKeyReq::registerTypes()
 {
-    qRegisterMetaType<MsgSearchReq>();
-    qRegisterMetaType<MsgSearchReqRepeated>();
+    qRegisterMetaType<MsgSearchBySearchKeyReq>();
+    qRegisterMetaType<MsgSearchBySearchKeyReqRepeated>();
 }
 
-MsgSearchReq::MsgSearchReq()
-    : QProtobufMessage(&MsgSearchReq::staticMetaObject),
-      dptr(new MsgSearchReq_QtProtobufData)
+MsgSearchBySearchKeyReq::MsgSearchBySearchKeyReq()
+    : QProtobufMessage(&MsgSearchBySearchKeyReq::staticMetaObject),
+      dptr(new MsgSearchBySearchKeyReq_QtProtobufData)
 {
 }
 
-MsgSearchReq::MsgSearchReq(const MsgSearchReq &other)
+MsgSearchBySearchKeyReq::MsgSearchBySearchKeyReq(const MsgSearchBySearchKeyReq &other)
     : QProtobufMessage(other),
       dptr(other.dptr)
 {
 }
-MsgSearchReq &MsgSearchReq::operator =(const MsgSearchReq &other)
+MsgSearchBySearchKeyReq &MsgSearchBySearchKeyReq::operator =(const MsgSearchBySearchKeyReq &other)
 {
     QProtobufMessage::operator=(other);
     dptr = other.dptr;
     return *this;
 }
-MsgSearchReq::MsgSearchReq(MsgSearchReq &&other) noexcept
+MsgSearchBySearchKeyReq::MsgSearchBySearchKeyReq(MsgSearchBySearchKeyReq &&other) noexcept
     : QProtobufMessage(std::move(other)),
       dptr(std::move(other.dptr))
 {
 }
-MsgSearchReq &MsgSearchReq::operator =(MsgSearchReq &&other) noexcept
+MsgSearchBySearchKeyReq &MsgSearchBySearchKeyReq::operator =(MsgSearchBySearchKeyReq &&other) noexcept
 {
     QProtobufMessage::operator=(std::move(other));
     dptr.swap(other.dptr);
     return *this;
 }
-bool MsgSearchReq::operator ==(const MsgSearchReq &other) const
+bool MsgSearchBySearchKeyReq::operator ==(const MsgSearchBySearchKeyReq &other) const
 {
     return QProtobufMessage::isEqual(*this, other)
         && dptr->m_requestId == other.dptr->m_requestId
@@ -922,37 +922,37 @@ bool MsgSearchReq::operator ==(const MsgSearchReq &other) const
         && dptr->m_searchKey == other.dptr->m_searchKey;
 }
 
-bool MsgSearchReq::operator !=(const MsgSearchReq &other) const
+bool MsgSearchBySearchKeyReq::operator !=(const MsgSearchBySearchKeyReq &other) const
 {
     return !this->operator ==(other);
 }
 
-QString MsgSearchReq::requestId() const
+QString MsgSearchBySearchKeyReq::requestId() const
 {
     return dptr->m_requestId;
 }
 
-QString MsgSearchReq::userId() const
+QString MsgSearchBySearchKeyReq::userId() const
 {
     return dptr->m_userId;
 }
 
-QString MsgSearchReq::sessionId() const
+QString MsgSearchBySearchKeyReq::loginSessionId() const
 {
-    return dptr->m_sessionId;
+    return dptr->m_loginSessionId;
 }
 
-QString MsgSearchReq::chatSessionId() const
+QString MsgSearchBySearchKeyReq::chatSessionId() const
 {
     return dptr->m_chatSessionId;
 }
 
-QString MsgSearchReq::searchKey() const
+QString MsgSearchBySearchKeyReq::searchKey() const
 {
     return dptr->m_searchKey;
 }
 
-void MsgSearchReq::setRequestId(const QString &requestId)
+void MsgSearchBySearchKeyReq::setRequestId(const QString &requestId)
 {
     if (dptr->m_requestId != requestId) {
         dptr.detach();
@@ -960,7 +960,7 @@ void MsgSearchReq::setRequestId(const QString &requestId)
     }
 }
 
-void MsgSearchReq::setUserId(const QString &userId)
+void MsgSearchBySearchKeyReq::setUserId(const QString &userId)
 {
     if (dptr->m_userId != userId) {
         dptr.detach();
@@ -968,15 +968,15 @@ void MsgSearchReq::setUserId(const QString &userId)
     }
 }
 
-void MsgSearchReq::setSessionId(const QString &sessionId)
+void MsgSearchBySearchKeyReq::setLoginSessionId(const QString &loginSessionId)
 {
-    if (dptr->m_sessionId != sessionId) {
+    if (dptr->m_loginSessionId != loginSessionId) {
         dptr.detach();
-        dptr->m_sessionId = sessionId;
+        dptr->m_loginSessionId = loginSessionId;
     }
 }
 
-void MsgSearchReq::setChatSessionId(const QString &chatSessionId)
+void MsgSearchBySearchKeyReq::setChatSessionId(const QString &chatSessionId)
 {
     if (dptr->m_chatSessionId != chatSessionId) {
         dptr.detach();
@@ -984,7 +984,7 @@ void MsgSearchReq::setChatSessionId(const QString &chatSessionId)
     }
 }
 
-void MsgSearchReq::setSearchKey(const QString &searchKey)
+void MsgSearchBySearchKeyReq::setSearchKey(const QString &searchKey)
 {
     if (dptr->m_searchKey != searchKey) {
         dptr.detach();
@@ -993,16 +993,16 @@ void MsgSearchReq::setSearchKey(const QString &searchKey)
 }
 
 
-class MsgSearchRsp_QtProtobufData : public QSharedData
+class MsgSearchBySearchKeyRsp_QtProtobufData : public QSharedData
 {
 public:
-    MsgSearchRsp_QtProtobufData()
+    MsgSearchBySearchKeyRsp_QtProtobufData()
         : QSharedData(),
           m_success(false)
     {
     }
 
-    MsgSearchRsp_QtProtobufData(const MsgSearchRsp_QtProtobufData &other)
+    MsgSearchBySearchKeyRsp_QtProtobufData(const MsgSearchBySearchKeyRsp_QtProtobufData &other)
         : QSharedData(other),
           m_requestId(other.m_requestId),
           m_success(other.m_success),
@@ -1017,13 +1017,13 @@ public:
     MessageInfoRepeated m_msgList;
 };
 
-MsgSearchRsp::~MsgSearchRsp() = default;
+MsgSearchBySearchKeyRsp::~MsgSearchBySearchKeyRsp() = default;
 
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
-    const std::array<uint, 17> qt_protobuf_MsgSearchRsp_uint_data;
-    const char qt_protobuf_MsgSearchRsp_char_data[55];
-} qt_protobuf_MsgSearchRsp_metadata {
+    const std::array<uint, 17> qt_protobuf_MsgSearchBySearchKeyRsp_uint_data;
+    const char qt_protobuf_MsgSearchBySearchKeyRsp_char_data[72];
+} qt_protobuf_MsgSearchBySearchKeyRsp_metadata {
     // data
     {
         0, /* = version */
@@ -1031,16 +1031,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        20, /* = message full name length */
+        37, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        21, /* = requestId */
-        31, /* = success */
-        39, /* = errmsg */
-        46, /* = msgList */
-        54, /* = end-of-string-marker */
+        38, /* = requestId */
+        48, /* = success */
+        56, /* = errmsg */
+        63, /* = msgList */
+        71, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -1059,50 +1059,50 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.MsgSearchRsp\0" /* = full message name */
+    "my_chat_proto.MsgSearchBySearchKeyRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0msgList\0"
 };
 
-const QtProtobufPrivate::QProtobufPropertyOrdering MsgSearchRsp::propertyOrdering = {
-    &qt_protobuf_MsgSearchRsp_metadata.data
+const QtProtobufPrivate::QProtobufPropertyOrdering MsgSearchBySearchKeyRsp::propertyOrdering = {
+    &qt_protobuf_MsgSearchBySearchKeyRsp_metadata.data
 };
 
-void MsgSearchRsp::registerTypes()
+void MsgSearchBySearchKeyRsp::registerTypes()
 {
-    qRegisterMetaType<MsgSearchRsp>();
-    qRegisterMetaType<MsgSearchRspRepeated>();
+    qRegisterMetaType<MsgSearchBySearchKeyRsp>();
+    qRegisterMetaType<MsgSearchBySearchKeyRspRepeated>();
 }
 
-MsgSearchRsp::MsgSearchRsp()
-    : QProtobufMessage(&MsgSearchRsp::staticMetaObject),
-      dptr(new MsgSearchRsp_QtProtobufData)
+MsgSearchBySearchKeyRsp::MsgSearchBySearchKeyRsp()
+    : QProtobufMessage(&MsgSearchBySearchKeyRsp::staticMetaObject),
+      dptr(new MsgSearchBySearchKeyRsp_QtProtobufData)
 {
 }
 
-MsgSearchRsp::MsgSearchRsp(const MsgSearchRsp &other)
+MsgSearchBySearchKeyRsp::MsgSearchBySearchKeyRsp(const MsgSearchBySearchKeyRsp &other)
     : QProtobufMessage(other),
       dptr(other.dptr)
 {
 }
-MsgSearchRsp &MsgSearchRsp::operator =(const MsgSearchRsp &other)
+MsgSearchBySearchKeyRsp &MsgSearchBySearchKeyRsp::operator =(const MsgSearchBySearchKeyRsp &other)
 {
     QProtobufMessage::operator=(other);
     dptr = other.dptr;
     return *this;
 }
-MsgSearchRsp::MsgSearchRsp(MsgSearchRsp &&other) noexcept
+MsgSearchBySearchKeyRsp::MsgSearchBySearchKeyRsp(MsgSearchBySearchKeyRsp &&other) noexcept
     : QProtobufMessage(std::move(other)),
       dptr(std::move(other.dptr))
 {
 }
-MsgSearchRsp &MsgSearchRsp::operator =(MsgSearchRsp &&other) noexcept
+MsgSearchBySearchKeyRsp &MsgSearchBySearchKeyRsp::operator =(MsgSearchBySearchKeyRsp &&other) noexcept
 {
     QProtobufMessage::operator=(std::move(other));
     dptr.swap(other.dptr);
     return *this;
 }
-bool MsgSearchRsp::operator ==(const MsgSearchRsp &other) const
+bool MsgSearchBySearchKeyRsp::operator ==(const MsgSearchBySearchKeyRsp &other) const
 {
     return QProtobufMessage::isEqual(*this, other)
         && dptr->m_requestId == other.dptr->m_requestId
@@ -1111,38 +1111,38 @@ bool MsgSearchRsp::operator ==(const MsgSearchRsp &other) const
         && QtProtobuf::repeatedValueCompare(dptr->m_msgList, other.dptr->m_msgList);
 }
 
-bool MsgSearchRsp::operator !=(const MsgSearchRsp &other) const
+bool MsgSearchBySearchKeyRsp::operator !=(const MsgSearchBySearchKeyRsp &other) const
 {
     return !this->operator ==(other);
 }
 
-QString MsgSearchRsp::requestId() const
+QString MsgSearchBySearchKeyRsp::requestId() const
 {
     return dptr->m_requestId;
 }
 
-bool MsgSearchRsp::success() const
+bool MsgSearchBySearchKeyRsp::success() const
 {
     return dptr->m_success;
 }
 
-QString MsgSearchRsp::errmsg() const
+QString MsgSearchBySearchKeyRsp::errmsg() const
 {
     return dptr->m_errmsg;
 }
 
-MessageInfoRepeated MsgSearchRsp::msgList() const
+MessageInfoRepeated MsgSearchBySearchKeyRsp::msgList() const
 {
     return dptr->m_msgList;
 }
 
-MessageInfoRepeated &MsgSearchRsp::msgList()
+MessageInfoRepeated &MsgSearchBySearchKeyRsp::msgList()
 {
     dptr.detach();
     return dptr->m_msgList;
 }
 
-void MsgSearchRsp::setRequestId(const QString &requestId)
+void MsgSearchBySearchKeyRsp::setRequestId(const QString &requestId)
 {
     if (dptr->m_requestId != requestId) {
         dptr.detach();
@@ -1150,7 +1150,7 @@ void MsgSearchRsp::setRequestId(const QString &requestId)
     }
 }
 
-void MsgSearchRsp::setSuccess(const bool &success)
+void MsgSearchBySearchKeyRsp::setSuccess(const bool &success)
 {
     if (dptr->m_success != success) {
         dptr.detach();
@@ -1158,7 +1158,7 @@ void MsgSearchRsp::setSuccess(const bool &success)
     }
 }
 
-void MsgSearchRsp::setErrmsg(const QString &errmsg)
+void MsgSearchBySearchKeyRsp::setErrmsg(const QString &errmsg)
 {
     if (dptr->m_errmsg != errmsg) {
         dptr.detach();
@@ -1166,7 +1166,7 @@ void MsgSearchRsp::setErrmsg(const QString &errmsg)
     }
 }
 
-void MsgSearchRsp::setMsgList(const MessageInfoRepeated &msgList)
+void MsgSearchBySearchKeyRsp::setMsgList(const MessageInfoRepeated &msgList)
 {
     if (dptr->m_msgList != msgList) {
         dptr.detach();
@@ -1174,6 +1174,6 @@ void MsgSearchRsp::setMsgList(const MessageInfoRepeated &msgList)
     }
 }
 
-} // namespace bite_im
+} // namespace my_chat_proto
 
 #include "moc_message_storage.qpb.cpp"

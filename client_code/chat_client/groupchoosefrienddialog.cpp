@@ -1,5 +1,7 @@
 #include "groupchoosefrienddialog.h"
 #include "debug.h"
+#include "model/datacenter.h"
+#include "toast.h"
 
 #include <QHBoxLayout>
 #include <QScrollArea>
@@ -8,8 +10,9 @@
 #include <QPainter>
 
 // 创建群聊选择好友窗口
-GroupChooseFriendDialog::GroupChooseFriendDialog(QWidget* parent)
-    :QDialog(parent)
+GroupChooseFriendDialog::GroupChooseFriendDialog(QWidget* parent, const QString& friendId)
+    :QDialog(parent),
+    _friendId(friendId)
 {
     // 设置基本属性
     this->setWindowTitle("选择好友");
@@ -28,6 +31,8 @@ GroupChooseFriendDialog::GroupChooseFriendDialog(QWidget* parent)
     initLeftWidget(layout);
     // 初始化右边窗口
     initRightWidget(layout);
+    // 初始化数据
+    initData();
 
 }
 
@@ -119,6 +124,12 @@ void GroupChooseFriendDialog::initRightWidget(QHBoxLayout *layout){
     rightGridLayout->addWidget(okBtn, 2, 1, 1, 3);
     rightGridLayout->addWidget(cancleBtn, 2, 5, 1, 3);
 
+    // 关联“完成”按钮的信号槽
+    connect(okBtn, &QPushButton::clicked, this, &GroupChooseFriendDialog::clickOkBtn);
+    // 关联“取消”按钮的信号槽
+    connect(cancleBtn, &QPushButton::clicked, this, [=]() {
+        this->close();
+    });
 
     // 右侧的好友项通过勾选左边的好友项生成
 // #if TEST_UI
@@ -127,6 +138,66 @@ void GroupChooseFriendDialog::initRightWidget(QHBoxLayout *layout){
 //     }
 // #endif
 }
+
+void GroupChooseFriendDialog::clickOkBtn(){
+    // 1. 根据选中的好友列表中的元素, 得到所有的要创建群聊会话的用户 id 列表
+    QList<QString> groupSessionIdList = getGroupSessionMemberList();
+    if (groupSessionIdList.size() < 3) {
+        Toast::showMessage("群聊成员不足三个, 无法创建群聊");
+        return;
+    }
+
+    // 2. 发送网络请求, 创建群聊
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    dataCenter->createGroupChatSessionAsync(groupSessionIdList);
+
+    // 3. 关闭当前窗口
+    this->close();
+}
+
+QList<QString> GroupChooseFriendDialog::getGroupSessionMemberList(){
+    QList<QString> result;
+    // 1. 先把自己添加到结果中
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    model::UserInfo* myself = dataCenter->getMyself();
+    if (myself == nullptr) {
+        LOG() << "myself is nullptr";
+        return result;
+    }
+    result.push_back(myself->_userId);
+
+    // 2. 遍历选中的列表
+    QVBoxLayout* vLayout = dynamic_cast<QVBoxLayout*>(_selectedFriend->layout());
+    for (int i = 0; i < vLayout->count(); ++i) {
+        auto* item = vLayout->itemAt(i);
+        if (item == nullptr || item->widget() == nullptr) {
+            continue;
+        }
+        auto* groupFriendItem = dynamic_cast<GroupFriendItem*>(item->widget());
+        result.push_back(groupFriendItem->getUserId());
+    }
+    return result;
+}
+
+void GroupChooseFriendDialog::initData(){
+    // 遍历 好友列表, 把好友列表中的所有的元素, 添加到这个窗口界面上.
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    QList<model::UserInfo>* friendUserList = dataCenter->getFriendUserList();
+    if (friendUserList == nullptr) {
+        LOG() << "the friendUserList is nullptr";
+        return;
+    }
+    for (auto it = friendUserList->begin(); it != friendUserList->end(); ++it) {
+        if (it->_userId == this->_friendId) {
+            // 这个要设成被选中状态
+            this->addSelectedFriendItem(it->_userId, it->_headPortrait, it->_nickName);
+            this->addFriendItem(it->_userId, it->_headPortrait, it->_nickName, true);
+        } else {
+            this->addFriendItem(it->_userId, it->_headPortrait, it->_nickName, false);
+        }
+    }
+}
+
 
 void GroupChooseFriendDialog::addFriendItem(const QString& userId, const QIcon &headPortraitIcon, const QString &nickName, bool checked){
     GroupFriendItem* friendItem = new GroupFriendItem(this, userId, headPortraitIcon, nickName, checked);

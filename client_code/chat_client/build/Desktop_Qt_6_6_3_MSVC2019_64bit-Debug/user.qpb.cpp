@@ -3,7 +3,7 @@
 #include "user.qpb.h"
 #include <QtProtobuf/qprotobufserializer.h>
 
-namespace bite_im {
+namespace my_chat_proto {
 
 class UserRegisterReq_QtProtobufData : public QSharedData
 {
@@ -35,7 +35,7 @@ UserRegisterReq::~UserRegisterReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 21> qt_protobuf_UserRegisterReq_uint_data;
-    const char qt_protobuf_UserRegisterReq_char_data[77];
+    const char qt_protobuf_UserRegisterReq_char_data[83];
 } qt_protobuf_UserRegisterReq_metadata {
     // data
     {
@@ -44,17 +44,17 @@ static constexpr struct {
         6, /* = field number offset */
         11, /* = property index offset */
         16, /* = field flags offset */
-        23, /* = message full name length */
+        29, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        24, /* = requestId */
-        34, /* = nickname */
-        43, /* = password */
-        52, /* = verifyCodeId */
-        65, /* = verifyCode */
-        76, /* = end-of-string-marker */
+        30, /* = requestId */
+        40, /* = nickname */
+        49, /* = password */
+        58, /* = verifyCodeId */
+        71, /* = verifyCode */
+        82, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = nickname */
@@ -76,7 +76,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.UserRegisterReq\0" /* = full message name */
+    "my_chat_proto.UserRegisterReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0nickname\0password\0verifyCodeId\0verifyCode\0"
 };
@@ -227,7 +227,7 @@ UserRegisterRsp::~UserRegisterRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 13> qt_protobuf_UserRegisterRsp_uint_data;
-    const char qt_protobuf_UserRegisterRsp_char_data[50];
+    const char qt_protobuf_UserRegisterRsp_char_data[56];
 } qt_protobuf_UserRegisterRsp_metadata {
     // data
     {
@@ -236,15 +236,15 @@ static constexpr struct {
         4, /* = field number offset */
         7, /* = property index offset */
         10, /* = field flags offset */
-        23, /* = message full name length */
+        29, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        24, /* = requestId */
-        34, /* = success */
-        42, /* = errmsg */
-        49, /* = end-of-string-marker */
+        30, /* = requestId */
+        40, /* = success */
+        48, /* = errmsg */
+        55, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -260,7 +260,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.UserRegisterRsp\0" /* = full message name */
+    "my_chat_proto.UserRegisterRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0"
 };
@@ -386,7 +386,7 @@ UserLoginReq::~UserLoginReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 21> qt_protobuf_UserLoginReq_uint_data;
-    const char qt_protobuf_UserLoginReq_char_data[74];
+    const char qt_protobuf_UserLoginReq_char_data[80];
 } qt_protobuf_UserLoginReq_metadata {
     // data
     {
@@ -395,17 +395,17 @@ static constexpr struct {
         6, /* = field number offset */
         11, /* = property index offset */
         16, /* = field flags offset */
-        20, /* = message full name length */
+        26, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        21, /* = requestId */
-        31, /* = nickname */
-        40, /* = password */
-        49, /* = verifyCodeId */
-        62, /* = verifyCode */
-        73, /* = end-of-string-marker */
+        27, /* = requestId */
+        37, /* = nickname */
+        46, /* = password */
+        55, /* = verifyCodeId */
+        68, /* = verifyCode */
+        79, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = nickname */
@@ -427,7 +427,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.UserLoginReq\0" /* = full message name */
+    "my_chat_proto.UserLoginReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0nickname\0password\0verifyCodeId\0verifyCode\0"
 };
@@ -580,7 +580,7 @@ UserLoginRsp::~UserLoginRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_UserLoginRsp_uint_data;
-    const char qt_protobuf_UserLoginRsp_char_data[62];
+    const char qt_protobuf_UserLoginRsp_char_data[68];
 } qt_protobuf_UserLoginRsp_metadata {
     // data
     {
@@ -589,16 +589,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        20, /* = message full name length */
+        26, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        21, /* = requestId */
-        31, /* = success */
-        39, /* = errmsg */
-        46, /* = loginSessionId */
-        61, /* = end-of-string-marker */
+        27, /* = requestId */
+        37, /* = success */
+        45, /* = errmsg */
+        52, /* = loginSessionId */
+        67, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -617,7 +617,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.UserLoginRsp\0" /* = full message name */
+    "my_chat_proto.UserLoginRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0loginSessionId\0"
 };
@@ -751,7 +751,7 @@ PhoneVerifyCodeReq::~PhoneVerifyCodeReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 9> qt_protobuf_PhoneVerifyCodeReq_uint_data;
-    const char qt_protobuf_PhoneVerifyCodeReq_char_data[50];
+    const char qt_protobuf_PhoneVerifyCodeReq_char_data[56];
 } qt_protobuf_PhoneVerifyCodeReq_metadata {
     // data
     {
@@ -760,14 +760,14 @@ static constexpr struct {
         3, /* = field number offset */
         5, /* = property index offset */
         7, /* = field flags offset */
-        26, /* = message full name length */
+        32, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        27, /* = requestId */
-        37, /* = phoneNumber */
-        49, /* = end-of-string-marker */
+        33, /* = requestId */
+        43, /* = phoneNumber */
+        55, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = phoneNumber */
@@ -780,7 +780,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.PhoneVerifyCodeReq\0" /* = full message name */
+    "my_chat_proto.PhoneVerifyCodeReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0phoneNumber\0"
 };
@@ -891,7 +891,7 @@ PhoneVerifyCodeRsp::~PhoneVerifyCodeRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_PhoneVerifyCodeRsp_uint_data;
-    const char qt_protobuf_PhoneVerifyCodeRsp_char_data[66];
+    const char qt_protobuf_PhoneVerifyCodeRsp_char_data[72];
 } qt_protobuf_PhoneVerifyCodeRsp_metadata {
     // data
     {
@@ -900,16 +900,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        26, /* = message full name length */
+        32, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        27, /* = requestId */
-        37, /* = success */
-        45, /* = errmsg */
-        52, /* = verifyCodeId */
-        65, /* = end-of-string-marker */
+        33, /* = requestId */
+        43, /* = success */
+        51, /* = errmsg */
+        58, /* = verifyCodeId */
+        71, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -928,7 +928,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.PhoneVerifyCodeRsp\0" /* = full message name */
+    "my_chat_proto.PhoneVerifyCodeRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0verifyCodeId\0"
 };
@@ -1066,7 +1066,7 @@ PhoneRegisterReq::~PhoneRegisterReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_PhoneRegisterReq_uint_data;
-    const char qt_protobuf_PhoneRegisterReq_char_data[72];
+    const char qt_protobuf_PhoneRegisterReq_char_data[78];
 } qt_protobuf_PhoneRegisterReq_metadata {
     // data
     {
@@ -1075,16 +1075,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        24, /* = message full name length */
+        30, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        25, /* = requestId */
-        35, /* = phoneNumber */
-        47, /* = verifyCodeId */
-        60, /* = verifyCode */
-        71, /* = end-of-string-marker */
+        31, /* = requestId */
+        41, /* = phoneNumber */
+        53, /* = verifyCodeId */
+        66, /* = verifyCode */
+        77, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = phoneNumber */
@@ -1103,7 +1103,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.PhoneRegisterReq\0" /* = full message name */
+    "my_chat_proto.PhoneRegisterReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0phoneNumber\0verifyCodeId\0verifyCode\0"
 };
@@ -1240,7 +1240,7 @@ PhoneRegisterRsp::~PhoneRegisterRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 13> qt_protobuf_PhoneRegisterRsp_uint_data;
-    const char qt_protobuf_PhoneRegisterRsp_char_data[51];
+    const char qt_protobuf_PhoneRegisterRsp_char_data[57];
 } qt_protobuf_PhoneRegisterRsp_metadata {
     // data
     {
@@ -1249,15 +1249,15 @@ static constexpr struct {
         4, /* = field number offset */
         7, /* = property index offset */
         10, /* = field flags offset */
-        24, /* = message full name length */
+        30, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        25, /* = requestId */
-        35, /* = success */
-        43, /* = errmsg */
-        50, /* = end-of-string-marker */
+        31, /* = requestId */
+        41, /* = success */
+        49, /* = errmsg */
+        56, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -1273,7 +1273,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.PhoneRegisterRsp\0" /* = full message name */
+    "my_chat_proto.PhoneRegisterRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0"
 };
@@ -1397,7 +1397,7 @@ PhoneLoginReq::~PhoneLoginReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_PhoneLoginReq_uint_data;
-    const char qt_protobuf_PhoneLoginReq_char_data[69];
+    const char qt_protobuf_PhoneLoginReq_char_data[75];
 } qt_protobuf_PhoneLoginReq_metadata {
     // data
     {
@@ -1406,16 +1406,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        21, /* = message full name length */
+        27, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        22, /* = requestId */
-        32, /* = phoneNumber */
-        44, /* = verifyCodeId */
-        57, /* = verifyCode */
-        68, /* = end-of-string-marker */
+        28, /* = requestId */
+        38, /* = phoneNumber */
+        50, /* = verifyCodeId */
+        63, /* = verifyCode */
+        74, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = phoneNumber */
@@ -1434,7 +1434,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.PhoneLoginReq\0" /* = full message name */
+    "my_chat_proto.PhoneLoginReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0phoneNumber\0verifyCodeId\0verifyCode\0"
 };
@@ -1573,7 +1573,7 @@ PhoneLoginRsp::~PhoneLoginRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_PhoneLoginRsp_uint_data;
-    const char qt_protobuf_PhoneLoginRsp_char_data[63];
+    const char qt_protobuf_PhoneLoginRsp_char_data[69];
 } qt_protobuf_PhoneLoginRsp_metadata {
     // data
     {
@@ -1582,16 +1582,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        21, /* = message full name length */
+        27, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        22, /* = requestId */
-        32, /* = success */
-        40, /* = errmsg */
-        47, /* = loginSessionId */
-        62, /* = end-of-string-marker */
+        28, /* = requestId */
+        38, /* = success */
+        46, /* = errmsg */
+        53, /* = loginSessionId */
+        68, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -1610,7 +1610,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.PhoneLoginRsp\0" /* = full message name */
+    "my_chat_proto.PhoneLoginRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0loginSessionId\0"
 };
@@ -1746,7 +1746,7 @@ GetUserInfoReq::~GetUserInfoReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 13> qt_protobuf_GetUserInfoReq_uint_data;
-    const char qt_protobuf_GetUserInfoReq_char_data[51];
+    const char qt_protobuf_GetUserInfoReq_char_data[57];
 } qt_protobuf_GetUserInfoReq_metadata {
     // data
     {
@@ -1755,15 +1755,15 @@ static constexpr struct {
         4, /* = field number offset */
         7, /* = property index offset */
         10, /* = field flags offset */
-        22, /* = message full name length */
+        28, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        23, /* = requestId */
-        33, /* = userId */
-        40, /* = sessionId */
-        50, /* = end-of-string-marker */
+        29, /* = requestId */
+        39, /* = userId */
+        46, /* = sessionId */
+        56, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = userId */
@@ -1779,7 +1779,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetUserInfoReq\0" /* = full message name */
+    "my_chat_proto.GetUserInfoReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0userId\0sessionId\0"
 };
@@ -1905,7 +1905,7 @@ GetUserInfoRsp::~GetUserInfoRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_GetUserInfoRsp_uint_data;
-    const char qt_protobuf_GetUserInfoRsp_char_data[58];
+    const char qt_protobuf_GetUserInfoRsp_char_data[64];
 } qt_protobuf_GetUserInfoRsp_metadata {
     // data
     {
@@ -1914,16 +1914,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        22, /* = message full name length */
+        28, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        23, /* = requestId */
-        33, /* = success */
-        41, /* = errmsg */
-        48, /* = userInfo */
-        57, /* = end-of-string-marker */
+        29, /* = requestId */
+        39, /* = success */
+        47, /* = errmsg */
+        54, /* = userInfo */
+        63, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -1942,7 +1942,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetUserInfoRsp\0" /* = full message name */
+    "my_chat_proto.GetUserInfoRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0userInfo\0"
 };
@@ -2066,36 +2066,36 @@ void GetUserInfoRsp::setUserInfo(const UserInfo &userInfo)
 }
 
 
-class SetUserAvatarReq_QtProtobufData : public QSharedData
+class SetUserHeadPortraitReq_QtProtobufData : public QSharedData
 {
 public:
-    SetUserAvatarReq_QtProtobufData()
+    SetUserHeadPortraitReq_QtProtobufData()
         : QSharedData()
     {
     }
 
-    SetUserAvatarReq_QtProtobufData(const SetUserAvatarReq_QtProtobufData &other)
+    SetUserHeadPortraitReq_QtProtobufData(const SetUserHeadPortraitReq_QtProtobufData &other)
         : QSharedData(other),
           m_requestId(other.m_requestId),
           m_userId(other.m_userId),
           m_sessionId(other.m_sessionId),
-          m_avatar(other.m_avatar)
+          m_headPortrait(other.m_headPortrait)
     {
     }
 
     QString m_requestId;
     QString m_userId;
     QString m_sessionId;
-    QByteArray m_avatar;
+    QByteArray m_headPortrait;
 };
 
-SetUserAvatarReq::~SetUserAvatarReq() = default;
+SetUserHeadPortraitReq::~SetUserHeadPortraitReq() = default;
 
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
-    const std::array<uint, 17> qt_protobuf_SetUserAvatarReq_uint_data;
-    const char qt_protobuf_SetUserAvatarReq_char_data[60];
-} qt_protobuf_SetUserAvatarReq_metadata {
+    const std::array<uint, 17> qt_protobuf_SetUserHeadPortraitReq_uint_data;
+    const char qt_protobuf_SetUserHeadPortraitReq_char_data[78];
+} qt_protobuf_SetUserHeadPortraitReq_metadata {
     // data
     {
         0, /* = version */
@@ -2103,110 +2103,110 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        24, /* = message full name length */
+        36, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        25, /* = requestId */
-        35, /* = userId */
-        42, /* = sessionId */
-        52, /* = avatar */
-        59, /* = end-of-string-marker */
+        37, /* = requestId */
+        47, /* = userId */
+        54, /* = sessionId */
+        64, /* = headPortrait */
+        77, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = userId */
         3, /* = sessionId */
-        4, /* = avatar */
+        4, /* = headPortrait */
         // Property indices:
         0, /* = requestId */
         1, /* = userId */
         2, /* = sessionId */
-        3, /* = avatar */
+        3, /* = headPortrait */
         // Field flags:
         QtProtobufPrivate::NoFlags, /* = requestId */
         QtProtobufPrivate::NoFlags, /* = userId */
         QtProtobufPrivate::NoFlags, /* = sessionId */
-        QtProtobufPrivate::NoFlags, /* = avatar */
+        QtProtobufPrivate::NoFlags, /* = headPortrait */
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.SetUserAvatarReq\0" /* = full message name */
+    "my_chat_proto.SetUserHeadPortraitReq\0" /* = full message name */
     /* field char_data: */
-    "requestId\0userId\0sessionId\0avatar\0"
+    "requestId\0userId\0sessionId\0headPortrait\0"
 };
 
-const QtProtobufPrivate::QProtobufPropertyOrdering SetUserAvatarReq::propertyOrdering = {
-    &qt_protobuf_SetUserAvatarReq_metadata.data
+const QtProtobufPrivate::QProtobufPropertyOrdering SetUserHeadPortraitReq::propertyOrdering = {
+    &qt_protobuf_SetUserHeadPortraitReq_metadata.data
 };
 
-void SetUserAvatarReq::registerTypes()
+void SetUserHeadPortraitReq::registerTypes()
 {
-    qRegisterMetaType<SetUserAvatarReq>();
-    qRegisterMetaType<SetUserAvatarReqRepeated>();
+    qRegisterMetaType<SetUserHeadPortraitReq>();
+    qRegisterMetaType<SetUserHeadPortraitReqRepeated>();
 }
 
-SetUserAvatarReq::SetUserAvatarReq()
-    : QProtobufMessage(&SetUserAvatarReq::staticMetaObject),
-      dptr(new SetUserAvatarReq_QtProtobufData)
+SetUserHeadPortraitReq::SetUserHeadPortraitReq()
+    : QProtobufMessage(&SetUserHeadPortraitReq::staticMetaObject),
+      dptr(new SetUserHeadPortraitReq_QtProtobufData)
 {
 }
 
-SetUserAvatarReq::SetUserAvatarReq(const SetUserAvatarReq &other)
+SetUserHeadPortraitReq::SetUserHeadPortraitReq(const SetUserHeadPortraitReq &other)
     : QProtobufMessage(other),
       dptr(other.dptr)
 {
 }
-SetUserAvatarReq &SetUserAvatarReq::operator =(const SetUserAvatarReq &other)
+SetUserHeadPortraitReq &SetUserHeadPortraitReq::operator =(const SetUserHeadPortraitReq &other)
 {
     QProtobufMessage::operator=(other);
     dptr = other.dptr;
     return *this;
 }
-SetUserAvatarReq::SetUserAvatarReq(SetUserAvatarReq &&other) noexcept
+SetUserHeadPortraitReq::SetUserHeadPortraitReq(SetUserHeadPortraitReq &&other) noexcept
     : QProtobufMessage(std::move(other)),
       dptr(std::move(other.dptr))
 {
 }
-SetUserAvatarReq &SetUserAvatarReq::operator =(SetUserAvatarReq &&other) noexcept
+SetUserHeadPortraitReq &SetUserHeadPortraitReq::operator =(SetUserHeadPortraitReq &&other) noexcept
 {
     QProtobufMessage::operator=(std::move(other));
     dptr.swap(other.dptr);
     return *this;
 }
-bool SetUserAvatarReq::operator ==(const SetUserAvatarReq &other) const
+bool SetUserHeadPortraitReq::operator ==(const SetUserHeadPortraitReq &other) const
 {
     return QProtobufMessage::isEqual(*this, other)
         && dptr->m_requestId == other.dptr->m_requestId
-        && dptr->m_avatar == other.dptr->m_avatar;
+        && dptr->m_headPortrait == other.dptr->m_headPortrait;
 }
 
-bool SetUserAvatarReq::operator !=(const SetUserAvatarReq &other) const
+bool SetUserHeadPortraitReq::operator !=(const SetUserHeadPortraitReq &other) const
 {
     return !this->operator ==(other);
 }
 
-QString SetUserAvatarReq::requestId() const
+QString SetUserHeadPortraitReq::requestId() const
 {
     return dptr->m_requestId;
 }
 
-QString SetUserAvatarReq::userId() const
+QString SetUserHeadPortraitReq::userId() const
 {
     return dptr->m_userId;
 }
 
-QString SetUserAvatarReq::sessionId() const
+QString SetUserHeadPortraitReq::sessionId() const
 {
     return dptr->m_sessionId;
 }
 
-QByteArray SetUserAvatarReq::avatar() const
+QByteArray SetUserHeadPortraitReq::headPortrait() const
 {
-    return dptr->m_avatar;
+    return dptr->m_headPortrait;
 }
 
-void SetUserAvatarReq::setRequestId(const QString &requestId)
+void SetUserHeadPortraitReq::setRequestId(const QString &requestId)
 {
     if (dptr->m_requestId != requestId) {
         dptr.detach();
@@ -2214,7 +2214,7 @@ void SetUserAvatarReq::setRequestId(const QString &requestId)
     }
 }
 
-void SetUserAvatarReq::setUserId(const QString &userId)
+void SetUserHeadPortraitReq::setUserId(const QString &userId)
 {
     if (dptr->m_userId != userId) {
         dptr.detach();
@@ -2222,7 +2222,7 @@ void SetUserAvatarReq::setUserId(const QString &userId)
     }
 }
 
-void SetUserAvatarReq::setSessionId(const QString &sessionId)
+void SetUserHeadPortraitReq::setSessionId(const QString &sessionId)
 {
     if (dptr->m_sessionId != sessionId) {
         dptr.detach();
@@ -2230,25 +2230,25 @@ void SetUserAvatarReq::setSessionId(const QString &sessionId)
     }
 }
 
-void SetUserAvatarReq::setAvatar(const QByteArray &avatar)
+void SetUserHeadPortraitReq::setHeadPortrait(const QByteArray &headPortrait)
 {
-    if (dptr->m_avatar != avatar) {
+    if (dptr->m_headPortrait != headPortrait) {
         dptr.detach();
-        dptr->m_avatar = avatar;
+        dptr->m_headPortrait = headPortrait;
     }
 }
 
 
-class SetUserAvatarRsp_QtProtobufData : public QSharedData
+class SetUserHeadPortraitRsp_QtProtobufData : public QSharedData
 {
 public:
-    SetUserAvatarRsp_QtProtobufData()
+    SetUserHeadPortraitRsp_QtProtobufData()
         : QSharedData(),
           m_success(false)
     {
     }
 
-    SetUserAvatarRsp_QtProtobufData(const SetUserAvatarRsp_QtProtobufData &other)
+    SetUserHeadPortraitRsp_QtProtobufData(const SetUserHeadPortraitRsp_QtProtobufData &other)
         : QSharedData(other),
           m_requestId(other.m_requestId),
           m_success(other.m_success),
@@ -2261,13 +2261,13 @@ public:
     QString m_errmsg;
 };
 
-SetUserAvatarRsp::~SetUserAvatarRsp() = default;
+SetUserHeadPortraitRsp::~SetUserHeadPortraitRsp() = default;
 
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
-    const std::array<uint, 13> qt_protobuf_SetUserAvatarRsp_uint_data;
-    const char qt_protobuf_SetUserAvatarRsp_char_data[51];
-} qt_protobuf_SetUserAvatarRsp_metadata {
+    const std::array<uint, 13> qt_protobuf_SetUserHeadPortraitRsp_uint_data;
+    const char qt_protobuf_SetUserHeadPortraitRsp_char_data[63];
+} qt_protobuf_SetUserHeadPortraitRsp_metadata {
     // data
     {
         0, /* = version */
@@ -2275,15 +2275,15 @@ static constexpr struct {
         4, /* = field number offset */
         7, /* = property index offset */
         10, /* = field flags offset */
-        24, /* = message full name length */
+        36, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        25, /* = requestId */
-        35, /* = success */
-        43, /* = errmsg */
-        50, /* = end-of-string-marker */
+        37, /* = requestId */
+        47, /* = success */
+        55, /* = errmsg */
+        62, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -2299,50 +2299,50 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.SetUserAvatarRsp\0" /* = full message name */
+    "my_chat_proto.SetUserHeadPortraitRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0"
 };
 
-const QtProtobufPrivate::QProtobufPropertyOrdering SetUserAvatarRsp::propertyOrdering = {
-    &qt_protobuf_SetUserAvatarRsp_metadata.data
+const QtProtobufPrivate::QProtobufPropertyOrdering SetUserHeadPortraitRsp::propertyOrdering = {
+    &qt_protobuf_SetUserHeadPortraitRsp_metadata.data
 };
 
-void SetUserAvatarRsp::registerTypes()
+void SetUserHeadPortraitRsp::registerTypes()
 {
-    qRegisterMetaType<SetUserAvatarRsp>();
-    qRegisterMetaType<SetUserAvatarRspRepeated>();
+    qRegisterMetaType<SetUserHeadPortraitRsp>();
+    qRegisterMetaType<SetUserHeadPortraitRspRepeated>();
 }
 
-SetUserAvatarRsp::SetUserAvatarRsp()
-    : QProtobufMessage(&SetUserAvatarRsp::staticMetaObject),
-      dptr(new SetUserAvatarRsp_QtProtobufData)
+SetUserHeadPortraitRsp::SetUserHeadPortraitRsp()
+    : QProtobufMessage(&SetUserHeadPortraitRsp::staticMetaObject),
+      dptr(new SetUserHeadPortraitRsp_QtProtobufData)
 {
 }
 
-SetUserAvatarRsp::SetUserAvatarRsp(const SetUserAvatarRsp &other)
+SetUserHeadPortraitRsp::SetUserHeadPortraitRsp(const SetUserHeadPortraitRsp &other)
     : QProtobufMessage(other),
       dptr(other.dptr)
 {
 }
-SetUserAvatarRsp &SetUserAvatarRsp::operator =(const SetUserAvatarRsp &other)
+SetUserHeadPortraitRsp &SetUserHeadPortraitRsp::operator =(const SetUserHeadPortraitRsp &other)
 {
     QProtobufMessage::operator=(other);
     dptr = other.dptr;
     return *this;
 }
-SetUserAvatarRsp::SetUserAvatarRsp(SetUserAvatarRsp &&other) noexcept
+SetUserHeadPortraitRsp::SetUserHeadPortraitRsp(SetUserHeadPortraitRsp &&other) noexcept
     : QProtobufMessage(std::move(other)),
       dptr(std::move(other.dptr))
 {
 }
-SetUserAvatarRsp &SetUserAvatarRsp::operator =(SetUserAvatarRsp &&other) noexcept
+SetUserHeadPortraitRsp &SetUserHeadPortraitRsp::operator =(SetUserHeadPortraitRsp &&other) noexcept
 {
     QProtobufMessage::operator=(std::move(other));
     dptr.swap(other.dptr);
     return *this;
 }
-bool SetUserAvatarRsp::operator ==(const SetUserAvatarRsp &other) const
+bool SetUserHeadPortraitRsp::operator ==(const SetUserHeadPortraitRsp &other) const
 {
     return QProtobufMessage::isEqual(*this, other)
         && dptr->m_requestId == other.dptr->m_requestId
@@ -2350,27 +2350,27 @@ bool SetUserAvatarRsp::operator ==(const SetUserAvatarRsp &other) const
         && dptr->m_errmsg == other.dptr->m_errmsg;
 }
 
-bool SetUserAvatarRsp::operator !=(const SetUserAvatarRsp &other) const
+bool SetUserHeadPortraitRsp::operator !=(const SetUserHeadPortraitRsp &other) const
 {
     return !this->operator ==(other);
 }
 
-QString SetUserAvatarRsp::requestId() const
+QString SetUserHeadPortraitRsp::requestId() const
 {
     return dptr->m_requestId;
 }
 
-bool SetUserAvatarRsp::success() const
+bool SetUserHeadPortraitRsp::success() const
 {
     return dptr->m_success;
 }
 
-QString SetUserAvatarRsp::errmsg() const
+QString SetUserHeadPortraitRsp::errmsg() const
 {
     return dptr->m_errmsg;
 }
 
-void SetUserAvatarRsp::setRequestId(const QString &requestId)
+void SetUserHeadPortraitRsp::setRequestId(const QString &requestId)
 {
     if (dptr->m_requestId != requestId) {
         dptr.detach();
@@ -2378,7 +2378,7 @@ void SetUserAvatarRsp::setRequestId(const QString &requestId)
     }
 }
 
-void SetUserAvatarRsp::setSuccess(const bool &success)
+void SetUserHeadPortraitRsp::setSuccess(const bool &success)
 {
     if (dptr->m_success != success) {
         dptr.detach();
@@ -2386,7 +2386,7 @@ void SetUserAvatarRsp::setSuccess(const bool &success)
     }
 }
 
-void SetUserAvatarRsp::setErrmsg(const QString &errmsg)
+void SetUserHeadPortraitRsp::setErrmsg(const QString &errmsg)
 {
     if (dptr->m_errmsg != errmsg) {
         dptr.detach();
@@ -2423,7 +2423,7 @@ SetUserNicknameReq::~SetUserNicknameReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 17> qt_protobuf_SetUserNicknameReq_uint_data;
-    const char qt_protobuf_SetUserNicknameReq_char_data[64];
+    const char qt_protobuf_SetUserNicknameReq_char_data[70];
 } qt_protobuf_SetUserNicknameReq_metadata {
     // data
     {
@@ -2432,16 +2432,16 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        26, /* = message full name length */
+        32, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        27, /* = requestId */
-        37, /* = userId */
-        44, /* = sessionId */
-        54, /* = nickname */
-        63, /* = end-of-string-marker */
+        33, /* = requestId */
+        43, /* = userId */
+        50, /* = sessionId */
+        60, /* = nickname */
+        69, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = userId */
@@ -2460,7 +2460,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.SetUserNicknameReq\0" /* = full message name */
+    "my_chat_proto.SetUserNicknameReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0userId\0sessionId\0nickname\0"
 };
@@ -2595,7 +2595,7 @@ SetUserNicknameRsp::~SetUserNicknameRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 13> qt_protobuf_SetUserNicknameRsp_uint_data;
-    const char qt_protobuf_SetUserNicknameRsp_char_data[53];
+    const char qt_protobuf_SetUserNicknameRsp_char_data[59];
 } qt_protobuf_SetUserNicknameRsp_metadata {
     // data
     {
@@ -2604,15 +2604,15 @@ static constexpr struct {
         4, /* = field number offset */
         7, /* = property index offset */
         10, /* = field flags offset */
-        26, /* = message full name length */
+        32, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        27, /* = requestId */
-        37, /* = success */
-        45, /* = errmsg */
-        52, /* = end-of-string-marker */
+        33, /* = requestId */
+        43, /* = success */
+        51, /* = errmsg */
+        58, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -2628,7 +2628,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.SetUserNicknameRsp\0" /* = full message name */
+    "my_chat_proto.SetUserNicknameRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0"
 };
@@ -2724,36 +2724,36 @@ void SetUserNicknameRsp::setErrmsg(const QString &errmsg)
 }
 
 
-class SetUserDescriptionReq_QtProtobufData : public QSharedData
+class SetUserSignatureReq_QtProtobufData : public QSharedData
 {
 public:
-    SetUserDescriptionReq_QtProtobufData()
+    SetUserSignatureReq_QtProtobufData()
         : QSharedData()
     {
     }
 
-    SetUserDescriptionReq_QtProtobufData(const SetUserDescriptionReq_QtProtobufData &other)
+    SetUserSignatureReq_QtProtobufData(const SetUserSignatureReq_QtProtobufData &other)
         : QSharedData(other),
           m_requestId(other.m_requestId),
           m_userId(other.m_userId),
           m_sessionId(other.m_sessionId),
-          m_description(other.m_description)
+          m_signature(other.m_signature)
     {
     }
 
     QString m_requestId;
     QString m_userId;
     QString m_sessionId;
-    QString m_description;
+    QString m_signature;
 };
 
-SetUserDescriptionReq::~SetUserDescriptionReq() = default;
+SetUserSignatureReq::~SetUserSignatureReq() = default;
 
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
-    const std::array<uint, 17> qt_protobuf_SetUserDescriptionReq_uint_data;
-    const char qt_protobuf_SetUserDescriptionReq_char_data[70];
-} qt_protobuf_SetUserDescriptionReq_metadata {
+    const std::array<uint, 17> qt_protobuf_SetUserSignatureReq_uint_data;
+    const char qt_protobuf_SetUserSignatureReq_char_data[72];
+} qt_protobuf_SetUserSignatureReq_metadata {
     // data
     {
         0, /* = version */
@@ -2761,110 +2761,110 @@ static constexpr struct {
         5, /* = field number offset */
         9, /* = property index offset */
         13, /* = field flags offset */
-        29, /* = message full name length */
+        33, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        30, /* = requestId */
-        40, /* = userId */
-        47, /* = sessionId */
-        57, /* = description */
-        69, /* = end-of-string-marker */
+        34, /* = requestId */
+        44, /* = userId */
+        51, /* = sessionId */
+        61, /* = signature */
+        71, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = userId */
         3, /* = sessionId */
-        4, /* = description */
+        4, /* = signature */
         // Property indices:
         0, /* = requestId */
         1, /* = userId */
         2, /* = sessionId */
-        3, /* = description */
+        3, /* = signature */
         // Field flags:
         QtProtobufPrivate::NoFlags, /* = requestId */
         QtProtobufPrivate::NoFlags, /* = userId */
         QtProtobufPrivate::NoFlags, /* = sessionId */
-        QtProtobufPrivate::NoFlags, /* = description */
+        QtProtobufPrivate::NoFlags, /* = signature */
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.SetUserDescriptionReq\0" /* = full message name */
+    "my_chat_proto.SetUserSignatureReq\0" /* = full message name */
     /* field char_data: */
-    "requestId\0userId\0sessionId\0description\0"
+    "requestId\0userId\0sessionId\0signature\0"
 };
 
-const QtProtobufPrivate::QProtobufPropertyOrdering SetUserDescriptionReq::propertyOrdering = {
-    &qt_protobuf_SetUserDescriptionReq_metadata.data
+const QtProtobufPrivate::QProtobufPropertyOrdering SetUserSignatureReq::propertyOrdering = {
+    &qt_protobuf_SetUserSignatureReq_metadata.data
 };
 
-void SetUserDescriptionReq::registerTypes()
+void SetUserSignatureReq::registerTypes()
 {
-    qRegisterMetaType<SetUserDescriptionReq>();
-    qRegisterMetaType<SetUserDescriptionReqRepeated>();
+    qRegisterMetaType<SetUserSignatureReq>();
+    qRegisterMetaType<SetUserSignatureReqRepeated>();
 }
 
-SetUserDescriptionReq::SetUserDescriptionReq()
-    : QProtobufMessage(&SetUserDescriptionReq::staticMetaObject),
-      dptr(new SetUserDescriptionReq_QtProtobufData)
+SetUserSignatureReq::SetUserSignatureReq()
+    : QProtobufMessage(&SetUserSignatureReq::staticMetaObject),
+      dptr(new SetUserSignatureReq_QtProtobufData)
 {
 }
 
-SetUserDescriptionReq::SetUserDescriptionReq(const SetUserDescriptionReq &other)
+SetUserSignatureReq::SetUserSignatureReq(const SetUserSignatureReq &other)
     : QProtobufMessage(other),
       dptr(other.dptr)
 {
 }
-SetUserDescriptionReq &SetUserDescriptionReq::operator =(const SetUserDescriptionReq &other)
+SetUserSignatureReq &SetUserSignatureReq::operator =(const SetUserSignatureReq &other)
 {
     QProtobufMessage::operator=(other);
     dptr = other.dptr;
     return *this;
 }
-SetUserDescriptionReq::SetUserDescriptionReq(SetUserDescriptionReq &&other) noexcept
+SetUserSignatureReq::SetUserSignatureReq(SetUserSignatureReq &&other) noexcept
     : QProtobufMessage(std::move(other)),
       dptr(std::move(other.dptr))
 {
 }
-SetUserDescriptionReq &SetUserDescriptionReq::operator =(SetUserDescriptionReq &&other) noexcept
+SetUserSignatureReq &SetUserSignatureReq::operator =(SetUserSignatureReq &&other) noexcept
 {
     QProtobufMessage::operator=(std::move(other));
     dptr.swap(other.dptr);
     return *this;
 }
-bool SetUserDescriptionReq::operator ==(const SetUserDescriptionReq &other) const
+bool SetUserSignatureReq::operator ==(const SetUserSignatureReq &other) const
 {
     return QProtobufMessage::isEqual(*this, other)
         && dptr->m_requestId == other.dptr->m_requestId
-        && dptr->m_description == other.dptr->m_description;
+        && dptr->m_signature == other.dptr->m_signature;
 }
 
-bool SetUserDescriptionReq::operator !=(const SetUserDescriptionReq &other) const
+bool SetUserSignatureReq::operator !=(const SetUserSignatureReq &other) const
 {
     return !this->operator ==(other);
 }
 
-QString SetUserDescriptionReq::requestId() const
+QString SetUserSignatureReq::requestId() const
 {
     return dptr->m_requestId;
 }
 
-QString SetUserDescriptionReq::userId() const
+QString SetUserSignatureReq::userId() const
 {
     return dptr->m_userId;
 }
 
-QString SetUserDescriptionReq::sessionId() const
+QString SetUserSignatureReq::sessionId() const
 {
     return dptr->m_sessionId;
 }
 
-QString SetUserDescriptionReq::description() const
+QString SetUserSignatureReq::signature() const
 {
-    return dptr->m_description;
+    return dptr->m_signature;
 }
 
-void SetUserDescriptionReq::setRequestId(const QString &requestId)
+void SetUserSignatureReq::setRequestId(const QString &requestId)
 {
     if (dptr->m_requestId != requestId) {
         dptr.detach();
@@ -2872,7 +2872,7 @@ void SetUserDescriptionReq::setRequestId(const QString &requestId)
     }
 }
 
-void SetUserDescriptionReq::setUserId(const QString &userId)
+void SetUserSignatureReq::setUserId(const QString &userId)
 {
     if (dptr->m_userId != userId) {
         dptr.detach();
@@ -2880,7 +2880,7 @@ void SetUserDescriptionReq::setUserId(const QString &userId)
     }
 }
 
-void SetUserDescriptionReq::setSessionId(const QString &sessionId)
+void SetUserSignatureReq::setSessionId(const QString &sessionId)
 {
     if (dptr->m_sessionId != sessionId) {
         dptr.detach();
@@ -2888,25 +2888,25 @@ void SetUserDescriptionReq::setSessionId(const QString &sessionId)
     }
 }
 
-void SetUserDescriptionReq::setDescription(const QString &description)
+void SetUserSignatureReq::setSignature(const QString &signature)
 {
-    if (dptr->m_description != description) {
+    if (dptr->m_signature != signature) {
         dptr.detach();
-        dptr->m_description = description;
+        dptr->m_signature = signature;
     }
 }
 
 
-class SetUserDescriptionRsp_QtProtobufData : public QSharedData
+class SetUserSignatureRsp_QtProtobufData : public QSharedData
 {
 public:
-    SetUserDescriptionRsp_QtProtobufData()
+    SetUserSignatureRsp_QtProtobufData()
         : QSharedData(),
           m_success(false)
     {
     }
 
-    SetUserDescriptionRsp_QtProtobufData(const SetUserDescriptionRsp_QtProtobufData &other)
+    SetUserSignatureRsp_QtProtobufData(const SetUserSignatureRsp_QtProtobufData &other)
         : QSharedData(other),
           m_requestId(other.m_requestId),
           m_success(other.m_success),
@@ -2919,13 +2919,13 @@ public:
     QString m_errmsg;
 };
 
-SetUserDescriptionRsp::~SetUserDescriptionRsp() = default;
+SetUserSignatureRsp::~SetUserSignatureRsp() = default;
 
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
-    const std::array<uint, 13> qt_protobuf_SetUserDescriptionRsp_uint_data;
-    const char qt_protobuf_SetUserDescriptionRsp_char_data[56];
-} qt_protobuf_SetUserDescriptionRsp_metadata {
+    const std::array<uint, 13> qt_protobuf_SetUserSignatureRsp_uint_data;
+    const char qt_protobuf_SetUserSignatureRsp_char_data[60];
+} qt_protobuf_SetUserSignatureRsp_metadata {
     // data
     {
         0, /* = version */
@@ -2933,15 +2933,15 @@ static constexpr struct {
         4, /* = field number offset */
         7, /* = property index offset */
         10, /* = field flags offset */
-        29, /* = message full name length */
+        33, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        30, /* = requestId */
-        40, /* = success */
-        48, /* = errmsg */
-        55, /* = end-of-string-marker */
+        34, /* = requestId */
+        44, /* = success */
+        52, /* = errmsg */
+        59, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -2957,50 +2957,50 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.SetUserDescriptionRsp\0" /* = full message name */
+    "my_chat_proto.SetUserSignatureRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0"
 };
 
-const QtProtobufPrivate::QProtobufPropertyOrdering SetUserDescriptionRsp::propertyOrdering = {
-    &qt_protobuf_SetUserDescriptionRsp_metadata.data
+const QtProtobufPrivate::QProtobufPropertyOrdering SetUserSignatureRsp::propertyOrdering = {
+    &qt_protobuf_SetUserSignatureRsp_metadata.data
 };
 
-void SetUserDescriptionRsp::registerTypes()
+void SetUserSignatureRsp::registerTypes()
 {
-    qRegisterMetaType<SetUserDescriptionRsp>();
-    qRegisterMetaType<SetUserDescriptionRspRepeated>();
+    qRegisterMetaType<SetUserSignatureRsp>();
+    qRegisterMetaType<SetUserSignatureRspRepeated>();
 }
 
-SetUserDescriptionRsp::SetUserDescriptionRsp()
-    : QProtobufMessage(&SetUserDescriptionRsp::staticMetaObject),
-      dptr(new SetUserDescriptionRsp_QtProtobufData)
+SetUserSignatureRsp::SetUserSignatureRsp()
+    : QProtobufMessage(&SetUserSignatureRsp::staticMetaObject),
+      dptr(new SetUserSignatureRsp_QtProtobufData)
 {
 }
 
-SetUserDescriptionRsp::SetUserDescriptionRsp(const SetUserDescriptionRsp &other)
+SetUserSignatureRsp::SetUserSignatureRsp(const SetUserSignatureRsp &other)
     : QProtobufMessage(other),
       dptr(other.dptr)
 {
 }
-SetUserDescriptionRsp &SetUserDescriptionRsp::operator =(const SetUserDescriptionRsp &other)
+SetUserSignatureRsp &SetUserSignatureRsp::operator =(const SetUserSignatureRsp &other)
 {
     QProtobufMessage::operator=(other);
     dptr = other.dptr;
     return *this;
 }
-SetUserDescriptionRsp::SetUserDescriptionRsp(SetUserDescriptionRsp &&other) noexcept
+SetUserSignatureRsp::SetUserSignatureRsp(SetUserSignatureRsp &&other) noexcept
     : QProtobufMessage(std::move(other)),
       dptr(std::move(other.dptr))
 {
 }
-SetUserDescriptionRsp &SetUserDescriptionRsp::operator =(SetUserDescriptionRsp &&other) noexcept
+SetUserSignatureRsp &SetUserSignatureRsp::operator =(SetUserSignatureRsp &&other) noexcept
 {
     QProtobufMessage::operator=(std::move(other));
     dptr.swap(other.dptr);
     return *this;
 }
-bool SetUserDescriptionRsp::operator ==(const SetUserDescriptionRsp &other) const
+bool SetUserSignatureRsp::operator ==(const SetUserSignatureRsp &other) const
 {
     return QProtobufMessage::isEqual(*this, other)
         && dptr->m_requestId == other.dptr->m_requestId
@@ -3008,27 +3008,27 @@ bool SetUserDescriptionRsp::operator ==(const SetUserDescriptionRsp &other) cons
         && dptr->m_errmsg == other.dptr->m_errmsg;
 }
 
-bool SetUserDescriptionRsp::operator !=(const SetUserDescriptionRsp &other) const
+bool SetUserSignatureRsp::operator !=(const SetUserSignatureRsp &other) const
 {
     return !this->operator ==(other);
 }
 
-QString SetUserDescriptionRsp::requestId() const
+QString SetUserSignatureRsp::requestId() const
 {
     return dptr->m_requestId;
 }
 
-bool SetUserDescriptionRsp::success() const
+bool SetUserSignatureRsp::success() const
 {
     return dptr->m_success;
 }
 
-QString SetUserDescriptionRsp::errmsg() const
+QString SetUserSignatureRsp::errmsg() const
 {
     return dptr->m_errmsg;
 }
 
-void SetUserDescriptionRsp::setRequestId(const QString &requestId)
+void SetUserSignatureRsp::setRequestId(const QString &requestId)
 {
     if (dptr->m_requestId != requestId) {
         dptr.detach();
@@ -3036,7 +3036,7 @@ void SetUserDescriptionRsp::setRequestId(const QString &requestId)
     }
 }
 
-void SetUserDescriptionRsp::setSuccess(const bool &success)
+void SetUserSignatureRsp::setSuccess(const bool &success)
 {
     if (dptr->m_success != success) {
         dptr.detach();
@@ -3044,7 +3044,7 @@ void SetUserDescriptionRsp::setSuccess(const bool &success)
     }
 }
 
-void SetUserDescriptionRsp::setErrmsg(const QString &errmsg)
+void SetUserSignatureRsp::setErrmsg(const QString &errmsg)
 {
     if (dptr->m_errmsg != errmsg) {
         dptr.detach();
@@ -3085,7 +3085,7 @@ SetUserPhoneNumberReq::~SetUserPhoneNumberReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 25> qt_protobuf_SetUserPhoneNumberReq_uint_data;
-    const char qt_protobuf_SetUserPhoneNumberReq_char_data[104];
+    const char qt_protobuf_SetUserPhoneNumberReq_char_data[110];
 } qt_protobuf_SetUserPhoneNumberReq_metadata {
     // data
     {
@@ -3094,18 +3094,18 @@ static constexpr struct {
         7, /* = field number offset */
         13, /* = property index offset */
         19, /* = field flags offset */
-        29, /* = message full name length */
+        35, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        30, /* = requestId */
-        40, /* = userId */
-        47, /* = sessionId */
-        57, /* = phoneNumber */
-        69, /* = phoneVerifyCodeId */
-        87, /* = phoneVerifyCode */
-        103, /* = end-of-string-marker */
+        36, /* = requestId */
+        46, /* = userId */
+        53, /* = sessionId */
+        63, /* = phoneNumber */
+        75, /* = phoneVerifyCodeId */
+        93, /* = phoneVerifyCode */
+        109, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = userId */
@@ -3130,7 +3130,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.SetUserPhoneNumberReq\0" /* = full message name */
+    "my_chat_proto.SetUserPhoneNumberReq\0" /* = full message name */
     /* field char_data: */
     "requestId\0userId\0sessionId\0phoneNumber\0phoneVerifyCodeId\0"
     "phoneVerifyCode\0"
@@ -3294,7 +3294,7 @@ SetUserPhoneNumberRsp::~SetUserPhoneNumberRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 13> qt_protobuf_SetUserPhoneNumberRsp_uint_data;
-    const char qt_protobuf_SetUserPhoneNumberRsp_char_data[56];
+    const char qt_protobuf_SetUserPhoneNumberRsp_char_data[62];
 } qt_protobuf_SetUserPhoneNumberRsp_metadata {
     // data
     {
@@ -3303,15 +3303,15 @@ static constexpr struct {
         4, /* = field number offset */
         7, /* = property index offset */
         10, /* = field flags offset */
-        29, /* = message full name length */
+        35, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        30, /* = requestId */
-        40, /* = success */
-        48, /* = errmsg */
-        55, /* = end-of-string-marker */
+        36, /* = requestId */
+        46, /* = success */
+        54, /* = errmsg */
+        61, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -3327,7 +3327,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.SetUserPhoneNumberRsp\0" /* = full message name */
+    "my_chat_proto.SetUserPhoneNumberRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0"
 };
@@ -3422,6 +3422,6 @@ void SetUserPhoneNumberRsp::setErrmsg(const QString &errmsg)
     }
 }
 
-} // namespace bite_im
+} // namespace my_chat_proto
 
 #include "moc_user.qpb.cpp"

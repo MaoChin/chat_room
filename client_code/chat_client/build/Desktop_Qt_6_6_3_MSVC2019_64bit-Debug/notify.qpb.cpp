@@ -3,13 +3,13 @@
 #include "notify.qpb.h"
 #include <QtProtobuf/qprotobufserializer.h>
 
-namespace bite_im {
+namespace my_chat_proto {
 static QtProtobuf::ProtoTypeRegistrar ProtoTypeRegistrarNotifyTypeGadget(NotifyTypeGadget::registerTypes);
 void NotifyTypeGadget::registerTypes()
 {
     qRegisterMetaType<NotifyType>();
-    qRegisterMetaType<bite_im::NotifyTypeGadget::NotifyType>();
-    qRegisterProtobufEnumType<bite_im::NotifyTypeGadget::NotifyType>();
+    qRegisterMetaType<my_chat_proto::NotifyTypeGadget::NotifyType>();
+    qRegisterProtobufEnumType<my_chat_proto::NotifyTypeGadget::NotifyType>();
 }
 
 
@@ -38,7 +38,7 @@ NotifyFriendAddApply::~NotifyFriendAddApply() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 5> qt_protobuf_NotifyFriendAddApply_uint_data;
-    const char qt_protobuf_NotifyFriendAddApply_char_data[39];
+    const char qt_protobuf_NotifyFriendAddApply_char_data[45];
 } qt_protobuf_NotifyFriendAddApply_metadata {
     // data
     {
@@ -47,13 +47,13 @@ static constexpr struct {
         2, /* = field number offset */
         3, /* = property index offset */
         4, /* = field flags offset */
-        28, /* = message full name length */
+        34, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        29, /* = userInfo */
-        38, /* = end-of-string-marker */
+        35, /* = userInfo */
+        44, /* = end-of-string-marker */
         // Field numbers:
         1, /* = userInfo */
         // Property indices:
@@ -63,7 +63,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.NotifyFriendAddApply\0" /* = full message name */
+    "my_chat_proto.NotifyFriendAddApply\0" /* = full message name */
     /* field char_data: */
     "userInfo\0"
 };
@@ -173,7 +173,7 @@ NotifyFriendAddProcess::~NotifyFriendAddProcess() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 9> qt_protobuf_NotifyFriendAddProcess_uint_data;
-    const char qt_protobuf_NotifyFriendAddProcess_char_data[47];
+    const char qt_protobuf_NotifyFriendAddProcess_char_data[53];
 } qt_protobuf_NotifyFriendAddProcess_metadata {
     // data
     {
@@ -182,14 +182,14 @@ static constexpr struct {
         3, /* = field number offset */
         5, /* = property index offset */
         7, /* = field flags offset */
-        30, /* = message full name length */
+        36, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        31, /* = agree */
-        37, /* = userInfo */
-        46, /* = end-of-string-marker */
+        37, /* = agree */
+        43, /* = userInfo */
+        52, /* = end-of-string-marker */
         // Field numbers:
         1, /* = agree */
         2, /* = userInfo */
@@ -202,7 +202,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.NotifyFriendAddProcess\0" /* = full message name */
+    "my_chat_proto.NotifyFriendAddProcess\0" /* = full message name */
     /* field char_data: */
     "agree\0userInfo\0"
 };
@@ -298,15 +298,15 @@ void NotifyFriendAddProcess::setUserInfo(const UserInfo &userInfo)
 }
 
 
-class NotifyFriendRemove_QtProtobufData : public QSharedData
+class NotifyFriendDelete_QtProtobufData : public QSharedData
 {
 public:
-    NotifyFriendRemove_QtProtobufData()
+    NotifyFriendDelete_QtProtobufData()
         : QSharedData()
     {
     }
 
-    NotifyFriendRemove_QtProtobufData(const NotifyFriendRemove_QtProtobufData &other)
+    NotifyFriendDelete_QtProtobufData(const NotifyFriendDelete_QtProtobufData &other)
         : QSharedData(other),
           m_userId(other.m_userId)
     {
@@ -315,13 +315,13 @@ public:
     QString m_userId;
 };
 
-NotifyFriendRemove::~NotifyFriendRemove() = default;
+NotifyFriendDelete::~NotifyFriendDelete() = default;
 
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
-    const std::array<uint, 5> qt_protobuf_NotifyFriendRemove_uint_data;
-    const char qt_protobuf_NotifyFriendRemove_char_data[35];
-} qt_protobuf_NotifyFriendRemove_metadata {
+    const std::array<uint, 5> qt_protobuf_NotifyFriendDelete_uint_data;
+    const char qt_protobuf_NotifyFriendDelete_char_data[41];
+} qt_protobuf_NotifyFriendDelete_metadata {
     // data
     {
         0, /* = version */
@@ -329,13 +329,13 @@ static constexpr struct {
         2, /* = field number offset */
         3, /* = property index offset */
         4, /* = field flags offset */
-        26, /* = message full name length */
+        32, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        27, /* = userId */
-        34, /* = end-of-string-marker */
+        33, /* = userId */
+        40, /* = end-of-string-marker */
         // Field numbers:
         1, /* = userId */
         // Property indices:
@@ -345,66 +345,66 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.NotifyFriendRemove\0" /* = full message name */
+    "my_chat_proto.NotifyFriendDelete\0" /* = full message name */
     /* field char_data: */
     "userId\0"
 };
 
-const QtProtobufPrivate::QProtobufPropertyOrdering NotifyFriendRemove::propertyOrdering = {
-    &qt_protobuf_NotifyFriendRemove_metadata.data
+const QtProtobufPrivate::QProtobufPropertyOrdering NotifyFriendDelete::propertyOrdering = {
+    &qt_protobuf_NotifyFriendDelete_metadata.data
 };
 
-void NotifyFriendRemove::registerTypes()
+void NotifyFriendDelete::registerTypes()
 {
-    qRegisterMetaType<NotifyFriendRemove>();
-    qRegisterMetaType<NotifyFriendRemoveRepeated>();
+    qRegisterMetaType<NotifyFriendDelete>();
+    qRegisterMetaType<NotifyFriendDeleteRepeated>();
 }
 
-NotifyFriendRemove::NotifyFriendRemove()
-    : QProtobufMessage(&NotifyFriendRemove::staticMetaObject),
-      dptr(new NotifyFriendRemove_QtProtobufData)
+NotifyFriendDelete::NotifyFriendDelete()
+    : QProtobufMessage(&NotifyFriendDelete::staticMetaObject),
+      dptr(new NotifyFriendDelete_QtProtobufData)
 {
 }
 
-NotifyFriendRemove::NotifyFriendRemove(const NotifyFriendRemove &other)
+NotifyFriendDelete::NotifyFriendDelete(const NotifyFriendDelete &other)
     : QProtobufMessage(other),
       dptr(other.dptr)
 {
 }
-NotifyFriendRemove &NotifyFriendRemove::operator =(const NotifyFriendRemove &other)
+NotifyFriendDelete &NotifyFriendDelete::operator =(const NotifyFriendDelete &other)
 {
     QProtobufMessage::operator=(other);
     dptr = other.dptr;
     return *this;
 }
-NotifyFriendRemove::NotifyFriendRemove(NotifyFriendRemove &&other) noexcept
+NotifyFriendDelete::NotifyFriendDelete(NotifyFriendDelete &&other) noexcept
     : QProtobufMessage(std::move(other)),
       dptr(std::move(other.dptr))
 {
 }
-NotifyFriendRemove &NotifyFriendRemove::operator =(NotifyFriendRemove &&other) noexcept
+NotifyFriendDelete &NotifyFriendDelete::operator =(NotifyFriendDelete &&other) noexcept
 {
     QProtobufMessage::operator=(std::move(other));
     dptr.swap(other.dptr);
     return *this;
 }
-bool NotifyFriendRemove::operator ==(const NotifyFriendRemove &other) const
+bool NotifyFriendDelete::operator ==(const NotifyFriendDelete &other) const
 {
     return QProtobufMessage::isEqual(*this, other)
         && dptr->m_userId == other.dptr->m_userId;
 }
 
-bool NotifyFriendRemove::operator !=(const NotifyFriendRemove &other) const
+bool NotifyFriendDelete::operator !=(const NotifyFriendDelete &other) const
 {
     return !this->operator ==(other);
 }
 
-QString NotifyFriendRemove::userId() const
+QString NotifyFriendDelete::userId() const
 {
     return dptr->m_userId;
 }
 
-void NotifyFriendRemove::setUserId(const QString &userId)
+void NotifyFriendDelete::setUserId(const QString &userId)
 {
     if (dptr->m_userId != userId) {
         dptr.detach();
@@ -438,7 +438,7 @@ NotifyNewChatSession::~NotifyNewChatSession() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 5> qt_protobuf_NotifyNewChatSession_uint_data;
-    const char qt_protobuf_NotifyNewChatSession_char_data[46];
+    const char qt_protobuf_NotifyNewChatSession_char_data[52];
 } qt_protobuf_NotifyNewChatSession_metadata {
     // data
     {
@@ -447,13 +447,13 @@ static constexpr struct {
         2, /* = field number offset */
         3, /* = property index offset */
         4, /* = field flags offset */
-        28, /* = message full name length */
+        34, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        29, /* = chatSessionInfo */
-        45, /* = end-of-string-marker */
+        35, /* = chatSessionInfo */
+        51, /* = end-of-string-marker */
         // Field numbers:
         1, /* = chatSessionInfo */
         // Property indices:
@@ -463,7 +463,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.NotifyNewChatSession\0" /* = full message name */
+    "my_chat_proto.NotifyNewChatSession\0" /* = full message name */
     /* field char_data: */
     "chatSessionInfo\0"
 };
@@ -570,7 +570,7 @@ NotifyNewMessage::~NotifyNewMessage() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 5> qt_protobuf_NotifyNewMessage_uint_data;
-    const char qt_protobuf_NotifyNewMessage_char_data[38];
+    const char qt_protobuf_NotifyNewMessage_char_data[44];
 } qt_protobuf_NotifyNewMessage_metadata {
     // data
     {
@@ -579,13 +579,13 @@ static constexpr struct {
         2, /* = field number offset */
         3, /* = property index offset */
         4, /* = field flags offset */
-        24, /* = message full name length */
+        30, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        25, /* = messageInfo */
-        37, /* = end-of-string-marker */
+        31, /* = messageInfo */
+        43, /* = end-of-string-marker */
         // Field numbers:
         1, /* = messageInfo */
         // Property indices:
@@ -595,7 +595,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.NotifyNewMessage\0" /* = full message name */
+    "my_chat_proto.NotifyNewMessage\0" /* = full message name */
     /* field char_data: */
     "messageInfo\0"
 };
@@ -704,7 +704,7 @@ NotifyMessage::~NotifyMessage() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 29> qt_protobuf_NotifyMessage_uint_data;
-    const char qt_protobuf_NotifyMessage_char_data[130];
+    const char qt_protobuf_NotifyMessage_char_data[136];
 } qt_protobuf_NotifyMessage_metadata {
     // data
     {
@@ -713,25 +713,25 @@ static constexpr struct {
         8, /* = field number offset */
         15, /* = property index offset */
         22, /* = field flags offset */
-        21, /* = message full name length */
+        27, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        22, /* = notifyEventId */
-        36, /* = notifyType */
-        47, /* = friendAddApply */
-        62, /* = friendProcessResult */
-        82, /* = friendRemove */
-        95, /* = newChatSessionInfo */
-        114, /* = newMessageInfo */
-        129, /* = end-of-string-marker */
+        28, /* = notifyEventId */
+        42, /* = notifyType */
+        53, /* = friendAddApply */
+        68, /* = friendProcessResult */
+        88, /* = friendDelete */
+        101, /* = newChatSessionInfo */
+        120, /* = newMessageInfo */
+        135, /* = end-of-string-marker */
         // Field numbers:
         1, /* = notifyEventId */
         2, /* = notifyType */
         3, /* = friendAddApply */
         4, /* = friendProcessResult */
-        7, /* = friendRemove */
+        7, /* = friendDelete */
         5, /* = newChatSessionInfo */
         6, /* = newMessageInfo */
         // Property indices:
@@ -739,7 +739,7 @@ static constexpr struct {
         1, /* = notifyType */
         2, /* = friendAddApply */
         4, /* = friendProcessResult */
-        6, /* = friendRemove */
+        6, /* = friendDelete */
         8, /* = newChatSessionInfo */
         10, /* = newMessageInfo */
         // Field flags:
@@ -747,15 +747,15 @@ static constexpr struct {
         QtProtobufPrivate::NoFlags, /* = notifyType */
         QtProtobufPrivate::Oneof, /* = friendAddApply */
         QtProtobufPrivate::Oneof, /* = friendProcessResult */
-        QtProtobufPrivate::Oneof, /* = friendRemove */
+        QtProtobufPrivate::Oneof, /* = friendDelete */
         QtProtobufPrivate::Oneof, /* = newChatSessionInfo */
         QtProtobufPrivate::Oneof, /* = newMessageInfo */
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.NotifyMessage\0" /* = full message name */
+    "my_chat_proto.NotifyMessage\0" /* = full message name */
     /* field char_data: */
-    "notifyEventId\0notifyType\0friendAddApply\0friendProcessResult\0friendRemove\0"
+    "notifyEventId\0notifyType\0friendAddApply\0friendProcessResult\0friendDelete\0"
     "newChatSessionInfo\0newMessageInfo\0"
 };
 
@@ -851,20 +851,20 @@ NotifyFriendAddProcess &NotifyMessage::friendProcessResult() const
     return *(dptr->m_notify_remarks.value<NotifyFriendAddProcess>());
 }
 
-NotifyFriendRemove *NotifyMessage::friendRemove_p() const
+NotifyFriendDelete *NotifyMessage::friendDelete_p() const
 {
     return dptr->m_notify_remarks.holdsField(7) ?
-        dptr->m_notify_remarks.value<NotifyFriendRemove>() : nullptr;
+        dptr->m_notify_remarks.value<NotifyFriendDelete>() : nullptr;
 }
 
-bool NotifyMessage::hasFriendRemove() const
+bool NotifyMessage::hasFriendDelete() const
 {
     return dptr->m_notify_remarks.holdsField(7);
 }
-NotifyFriendRemove &NotifyMessage::friendRemove() const
+NotifyFriendDelete &NotifyMessage::friendDelete() const
 {
     Q_ASSERT(dptr->m_notify_remarks.holdsField(7));
-    return *(dptr->m_notify_remarks.value<NotifyFriendRemove>());
+    return *(dptr->m_notify_remarks.value<NotifyFriendDelete>());
 }
 
 NotifyNewChatSession *NotifyMessage::newChatSessionInfo_p() const
@@ -951,22 +951,22 @@ void NotifyMessage::setFriendProcessResult_p(NotifyFriendAddProcess *friendProce
     delete friendProcessResult;
 }
 
-void NotifyMessage::setFriendRemove(const NotifyFriendRemove &friendRemove)
+void NotifyMessage::setFriendDelete(const NotifyFriendDelete &friendDelete)
 {
-    if (!dptr->m_notify_remarks.isEqual(friendRemove, 7)) {
+    if (!dptr->m_notify_remarks.isEqual(friendDelete, 7)) {
         dptr.detach();
-        dptr->m_notify_remarks.setValue(friendRemove, 7);
+        dptr->m_notify_remarks.setValue(friendDelete, 7);
     }
 }
 
-void NotifyMessage::setFriendRemove_p(NotifyFriendRemove *friendRemove)
+void NotifyMessage::setFriendDelete_p(NotifyFriendDelete *friendDelete)
 {
-    const NotifyFriendRemove &value = *friendRemove;
+    const NotifyFriendDelete &value = *friendDelete;
     if (!dptr->m_notify_remarks.isEqual(value, 7)) {
         dptr.detach();
         dptr->m_notify_remarks.setValue(value, 7);
     }
-    delete friendRemove;
+    delete friendDelete;
 }
 
 void NotifyMessage::setNewChatSessionInfo(const NotifyNewChatSession &newChatSessionInfo)
@@ -1016,6 +1016,6 @@ void NotifyMessage::clearNotify_remarks()
         dptr->m_notify_remarks = QtProtobufPrivate::QProtobufOneof();
     }
 }
-} // namespace bite_im
+} // namespace my_chat_proto
 
 #include "moc_notify.qpb.cpp"

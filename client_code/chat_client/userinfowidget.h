@@ -14,6 +14,15 @@ class UserInfoWidget : public QDialog
 public:
     UserInfoWidget(QWidget* parent, const model::UserInfo& userInfo);
 
+    void initSignalSlot();
+
+    // 点击申请好友按钮
+    void clickApplyFriendBtn();
+
+    // 点击删除好友按钮
+    void clickDeleteFriendBtn();
+
+
 private:
     // 头像
     QPushButton* _headPortrait;
@@ -33,8 +42,6 @@ private:
     QPushButton* _sendMessageBtn;
     // 删除好友
     QPushButton* _deleteFriendBtn;
-
-
 
     const model::UserInfo& _userInfo;
 };

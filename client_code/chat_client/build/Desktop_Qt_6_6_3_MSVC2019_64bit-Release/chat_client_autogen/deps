@@ -11,11 +11,14 @@ chat_client_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QMetaObject \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QMetaType \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QObject \
+	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QRandomGenerator \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QRect \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QSharedDataPointer \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QSize \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QSizeF \
+	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QStandardPaths \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QString \
+	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QTimer \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QUrl \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QUuid \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/QVariant \
@@ -33,6 +36,7 @@ chat_client_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qatomic.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qatomic_cxx11.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qbasicatomic.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qbasictimer.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qbindingstorage.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qbytearray.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qbytearrayalgorithms.h \
@@ -99,8 +103,10 @@ chat_client_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qpoint.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qpointer.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qprocessordetection.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qrandom.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qrect.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qrefcount.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qregularexpression.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qscopedpointer.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qscopeguard.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qset.h \
@@ -109,6 +115,7 @@ chat_client_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qsharedpointer.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qsharedpointer_impl.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qsize.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qstandardpaths.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qstring.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qstringalgorithms.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qstringbuilder.h \
@@ -131,6 +138,7 @@ chat_client_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qtdeprecationmarkers.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qtenvironmentvariables.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qtextstream.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qtimer.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qtimezone.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qtmetamacros.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtCore/qtnoop.h \
@@ -191,10 +199,23 @@ chat_client_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtGui/qtguiexports.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtGui/qtguiglobal.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtGui/qtransform.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtGui/qvalidator.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtGui/qvector2d.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtGui/qvectornd.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtGui/qwindowdefs.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtGui/qwindowdefs_win.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtMultimedia/QAudioSink \
+	D:/Qt/6.6.3/msvc2019_64/include/QtMultimedia/QAudioSource \
+	D:/Qt/6.6.3/msvc2019_64/include/QtMultimedia/QMediaDevices \
+	D:/Qt/6.6.3/msvc2019_64/include/QtMultimedia/qaudio.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtMultimedia/qaudiodevice.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtMultimedia/qaudioformat.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtMultimedia/qaudiosink.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtMultimedia/qaudiosource.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtMultimedia/qmediadevices.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtMultimedia/qtmultimedia-config.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtMultimedia/qtmultimediaexports.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtMultimedia/qtmultimediaglobal.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/QAbstractSocket \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/QNetworkAccessManager \
 	D:/Qt/6.6.3/msvc2019_64/include/QtNetwork/QNetworkProxy \
@@ -236,6 +257,7 @@ chat_client_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWebSockets/qwebsocketprotocol.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWebSockets/qwebsockets_global.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QCheckBox \
+	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QDateTimeEdit \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QDialog \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QGridLayout \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QHBoxLayout \
@@ -243,13 +265,16 @@ chat_client_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QLineEdit \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QPlainTextEdit \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QPushButton \
+	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QRadioButton \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QScrollArea \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QVBoxLayout \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/QWidget \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qabstractbutton.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qabstractscrollarea.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qabstractspinbox.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qboxlayout.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qcheckbox.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qdatetimeedit.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qdialog.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qframe.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qgridlayout.h \
@@ -259,6 +284,7 @@ chat_client_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qlineedit.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qplaintextedit.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qpushbutton.h \
+	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qradiobutton.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qscrollarea.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qsizepolicy.h \
 	D:/Qt/6.6.3/msvc2019_64/include/QtWidgets/qtextedit.h \
@@ -428,6 +454,26 @@ chat_client_autogen/timestamp: \
 	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargets-relwithdebinfo.cmake \
 	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargets.cmake \
 	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsVersionlessTargets.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6MultimediaAdditionalTargetInfo.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6MultimediaConfig.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6MultimediaConfigVersion.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6MultimediaConfigVersionImpl.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6MultimediaDependencies.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6MultimediaPlugins.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6MultimediaTargets-debug.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6MultimediaTargets-relwithdebinfo.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6MultimediaTargets.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6MultimediaVersionlessTargets.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6QFFmpegMediaPluginAdditionalTargetInfo.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6QFFmpegMediaPluginConfig.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6QFFmpegMediaPluginTargets-debug.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6QFFmpegMediaPluginTargets-relwithdebinfo.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6QFFmpegMediaPluginTargets.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6QWindowsMediaPluginAdditionalTargetInfo.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6QWindowsMediaPluginConfig.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6QWindowsMediaPluginTargets-debug.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6QWindowsMediaPluginTargets-relwithdebinfo.cmake \
+	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Multimedia/Qt6QWindowsMediaPluginTargets.cmake \
 	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Network/Qt6NetworkAdditionalTargetInfo.cmake \
 	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Network/Qt6NetworkConfig.cmake \
 	D:/Qt/6.6.3/msvc2019_64/lib/cmake/Qt6Network/Qt6NetworkConfigVersion.cmake \
@@ -627,11 +673,15 @@ chat_client_autogen/timestamp: \
 	E:/Code/chat_room/client_code/chat_client/selfinfowidget.h \
 	E:/Code/chat_room/client_code/chat_client/sessiondetailwidget.cpp \
 	E:/Code/chat_room/client_code/chat_client/sessiondetailwidget.h \
+	E:/Code/chat_room/client_code/chat_client/soundrecorder.cpp \
+	E:/Code/chat_room/client_code/chat_client/soundrecorder.h \
 	E:/Code/chat_room/client_code/chat_client/toast.cpp \
 	E:/Code/chat_room/client_code/chat_client/toast.h \
 	E:/Code/chat_room/client_code/chat_client/userinfowidget.cpp \
 	E:/Code/chat_room/client_code/chat_client/userinfowidget.h \
 	E:/Code/chat_room/client_code/chat_client/usernameloginwidget.cpp \
 	E:/Code/chat_room/client_code/chat_client/usernameloginwidget.h \
+	E:/Code/chat_room/client_code/chat_client/verifycodewidget.cpp \
+	E:/Code/chat_room/client_code/chat_client/verifycodewidget.h \
 	E:/Code/chat_room/client_code/chat_client/mainwidget.ui \
 	D:/Qt/Tools/CMake_64/bin/cmake.exe

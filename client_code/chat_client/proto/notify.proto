@@ -19,7 +19,7 @@ message NotifyFriendAddProcess {
     bool agree = 1;
     UserInfo user_info = 2;  //处理人信息
 }
-message NotifyFriendRemove {
+message NotifyFriendDelete {
     string user_id = 1; //删除自己的用户ID
 }
 message NotifyNewChatSession {
@@ -36,7 +36,7 @@ message NotifyMessage {
     oneof notify_remarks {      //事件备注信息
         NotifyFriendAddApply friend_add_apply = 3;
         NotifyFriendAddProcess friend_process_result = 4;
-        NotifyFriendRemove friend_remove = 7;
+        NotifyFriendDelete friend_delete = 7;
         NotifyNewChatSession new_chat_session_info = 5;//会话信息
         NotifyNewMessage new_message_info = 6;//消息信息
     }

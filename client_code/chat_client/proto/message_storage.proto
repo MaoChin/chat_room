@@ -10,15 +10,15 @@ import "base.proto";
 
 option cc_generic_services = true;
 
-message GetHistoryMsgReq {
+message MsgSearchByTimeReq {
     string request_id = 1;
     string chat_session_id = 2;
     int64 start_time = 3;
     int64 over_time = 4;
     optional string user_id = 5;
-    optional string session_id = 6;
+    optional string login_session_id = 6;
 }
-message GetHistoryMsgRsp {
+message MsgSearchByTimeRsp {
     string request_id = 1;
     bool success = 2;
     string errmsg = 3; 
@@ -33,6 +33,7 @@ message GetRecentMsgReq {
     optional string user_id = 5;
     optional string login_session_id = 6;
 }
+
 message GetRecentMsgRsp {
     string request_id = 1;
     bool success = 2;
@@ -40,14 +41,14 @@ message GetRecentMsgRsp {
     repeated MessageInfo msg_list = 4;
 }
 
-message MsgSearchReq {
+message MsgSearchBySearchKeyReq {
     string request_id = 1;
     optional string user_id = 2;
-    optional string session_id = 3;
+    optional string login_session_id = 3;
     string chat_session_id = 4;
     string search_key = 5;
 }
-message MsgSearchRsp {
+message MsgSearchBySearchKeyRsp {
     string request_id = 1;
     bool success = 2;
     string errmsg = 3; 
@@ -55,8 +56,7 @@ message MsgSearchRsp {
 }
 
 service MsgStorageService {
-    rpc GetHistoryMsg(GetHistoryMsgReq) returns (GetHistoryMsgRsp);
+    rpc SearchHistoryByTimeMsg(MsgSearchByTimeReq) returns (MsgSearchByTimeRsp);
     rpc GetRecentMsg(GetRecentMsgReq) returns (GetRecentMsgRsp);
-    rpc MsgSearch(MsgSearchReq) returns (MsgSearchRsp);
-    
+    rpc SearchHistoryBySearchKey(MsgSearchBySearchKeyReq) returns (MsgSearchBySearchKeyRsp);
 }

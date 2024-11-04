@@ -18,13 +18,13 @@
 #include <memory>
 
 
-namespace bite_im {
+namespace my_chat_proto {
 
 namespace MessageTypeGadget {
 Q_NAMESPACE
 void registerTypes();
 enum MessageType {
-    STRING = 0,
+    TEXT = 0,
     IMAGE = 1,
     FILE = 2,
     VOICE = 3,
@@ -36,14 +36,14 @@ class UserInfo;
 using UserInfoRepeated = QList<UserInfo>;
 class ChatSessionInfo;
 using ChatSessionInfoRepeated = QList<ChatSessionInfo>;
-class StringMessageInfo;
-using StringMessageInfoRepeated = QList<StringMessageInfo>;
+class TextMessageInfo;
+using TextMessageInfoRepeated = QList<TextMessageInfo>;
 class ImageMessageInfo;
 using ImageMessageInfoRepeated = QList<ImageMessageInfo>;
 class FileMessageInfo;
 using FileMessageInfoRepeated = QList<FileMessageInfo>;
-class SpeechMessageInfo;
-using SpeechMessageInfoRepeated = QList<SpeechMessageInfo>;
+class VoiceMessageInfo;
+using VoiceMessageInfoRepeated = QList<VoiceMessageInfo>;
 class MessageContent;
 using MessageContentRepeated = QList<MessageContent>;
 class MessageInfo;
@@ -62,17 +62,17 @@ class UserInfo : public QProtobufMessage
     Q_PROTOBUF_OBJECT
     Q_DECLARE_PROTOBUF_SERIALIZERS(UserInfo)
     Q_PROPERTY(QString userId READ userId WRITE setUserId SCRIPTABLE true)
-    Q_PROPERTY(QString nickname READ nickname WRITE setNickname SCRIPTABLE true)
+    Q_PROPERTY(QString nickName READ nickName WRITE setNickName SCRIPTABLE true)
     Q_PROPERTY(QString personSignature READ personSignature WRITE setPersonSignature SCRIPTABLE true)
-    Q_PROPERTY(QString phone READ phone WRITE setPhone SCRIPTABLE true)
+    Q_PROPERTY(QString phoneNumber READ phoneNumber WRITE setPhoneNumber SCRIPTABLE true)
     Q_PROPERTY(QByteArray headPortrait READ headPortrait WRITE setHeadPortrait SCRIPTABLE true)
 
 public:
     enum QtProtobufFieldEnum {
         UserIdProtoFieldNumber = 1,
-        NicknameProtoFieldNumber = 2,
+        NickNameProtoFieldNumber = 2,
         PersonSignatureProtoFieldNumber = 3,
-        PhoneProtoFieldNumber = 4,
+        PhoneNumberProtoFieldNumber = 4,
         HeadPortraitProtoFieldNumber = 5,
     };
     Q_ENUM(QtProtobufFieldEnum)
@@ -88,17 +88,17 @@ public:
 
     QString userId() const;
 
-    QString nickname() const;
+    QString nickName() const;
 
     QString personSignature() const;
 
-    QString phone() const;
+    QString phoneNumber() const;
 
     QByteArray headPortrait() const;
     void setUserId(const QString &userId);
-    void setNickname(const QString &nickname);
+    void setNickName(const QString &nickName);
     void setPersonSignature(const QString &personSignature);
-    void setPhone(const QString &phone);
+    void setPhoneNumber(const QString &phoneNumber);
     void setHeadPortrait(const QByteArray &headPortrait);
     static void registerTypes();
 
@@ -115,7 +115,7 @@ class ChatSessionInfo : public QProtobufMessage
     Q_PROPERTY(QString singleChatFriendId READ singleChatFriendId WRITE setSingleChatFriendId SCRIPTABLE true)
     Q_PROPERTY(QString chatSessionId READ chatSessionId WRITE setChatSessionId SCRIPTABLE true)
     Q_PROPERTY(QString chatSessionName READ chatSessionName WRITE setChatSessionName SCRIPTABLE true)
-    Q_PROPERTY(bite_im::MessageInfo *prevMessage_p READ prevMessage_p WRITE setPrevMessage_p SCRIPTABLE false)
+    Q_PROPERTY(my_chat_proto::MessageInfo *prevMessage_p READ prevMessage_p WRITE setPrevMessage_p SCRIPTABLE false)
     Q_PROPERTY(QByteArray headPortrait READ headPortrait WRITE setHeadPortrait SCRIPTABLE true)
 
 public:
@@ -159,35 +159,35 @@ private:
     QExplicitlySharedDataPointer<ChatSessionInfo_QtProtobufData> dptr;
 };
 
-class StringMessageInfo_QtProtobufData;
-class StringMessageInfo : public QProtobufMessage
+class TextMessageInfo_QtProtobufData;
+class TextMessageInfo : public QProtobufMessage
 {
     Q_GADGET
     Q_PROTOBUF_OBJECT
-    Q_DECLARE_PROTOBUF_SERIALIZERS(StringMessageInfo)
-    Q_PROPERTY(QString content READ content WRITE setContent SCRIPTABLE true)
+    Q_DECLARE_PROTOBUF_SERIALIZERS(TextMessageInfo)
+    Q_PROPERTY(QString textContent READ textContent WRITE setTextContent SCRIPTABLE true)
 
 public:
     enum QtProtobufFieldEnum {
-        ContentProtoFieldNumber = 1,
+        TextContentProtoFieldNumber = 1,
     };
     Q_ENUM(QtProtobufFieldEnum)
 
-    StringMessageInfo();
-    ~StringMessageInfo();
-    StringMessageInfo(const StringMessageInfo &other);
-    StringMessageInfo &operator =(const StringMessageInfo &other);
-    StringMessageInfo(StringMessageInfo &&other) noexcept;
-    StringMessageInfo &operator =(StringMessageInfo &&other) noexcept;
-    bool operator ==(const StringMessageInfo &other) const;
-    bool operator !=(const StringMessageInfo &other) const;
+    TextMessageInfo();
+    ~TextMessageInfo();
+    TextMessageInfo(const TextMessageInfo &other);
+    TextMessageInfo &operator =(const TextMessageInfo &other);
+    TextMessageInfo(TextMessageInfo &&other) noexcept;
+    TextMessageInfo &operator =(TextMessageInfo &&other) noexcept;
+    bool operator ==(const TextMessageInfo &other) const;
+    bool operator !=(const TextMessageInfo &other) const;
 
-    QString content() const;
-    void setContent(const QString &content);
+    QString textContent() const;
+    void setTextContent(const QString &textContent);
     static void registerTypes();
 
 private:
-    QExplicitlySharedDataPointer<StringMessageInfo_QtProtobufData> dptr;
+    QExplicitlySharedDataPointer<TextMessageInfo_QtProtobufData> dptr;
 };
 
 class ImageMessageInfo_QtProtobufData;
@@ -272,40 +272,40 @@ private:
     QExplicitlySharedDataPointer<FileMessageInfo_QtProtobufData> dptr;
 };
 
-class SpeechMessageInfo_QtProtobufData;
-class SpeechMessageInfo : public QProtobufMessage
+class VoiceMessageInfo_QtProtobufData;
+class VoiceMessageInfo : public QProtobufMessage
 {
     Q_GADGET
     Q_PROTOBUF_OBJECT
-    Q_DECLARE_PROTOBUF_SERIALIZERS(SpeechMessageInfo)
+    Q_DECLARE_PROTOBUF_SERIALIZERS(VoiceMessageInfo)
     Q_PROPERTY(QString fileId READ fileId WRITE setFileId SCRIPTABLE true)
-    Q_PROPERTY(QByteArray fileContents READ fileContents WRITE setFileContents SCRIPTABLE true)
+    Q_PROPERTY(QByteArray voiceContents READ voiceContents WRITE setVoiceContents SCRIPTABLE true)
 
 public:
     enum QtProtobufFieldEnum {
         FileIdProtoFieldNumber = 1,
-        FileContentsProtoFieldNumber = 2,
+        VoiceContentsProtoFieldNumber = 2,
     };
     Q_ENUM(QtProtobufFieldEnum)
 
-    SpeechMessageInfo();
-    ~SpeechMessageInfo();
-    SpeechMessageInfo(const SpeechMessageInfo &other);
-    SpeechMessageInfo &operator =(const SpeechMessageInfo &other);
-    SpeechMessageInfo(SpeechMessageInfo &&other) noexcept;
-    SpeechMessageInfo &operator =(SpeechMessageInfo &&other) noexcept;
-    bool operator ==(const SpeechMessageInfo &other) const;
-    bool operator !=(const SpeechMessageInfo &other) const;
+    VoiceMessageInfo();
+    ~VoiceMessageInfo();
+    VoiceMessageInfo(const VoiceMessageInfo &other);
+    VoiceMessageInfo &operator =(const VoiceMessageInfo &other);
+    VoiceMessageInfo(VoiceMessageInfo &&other) noexcept;
+    VoiceMessageInfo &operator =(VoiceMessageInfo &&other) noexcept;
+    bool operator ==(const VoiceMessageInfo &other) const;
+    bool operator !=(const VoiceMessageInfo &other) const;
 
     QString fileId() const;
 
-    QByteArray fileContents() const;
+    QByteArray voiceContents() const;
     void setFileId(const QString &fileId);
-    void setFileContents(const QByteArray &fileContents);
+    void setVoiceContents(const QByteArray &voiceContents);
     static void registerTypes();
 
 private:
-    QExplicitlySharedDataPointer<SpeechMessageInfo_QtProtobufData> dptr;
+    QExplicitlySharedDataPointer<VoiceMessageInfo_QtProtobufData> dptr;
 };
 
 class MessageContent_QtProtobufData;
@@ -314,31 +314,31 @@ class MessageContent : public QProtobufMessage
     Q_GADGET
     Q_PROTOBUF_OBJECT
     Q_DECLARE_PROTOBUF_SERIALIZERS(MessageContent)
-    Q_PROPERTY(bite_im::MessageTypeGadget::MessageType messageType READ messageType WRITE setMessageType SCRIPTABLE true)
-    Q_PROPERTY(bite_im::StringMessageInfo *stringMessage READ stringMessage_p WRITE setStringMessage_p)
-    Q_PROPERTY(bool hasStringMessage READ hasStringMessage)
-    Q_PROPERTY(bite_im::FileMessageInfo *fileMessage READ fileMessage_p WRITE setFileMessage_p)
+    Q_PROPERTY(my_chat_proto::MessageTypeGadget::MessageType messageType READ messageType WRITE setMessageType SCRIPTABLE true)
+    Q_PROPERTY(my_chat_proto::TextMessageInfo *textMessage READ textMessage_p WRITE setTextMessage_p)
+    Q_PROPERTY(bool hasTextMessage READ hasTextMessage)
+    Q_PROPERTY(my_chat_proto::FileMessageInfo *fileMessage READ fileMessage_p WRITE setFileMessage_p)
     Q_PROPERTY(bool hasFileMessage READ hasFileMessage)
-    Q_PROPERTY(bite_im::SpeechMessageInfo *speechMessage READ speechMessage_p WRITE setSpeechMessage_p)
-    Q_PROPERTY(bool hasSpeechMessage READ hasSpeechMessage)
-    Q_PROPERTY(bite_im::ImageMessageInfo *imageMessage READ imageMessage_p WRITE setImageMessage_p)
+    Q_PROPERTY(my_chat_proto::VoiceMessageInfo *voiceMessage READ voiceMessage_p WRITE setVoiceMessage_p)
+    Q_PROPERTY(bool hasVoiceMessage READ hasVoiceMessage)
+    Q_PROPERTY(my_chat_proto::ImageMessageInfo *imageMessage READ imageMessage_p WRITE setImageMessage_p)
     Q_PROPERTY(bool hasImageMessage READ hasImageMessage)
 
 public:
     enum QtProtobufFieldEnum {
         MessageTypeProtoFieldNumber = 1,
-        StringMessageProtoFieldNumber = 2,
+        TextMessageProtoFieldNumber = 2,
         FileMessageProtoFieldNumber = 3,
-        SpeechMessageProtoFieldNumber = 4,
+        VoiceMessageProtoFieldNumber = 4,
         ImageMessageProtoFieldNumber = 5,
     };
     Q_ENUM(QtProtobufFieldEnum)
 
     enum class Msg_contentFields {
         UninitializedField = QtProtobuf::InvalidFieldNumber,
-        StringMessage = 2,
+        TextMessage = 2,
         FileMessage = 3,
-        SpeechMessage = 4,
+        VoiceMessage = 4,
         ImageMessage = 5,
     };
     Q_ENUM(Msg_contentFields)
@@ -354,34 +354,34 @@ public:
 
     MessageTypeGadget::MessageType messageType() const;
 
-    bool hasStringMessage() const;
-    StringMessageInfo &stringMessage() const;
+    bool hasTextMessage() const;
+    TextMessageInfo &textMessage() const;
 
     bool hasFileMessage() const;
     FileMessageInfo &fileMessage() const;
 
-    bool hasSpeechMessage() const;
-    SpeechMessageInfo &speechMessage() const;
+    bool hasVoiceMessage() const;
+    VoiceMessageInfo &voiceMessage() const;
 
     bool hasImageMessage() const;
     ImageMessageInfo &imageMessage() const;
     Msg_contentFields msg_contentField() const;
     void setMessageType(const MessageTypeGadget::MessageType &messageType);
-    void setStringMessage(const StringMessageInfo &stringMessage);
+    void setTextMessage(const TextMessageInfo &textMessage);
     void setFileMessage(const FileMessageInfo &fileMessage);
-    void setSpeechMessage(const SpeechMessageInfo &speechMessage);
+    void setVoiceMessage(const VoiceMessageInfo &voiceMessage);
     void setImageMessage(const ImageMessageInfo &imageMessage);
     void clearMsg_content();
     static void registerTypes();
 
 private:
-    StringMessageInfo *stringMessage_p() const;
+    TextMessageInfo *textMessage_p() const;
     FileMessageInfo *fileMessage_p() const;
-    SpeechMessageInfo *speechMessage_p() const;
+    VoiceMessageInfo *voiceMessage_p() const;
     ImageMessageInfo *imageMessage_p() const;
-    void setStringMessage_p(StringMessageInfo *stringMessage);
+    void setTextMessage_p(TextMessageInfo *textMessage);
     void setFileMessage_p(FileMessageInfo *fileMessage);
-    void setSpeechMessage_p(SpeechMessageInfo *speechMessage);
+    void setVoiceMessage_p(VoiceMessageInfo *voiceMessage);
     void setImageMessage_p(ImageMessageInfo *imageMessage);
     QExplicitlySharedDataPointer<MessageContent_QtProtobufData> dptr;
 };
@@ -395,8 +395,8 @@ class MessageInfo : public QProtobufMessage
     Q_PROPERTY(QString messageId READ messageId WRITE setMessageId SCRIPTABLE true)
     Q_PROPERTY(QString chatSessionId READ chatSessionId WRITE setChatSessionId SCRIPTABLE true)
     Q_PROPERTY(QtProtobuf::int64 timestamp READ timestamp WRITE setTimestamp SCRIPTABLE false)
-    Q_PROPERTY(bite_im::UserInfo *sender_p READ sender_p WRITE setSender_p SCRIPTABLE false)
-    Q_PROPERTY(bite_im::MessageContent *message_p READ message_p WRITE setMessage_p SCRIPTABLE false)
+    Q_PROPERTY(my_chat_proto::UserInfo *sender_p READ sender_p WRITE setSender_p SCRIPTABLE false)
+    Q_PROPERTY(my_chat_proto::MessageContent *message_p READ message_p WRITE setMessage_p SCRIPTABLE false)
 
 public:
     enum QtProtobufFieldEnum {
@@ -448,7 +448,7 @@ class Message : public QProtobufMessage
     Q_PROTOBUF_OBJECT
     Q_DECLARE_PROTOBUF_SERIALIZERS(Message)
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
-    Q_PROPERTY(bite_im::MessageInfo *message_p READ message_p WRITE setMessage_p SCRIPTABLE false)
+    Q_PROPERTY(my_chat_proto::MessageInfo *message_p READ message_p WRITE setMessage_p SCRIPTABLE false)
 
 public:
     enum QtProtobufFieldEnum {
@@ -555,17 +555,17 @@ public:
 private:
     QExplicitlySharedDataPointer<FileUploadData_QtProtobufData> dptr;
 };
-} // namespace bite_im
+} // namespace my_chat_proto
 
-Q_DECLARE_METATYPE(bite_im::UserInfo)
-Q_DECLARE_METATYPE(bite_im::ChatSessionInfo)
-Q_DECLARE_METATYPE(bite_im::StringMessageInfo)
-Q_DECLARE_METATYPE(bite_im::ImageMessageInfo)
-Q_DECLARE_METATYPE(bite_im::FileMessageInfo)
-Q_DECLARE_METATYPE(bite_im::SpeechMessageInfo)
-Q_DECLARE_METATYPE(bite_im::MessageContent)
-Q_DECLARE_METATYPE(bite_im::MessageInfo)
-Q_DECLARE_METATYPE(bite_im::Message)
-Q_DECLARE_METATYPE(bite_im::FileDownloadData)
-Q_DECLARE_METATYPE(bite_im::FileUploadData)
+Q_DECLARE_METATYPE(my_chat_proto::UserInfo)
+Q_DECLARE_METATYPE(my_chat_proto::ChatSessionInfo)
+Q_DECLARE_METATYPE(my_chat_proto::TextMessageInfo)
+Q_DECLARE_METATYPE(my_chat_proto::ImageMessageInfo)
+Q_DECLARE_METATYPE(my_chat_proto::FileMessageInfo)
+Q_DECLARE_METATYPE(my_chat_proto::VoiceMessageInfo)
+Q_DECLARE_METATYPE(my_chat_proto::MessageContent)
+Q_DECLARE_METATYPE(my_chat_proto::MessageInfo)
+Q_DECLARE_METATYPE(my_chat_proto::Message)
+Q_DECLARE_METATYPE(my_chat_proto::FileDownloadData)
+Q_DECLARE_METATYPE(my_chat_proto::FileUploadData)
 #endif // QPROTOBUF_BASE_H

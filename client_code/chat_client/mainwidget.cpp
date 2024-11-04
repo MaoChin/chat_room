@@ -7,6 +7,7 @@
 #include "groupsessiondetailwidget.h"
 #include "addfrineddialog.h"
 #include "model/datacenter.h"
+#include "toast.h"
 
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -31,13 +32,13 @@ MainWidget::MainWidget(QWidget *parent)
     this->setWindowIcon(QIcon(":/resource/image/myChat.png"));
 
     initMainWindow();
-    LOG() << "test0";
+    // LOG() << "test0";
     initLeftWindow();
-    LOG() << "test1";
+    // LOG() << "test1";
     initMiddleWindow();
-    LOG() << "test2";
+    // LOG() << "test2";
     initRightWindow();
-    LOG() << "test3";
+    // LOG() << "test3";
     initSignalSlot();
 
     // 获取当前用户好友列表
@@ -49,6 +50,8 @@ MainWidget::MainWidget(QWidget *parent)
     // 获取当前用户好友申请列表
     loadApplyUserTab();
 
+    // 这里初始化websocket
+    initWebsocket();
 }
 
 
@@ -228,15 +231,30 @@ void MainWidget::initSignalSlot(){
     // 点击右侧页面的会话详情按钮弹出会话详情页
     connect(_extraBtn, &QPushButton::clicked, this, [=](){
         // TODO 具体是单聊还是群聊后续判断
-        bool isSignalSession = true;
+        bool isSingleSession = true;
 
-#if TEST_GROUP_SESSION_DETAIL
-        isSignalSession = false;
-#endif
+// #if TEST_GROUP_SESSION_DETAIL
+//         isSingleSession = false;
+// #endif
 
-        if(isSignalSession){
+        model::DataCenter* dataCenter = model::DataCenter::getInstance();
+        model::ChatSessionInfo* curChatSessionInfo = dataCenter->getChatSessionInfo(dataCenter->getCurChatSessionId());
+        if(curChatSessionInfo == nullptr){
+            LOG() << "the curChatSessionInfo is nullptr";
+            Toast::showMessage("请先选择会话");
+            return;
+        }
+        // _userId为""表示群聊，否则是单聊
+        isSingleSession = curChatSessionInfo->_userId != "";
+
+        if(isSingleSession){
             // 单聊详情页
-            SessionDetailWidget* sessionDetailWidget = new SessionDetailWidget(this);
+            model::UserInfo* friendInfo = dataCenter->findFriendById(curChatSessionInfo->_userId);
+            if (friendInfo == nullptr) {
+                LOG() << "the friendInfo is nullptr in single chat session";
+                return;
+            }
+            SessionDetailWidget* sessionDetailWidget = new SessionDetailWidget(this, *friendInfo);
             // 弹出模态对话框（阻塞）
             sessionDetailWidget->exec();
         }
@@ -250,7 +268,7 @@ void MainWidget::initSignalSlot(){
 
     // 点击中间页面添加好友按钮弹出添加好友搜索框
     connect(_addFriendBtn, &QPushButton::clicked, this, [=](){
-        AddFrinedDialog* addFriendDialog = new AddFrinedDialog(this);
+        AddFriendDialog* addFriendDialog = new AddFriendDialog(this);
         addFriendDialog->exec();
     });
 
@@ -260,7 +278,7 @@ void MainWidget::initSignalSlot(){
     // 若使用textChanged，就会在槽函数中setText时再次触发信号 -》无限死循环了！！
     connect(_searchBar, &QLineEdit::textEdited, this, [=](){
         const QString searchKey = _searchBar->text();
-        AddFrinedDialog* addFriendDialog = new AddFrinedDialog(this);
+        AddFriendDialog* addFriendDialog = new AddFriendDialog(this);
         // 设置添加好友页面的搜索框内容
         addFriendDialog->setSearchBarContent(searchKey);
         // 把主页面的搜索框内容清空
@@ -268,12 +286,78 @@ void MainWidget::initSignalSlot(){
         addFriendDialog->exec();
     });
 
+    // 用户修改个人头像结束时这里要进行对应的修改
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    connect(dataCenter, &model::DataCenter::modifyHeadPortraitAsyncDone, this, [=]() {
+        model::UserInfo* myself = dataCenter->getMyself();
+        _userHeadPortraitBtn->setIcon(myself->_headPortrait);
+    });
+
+
+    // 删除好友时需要清空右侧消息显示的信号槽
+    connect(dataCenter, &model::DataCenter::clearCurChatSession, this, [=]() {
+        _titleName->setText("");
+        _rightWindowMessageShowArea->clearMessage();
+        dataCenter->setCurChatSessionId("");
+    });
+
+    // 删除好友结束时的信号槽
+    connect(dataCenter, &model::DataCenter::deleteFriendAsyncDone, this, [=]() {
+        // 需要更新会话列表和好友列表
+        this->loadChatSessionListFromDataCenter();
+        this->loadFriendListFromDataCenter();
+        LOG() << "delete friend success";
+    });
+    // 发送好友申请完成时的信号槽---主动发送好友申请
+    connect(dataCenter, &model::DataCenter::addFriendApplyAsyncDone, this, [=]() {
+        Toast::showMessage("好友申请发送成功!");
+    });
+    // 收到好友申请推送时的信号槽---被动接收好友申请
+    connect(dataCenter, &model::DataCenter::receiveAddFriendApplyDone, this, [=]() {
+        loadApplyUserListFromDataCenter();
+        Toast::showMessage("收到新的好友申请");
+    });
+    // 处理好友申请完成时的信号槽---被动接收好友申请时进行处理
+    connect(dataCenter, &model::DataCenter::acceptAddFriendApplyAsyncDone, this, [=](const QString& userNickname) {
+        loadApplyUserListFromDataCenter();
+        loadFriendListFromDataCenter();
+        Toast::showMessage("添加好友 " + userNickname + " 完成");
+    });
+    connect(dataCenter, &model::DataCenter::refuseAddFriendApplyAsyncDone, this, [=](const QString& userNickname) {
+        loadApplyUserListFromDataCenter();
+        Toast::showMessage("拒绝用户 " + userNickname + " 的好友申请");
+    });
+    // 收到好友申请处理完成 推送时的信号槽---主动发送好友申请时收到回应
+    connect(dataCenter, &model::DataCenter::receiveAddFriendProcessDone, this, [=](bool agree, const QString&	friendNickname) {
+        if(agree){
+            // 对方同意了
+            loadFriendListFromDataCenter();
+            Toast::showMessage("好友 " + friendNickname + " 同意了你的好友申请");
+        }
+        else{
+            // 对方拒绝了
+            Toast::showMessage("好友 " + friendNickname + " 拒绝了你的好友申请");
+        }
+    });
+
+    // 群聊相关信号槽
+    // 创建群聊会话的http请求完成信号槽
+    connect(dataCenter, &model::DataCenter::createGroupChatSessionAsyncDone, this, [=]() {
+        Toast::showMessage("创建群聊的请求已经发送成功");
+    });
+    // 收到创建会话的websocket请求处理完成时的信号槽
+    connect(dataCenter, &model::DataCenter::receiveCreateChatSessionDone, this, [=]() {
+        loadChatSessionListFromDataCenter();
+        Toast::showMessage("您加入到一个新的会话中！");
+    });
+
+
+
+
 
     ///////////////////////////////
     /// 前后端交互！！
-    // 获取当前用户信息, 大体的数据流向: 网络(NetClient)->DataCenter->界面显示
-    model::DataCenter* dataCenter = model::DataCenter::getInstance();
-
+    // 大体的数据流向: 网络(NetClient)->DataCenter->界面显示
     // 先连接 HTTP 响应处理完成的自定义的信号槽
     connect(dataCenter, &model::DataCenter::getMyselfAsyncDone, this, [=]() {
         // 这里已经处理完 getMyself 的响应了,即对应的数据已经在 DataCenter 里了!!
@@ -284,7 +368,6 @@ void MainWidget::initSignalSlot(){
 
     // 再异步调用,调用后网络和DataCenter模块会发送网络请求,接收响应并处理响应,处理完响应后就触发getMyselfDone信号!
     dataCenter->getMyselfAsync();
-
 }
 
 // 切换到会话页
@@ -313,6 +396,24 @@ void MainWidget::switchTabToFriendApply(){
     _friendTabBtn->setIcon(QIcon(":/resource/image/friendTabNotActive.png"));
 
     this->loadApplyUserTab();
+}
+
+void MainWidget::clickFriendInFriendItem(const QString &friendId){
+    // 1. 中间页面切换到会话页
+    // 1.1 根据userId找到会话信息
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    model::ChatSessionInfo* chatSessionInfo = dataCenter->getChatSessionInfoByUserId(friendId);
+    if(chatSessionInfo == nullptr){
+        LOG() << "error: the friend: " << friendId << " do not have chat session!";
+        return;
+    }
+    // 1.2 把选中的会话置顶
+    dataCenter->topChatSession(*chatSessionInfo);
+    // 1.3 切换
+    switchTabToChatSession();
+
+    // 2. 右侧显示和对应好友的聊天历史消息--直接调用这个方法，选中第0个（已经置顶了）
+    _middleWindowArea->selectItem(0);
 }
 
 void MainWidget::loadChatSessionTab(){
@@ -364,6 +465,30 @@ void MainWidget::loadApplyUserTab(){
     }
 }
 
+// 加载聊天会话的最近消息列表
+void MainWidget::loadRecentMessage(const QString &chatSessionId){
+    // 如果 DataCenter 中有数据就直接加载，否则从服务器获取数据
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    if(dataCenter->getChatSessionRecentMessage(chatSessionId) == nullptr){
+        // 发送网络请求获取数据
+        connect(dataCenter, &model::DataCenter::getChatSessionRecentMessageAsyncDone, this, &MainWidget::loadRecentMessageFromDataCenter, Qt::UniqueConnection);
+
+        // 这个操作需要更新右侧消息显示界面
+        dataCenter->getChatSessionRecentMessageAsync(chatSessionId, true);
+    }
+    else{
+        // 直接从DataCenter中加载数据
+        loadRecentMessageFromDataCenter(chatSessionId);
+    }
+}
+
+void MainWidget::initWebsocket(){
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    dataCenter->initWebsocket();
+}
+
+
+
 void MainWidget::loadFriendListFromDataCenter(){
     if(_activeTab != FRIEND_TAB){
         return;
@@ -384,6 +509,7 @@ void MainWidget::loadFriendListFromDataCenter(){
     for(const model::UserInfo& userInfo : *friendUserList){
         _middleWindowArea->addItem(FRIEND_TYPE, userInfo._userId, userInfo._headPortrait, userInfo._nickName, userInfo._personalSignature);
     }
+    _middleWindowArea->scrollToTop();
 }
 
 void MainWidget::loadChatSessionListFromDataCenter(){
@@ -419,6 +545,7 @@ void MainWidget::loadChatSessionListFromDataCenter(){
             LOG() << "消息类型错误: " << curMessageType;
         }
     }
+    _middleWindowArea->scrollToTop();
 }
 
 void MainWidget::loadApplyUserListFromDataCenter(){
@@ -437,4 +564,37 @@ void MainWidget::loadApplyUserListFromDataCenter(){
     for(const model::UserInfo& applyUserInfo : *applyUserList){
         _middleWindowArea->addItem(FRIENDAPPLY_TYPE, applyUserInfo._userId, applyUserInfo._headPortrait, applyUserInfo._nickName, "");
     }
+    _middleWindowArea->scrollToTop();
+}
+
+void MainWidget::loadRecentMessageFromDataCenter(const QString &chatSessionId){
+    if(_activeTab != CHATSESSION_TAB){
+        return;
+    }
+
+    // 清空页面原有的数据
+    _rightWindowMessageShowArea->clearMessage();
+
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    QList<model::MessageInfo>* recentMessageList = dataCenter->getChatSessionRecentMessage(chatSessionId);
+    if(recentMessageList == nullptr){
+        return;
+    }
+
+    // 添加消息
+    for(int i = recentMessageList->size() - 1; i >= 0; --i){
+        const model::MessageInfo& message = recentMessageList->at(i);
+        bool isLeft = message._sender._userId != dataCenter->getMyself()->_userId;
+        _rightWindowMessageShowArea->addFrontMessage(isLeft, message);
+    }
+    // 添加右侧窗口会话标题
+    model::ChatSessionInfo* chatSessionInfo = dataCenter->getChatSessionInfo(chatSessionId);
+    if(chatSessionInfo != nullptr){
+        _titleName->setText(chatSessionInfo->_chatSessionName);
+    }
+    // 设置当前选中的会话id
+    dataCenter->setCurChatSessionId(chatSessionId);
+
+    // 把最近消息的滚动条滚动到末尾！！
+    _rightWindowMessageShowArea->scrollToEnd();
 }

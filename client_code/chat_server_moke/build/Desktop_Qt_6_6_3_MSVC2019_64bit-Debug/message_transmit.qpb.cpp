@@ -18,7 +18,7 @@ public:
         : QSharedData(other),
           m_requestId(other.m_requestId),
           m_userId(other.m_userId),
-          m_sessionId(other.m_sessionId),
+          m_loginSessionId(other.m_loginSessionId),
           m_chatSessionId(other.m_chatSessionId),
           m_message(other.m_message
                                                ? new MessageContent(*other.m_message)
@@ -28,7 +28,7 @@ public:
 
     QString m_requestId;
     QString m_userId;
-    QString m_sessionId;
+    QString m_loginSessionId;
     QString m_chatSessionId;
     QtProtobufPrivate::QProtobufLazyMessagePointer<MessageContent> m_message;
 };
@@ -38,7 +38,7 @@ NewMessageReq::~NewMessageReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 21> qt_protobuf_NewMessageReq_uint_data;
-    const char qt_protobuf_NewMessageReq_char_data[78];
+    const char qt_protobuf_NewMessageReq_char_data[83];
 } qt_protobuf_NewMessageReq_metadata {
     // data
     {
@@ -54,26 +54,26 @@ static constexpr struct {
         // JSON name offsets:
         28, /* = requestId */
         38, /* = userId */
-        45, /* = sessionId */
-        55, /* = chatSessionId */
-        69, /* = message */
-        77, /* = end-of-string-marker */
+        45, /* = loginSessionId */
+        60, /* = chatSessionId */
+        74, /* = message */
+        82, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = userId */
-        3, /* = sessionId */
+        3, /* = loginSessionId */
         4, /* = chatSessionId */
         5, /* = message */
         // Property indices:
         0, /* = requestId */
         1, /* = userId */
-        2, /* = sessionId */
+        2, /* = loginSessionId */
         3, /* = chatSessionId */
         4, /* = message */
         // Field flags:
         QtProtobufPrivate::NoFlags, /* = requestId */
         QtProtobufPrivate::NoFlags, /* = userId */
-        QtProtobufPrivate::NoFlags, /* = sessionId */
+        QtProtobufPrivate::NoFlags, /* = loginSessionId */
         QtProtobufPrivate::NoFlags, /* = chatSessionId */
         QtProtobufPrivate::NoFlags, /* = message */
     },
@@ -81,7 +81,7 @@ static constexpr struct {
     /* metadata char_data: */
     "my_chat_proto.NewMessageReq\0" /* = full message name */
     /* field char_data: */
-    "requestId\0userId\0sessionId\0chatSessionId\0message\0"
+    "requestId\0userId\0loginSessionId\0chatSessionId\0message\0"
 };
 
 const QtProtobufPrivate::QProtobufPropertyOrdering NewMessageReq::propertyOrdering = {
@@ -146,9 +146,9 @@ QString NewMessageReq::userId() const
     return dptr->m_userId;
 }
 
-QString NewMessageReq::sessionId() const
+QString NewMessageReq::loginSessionId() const
 {
-    return dptr->m_sessionId;
+    return dptr->m_loginSessionId;
 }
 
 QString NewMessageReq::chatSessionId() const
@@ -182,11 +182,11 @@ void NewMessageReq::setUserId(const QString &userId)
     }
 }
 
-void NewMessageReq::setSessionId(const QString &sessionId)
+void NewMessageReq::setLoginSessionId(const QString &loginSessionId)
 {
-    if (dptr->m_sessionId != sessionId) {
+    if (dptr->m_loginSessionId != loginSessionId) {
         dptr.detach();
-        dptr->m_sessionId = sessionId;
+        dptr->m_loginSessionId = loginSessionId;
     }
 }
 

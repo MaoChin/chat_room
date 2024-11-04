@@ -9,6 +9,8 @@
 	"INCLUDE_DIR" : "E:/Code/chat_room/client_code/chat_server_moke/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Debug/chat_server_moke_autogen/include",
 	"INPUTS" : 
 	[
+		"E:/Code/chat_room/client_code/chat_server_moke/resource/file/test.txt",
+		"E:/Code/chat_room/client_code/chat_server_moke/resource/file/tmpRecord.pcm",
 		"E:/Code/chat_room/client_code/chat_server_moke/resource/image/headPortrait.png",
 		"E:/Code/chat_room/client_code/chat_server_moke/resource/image/testPortrait.png"
 	],

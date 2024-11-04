@@ -19,7 +19,7 @@
 #include <memory>
 
 
-namespace bite_im {
+namespace my_chat_proto {
 class GetSingleFileReq;
 using GetSingleFileReqRepeated = QList<GetSingleFileReq>;
 class GetSingleFileRsp;
@@ -92,7 +92,7 @@ class GetSingleFileRsp : public QProtobufMessage
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(bool success READ success WRITE setSuccess SCRIPTABLE true)
     Q_PROPERTY(QString errmsg READ errmsg WRITE setErrmsg SCRIPTABLE true)
-    Q_PROPERTY(bite_im::FileDownloadData *fileData_p READ fileData_p WRITE setFileData_p SCRIPTABLE false)
+    Q_PROPERTY(my_chat_proto::FileDownloadData *fileData_p READ fileData_p WRITE setFileData_p SCRIPTABLE false)
 
 public:
     enum QtProtobufFieldEnum {
@@ -187,7 +187,7 @@ class GetMultiFileRsp : public QProtobufMessage
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(bool success READ success WRITE setSuccess SCRIPTABLE true)
     Q_PROPERTY(QString errmsg READ errmsg WRITE setErrmsg SCRIPTABLE true)
-    Q_PROPERTY(bite_im::FileDownloadDataRepeated fileDataData READ fileData WRITE setFileData SCRIPTABLE true)
+    Q_PROPERTY(my_chat_proto::FileDownloadDataRepeated fileDataData READ fileData WRITE setFileData SCRIPTABLE true)
 
 public:
     enum QtProtobufFieldEnum {
@@ -234,7 +234,7 @@ class PutSingleFileReq : public QProtobufMessage
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(QString userId READ userId WRITE setUserId SCRIPTABLE true)
     Q_PROPERTY(QString sessionId READ sessionId WRITE setSessionId SCRIPTABLE true)
-    Q_PROPERTY(bite_im::FileUploadData *fileData_p READ fileData_p WRITE setFileData_p SCRIPTABLE false)
+    Q_PROPERTY(my_chat_proto::FileUploadData *fileData_p READ fileData_p WRITE setFileData_p SCRIPTABLE false)
 
 public:
     enum QtProtobufFieldEnum {
@@ -282,7 +282,7 @@ class PutSingleFileRsp : public QProtobufMessage
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(bool success READ success WRITE setSuccess SCRIPTABLE true)
     Q_PROPERTY(QString errmsg READ errmsg WRITE setErrmsg SCRIPTABLE true)
-    Q_PROPERTY(bite_im::FileMessageInfo *fileInfo_p READ fileInfo_p WRITE setFileInfo_p SCRIPTABLE false)
+    Q_PROPERTY(my_chat_proto::FileMessageInfo *fileInfo_p READ fileInfo_p WRITE setFileInfo_p SCRIPTABLE false)
 
 public:
     enum QtProtobufFieldEnum {
@@ -330,7 +330,7 @@ class PutMultiFileReq : public QProtobufMessage
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(QString userId READ userId WRITE setUserId SCRIPTABLE true)
     Q_PROPERTY(QString sessionId READ sessionId WRITE setSessionId SCRIPTABLE true)
-    Q_PROPERTY(bite_im::FileUploadDataRepeated fileDataData READ fileData WRITE setFileData SCRIPTABLE true)
+    Q_PROPERTY(my_chat_proto::FileUploadDataRepeated fileDataData READ fileData WRITE setFileData SCRIPTABLE true)
 
 public:
     enum QtProtobufFieldEnum {
@@ -377,7 +377,7 @@ class PutMultiFileRsp : public QProtobufMessage
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(bool success READ success WRITE setSuccess SCRIPTABLE true)
     Q_PROPERTY(QString errmsg READ errmsg WRITE setErrmsg SCRIPTABLE true)
-    Q_PROPERTY(bite_im::FileMessageInfoRepeated fileInfoData READ fileInfo WRITE setFileInfo SCRIPTABLE true)
+    Q_PROPERTY(my_chat_proto::FileMessageInfoRepeated fileInfoData READ fileInfo WRITE setFileInfo SCRIPTABLE true)
 
 public:
     enum QtProtobufFieldEnum {
@@ -414,14 +414,14 @@ public:
 private:
     QExplicitlySharedDataPointer<PutMultiFileRsp_QtProtobufData> dptr;
 };
-} // namespace bite_im
+} // namespace my_chat_proto
 
-Q_DECLARE_METATYPE(bite_im::GetSingleFileReq)
-Q_DECLARE_METATYPE(bite_im::GetSingleFileRsp)
-Q_DECLARE_METATYPE(bite_im::GetMultiFileReq)
-Q_DECLARE_METATYPE(bite_im::GetMultiFileRsp)
-Q_DECLARE_METATYPE(bite_im::PutSingleFileReq)
-Q_DECLARE_METATYPE(bite_im::PutSingleFileRsp)
-Q_DECLARE_METATYPE(bite_im::PutMultiFileReq)
-Q_DECLARE_METATYPE(bite_im::PutMultiFileRsp)
+Q_DECLARE_METATYPE(my_chat_proto::GetSingleFileReq)
+Q_DECLARE_METATYPE(my_chat_proto::GetSingleFileRsp)
+Q_DECLARE_METATYPE(my_chat_proto::GetMultiFileReq)
+Q_DECLARE_METATYPE(my_chat_proto::GetMultiFileRsp)
+Q_DECLARE_METATYPE(my_chat_proto::PutSingleFileReq)
+Q_DECLARE_METATYPE(my_chat_proto::PutSingleFileRsp)
+Q_DECLARE_METATYPE(my_chat_proto::PutMultiFileReq)
+Q_DECLARE_METATYPE(my_chat_proto::PutMultiFileRsp)
 #endif // QPROTOBUF_FILE_H

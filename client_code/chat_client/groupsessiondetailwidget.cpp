@@ -2,6 +2,7 @@
 
 #include "sessiondetailwidget.h"
 #include "debug.h"
+#include "model/datacenter.h"
 
 #include <QVBoxLayout>
 #include <QScrollArea>
@@ -63,11 +64,11 @@ GroupSessionDetailWidget::GroupSessionDetailWidget(QWidget* parent)
     hlayout->setContentsMargins(0, 0, 0, 0);
     vlayout->addLayout(hlayout);
 
-    QLabel* realGroupSessionName = new QLabel();
-    realGroupSessionName->setFixedHeight(50);
-    realGroupSessionName->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-    realGroupSessionName->setStyleSheet("QLabel { font-size: 15px; }");
-    hlayout->addWidget(realGroupSessionName);
+    _realGroupSessionName = new QLabel();
+    _realGroupSessionName->setFixedHeight(50);
+    _realGroupSessionName->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+    _realGroupSessionName->setStyleSheet("QLabel { font-size: 15px; }");
+    hlayout->addWidget(_realGroupSessionName);
 
     QPushButton* modifyBtn = new QPushButton();
     modifyBtn->setFixedSize(26, 26);
@@ -95,6 +96,30 @@ GroupSessionDetailWidget::GroupSessionDetailWidget(QWidget* parent)
         addGroupMember(item);
     }
 #endif
+
+    initData();
+}
+
+void GroupSessionDetailWidget::initData(){
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+
+    // 关联获取成员列表请求完成的信号槽
+    connect(dataCenter, &model::DataCenter::getChatSessionMemberListAsyncDone,
+            this, &GroupSessionDetailWidget::initGroupSessionMember);
+    dataCenter->getChatSessionMemberListAsync(dataCenter->getCurChatSessionId());
+    _realGroupSessionName->setText("新的群聊");
+}
+
+void GroupSessionDetailWidget::initGroupSessionMember(){
+    model::DataCenter* dataCenter = model::DataCenter::getInstance();
+    // 获取指定会话的成员列表
+    QList<model::UserInfo>* groupSessionMemberList =
+        dataCenter->getChatSessionMemberList(dataCenter->getCurChatSessionId());
+    // 进行渲染
+    for(auto& userInfo : (*groupSessionMemberList)){
+        HeadPortraitItem* item = new HeadPortraitItem(userInfo._headPortrait, userInfo._nickName);
+        addGroupMember(item);
+    }
 }
 
 void GroupSessionDetailWidget::addGroupMember(HeadPortraitItem *headPortraitItem){

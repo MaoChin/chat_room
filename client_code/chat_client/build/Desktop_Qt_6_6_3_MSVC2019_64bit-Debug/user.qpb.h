@@ -19,7 +19,7 @@
 #include <memory>
 
 
-namespace bite_im {
+namespace my_chat_proto {
 class UserRegisterReq;
 using UserRegisterReqRepeated = QList<UserRegisterReq>;
 class UserRegisterRsp;
@@ -44,18 +44,18 @@ class GetUserInfoReq;
 using GetUserInfoReqRepeated = QList<GetUserInfoReq>;
 class GetUserInfoRsp;
 using GetUserInfoRspRepeated = QList<GetUserInfoRsp>;
-class SetUserAvatarReq;
-using SetUserAvatarReqRepeated = QList<SetUserAvatarReq>;
-class SetUserAvatarRsp;
-using SetUserAvatarRspRepeated = QList<SetUserAvatarRsp>;
+class SetUserHeadPortraitReq;
+using SetUserHeadPortraitReqRepeated = QList<SetUserHeadPortraitReq>;
+class SetUserHeadPortraitRsp;
+using SetUserHeadPortraitRspRepeated = QList<SetUserHeadPortraitRsp>;
 class SetUserNicknameReq;
 using SetUserNicknameReqRepeated = QList<SetUserNicknameReq>;
 class SetUserNicknameRsp;
 using SetUserNicknameRspRepeated = QList<SetUserNicknameRsp>;
-class SetUserDescriptionReq;
-using SetUserDescriptionReqRepeated = QList<SetUserDescriptionReq>;
-class SetUserDescriptionRsp;
-using SetUserDescriptionRspRepeated = QList<SetUserDescriptionRsp>;
+class SetUserSignatureReq;
+using SetUserSignatureReqRepeated = QList<SetUserSignatureReq>;
+class SetUserSignatureRsp;
+using SetUserSignatureRspRepeated = QList<SetUserSignatureRsp>;
 class SetUserPhoneNumberReq;
 using SetUserPhoneNumberReqRepeated = QList<SetUserPhoneNumberReq>;
 class SetUserPhoneNumberRsp;
@@ -561,7 +561,7 @@ class GetUserInfoRsp : public QProtobufMessage
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(bool success READ success WRITE setSuccess SCRIPTABLE true)
     Q_PROPERTY(QString errmsg READ errmsg WRITE setErrmsg SCRIPTABLE true)
-    Q_PROPERTY(bite_im::UserInfo *userInfo_p READ userInfo_p WRITE setUserInfo_p SCRIPTABLE false)
+    Q_PROPERTY(my_chat_proto::UserInfo *userInfo_p READ userInfo_p WRITE setUserInfo_p SCRIPTABLE false)
 
 public:
     enum QtProtobufFieldEnum {
@@ -600,34 +600,34 @@ private:
     QExplicitlySharedDataPointer<GetUserInfoRsp_QtProtobufData> dptr;
 };
 
-class SetUserAvatarReq_QtProtobufData;
-class SetUserAvatarReq : public QProtobufMessage
+class SetUserHeadPortraitReq_QtProtobufData;
+class SetUserHeadPortraitReq : public QProtobufMessage
 {
     Q_GADGET
     Q_PROTOBUF_OBJECT
-    Q_DECLARE_PROTOBUF_SERIALIZERS(SetUserAvatarReq)
+    Q_DECLARE_PROTOBUF_SERIALIZERS(SetUserHeadPortraitReq)
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(QString userId READ userId WRITE setUserId SCRIPTABLE true)
     Q_PROPERTY(QString sessionId READ sessionId WRITE setSessionId SCRIPTABLE true)
-    Q_PROPERTY(QByteArray avatar READ avatar WRITE setAvatar SCRIPTABLE true)
+    Q_PROPERTY(QByteArray headPortrait READ headPortrait WRITE setHeadPortrait SCRIPTABLE true)
 
 public:
     enum QtProtobufFieldEnum {
         RequestIdProtoFieldNumber = 1,
         UserIdProtoFieldNumber = 2,
         SessionIdProtoFieldNumber = 3,
-        AvatarProtoFieldNumber = 4,
+        HeadPortraitProtoFieldNumber = 4,
     };
     Q_ENUM(QtProtobufFieldEnum)
 
-    SetUserAvatarReq();
-    ~SetUserAvatarReq();
-    SetUserAvatarReq(const SetUserAvatarReq &other);
-    SetUserAvatarReq &operator =(const SetUserAvatarReq &other);
-    SetUserAvatarReq(SetUserAvatarReq &&other) noexcept;
-    SetUserAvatarReq &operator =(SetUserAvatarReq &&other) noexcept;
-    bool operator ==(const SetUserAvatarReq &other) const;
-    bool operator !=(const SetUserAvatarReq &other) const;
+    SetUserHeadPortraitReq();
+    ~SetUserHeadPortraitReq();
+    SetUserHeadPortraitReq(const SetUserHeadPortraitReq &other);
+    SetUserHeadPortraitReq &operator =(const SetUserHeadPortraitReq &other);
+    SetUserHeadPortraitReq(SetUserHeadPortraitReq &&other) noexcept;
+    SetUserHeadPortraitReq &operator =(SetUserHeadPortraitReq &&other) noexcept;
+    bool operator ==(const SetUserHeadPortraitReq &other) const;
+    bool operator !=(const SetUserHeadPortraitReq &other) const;
 
     QString requestId() const;
 
@@ -635,23 +635,23 @@ public:
 
     QString sessionId() const;
 
-    QByteArray avatar() const;
+    QByteArray headPortrait() const;
     void setRequestId(const QString &requestId);
     void setUserId(const QString &userId);
     void setSessionId(const QString &sessionId);
-    void setAvatar(const QByteArray &avatar);
+    void setHeadPortrait(const QByteArray &headPortrait);
     static void registerTypes();
 
 private:
-    QExplicitlySharedDataPointer<SetUserAvatarReq_QtProtobufData> dptr;
+    QExplicitlySharedDataPointer<SetUserHeadPortraitReq_QtProtobufData> dptr;
 };
 
-class SetUserAvatarRsp_QtProtobufData;
-class SetUserAvatarRsp : public QProtobufMessage
+class SetUserHeadPortraitRsp_QtProtobufData;
+class SetUserHeadPortraitRsp : public QProtobufMessage
 {
     Q_GADGET
     Q_PROTOBUF_OBJECT
-    Q_DECLARE_PROTOBUF_SERIALIZERS(SetUserAvatarRsp)
+    Q_DECLARE_PROTOBUF_SERIALIZERS(SetUserHeadPortraitRsp)
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(bool success READ success WRITE setSuccess SCRIPTABLE true)
     Q_PROPERTY(QString errmsg READ errmsg WRITE setErrmsg SCRIPTABLE true)
@@ -664,14 +664,14 @@ public:
     };
     Q_ENUM(QtProtobufFieldEnum)
 
-    SetUserAvatarRsp();
-    ~SetUserAvatarRsp();
-    SetUserAvatarRsp(const SetUserAvatarRsp &other);
-    SetUserAvatarRsp &operator =(const SetUserAvatarRsp &other);
-    SetUserAvatarRsp(SetUserAvatarRsp &&other) noexcept;
-    SetUserAvatarRsp &operator =(SetUserAvatarRsp &&other) noexcept;
-    bool operator ==(const SetUserAvatarRsp &other) const;
-    bool operator !=(const SetUserAvatarRsp &other) const;
+    SetUserHeadPortraitRsp();
+    ~SetUserHeadPortraitRsp();
+    SetUserHeadPortraitRsp(const SetUserHeadPortraitRsp &other);
+    SetUserHeadPortraitRsp &operator =(const SetUserHeadPortraitRsp &other);
+    SetUserHeadPortraitRsp(SetUserHeadPortraitRsp &&other) noexcept;
+    SetUserHeadPortraitRsp &operator =(SetUserHeadPortraitRsp &&other) noexcept;
+    bool operator ==(const SetUserHeadPortraitRsp &other) const;
+    bool operator !=(const SetUserHeadPortraitRsp &other) const;
 
     QString requestId() const;
 
@@ -684,7 +684,7 @@ public:
     static void registerTypes();
 
 private:
-    QExplicitlySharedDataPointer<SetUserAvatarRsp_QtProtobufData> dptr;
+    QExplicitlySharedDataPointer<SetUserHeadPortraitRsp_QtProtobufData> dptr;
 };
 
 class SetUserNicknameReq_QtProtobufData;
@@ -774,34 +774,34 @@ private:
     QExplicitlySharedDataPointer<SetUserNicknameRsp_QtProtobufData> dptr;
 };
 
-class SetUserDescriptionReq_QtProtobufData;
-class SetUserDescriptionReq : public QProtobufMessage
+class SetUserSignatureReq_QtProtobufData;
+class SetUserSignatureReq : public QProtobufMessage
 {
     Q_GADGET
     Q_PROTOBUF_OBJECT
-    Q_DECLARE_PROTOBUF_SERIALIZERS(SetUserDescriptionReq)
+    Q_DECLARE_PROTOBUF_SERIALIZERS(SetUserSignatureReq)
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(QString userId READ userId WRITE setUserId SCRIPTABLE true)
     Q_PROPERTY(QString sessionId READ sessionId WRITE setSessionId SCRIPTABLE true)
-    Q_PROPERTY(QString description READ description WRITE setDescription SCRIPTABLE true)
+    Q_PROPERTY(QString signature READ signature WRITE setSignature SCRIPTABLE true)
 
 public:
     enum QtProtobufFieldEnum {
         RequestIdProtoFieldNumber = 1,
         UserIdProtoFieldNumber = 2,
         SessionIdProtoFieldNumber = 3,
-        DescriptionProtoFieldNumber = 4,
+        SignatureProtoFieldNumber = 4,
     };
     Q_ENUM(QtProtobufFieldEnum)
 
-    SetUserDescriptionReq();
-    ~SetUserDescriptionReq();
-    SetUserDescriptionReq(const SetUserDescriptionReq &other);
-    SetUserDescriptionReq &operator =(const SetUserDescriptionReq &other);
-    SetUserDescriptionReq(SetUserDescriptionReq &&other) noexcept;
-    SetUserDescriptionReq &operator =(SetUserDescriptionReq &&other) noexcept;
-    bool operator ==(const SetUserDescriptionReq &other) const;
-    bool operator !=(const SetUserDescriptionReq &other) const;
+    SetUserSignatureReq();
+    ~SetUserSignatureReq();
+    SetUserSignatureReq(const SetUserSignatureReq &other);
+    SetUserSignatureReq &operator =(const SetUserSignatureReq &other);
+    SetUserSignatureReq(SetUserSignatureReq &&other) noexcept;
+    SetUserSignatureReq &operator =(SetUserSignatureReq &&other) noexcept;
+    bool operator ==(const SetUserSignatureReq &other) const;
+    bool operator !=(const SetUserSignatureReq &other) const;
 
     QString requestId() const;
 
@@ -809,23 +809,23 @@ public:
 
     QString sessionId() const;
 
-    QString description() const;
+    QString signature() const;
     void setRequestId(const QString &requestId);
     void setUserId(const QString &userId);
     void setSessionId(const QString &sessionId);
-    void setDescription(const QString &description);
+    void setSignature(const QString &signature);
     static void registerTypes();
 
 private:
-    QExplicitlySharedDataPointer<SetUserDescriptionReq_QtProtobufData> dptr;
+    QExplicitlySharedDataPointer<SetUserSignatureReq_QtProtobufData> dptr;
 };
 
-class SetUserDescriptionRsp_QtProtobufData;
-class SetUserDescriptionRsp : public QProtobufMessage
+class SetUserSignatureRsp_QtProtobufData;
+class SetUserSignatureRsp : public QProtobufMessage
 {
     Q_GADGET
     Q_PROTOBUF_OBJECT
-    Q_DECLARE_PROTOBUF_SERIALIZERS(SetUserDescriptionRsp)
+    Q_DECLARE_PROTOBUF_SERIALIZERS(SetUserSignatureRsp)
     Q_PROPERTY(QString requestId READ requestId WRITE setRequestId SCRIPTABLE true)
     Q_PROPERTY(bool success READ success WRITE setSuccess SCRIPTABLE true)
     Q_PROPERTY(QString errmsg READ errmsg WRITE setErrmsg SCRIPTABLE true)
@@ -838,14 +838,14 @@ public:
     };
     Q_ENUM(QtProtobufFieldEnum)
 
-    SetUserDescriptionRsp();
-    ~SetUserDescriptionRsp();
-    SetUserDescriptionRsp(const SetUserDescriptionRsp &other);
-    SetUserDescriptionRsp &operator =(const SetUserDescriptionRsp &other);
-    SetUserDescriptionRsp(SetUserDescriptionRsp &&other) noexcept;
-    SetUserDescriptionRsp &operator =(SetUserDescriptionRsp &&other) noexcept;
-    bool operator ==(const SetUserDescriptionRsp &other) const;
-    bool operator !=(const SetUserDescriptionRsp &other) const;
+    SetUserSignatureRsp();
+    ~SetUserSignatureRsp();
+    SetUserSignatureRsp(const SetUserSignatureRsp &other);
+    SetUserSignatureRsp &operator =(const SetUserSignatureRsp &other);
+    SetUserSignatureRsp(SetUserSignatureRsp &&other) noexcept;
+    SetUserSignatureRsp &operator =(SetUserSignatureRsp &&other) noexcept;
+    bool operator ==(const SetUserSignatureRsp &other) const;
+    bool operator !=(const SetUserSignatureRsp &other) const;
 
     QString requestId() const;
 
@@ -858,7 +858,7 @@ public:
     static void registerTypes();
 
 private:
-    QExplicitlySharedDataPointer<SetUserDescriptionRsp_QtProtobufData> dptr;
+    QExplicitlySharedDataPointer<SetUserSignatureRsp_QtProtobufData> dptr;
 };
 
 class SetUserPhoneNumberReq_QtProtobufData;
@@ -957,26 +957,26 @@ public:
 private:
     QExplicitlySharedDataPointer<SetUserPhoneNumberRsp_QtProtobufData> dptr;
 };
-} // namespace bite_im
+} // namespace my_chat_proto
 
-Q_DECLARE_METATYPE(bite_im::UserRegisterReq)
-Q_DECLARE_METATYPE(bite_im::UserRegisterRsp)
-Q_DECLARE_METATYPE(bite_im::UserLoginReq)
-Q_DECLARE_METATYPE(bite_im::UserLoginRsp)
-Q_DECLARE_METATYPE(bite_im::PhoneVerifyCodeReq)
-Q_DECLARE_METATYPE(bite_im::PhoneVerifyCodeRsp)
-Q_DECLARE_METATYPE(bite_im::PhoneRegisterReq)
-Q_DECLARE_METATYPE(bite_im::PhoneRegisterRsp)
-Q_DECLARE_METATYPE(bite_im::PhoneLoginReq)
-Q_DECLARE_METATYPE(bite_im::PhoneLoginRsp)
-Q_DECLARE_METATYPE(bite_im::GetUserInfoReq)
-Q_DECLARE_METATYPE(bite_im::GetUserInfoRsp)
-Q_DECLARE_METATYPE(bite_im::SetUserAvatarReq)
-Q_DECLARE_METATYPE(bite_im::SetUserAvatarRsp)
-Q_DECLARE_METATYPE(bite_im::SetUserNicknameReq)
-Q_DECLARE_METATYPE(bite_im::SetUserNicknameRsp)
-Q_DECLARE_METATYPE(bite_im::SetUserDescriptionReq)
-Q_DECLARE_METATYPE(bite_im::SetUserDescriptionRsp)
-Q_DECLARE_METATYPE(bite_im::SetUserPhoneNumberReq)
-Q_DECLARE_METATYPE(bite_im::SetUserPhoneNumberRsp)
+Q_DECLARE_METATYPE(my_chat_proto::UserRegisterReq)
+Q_DECLARE_METATYPE(my_chat_proto::UserRegisterRsp)
+Q_DECLARE_METATYPE(my_chat_proto::UserLoginReq)
+Q_DECLARE_METATYPE(my_chat_proto::UserLoginRsp)
+Q_DECLARE_METATYPE(my_chat_proto::PhoneVerifyCodeReq)
+Q_DECLARE_METATYPE(my_chat_proto::PhoneVerifyCodeRsp)
+Q_DECLARE_METATYPE(my_chat_proto::PhoneRegisterReq)
+Q_DECLARE_METATYPE(my_chat_proto::PhoneRegisterRsp)
+Q_DECLARE_METATYPE(my_chat_proto::PhoneLoginReq)
+Q_DECLARE_METATYPE(my_chat_proto::PhoneLoginRsp)
+Q_DECLARE_METATYPE(my_chat_proto::GetUserInfoReq)
+Q_DECLARE_METATYPE(my_chat_proto::GetUserInfoRsp)
+Q_DECLARE_METATYPE(my_chat_proto::SetUserHeadPortraitReq)
+Q_DECLARE_METATYPE(my_chat_proto::SetUserHeadPortraitRsp)
+Q_DECLARE_METATYPE(my_chat_proto::SetUserNicknameReq)
+Q_DECLARE_METATYPE(my_chat_proto::SetUserNicknameRsp)
+Q_DECLARE_METATYPE(my_chat_proto::SetUserSignatureReq)
+Q_DECLARE_METATYPE(my_chat_proto::SetUserSignatureRsp)
+Q_DECLARE_METATYPE(my_chat_proto::SetUserPhoneNumberReq)
+Q_DECLARE_METATYPE(my_chat_proto::SetUserPhoneNumberRsp)
 #endif // QPROTOBUF_USER_H

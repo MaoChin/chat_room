@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>resource/image/headPortrait.png</file>
         <file>resource/image/testPortrait.png</file>
+        <file>resource/file/test.txt</file>
+        <file>resource/file/tmpRecord.pcm</file>
     </qresource>
 </RCC>

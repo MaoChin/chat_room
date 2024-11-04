@@ -5,6 +5,8 @@
 #include <QWidget>
 #include <QLabel>
 
+#include "model/data.h"
+
 // 详情页中头像+标签的组合
 class HeadPortraitItem : public QWidget
 {
@@ -27,9 +29,14 @@ class SessionDetailWidget : public QDialog
 {
     Q_OBJECT
 public:
-    SessionDetailWidget(QWidget* parent);
+    SessionDetailWidget(QWidget* parent, const model::UserInfo& friendInfo);
+
+    // 删除好友的槽函数
+    void clickDeleteFriendBtn();
 
 private:
+    // 会话中的好友信息
+    model::UserInfo _friendInfo;
 
 };
 

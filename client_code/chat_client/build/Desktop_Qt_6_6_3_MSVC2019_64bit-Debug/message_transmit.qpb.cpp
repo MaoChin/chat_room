@@ -3,7 +3,7 @@
 #include "message_transmit.qpb.h"
 #include <QtProtobuf/qprotobufserializer.h>
 
-namespace bite_im {
+namespace my_chat_proto {
 
 class NewMessageReq_QtProtobufData : public QSharedData
 {
@@ -18,7 +18,7 @@ public:
         : QSharedData(other),
           m_requestId(other.m_requestId),
           m_userId(other.m_userId),
-          m_sessionId(other.m_sessionId),
+          m_loginSessionId(other.m_loginSessionId),
           m_chatSessionId(other.m_chatSessionId),
           m_message(other.m_message
                                                ? new MessageContent(*other.m_message)
@@ -28,7 +28,7 @@ public:
 
     QString m_requestId;
     QString m_userId;
-    QString m_sessionId;
+    QString m_loginSessionId;
     QString m_chatSessionId;
     QtProtobufPrivate::QProtobufLazyMessagePointer<MessageContent> m_message;
 };
@@ -38,7 +38,7 @@ NewMessageReq::~NewMessageReq() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 21> qt_protobuf_NewMessageReq_uint_data;
-    const char qt_protobuf_NewMessageReq_char_data[72];
+    const char qt_protobuf_NewMessageReq_char_data[83];
 } qt_protobuf_NewMessageReq_metadata {
     // data
     {
@@ -47,41 +47,41 @@ static constexpr struct {
         6, /* = field number offset */
         11, /* = property index offset */
         16, /* = field flags offset */
-        21, /* = message full name length */
+        27, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        22, /* = requestId */
-        32, /* = userId */
-        39, /* = sessionId */
-        49, /* = chatSessionId */
-        63, /* = message */
-        71, /* = end-of-string-marker */
+        28, /* = requestId */
+        38, /* = userId */
+        45, /* = loginSessionId */
+        60, /* = chatSessionId */
+        74, /* = message */
+        82, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = userId */
-        3, /* = sessionId */
+        3, /* = loginSessionId */
         4, /* = chatSessionId */
         5, /* = message */
         // Property indices:
         0, /* = requestId */
         1, /* = userId */
-        2, /* = sessionId */
+        2, /* = loginSessionId */
         3, /* = chatSessionId */
         4, /* = message */
         // Field flags:
         QtProtobufPrivate::NoFlags, /* = requestId */
         QtProtobufPrivate::NoFlags, /* = userId */
-        QtProtobufPrivate::NoFlags, /* = sessionId */
+        QtProtobufPrivate::NoFlags, /* = loginSessionId */
         QtProtobufPrivate::NoFlags, /* = chatSessionId */
         QtProtobufPrivate::NoFlags, /* = message */
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.NewMessageReq\0" /* = full message name */
+    "my_chat_proto.NewMessageReq\0" /* = full message name */
     /* field char_data: */
-    "requestId\0userId\0sessionId\0chatSessionId\0message\0"
+    "requestId\0userId\0loginSessionId\0chatSessionId\0message\0"
 };
 
 const QtProtobufPrivate::QProtobufPropertyOrdering NewMessageReq::propertyOrdering = {
@@ -146,9 +146,9 @@ QString NewMessageReq::userId() const
     return dptr->m_userId;
 }
 
-QString NewMessageReq::sessionId() const
+QString NewMessageReq::loginSessionId() const
 {
-    return dptr->m_sessionId;
+    return dptr->m_loginSessionId;
 }
 
 QString NewMessageReq::chatSessionId() const
@@ -182,11 +182,11 @@ void NewMessageReq::setUserId(const QString &userId)
     }
 }
 
-void NewMessageReq::setSessionId(const QString &sessionId)
+void NewMessageReq::setLoginSessionId(const QString &loginSessionId)
 {
-    if (dptr->m_sessionId != sessionId) {
+    if (dptr->m_loginSessionId != loginSessionId) {
         dptr.detach();
-        dptr->m_sessionId = sessionId;
+        dptr->m_loginSessionId = loginSessionId;
     }
 }
 
@@ -242,7 +242,7 @@ NewMessageRsp::~NewMessageRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 13> qt_protobuf_NewMessageRsp_uint_data;
-    const char qt_protobuf_NewMessageRsp_char_data[48];
+    const char qt_protobuf_NewMessageRsp_char_data[54];
 } qt_protobuf_NewMessageRsp_metadata {
     // data
     {
@@ -251,15 +251,15 @@ static constexpr struct {
         4, /* = field number offset */
         7, /* = property index offset */
         10, /* = field flags offset */
-        21, /* = message full name length */
+        27, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        22, /* = requestId */
-        32, /* = success */
-        40, /* = errmsg */
-        47, /* = end-of-string-marker */
+        28, /* = requestId */
+        38, /* = success */
+        46, /* = errmsg */
+        53, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -275,7 +275,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.NewMessageRsp\0" /* = full message name */
+    "my_chat_proto.NewMessageRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0"
 };
@@ -405,7 +405,7 @@ GetTransmitTargetRsp::~GetTransmitTargetRsp() = default;
 static constexpr struct {
     QtProtobufPrivate::QProtobufPropertyOrdering::Data data;
     const std::array<uint, 21> qt_protobuf_GetTransmitTargetRsp_uint_data;
-    const char qt_protobuf_GetTransmitTargetRsp_char_data[76];
+    const char qt_protobuf_GetTransmitTargetRsp_char_data[82];
 } qt_protobuf_GetTransmitTargetRsp_metadata {
     // data
     {
@@ -414,17 +414,17 @@ static constexpr struct {
         6, /* = field number offset */
         11, /* = property index offset */
         16, /* = field flags offset */
-        28, /* = message full name length */
+        34, /* = message full name length */
     },
     // uint_data
     {
         // JSON name offsets:
-        29, /* = requestId */
-        39, /* = success */
-        47, /* = errmsg */
-        54, /* = message */
-        62, /* = targetIdList */
-        75, /* = end-of-string-marker */
+        35, /* = requestId */
+        45, /* = success */
+        53, /* = errmsg */
+        60, /* = message */
+        68, /* = targetIdList */
+        81, /* = end-of-string-marker */
         // Field numbers:
         1, /* = requestId */
         2, /* = success */
@@ -446,7 +446,7 @@ static constexpr struct {
     },
     // char_data
     /* metadata char_data: */
-    "bite_im.GetTransmitTargetRsp\0" /* = full message name */
+    "my_chat_proto.GetTransmitTargetRsp\0" /* = full message name */
     /* field char_data: */
     "requestId\0success\0errmsg\0message\0targetIdList\0"
 };
@@ -589,6 +589,6 @@ void GetTransmitTargetRsp::setTargetIdList(const QStringList &targetIdList)
     }
 }
 
-} // namespace bite_im
+} // namespace my_chat_proto
 
 #include "moc_message_transmit.qpb.cpp"

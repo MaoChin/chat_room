@@ -20,11 +20,16 @@ private:
 };
 
 // 添加好友页面
-class AddFrinedDialog : public QDialog
+class AddFriendDialog : public QDialog
 {
     Q_OBJECT
 public:
-    AddFrinedDialog(QWidget* parent);
+    AddFriendDialog(QWidget* parent);
+
+    // 点击搜索按钮的槽函数
+    void clickSearchBtn();
+    // 点击搜索按钮处理结束
+    void clickSearchBtnDone();
 
     void addResultFriendItem(const model::UserInfo& userInfo);
     void clearResultFriendItem();

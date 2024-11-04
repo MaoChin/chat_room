@@ -22,5 +22,7 @@
         <file>resource/image/addFriend.png</file>
         <file>resource/image/defaultHeadPortrait.png</file>
         <file>resource/image/groupSessionHeadPortrait.png</file>
+        <file>resource/image/image.png</file>
+        <file>resource/image/voiceBtnActive.png</file>
     </qresource>
 </RCC>
