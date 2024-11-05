@@ -1,0 +1,8 @@
+/home/luckydog/project/chat_room/server_code/chat_server/voice/build/CMakeFiles/voice_server.dir
+/home/luckydog/project/chat_room/server_code/chat_server/voice/build/CMakeFiles/voice_client.dir
+/home/luckydog/project/chat_room/server_code/chat_server/voice/build/CMakeFiles/edit_cache.dir
+/home/luckydog/project/chat_room/server_code/chat_server/voice/build/CMakeFiles/rebuild_cache.dir
+/home/luckydog/project/chat_room/server_code/chat_server/voice/build/CMakeFiles/list_install_components.dir
+/home/luckydog/project/chat_room/server_code/chat_server/voice/build/CMakeFiles/install.dir
+/home/luckydog/project/chat_room/server_code/chat_server/voice/build/CMakeFiles/install/local.dir
+/home/luckydog/project/chat_room/server_code/chat_server/voice/build/CMakeFiles/install/strip.dir

@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+0f31442d958759eaa6bff788eb54da4e voice_recognition.pb.cc

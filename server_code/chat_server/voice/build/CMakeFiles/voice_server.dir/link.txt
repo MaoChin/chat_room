@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/voice_server.dir/source/voiceServer.cc.o CMakeFiles/voice_server.dir/voice_recognition.pb.cc.o -o voice_server  -lgflags -lspdlog -lfmt -lbrpc -lssl -lcrypto -lprotobuf -lleveldb -letcd-cpp-api -lcpprest -lcurl /usr/lib/x86_64-linux-gnu/libjsoncpp.so.19 
