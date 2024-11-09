@@ -29,7 +29,7 @@ namespace my_chat
       _conn_clients.insert(std::make_pair(conn, Client(uid, ssid)));
       LOG_DEBUG("新增长连接用户信息：{}-{}-{}", (size_t)conn.get(), uid, ssid);
     }
-    
+
     server_t::connection_ptr connection(const std::string &uid)
     {
       std::unique_lock<std::mutex> lock(_mutex);

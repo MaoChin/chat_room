@@ -3,7 +3,7 @@
 #include "user.hxx"
 #include "message.hxx"
 
-// elasticsearch设计到的数据索引创建即搜索封装
+// elasticsearch涉及到的数据索引创建即搜索封装
 namespace my_chat
 {
   class ESClientFactory

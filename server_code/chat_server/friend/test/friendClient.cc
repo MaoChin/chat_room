@@ -157,7 +157,7 @@ void remove_test(const std::string &uid1, const std::string &uid2)
     req.set_user_id(uid1);
     req.set_friend_id(uid2);
     brpc::Controller cntl;
-    stub.FriendRemove(&cntl, &req, &rsp, nullptr);
+    stub.FriendDelete(&cntl, &req, &rsp, nullptr);
     ASSERT_FALSE(cntl.Failed());
     ASSERT_TRUE(rsp.success());
 }
@@ -243,6 +243,7 @@ void csslist_test(const std::string &uid1)
         std::cout << rsp.chat_session_info_list(i).chat_session_id() << std::endl;
         std::cout << rsp.chat_session_info_list(i).chat_session_name() << std::endl;
         std::cout << rsp.chat_session_info_list(i).head_portrait() << std::endl;
+        std::cout << rsp.chat_session_info_list(i).have_prev_message() << std::endl;
         std::cout << "消息内容：\n";
         std::cout << rsp.chat_session_info_list(i).prev_message().message_id() << std::endl;
         std::cout << rsp.chat_session_info_list(i).prev_message().chat_session_id() << std::endl;

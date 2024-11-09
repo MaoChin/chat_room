@@ -33,7 +33,7 @@ namespace my_chat
 #define FRIEND_APPLY "/service/friend/add_friend_apply"
 #define FRIEND_APPLY_PROCESS "/service/friend/add_friend_process"
 #define FRIEND_REMOVE "/service/friend/delete_friend"
-#define FRIEND_SEARCH "/service/friend/search_friend"
+#define FRIEND_SEARCH "/service/friend/search_user"
 #define FRIEND_GET_PENDING_EV "/service/friend/get_pending_friend_events"
 #define CSS_GET_LIST "/service/friend/get_chat_session_list"
 #define CSS_CREATE "/service/friend/create_chat_session"
@@ -101,7 +101,7 @@ namespace my_chat
       _http_server.Post(FRIEND_GET_LIST, (httplib::Server::Handler)std::bind(&GatewayServer::GetFriendList, this, std::placeholders::_1, std::placeholders::_2));
       _http_server.Post(FRIEND_APPLY, (httplib::Server::Handler)std::bind(&GatewayServer::FriendAdd, this, std::placeholders::_1, std::placeholders::_2));
       _http_server.Post(FRIEND_APPLY_PROCESS, (httplib::Server::Handler)std::bind(&GatewayServer::FriendAddProcess, this, std::placeholders::_1, std::placeholders::_2));
-      _http_server.Post(FRIEND_REMOVE, (httplib::Server::Handler)std::bind(&GatewayServer::FriendRemove, this, std::placeholders::_1, std::placeholders::_2));
+      _http_server.Post(FRIEND_REMOVE, (httplib::Server::Handler)std::bind(&GatewayServer::FriendDelete, this, std::placeholders::_1, std::placeholders::_2));
       _http_server.Post(FRIEND_SEARCH, (httplib::Server::Handler)std::bind(&GatewayServer::UserSearch, this, std::placeholders::_1, std::placeholders::_2));
       _http_server.Post(FRIEND_GET_PENDING_EV, (httplib::Server::Handler)std::bind(&GatewayServer::GetPendingFriendEventList, this, std::placeholders::_1, std::placeholders::_2));
       _http_server.Post(CSS_GET_LIST, (httplib::Server::Handler)std::bind(&GatewayServer::GetChatSessionList, this, std::placeholders::_1, std::placeholders::_2));
@@ -802,11 +802,13 @@ namespace my_chat
           chat_session->mutable_chat_session_info()->set_chat_session_id(rsp.new_session_id());
           chat_session->mutable_chat_session_info()->set_chat_session_name(process_user_rsp->user_info().nick_name());
           chat_session->mutable_chat_session_info()->set_head_portrait(process_user_rsp->user_info().head_portrait());
+          chat_session->mutable_chat_session_info()->set_have_prev_message(false);
           apply_conn->send(notify.SerializeAsString(), websocketpp::frame::opcode::value::binary);
           LOG_DEBUG("对申请人进行会话创建通知！");
         }
         if (req.agree() && process_conn)
-        { // 对处理人的通知 --- 会话信息就是申请人信息
+        {
+					// 对处理人的通知 --- 会话信息就是申请人信息
           NotifyMessage notify;
           notify.set_notify_type(NotifyType::CHAT_SESSION_CREATE_NOTIFY);
           auto chat_session = notify.mutable_new_chat_session_info();
@@ -814,6 +816,7 @@ namespace my_chat
           chat_session->mutable_chat_session_info()->set_chat_session_id(rsp.new_session_id());
           chat_session->mutable_chat_session_info()->set_chat_session_name(apply_user_rsp->user_info().nick_name());
           chat_session->mutable_chat_session_info()->set_head_portrait(apply_user_rsp->user_info().head_portrait());
+          chat_session->mutable_chat_session_info()->set_have_prev_message(false);
           process_conn->send(notify.SerializeAsString(), websocketpp::frame::opcode::value::binary);
           LOG_DEBUG("对处理人进行会话创建通知！");
         }
@@ -821,7 +824,7 @@ namespace my_chat
       // 6. 对客户端进行响应
       response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
     }
-    void FriendRemove(const httplib::Request &request, httplib::Response &response)
+    void FriendDelete(const httplib::Request &request, httplib::Response &response)
     {
       // 1. 正文的反序列化，提取关键要素：登录会话ID
       FriendDeleteReq req;
@@ -1081,6 +1084,7 @@ namespace my_chat
       }
       my_chat::FriendService_Stub stub(channel.get());
       brpc::Controller cntl;
+      LOG_DEBUG("创建群聊，群聊名称： {}", req.chat_session_name());
       stub.ChatSessionCreate(&cntl, &req, &rsp, nullptr);
       if (cntl.Failed())
       {

@@ -23,8 +23,9 @@ namespace my_chat
   {
   public:
     ChatSession() {}
-    ChatSession(const std::string &ssid,const std::string &ssname, const ChatSessionType sstype)
+    ChatSession(const std::string &ssid, const std::string &ssname, const ChatSessionType sstype)
       : _chat_session_id(ssid),
+       _chat_session_name(ssname),
        _chat_session_type(sstype) {}
 
     std::string chat_session_id() const { return _chat_session_id; }

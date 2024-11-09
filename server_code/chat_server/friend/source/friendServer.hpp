@@ -81,7 +81,7 @@ namespace my_chat
       }
     }
 
-    virtual void FriendRemove(::google::protobuf::RpcController *controller,
+    virtual void FriendDelete(::google::protobuf::RpcController *controller,
                               const ::my_chat::FriendDeleteReq *request,
                               ::my_chat::FriendDeleteRsp *response,
                               ::google::protobuf::Closure *done)
@@ -381,6 +381,7 @@ namespace my_chat
           continue;
         }
         chat_session_info->mutable_prev_message()->CopyFrom(msg);
+        chat_session_info->set_have_prev_message(true);
       }
       for (const auto &f : gc_list)
       {
@@ -394,6 +395,7 @@ namespace my_chat
           continue;
         }
         chat_session_info->mutable_prev_message()->CopyFrom(msg);
+        chat_session_info->set_have_prev_message(true);
       }
       response->set_request_id(rid);
       response->set_success(true);
@@ -419,6 +421,7 @@ namespace my_chat
       std::string rid = request->request_id();
       std::string uid = request->user_id();
       std::string cssname = request->chat_session_name();
+      LOG_DEBUG("{} - 创建群聊会话：{}", rid, cssname);
 
       // 2. 生成会话ID，向数据库添加会话信息，添加会话成员信息
       std::string cssid = uuid();
@@ -692,7 +695,7 @@ namespace my_chat
         abort();
       }
     }
-    
+
     // 构造RPC服务器对象
     FriendServer::ptr build()
     {

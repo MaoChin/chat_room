@@ -34,7 +34,7 @@ namespace my_chat
       _es_message->createIndex();
     }
     ~MessageServiceImpl() {}
-    virtual void SearchHistoryByTimeMsg(::google::protobuf::RpcController *controller,
+    virtual void MsgSearchByTime(::google::protobuf::RpcController *controller,
                                const ::my_chat::MsgSearchByTimeReq *request,
                                ::my_chat::MsgSearchByTimeRsp *response,
                                ::google::protobuf::Closure *done)
@@ -225,7 +225,7 @@ namespace my_chat
       }
       return;
     }
-    virtual void SearchHistoryBySearchKey(::google::protobuf::RpcController *controller,
+    virtual void MsgSearchBySearchKey(::google::protobuf::RpcController *controller,
                            const ::my_chat::MsgSearchBySearchKeyReq *request,
                            ::my_chat::MsgSearchBySearchKeyRsp *response,
                            ::google::protobuf::Closure *done)
